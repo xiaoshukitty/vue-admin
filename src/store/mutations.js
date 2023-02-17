@@ -6,8 +6,8 @@ export default {
      * @param {*} payload 载荷，本质上是一个 json 对象，传递数据的容器
      */
     setMyName: (state, payload) => {
-        console.log('state---', state)
-        console.log('payload---', payload)
+        // console.log('state---', state)
+        // console.log('payload---', payload)
         state.myName = payload.newName;
     }
 }

@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "clipboard": "^2.0.11",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.10",
     "faker": "^4.1.0",
@@ -15,6 +16,7 @@
     "qrcodejs2": "0.0.2",
     "vue": "^2.6.14",
     "vue-amap": "^0.5.10",
+    "vue-print-nb": "^1.7.5",
     "vue-router": "^3.5.1",
     "vuedraggable": "^2.24.3",
     "vuex": "^3.6.2"

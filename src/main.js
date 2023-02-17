@@ -1,12 +1,19 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import VueAMap from 'vue-amap'
+import Print from 'vue-print-nb';
+import VueAMap from 'vue-amap';
+import Clipboard from 'clipboard'; //一键复制
+
 Vue.use(ElementUI);
 Vue.use(VueAMap);
+Vue.use(Print); //打印
+
+Vue.prototype.Clipboard = Clipboard
+
 
 VueAMap.initAMapApiLoader({
   key: '077b6622679f6ecf9978a5067dc35ac0', // 高德地图申请的 key
@@ -27,6 +34,8 @@ amapKeys.forEach(key => {
   // console.log(key)
   localStorage.removeItem(key)
 })
+
+
 
 Vue.config.productionTip = false
 

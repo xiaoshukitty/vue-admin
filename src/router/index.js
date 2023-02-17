@@ -60,6 +60,16 @@ const routes = [
     name: 'imgPreview',
     component: () => import('../views/imgPreview')
   },
+  {
+    path: '/print',
+    name: 'print',
+    component: () => import('../views/tips/print')
+  },
+  {
+    path: '/copy',
+    name: 'copy',
+    component: () => import('../views/tips/copy')
+  },
 
 ]
 

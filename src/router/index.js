@@ -1,76 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import home from '../views/home'
+import tips from './tips'
+import map from './map'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'home',
-    component: home
+    component: () => import('../views/home')
   },
   {
-    path: '/verificationCode',
-    name: 'verificationCode',
-    component: () => import('../views/verificationCode')
+    path: '/vuex',
+    name: 'vuex',
+    component: () => import('../views/vuex')
+  },{
+    path: '/test',
+    name: 'test',
+    component: () => import('../views/test')
   },
-  {
-    path: '/elMap',
-    name: 'elMap',
-    component: () => import('../views/elMap')
-  },
-  {
-    path: '/qqMap',
-    name: 'qqMap',
-    component: () => import('../views/qqMap')
-  },
-  {
-    path: '/drag',
-    name: 'drag',
-    component: () => import('../views/drag')
-  },
-  {
-    path: '/vuedraggable',
-    name: 'vuedraggable',
-    component: () => import('../views/drag/vuedraggable')
-  },
-  {
-    path: '/tree',
-    name: 'tree',
-    component: () => import('../views/tree')
-  },
-  {
-    path: '/virtualList',
-    name: 'virtualList',
-    component: () => import('../views/virtualList')
-  },
-  {
-    path: '/virtual',
-    name: 'virtual',
-    component: () => import('../views/virtual')
-  },
-  {
-    path: '/canvas',
-    name: 'canvas',
-    component: () => import('../views/canvas')
-  },
-  {
-    path: '/imgPreview',
-    name: 'imgPreview',
-    component: () => import('../views/imgPreview')
-  },
-  {
-    path: '/print',
-    name: 'print',
-    component: () => import('../views/tips/print')
-  },
-  {
-    path: '/copy',
-    name: 'copy',
-    component: () => import('../views/tips/copy')
-  },
-
+  ...tips,
+  ...map
 ]
 
 const router = new VueRouter({

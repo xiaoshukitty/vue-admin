@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import VirtualListComponents from '../../components/VirtualListComponents/VirtualListComponents.vue'
-import VirtualListComponentsItem from '../../components/VirtualListComponents/VirtualListComponentsItem.vue'
+import VirtualListComponents from '../../../components/VirtualListComponents/VirtualListComponents.vue'
+import VirtualListComponentsItem from '../../../components/VirtualListComponents/VirtualListComponentsItem.vue'
 
 import faker from 'faker';
 

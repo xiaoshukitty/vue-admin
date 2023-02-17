@@ -5,7 +5,7 @@
         <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
       </el-input>
     </div>
-    <div v-if="operationList.length > 0">
+    <div class="max_height" v-if="operationList.length > 0">
       <el-button class="m5" type="primary" v-for="(item, index) in operationList" :key="index"
         @click="skip(item, index)">{{
           item.name }}</el-button>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -32,6 +33,10 @@ export default {
         { name: '图片预览(js)', path: 'imgPreview' },
         { name: '打印', path: 'print' },
         { name: '复制', path: 'copy' },
+        { name: '条形码', path: 'barCode' },
+        { name: 'vuex', path: 'vuex' },
+        { name: 'test', path: 'test' },
+
       ],
     }
   },
@@ -88,8 +93,13 @@ export default {
     }
   }
 
-  .m5 {
-    margin: 5px;
+  .max_height {
+    max-height: 350px;
+    overflow: scroll;
+    .m5 {
+      margin: 5px;
+    }
   }
+
 }
 </style>

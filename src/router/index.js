@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import tips from './tips'
 import map from './map'
+import commonCopy from './commonCopy'
 
 Vue.use(VueRouter)
 
@@ -14,13 +15,14 @@ const routes = [{
     path: '/vuex',
     name: 'vuex',
     component: () => import('../views/vuex')
-  },{
+  }, {
     path: '/test',
     name: 'test',
     component: () => import('../views/test')
   },
   ...tips,
-  ...map
+  ...map,
+  ...commonCopy
 ]
 
 const router = new VueRouter({

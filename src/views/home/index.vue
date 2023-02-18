@@ -35,8 +35,9 @@ export default {
         { name: '复制', path: 'copy' },
         { name: '条形码', path: 'barCode' },
         { name: 'vuex', path: 'vuex' },
-        { name: 'test', path: 'test' },
+        { name: '常用表格-copy', path: 'tableSearch' },
 
+        { name: 'test', path: 'test' },
       ],
     }
   },
@@ -64,6 +65,9 @@ export default {
           { name: '图片预览(js)', path: 'imgPreview' },
           { name: '打印', path: 'print' },
           { name: '复制', path: 'copy' },
+          { name: '条形码', path: 'barCode' },
+          { name: 'vuex', path: 'vuex' },
+          { name: '常用表格-copy', path: 'tableSearch' },
         ]
       } else {
         let newList = JSON.parse(JSON.stringify(this.operationList))
@@ -96,6 +100,7 @@ export default {
   .max_height {
     max-height: 350px;
     overflow: scroll;
+
     .m5 {
       margin: 5px;
     }

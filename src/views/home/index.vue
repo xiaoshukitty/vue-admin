@@ -15,30 +15,12 @@
 </template>
 
 <script>
-
+import { operationList } from '@/utils/routerList'
 export default {
   data() {
     return {
       ipt: '',
-      operationList: [
-        { name: '验证码', path: 'verificationCode' },
-        { name: '地图', path: 'elMap' },
-        { name: 'QQ地图', path: 'qqMap' },
-        { name: '原生拖拽', path: 'drag' },
-        { name: 'vuedraggable拖拽', path: 'vuedraggable' },
-        { name: '树形', path: 'tree' },
-        { name: '虚拟列表(固定高度)', path: 'virtual' },
-        { name: '虚拟列表(不固定高度)', path: 'virtualList' },
-        { name: 'canvas绘图,生成二维码海报', path: 'canvas' },
-        { name: '图片预览(js)', path: 'imgPreview' },
-        { name: '打印', path: 'print' },
-        { name: '复制', path: 'copy' },
-        { name: '条形码', path: 'barCode' },
-        { name: 'vuex', path: 'vuex' },
-        { name: '常用表格-copy', path: 'tableSearch' },
-
-        { name: 'test', path: 'test' },
-      ],
+      operationList,
     }
   },
   created() {
@@ -52,23 +34,7 @@ export default {
   methods: {
     search() {
       if (this.ipt == '') {
-        this.operationList = [
-          { name: '验证码', path: 'verificationCode' },
-          { name: '地图', path: 'elMap' },
-          { name: 'QQ地图', path: 'qqMap' },
-          { name: '原生拖拽', path: 'drag' },
-          { name: 'vuedraggable拖拽', path: 'vuedraggable' },
-          { name: '树形', path: 'tree' },
-          { name: '虚拟列表(固定高度)', path: 'virtual' },
-          { name: '虚拟列表(不固定高度)', path: 'virtualList' },
-          { name: 'canvas绘图,生成二维码海报', path: 'canvas' },
-          { name: '图片预览(js)', path: 'imgPreview' },
-          { name: '打印', path: 'print' },
-          { name: '复制', path: 'copy' },
-          { name: '条形码', path: 'barCode' },
-          { name: 'vuex', path: 'vuex' },
-          { name: '常用表格-copy', path: 'tableSearch' },
-        ]
+        this.operationList = operationList;
       } else {
         let newList = JSON.parse(JSON.stringify(this.operationList))
         this.operationList = newList.filter((item, index) => {

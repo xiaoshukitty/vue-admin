@@ -14,6 +14,17 @@ Vue.use(Print); //打印
 
 Vue.prototype.Clipboard = Clipboard
 
+// 适配立即调用函数
+// (function init(screenRatioByDesign = 16 / 9) {
+//   let docEle = document.documentElement
+//   function setHtmlFontSize() {
+//     var screenRatio = docEle.clientWidth / docEle.clientHeight;
+//     var fontSize = (screenRatio > screenRatioByDesign ? (screenRatioByDesign / screenRatio) : 1) * docEle.clientWidth / 10;
+//     docEle.style.fontSize = fontSize.toFixed(3) + "px";
+//     console.log(docEle.style.fontSize);
+//   }​
+//   setHtmlFontSize()​ ;window.addEventListener('resize', setHtmlFontSize)
+// })()
 
 VueAMap.initAMapApiLoader({
   key: '077b6622679f6ecf9978a5067dc35ac0', // 高德地图申请的 key

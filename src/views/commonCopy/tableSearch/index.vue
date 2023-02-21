@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="table">
+        <div class="table" v-loading="dataLoading">
             <el-table :data="tableData" stripe style="width: 100%">
                 <el-table-column prop="date" label="日期" align="center">
                 </el-table-column>
@@ -88,6 +88,7 @@ export default {
                 page: 1,
                 total: null
             },
+            dataLoading:true,
             options: [{
                 value: '选项1',
                 label: '黄金糕'
@@ -321,6 +322,11 @@ export default {
     },
     created() {
 
+    },
+    mounted(){
+        setTimeout(()=>{
+            this.dataLoading=false;
+        },3000)
     },
     methods: {
         handleSizeChange(newPageSize) {

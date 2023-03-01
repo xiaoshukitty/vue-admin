@@ -13,7 +13,13 @@ module.exports = {
     //   '/api': { // 要代理的接口的匹配字符
     //     target: process.env.BASE_URL, // 接口域名
     //     secure: false,
-    //     changeOrigin: true
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       /* 重写路径，当我们在浏览器中看到请求的地址为：http://localhost:8080/api/core/getData/userInfo 时
+    //         实际上访问的地址是：http://121.121.67.254:8185/core/getData/userInfo,因为重写了 /api
+    //        */
+    //       '^/api': ''
+    //     }
     //   }
     // }
     // 反向代理，则在 axios 配置的时候，请求baseURL必须设置为字符串'/'，否则 proxy 会匹配不到'/api'导致代理失败。

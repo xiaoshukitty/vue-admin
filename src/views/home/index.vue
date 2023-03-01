@@ -24,12 +24,26 @@ export default {
     }
   },
   created() {
-
+    var resizeTimer = null;
+    window.addEventListener('resize', function () {
+      let clientWidth = document.documentElement.clientWidth
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        console.log(clientWidth);
+        if (clientWidth < 600) {
+          console.log('进入了移动端')
+        } else {
+          console.log('不在移动端');
+        }
+      }, 100);
+    })
   },
   watch: {
     ipt() {
       this.search()
     },
+  },
+  watch: {
   },
   methods: {
     search() {
@@ -44,6 +58,13 @@ export default {
     },
     skip(item, index) {
       this.$router.push(item.path)
+    },
+    _isMobile() {
+      if (window.navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)) {
+        console.log('手机端')
+      } else {
+        console.log('pc端')
+      }
     },
   },
 }

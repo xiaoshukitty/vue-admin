@@ -9,15 +9,24 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     name: 'home',
+    meta: {
+      title: '首页'
+    },
     component: () => import('../views/home')
   },
   {
     path: '/vuex',
     name: 'vuex',
+    meta: {
+      title: 'vuex'
+    },
     component: () => import('../views/vuex')
   }, {
     path: '/test',
     name: 'test',
+    meta: {
+      title: '测试文件'
+    },
     component: () => import('../views/test')
   },
   ...tips,

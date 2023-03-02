@@ -86,4 +86,12 @@ export default [{
         },
         component: () => import('../views/tips/barCode')
     },
+    {
+        path: '/dateConversion',
+        name: 'dateConversion',
+        meta: {
+            title: '时间转化'
+        },
+        component: () => import('../views/tips/dateConversion')
+    },
 ]

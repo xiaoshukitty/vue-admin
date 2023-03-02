@@ -89,7 +89,7 @@ body {
 
     /deep/ .el-menu-vertical-demo {
         overflow: auto;
-        height: 829px;
+        height: 600px;
         background-color: #fafafa;
     }
 }

@@ -40,7 +40,6 @@ export default {
   },
   watch: {
     ipt() {
-      console.log('cccc');
       this.search()
     },
   },

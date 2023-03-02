@@ -32,20 +32,20 @@ module.exports = {
   configureWebpack: (config) => {
     // process.env为环境变量，分别对应.env.development文件和.env.production文件 此处表示加快开发环境打包速度
     if (process.env.NODE_ENV === 'production') {
-      return {
-        optimization: {
-          minimizer: [
-            new TerserPlugin({
-              sourceMap: false,
-              terserOptions: {
-                compress: {
-                  drop_console: true, // 生产环境去掉console.log
-                }
-              }
-            })
-          ]
-        }
-      }
+      // return {
+      //   optimization: {
+      //     minimizer: [
+      //       new TerserPlugin({
+      //         sourceMap: false,
+      //         terserOptions: {
+      //           compress: {
+      //             drop_console: true, // 生产环境去掉console.log
+      //           }
+      //         }
+      //       })
+      //     ]
+      //   }
+      // }
     }
     return { // 此处配置webpack.config.js的相关配置
       plugins: [],

@@ -58,7 +58,10 @@ const operationList = [{
         name: '常用表格-copy',
         path: 'tableSearch'
     },
-
+    {
+        name: '常用的',
+        path: 'methods'
+    },
     {
         name: 'test',
         path: 'test'

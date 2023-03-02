@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import tips from './tips'
 import map from './map'
 import commonCopy from './commonCopy'
+import methods from './methods'
 
 Vue.use(VueRouter)
 
@@ -31,7 +32,8 @@ const routes = [{
   },
   ...tips,
   ...map,
-  ...commonCopy
+  ...commonCopy,
+  ...methods
 ]
 
 const router = new VueRouter({

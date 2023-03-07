@@ -11,7 +11,9 @@
         <el-amap ref="map" vid="amapDemo" :amap-manager="amapManager" :center="center" :zoom="zoom" :plugin="plugin"
           :events="events" class="amap-demo">
           <!-- 自定义当前定位 -->
-          <el-amap-marker v-for="(marker, index) in markers" :key="index" :position="marker"></el-amap-marker>
+          <!-- <el-amap-marker v-for="(marker, index) in markers" :key="index" :position="marker"></el-amap-marker> -->
+          <el-amap-marker v-for="(item, index) in markers" :key="index" :position="item.position" :label="item.label"
+            :icon="item.icon" />
         </el-amap>
         <div style="display: flex; position: relative">
           <div class="adress">
@@ -23,7 +25,6 @@
       </div>
     </el-dialog>
   </div>
-
 </template>
 
 <script>
@@ -116,6 +117,15 @@ export default {
           });
         },
       },
+      markers: [{
+        position: [114.351733, 29.900505],
+        label: { content: '骑手', offset: [-20, -30] },
+        icon: 'https://img.fphdcdn.com/member/2023-01-13PPf3JHHHx5.png'
+      }, {
+        position: [114.345458, 29.895411],
+        label: { content: '店家', offset: [-20, -30], },
+        icon: 'https://img.fphdcdn.com/member/2023-01-13PPf3JHHHx5.png'
+      }],
 
     }
   },
@@ -223,5 +233,16 @@ export default {
 
 /deep/ .el-dialog__body {
   padding: 50px 20px !important;
+}
+
+/deep/ .amap-icon img {
+  width: 50px;
+}
+
+/deep/ .amap-marker-label {
+  border: none !important;
+  font-size: 14px !important;
+  padding: 5px 20px !important;
+  border-radius: 10px;
 }
 </style>

@@ -11,6 +11,10 @@ const operationList = [{
         path: 'qqMap'
     },
     {
+        name: '高德地图',
+        path: 'autoNaviMap'
+    },
+    {
         name: '原生拖拽',
         path: 'drag'
     },

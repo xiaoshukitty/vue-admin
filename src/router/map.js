@@ -14,4 +14,12 @@ export default [{
         },
         component: () => import('../views/map/qqMap')
     },
+    {
+        path: '/autoNaviMap',
+        name: 'autoNaviMap',
+        meta: {
+            title: '高德地图'
+        },
+        component: () => import('../views/map/autoNaviMap')
+    },
 ]

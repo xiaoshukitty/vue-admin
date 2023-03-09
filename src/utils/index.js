@@ -53,8 +53,53 @@ const toUtf8 = (str) => {
     return out;
 }
 
+/**
+ * 根据经纬度计算距离
+ * @param {String|Number} lat1 第一点的纬度 
+ * @param {String|Number} lng1 第一点的经度
+ * @param {String|Number} lat2 第二点的纬度
+ * @param {String|Number} lng2 第二点的经度
+ * @returns 
+ */
+const getDistances = (lat1, lng1, lat2, lng2) => {
+    function rad(d) {
+        return d * Math.PI / 180.0;
+    }
+    var radLat1 = rad(lat1);
+    var radLat2 = rad(lat2);
+    var a = radLat1 - radLat2;
+    var b = rad(lng1) - rad(lng2);
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
+        Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+    s = s * 6378.137; // EARTH_RADIUS;
+    // 输出为公里
+    s = Math.round(s * 10000) / 10000;
+    var distance = s;
+    var distance_str = "";
+    if (parseInt(distance) >= 1) {
+        // distance_str = distance.toFixed(1) + "km";
+        distance_str = distance.toFixed(2) + "km";
+    } else {
+        // distance_str = distance * 1000 + "m";
+        distance_str = (distance * 1000).toFixed(2) + "m";
+    }
+    //s=s.toFixed(4);
+    // console.info('距离是', s);
+    // console.info('距离是', distance_str);
+    // return s;
+    //小小修改，这里返回对象
+    let objData = {
+        distance: distance,
+        distance_str: distance_str
+    }
+    return objData
+}
+
+
+
 
 export {
     downloadIamgeFun,
-    toUtf8
+    toUtf8,
+    getDistances
 }

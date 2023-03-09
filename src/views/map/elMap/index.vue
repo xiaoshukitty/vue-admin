@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { getDistances } from '@/utils'
 import { AMapManager } from "vue-amap";
 let amapManager = new AMapManager(); //地图管理对象
 export default {
@@ -126,12 +127,15 @@ export default {
         label: { content: '店家', offset: [-20, -30], },
         icon: 'https://img.fphdcdn.com/member/2023-01-13PPf3JHHHx5.png'
       }],
-
+      distance: null,
     }
   },
   created() {
     this.getLongitudeLatitude()
     this.markers.push(this.center)
+    this.distance = (getDistances(29.900505, 114.351733, 29.895411, 114.345458).distance).toFixed(2);
+    console.log(this.distance);
+    this.markers[0].label.content = `骑手距离店家${this.distance}km`
   },
   methods: {
     //关闭弹窗
@@ -184,7 +188,7 @@ export default {
         }
 
         function success(position) {
-          console.log('position', position);
+          // console.log('position', position);
           //position.coords (只读) 返回一个定义了当前位置的Coordinates对象。
           //position.timestamp (只读) 返回一个时间戳DOMTimeStamp， 这个时间戳表示获取到的位置的时间。
           var lat = position.coords.latitude //当前位置的纬度

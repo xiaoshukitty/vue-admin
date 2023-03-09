@@ -40,10 +40,16 @@ export default {
   },
   watch: {
     ipt() {
-      this.search()
+      // this.search()
+      this.antiShake(this.search, 500)
     },
   },
   methods: {
+    antiShake(fn, wait) {
+      let timeOut = null;
+      if (timeOut) clearTimeout(timeOut)
+      timeOut = setTimeout(fn, wait)
+    },
     search() {
       if (this.ipt == '') {
         this.operationList = operationList;

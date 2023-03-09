@@ -24,7 +24,6 @@ export default {
     }
   },
   created() {
-    console.log('测试');
     var resizeTimer = null;
     window.addEventListener('resize', function () {
       let clientWidth = document.documentElement.clientWidth

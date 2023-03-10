@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Print from 'vue-print-nb';
 import VueAMap from 'vue-amap';
 import Clipboard from 'clipboard'; //一键复制
+import '@/config/directive.js'
 
 Vue.use(ElementUI);
 Vue.use(VueAMap);

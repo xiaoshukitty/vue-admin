@@ -52,6 +52,23 @@ export const removeLocalStorage = name => {
     window.localStorage.removeItem(name);
 }
 
+//设置cookie
+export const setCookie = (name, value, perpetual) => {
+    let exdate = new Date()
+    exdate.setDate(exdate.getDate() + perpetual) //exdate.setDate(exdate.getDate() + 365)
+    document.cookie = name + '=' + value + ';expires=' + exdate.toGMTString()
+}
+
+//获取cookie
+export const getCookie = (name) => {
+    if (document.cookie.length > 0) {
+        let obj = document.cookie.replace(/(\w+|[\u4e00-\u9fa5]+)=(\w+|[\u4e00-\u9fa5]+)/ig, ($, $1, $2) => {
+            result[$1] = $2
+        })
+        return unescape(obj[name])
+    }
+    return ''
+}
 
 /**
  *

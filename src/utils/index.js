@@ -157,11 +157,23 @@ const getPathParameter = (key) => {
     return requestObj[key];
 }
 
+/**
+ * 深拷贝
+ * @param {*} obj 
+ * @returns 
+ */
+const deepClone = (obj) => {
+    let _obj = JSON.stringify(obj),
+        objClone = JSON.parse(_obj);
+    return objClone
+}
+
 export {
     downloadIamgeFun,
     toUtf8,
     getDistances,
     timeConversion,
     timestampConversion,
-    getPathParameter
+    getPathParameter,
+    deepClone
 }

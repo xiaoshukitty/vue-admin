@@ -95,11 +95,73 @@ const getDistances = (lat1, lng1, lat2, lng2) => {
     return objData
 }
 
+/**
+ * 获取距离当前时间的时间长度
+ * @param {Number} timestamp     - 要转换的时间参数（单位为秒）
+ * @returns {String}
+ */
+const timeConversion = (timestamp) => {
+    let currentUnixTime = Math.round((new Date()).getTime() / 1000); // 当前时间的秒数
+    let deltaSecond = currentUnixTime - parseInt(timestamp, 10); // 当前时间与要转换的时间差（ s ）
+    let result;
+    if (deltaSecond < 60) {
+        result = deltaSecond + '秒前';
+    } else if (deltaSecond < 3600) {
+        result = Math.floor(deltaSecond / 60) + '分钟前';
+    } else if (deltaSecond < 86400) {
+        result = Math.floor(deltaSecond / 3600) + '小时前';
+    } else {
+        result = Math.floor(deltaSecond / 86400) + '天前';
+    }
+    return result;
+};
 
 
+/**
+ * 时间戳转化
+ * @param {String | Object} input  
+ * @returns 
+ */
+const timestampConversion = (input) => {
+    if (input == undefined || input == '') {
+        return
+    }
+    var d = new Date(Number(input) * 1000);
+    var year = d.getFullYear();
+    var month = d.getMonth() + 1 < 10 ? '0' + (d.getMonth() + 1) : '' + (d.getMonth() + 1);
+    var day = d.getDate() < 10 ? '0' + d.getDate() : '' + d.getDate();
+    var hour = d.getHours();
+    var minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : '' + d.getMinutes();
+    var seconds = d.getSeconds();
+    return year + '-' + month + '-' + day + ' ' + hour + ':' + minutes + ':' + seconds
+}
+
+/**
+ * 原生获取路径参数
+ * @param key
+ * @returns {Object}
+ */
+const getPathParameter = (key) => {
+    var url = location.search || location.hash;
+    var requestObj = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.slice(url.indexOf("?") + 1);
+        var strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            requestObj[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    if (key == undefined) {
+        return requestObj;
+    }
+    return requestObj[key];
+}
 
 export {
     downloadIamgeFun,
     toUtf8,
-    getDistances
+    getDistances,
+    timeConversion,
+    timestampConversion,
+    getPathParameter
 }

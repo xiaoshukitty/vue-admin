@@ -32,42 +32,42 @@ module.exports = {
   assetsDir: 'assets', // 静态文件输出目录，基于dist
   indexPath: 'index.html', // 输出html文件名
   productionSourceMap: false, // 取消.map文件的打包，加快打包速度
-  // configureWebpack: (config) => {
-  //   // process.env为环境变量，分别对应.env.development文件和.env.production文件 此处表示加快开发环境打包速度
-  //   if (process.env.NODE_ENV === 'production') {
-  //   }
-  //   return { // 此处配置webpack.config.js的相关配置
-  //     plugins: [],
-  //     performance: {}
-  //   }
-  // },
   configureWebpack: (config) => {
-    if (process.env.NODE_ENV == 'production') {
-      // 为生产环境修改配置
-      config.mode = 'production'
-      // 将每个依赖包打包成单独的js文件
-      let optimization = {
-        minimizer: [new UglifyPlugin({
-          uglifyOptions: {
-            warnings: false, //若是打包错误，则注射这一行
-            compress: {
-              drop_console: true,
-              drop_debugger: false,
-              pure_funcs: ['console.log']
-            }
-          },
-          sourceMap: false, //不打印日志
-          parallel: true, //开启并 加快打包速度]
-        })]
-      }
-      Object.assign(config, {
-        optimization
-      })
-    } else {
-      // 为开发环境修改配置
-      config.mode = 'development'
+    // process.env为环境变量，分别对应.env.development文件和.env.production文件 此处表示加快开发环境打包速度
+    if (process.env.NODE_ENV === 'production') {
+    }
+    return { // 此处配置webpack.config.js的相关配置
+      plugins: [],
+      performance: {}
     }
   },
+  // configureWebpack: (config) => {
+  //   if (process.env.NODE_ENV == 'production') {
+  //     // 为生产环境修改配置
+  //     config.mode = 'production'
+  //     // 将每个依赖包打包成单独的js文件
+  //     let optimization = {
+  //       minimizer: [new UglifyPlugin({
+  //         uglifyOptions: {
+  //           warnings: false, //若是打包错误，则注射这一行
+  //           compress: {
+  //             drop_console: true,
+  //             drop_debugger: false,
+  //             pure_funcs: ['console.log']
+  //           }
+  //         },
+  //         sourceMap: false, //不打印日志
+  //         parallel: true, //开启并 加快打包速度]
+  //       })]
+  //     }
+  //     Object.assign(config, {
+  //       optimization
+  //     })
+  //   } else {
+  //     // 为开发环境修改配置
+  //     config.mode = 'development'
+  //   }
+  // },
   chainWebpack: config => {
     config
       .plugin('html')
@@ -83,6 +83,4 @@ module.exports = {
   //     }
   //   }
   // }
-
-
 }

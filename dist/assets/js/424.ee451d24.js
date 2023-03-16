@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkvue_test=self.webpackChunkvue_test||[]).push([[424],{37424:function(t,e,s){s.r(e),s.d(e,{default:function(){return u}});var e={data(){return{}},created(){},methods:{}},u=(0,s(1001).Z)(e,function(){return(0,this._self._c)("div",{staticClass:"test"})},[],!1,null,"9375d5ca",null).exports}}]);

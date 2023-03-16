@@ -1,5 +1,7 @@
+const UglifyPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   publicPath: './', // 公共路径 默认为"/"，建议使用"./"相对路径
+  // lintOnSave:false,//注释警告
   devServer: { // 本地服务器配置(npm run serve)
     port: 8080, // 配置端口
     host: 'localhost', // 域名
@@ -13,7 +15,7 @@ module.exports = {
     //   '/api': { // 要代理的接口的匹配字符
     //     target: process.env.BASE_URL, // 接口域名
     //     secure: false,
-    //     changeOrigin: true,
+    //     changeOrigin: true, //是否允许跨域
     //     pathRewrite: {
     //       /* 重写路径，当我们在浏览器中看到请求的地址为：http://localhost:8080/api/core/getData/userInfo 时
     //         实际上访问的地址是：http://121.121.67.254:8185/core/getData/userInfo,因为重写了 /api
@@ -23,33 +25,47 @@ module.exports = {
     //   }
     // }
     // 反向代理，则在 axios 配置的时候，请求baseURL必须设置为字符串'/'，否则 proxy 会匹配不到'/api'导致代理失败。
+
   },
   lintOnSave: false, // 取消lint语法检测，此处可不配置
   outputDir: 'dist', // build打包输出目录
   assetsDir: 'assets', // 静态文件输出目录，基于dist
   indexPath: 'index.html', // 输出html文件名
   productionSourceMap: false, // 取消.map文件的打包，加快打包速度
+  // configureWebpack: (config) => {
+  //   // process.env为环境变量，分别对应.env.development文件和.env.production文件 此处表示加快开发环境打包速度
+  //   if (process.env.NODE_ENV === 'production') {
+  //   }
+  //   return { // 此处配置webpack.config.js的相关配置
+  //     plugins: [],
+  //     performance: {}
+  //   }
+  // },
   configureWebpack: (config) => {
-    // process.env为环境变量，分别对应.env.development文件和.env.production文件 此处表示加快开发环境打包速度
-    if (process.env.NODE_ENV === 'production') {
-      // return {
-      //   optimization: {
-      //     minimizer: [
-      //       new TerserPlugin({
-      //         sourceMap: false,
-      //         terserOptions: {
-      //           compress: {
-      //             drop_console: true, // 生产环境去掉console.log
-      //           }
-      //         }
-      //       })
-      //     ]
-      //   }
-      // }
-    }
-    return { // 此处配置webpack.config.js的相关配置
-      plugins: [],
-      performance: {}
+    if (process.env.NODE_ENV == 'production') {
+      // 为生产环境修改配置
+      config.mode = 'production'
+      // 将每个依赖包打包成单独的js文件
+      let optimization = {
+        minimizer: [new UglifyPlugin({
+          uglifyOptions: {
+            warnings: false, //若是打包错误，则注射这一行
+            compress: {
+              drop_console: true,
+              drop_debugger: false,
+              pure_funcs: ['console.log']
+            }
+          },
+          sourceMap: false, //不打印日志
+          parallel: true, //开启并 加快打包速度]
+        })]
+      }
+      Object.assign(config, {
+        optimization
+      })
+    } else {
+      // 为开发环境修改配置
+      config.mode = 'development'
     }
   },
   chainWebpack: config => {
@@ -59,5 +75,14 @@ module.exports = {
         args[0].title = '测试文件'
         return args
       })
-  }
+  },
+  // css: {
+  //   loaderOptions: {
+  //     sass: { //配置全局 sass
+  //       prependData:`@import './src/common/css/global.scss'`
+  //     }
+  //   }
+  // }
+
+
 }

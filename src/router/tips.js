@@ -94,4 +94,12 @@ export default [{
         },
         component: () => import('../views/tips/dateConversion')
     },
+    {
+        path: '/requestText',
+        name: 'requestText',
+        meta: {
+            title: '接口测试'
+        },
+        component: () => import('../views/requestText')
+    },
 ]

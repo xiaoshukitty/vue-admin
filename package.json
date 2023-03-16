@@ -33,6 +33,7 @@
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
     "terser-webpack-plugin": "^5.3.6",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-template-compiler": "^2.6.14",
     "webpack-cli": "^4.10.0"
   },

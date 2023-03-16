@@ -1,0 +1,16 @@
+.drag .container[data-v-75cf594c] {
+  margin: auto;
+  width: 400px;
+}
+.drag .container div[data-v-75cf594c] {
+  width: 100%;
+  height: 140px;
+  line-height: 140px;
+  background: #d2d2d3;
+  text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  cursor: move;
+}
+

@@ -58,8 +58,10 @@ router.beforeEach((to, from, next) => {
 
 Vue.config.productionTip = false
 
-new Vue({
+let vue = new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
+export default vue; //导出 vue 其他位置就能使用 vue

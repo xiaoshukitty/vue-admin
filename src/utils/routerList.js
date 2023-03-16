@@ -71,6 +71,10 @@ const operationList = [{
         path: 'dateConversion'
     },
     {
+        name: '接口测试',
+        path: 'requestText'
+    },
+    {
         name: 'test',
         path: 'test'
     },

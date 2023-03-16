@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import tips from './tips'
-import map from './map'
-import commonCopy from './commonCopy'
-import methods from './methods'
+import tips from './tips.routers'
+import map from './map.routers'
+import commonCopy from './commonCopy.routers'
+import methods from './methods.routers'
 
 Vue.use(VueRouter)
 

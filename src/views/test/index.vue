@@ -1,5 +1,6 @@
 <template>
     <div class="test">
+       
     </div>
 </template>
   
@@ -7,7 +8,6 @@
 export default {
     data() {
         return {
-
         }
     },
     created() {
@@ -15,6 +15,8 @@ export default {
     },
     methods: {
     },
+    components: {
+    }
 }
 </script>
   

@@ -102,4 +102,12 @@ export default [{
         },
         component: () => import('../views/requestText')
     },
+    {
+        path: '/render',
+        name: 'render',
+        meta: {
+            title: 'render函数测试'
+        },
+        component: () => import('../views/tips/render')
+    },
 ]

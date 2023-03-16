@@ -61,7 +61,7 @@ Vue.config.productionTip = false
 let vue = new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App) //创建一个App的实例 h => 原生JS中createElement()
 }).$mount('#app')
 
 export default vue; //导出 vue 其他位置就能使用 vue

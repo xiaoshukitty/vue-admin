@@ -1,17 +1,29 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import tips from './tips.routers'
-import map from './map.routers'
-import commonCopy from './commonCopy.routers'
-import methods from './methods.routers'
 
 Vue.use(VueRouter)
+
+// 自动化引入路由
+const moduleFn = require.context('./', false, /\.routers\.js/)
+//找到所有 .routers.js 的路由文件
+const routerList = moduleFn.keys().reduce((p, v) => {
+  let module = moduleFn(v).default;
+  if (Array.isArray(module)) {
+    p.push(...module);
+  } else {
+    p.push(module);
+  }
+  return p;
+}, [])
+
+console.log('routerList---', routerList)
 
 const routes = [{
     path: '/',
     name: 'home',
     meta: {
-      title: '首页'
+      title: '首页',
+      require: true, //需要验证的
     },
     component: () => import('../views/home')
   },
@@ -19,21 +31,20 @@ const routes = [{
     path: '/vuex',
     name: 'vuex',
     meta: {
-      title: 'vuex'
+      title: 'vuex',
+      require: true,
     },
     component: () => import('../views/vuex')
   }, {
     path: '/test',
     name: 'test',
     meta: {
-      title: '测试文件'
+      title: '测试文件',
+      require: true,
     },
     component: () => import('../views/test')
   },
-  ...tips,
-  ...map,
-  ...commonCopy,
-  ...methods
+  ...routerList
 ]
 
 const router = new VueRouter({

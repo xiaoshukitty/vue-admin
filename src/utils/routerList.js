@@ -79,6 +79,10 @@ const operationList = [{
         path: 'render'
     },
     {
+        name: '自定义指令',
+        path: 'customInstruction'
+    },
+    {
         name: 'test',
         path: 'test'
     },

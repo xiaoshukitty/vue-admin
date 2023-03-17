@@ -47,13 +47,26 @@ amapKeys.forEach(key => {
   localStorage.removeItem(key)
 })
 
+
+// 路由守卫
 router.beforeEach((to, from, next) => {
   // console.log('to',to);
   // console.log('from',from);
   if (to.meta.title) {
     document.title = to.meta.title
   }
-  next()
+  let token
+  if (to.meta.require) { //页面是否需要验证
+    if (token) {
+      next()
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+
+
 })
 
 Vue.config.productionTip = false

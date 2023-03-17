@@ -103,6 +103,14 @@ export default [{
         component: () => import('../views/requestText')
     },
     {
+        path: '/customInstruction',
+        name: 'customInstruction',
+        meta: {
+            title: '自定义指令'
+        },
+        component: () => import('../views/tips/customInstruction')
+    },
+    {
         path: '/render',
         name: 'render',
         meta: {

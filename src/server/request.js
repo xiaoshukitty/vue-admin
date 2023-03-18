@@ -9,9 +9,10 @@ import axios from "axios";
 const instance = axios.create({
     baseURL: 'https://some-domain.com/api/',
     timeout: 1000,
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
 });
 
-instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+// instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 // instance.defaults.headers.common['Authorization'] = '自己的token';
 
 // 添加请求拦截器

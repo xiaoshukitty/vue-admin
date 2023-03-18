@@ -111,6 +111,14 @@ export default [{
         component: () => import('../views/tips/customInstruction')
     },
     {
+        path: '/waterfallFlow',
+        name: 'waterfallFlow',
+        meta: {
+            title: '瀑布流'
+        },
+        component: () => import('../views/tips/waterfallFlow')
+    },
+    {
         path: '/render',
         name: 'render',
         meta: {

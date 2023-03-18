@@ -83,6 +83,10 @@ const operationList = [{
         path: 'customInstruction'
     },
     {
+        name: '瀑布流',
+        path: 'waterfallFlow'
+    },
+    {
         name: 'test',
         path: 'test'
     },

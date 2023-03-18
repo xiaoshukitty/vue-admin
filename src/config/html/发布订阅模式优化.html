@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 高性能低耦合 发布订阅模式 代码
+        let Event = (function () {
+            let list = {}, //存储订阅的方法
+                listen,
+                trigger,
+                remove //删除订阅者
+            listen = function (key, fn) {
+                (list[key] || (list[key] = [])).push(fn);
+            };
+            trigger = function () {
+                //类数组转数组
+                let key = Array.prototype.shift.call(arguments),
+                    fns = list[key]; //取出该消息对应的回调函数
+
+                if (!fns || fns.length === 0) {
+                    return;
+                }
+
+                for (let i = 0, fn; fn = fns[i++];) { //for循环简写
+                    fn.apply(this, arguments) //发布消息时的参数
+                }
+            };
+            remove = function (key, fn) {
+                let fns = list[key];
+                if (!fns) {
+                    return false
+                }
+                if (!fn) {
+                    fns && (fns.length = 0); // 短路表达式
+                } else {
+                    for (let i = fns.length - 1; i >= 0; i--) {
+                        let _fn = fns[i];
+                        _fn === fn && (fn.splice(i, 1))
+                    }
+                }
+            };
+            //闭包
+            return {
+                listen: listen,
+                trigger: trigger,
+                remove: remove,
+            }
+        })();
+
+
+        Event.listen('big', function (size) { //订阅
+            console.log('小红：我要的房子时' + size + '平米');
+        })
+        Event.trigger('big', 150) //通知
+
+
+
+        /*------------------------------------------------------------------*/
+        // let event = {
+        //     list: {}, //存储订阅的方法
+        //     listen: function (key, fn) {
+        //         (this.list[key] || (this.list[key] = [])).push(fn);
+        //     },
+        //     trigger: function () {
+        //         //类数组转数组
+        //         let key = Array.prototype.shift.call(arguments),
+        //             fns = this.list[key]; //取出该消息对应的回调函数
+
+        //         if (!fns || fns.length === 0) {
+        //             return;
+        //         }
+
+        //         for (let i = 0, fn; fn = fns[i++];) { //for循环简写
+        //             fn.apply(this, arguments) //发布消息时的参数
+        //         }
+        //     }
+        // }
+
+        // // 初始化，业务赋能
+        // let initEvent = function (obj) {
+        //     for (let i in event) {
+        //         obj[i] = event[i]
+        //     }
+        // }
+
+        // let houseObj = {};
+        // initEvent(houseObj) //这样可以降低耦合度
+        // // initEvent(siwaObj) //可以穿多个要发布的数据
+
+
+        // houseObj.listen('big', function (size) {
+        //     console.log('小红：我要的房子时' + size + '平米');
+        // })
+        // houseObj.listen('small', function (size) {
+        //     console.log('小绿：我要的房子时' + size + '平米');
+        // })
+        // houseObj.trigger('big', 100)
+        // houseObj.trigger('small', 50)
+    </script>
+</body>
+
+</html>

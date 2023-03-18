@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>发布订阅模式</h2>
+    <script>
+        /* 发布订阅模式 */
+        /**
+         * 小红，小粉，小白分别来店里面购买 红色衣服，粉色衣服，白色衣服，店里买没有对应的衣服，店家就去统计好每个人要买的衣服颜色，等衣服到货了就通知他们去拿
+         */
+        class PubSub {
+            constructor() {
+                // 事件中心
+                // 存储格式：warTask:[],pink:[]
+                // 每种事件(任务)下存放其订阅者的回调函数
+                // this.events = {};
+
+                // 统计小白，小粉，小红要买的衣服
+                this.events = Object.create(null); // 这样写不会有原型链上的属性。 
+            }
+            //订阅方法
+            subscribe(type, cb) {
+                // if (!this.events[type]) {
+                //     this.events[type] = [];
+                // }
+                // this.events[type].push(cb);
+                (this.events[type] || (this.events[type] = [])).push(cb) //短路表达式 上面注射方法简写
+                console.log(this.events, '订阅者的回调函数');
+            }
+            //发布方法
+            publish(type, ...args) {
+                if (this.events[type]) {
+                    this.events[type].forEach(item => item(...args))
+                }
+            }
+            //取消订阅方法
+            unsubscribe(type, cb) {
+                if (this.events[type]) {
+                    const cbIndex = this.events[type].findIndex(e => e === cb)
+                    if (cbIndex != -1) {
+                        this.events[type].splice(cbIndex, 1);
+                    }
+                }
+                if (this.events[type].length === 0) {
+                    delete this.events[type];
+                }
+            }
+            unsubscribeAll(type) {
+                if (this.events[type]) {
+                    delete this.events[type];
+                }
+            }
+        }
+
+
+        // 订阅衣服
+        let pubsub = new PubSub();
+        // 小白 订阅 white 衣服
+        pubsub.subscribe('white', function (taskInfo) {
+            console.log("小白要买:" + taskInfo);
+        })
+        // 小粉 订阅 pink 衣服
+        pubsub.subscribe('pink', function (taskInfo) {
+            console.log("小粉要买:" + taskInfo);
+        })
+        // 小红 订阅 red 衣服
+        pubsub.subscribe('red', function (taskInfo) {
+            console.log("小红要买:" + taskInfo);
+        })
+
+
+        //衣服来了就会通知订阅者
+        pubsub.publish('white', '白色衣服')
+        pubsub.publish('red', '红色衣服')
+        pubsub.publish('pink', "粉色衣服");
+
+        //类数组(伪数组)转数组(真数组)
+        // let key = Array.prototype.shift.call(arguments),
+        // this.list.psuh(fn)
+        // if (!this.list[key]) {
+        //     this.list[key] = []
+        // }
+        // this.list[key].push(fn)
+
+        // (this.list[key] || (this.list[key] == [])).push(fn) //短路表达式
+    </script>
+</body>
+
+</html>

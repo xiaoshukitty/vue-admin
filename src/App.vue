@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <!-- <keep-alive> -->
     <router-view />
+    <!-- </keep-alive> -->
   </div>
 </template>
 
@@ -17,4 +19,5 @@ body {
 ::-webkit-scrollbar {
   width: 0 !important;
   height: 0;
-}</style>
+}
+</style>

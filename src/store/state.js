@@ -1,3 +1,4 @@
 export default {
-    myName:'xiaoshu'
+    myName: 'xiaoshu',
+    num: 1
 }

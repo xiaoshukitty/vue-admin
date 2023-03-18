@@ -9,5 +9,10 @@ export default {
         // console.log('state---', state)
         // console.log('payload---', payload)
         state.myName = payload.newName;
+    },
+
+    ////vuex持久化存储
+    updateAdd: (state, payload) => {
+        state.num++
     }
 }

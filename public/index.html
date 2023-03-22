@@ -24,10 +24,10 @@
   <div id="app"></div>
   <!-- built files will be auto injected -->
   <script>
-    let url = window.location.href 
+    let url = window.location.href
     // 判断用户是否观看当前页面，浏览器兼容
     let state, visibilityChange;
-    console.log('当前地址---',url)
+    console.log('当前地址---', url)
     if (typeof document.hidden !== 'undefined') {
       visibilityChange = 'visibilitychange';
       state = 'visibilityState';
@@ -44,10 +44,12 @@
     document.addEventListener('visibilitychange', function () {
       if (document[state] === 'hidden') {
         //已离开当前页面
-        document.title = "切换到别的页面去了哟~★"
+        // document.title = "切换到别的页面去了哟~★"
+        console.log('已离开当前页面')
       } else if (document[state] === 'visible') {
         //返回了当前页面
-        document.title = "哈哈,回来了,是咱们项目~★"
+        // document.title = "哈哈,回来了,是咱们项目~★"
+        console.log('返回了当前页面')
       }
     });
   </script>

@@ -16,6 +16,7 @@
 
 <script>
 import { operationList } from '@/utils/routerList'
+import { antiShake } from '@/utils'
 export default {
   data() {
     return {
@@ -40,17 +41,15 @@ export default {
   },
   watch: {
     ipt() {
-      // this.search()
-      this.antiShake(this.search, 500)
+      this.replace()
     },
   },
   methods: {
-    antiShake(fn, wait) {
-      let timeOut = null;
-      if (timeOut) clearTimeout(timeOut)
-      timeOut = setTimeout(fn, wait)
-    },
+    replace: antiShake(function () {
+      this.search()
+    }, 300),
     search() {
+      console.log('答应了---')
       if (this.ipt == '') {
         this.operationList = operationList;
       } else {

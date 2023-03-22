@@ -168,6 +168,27 @@ const deepClone = (obj) => {
     return objClone
 }
 
+
+/**
+ * 防抖函数
+ * @param {Function} fn //要执行的方法
+ * @param {number} delay  // 多少时间执行
+ * @returns 
+ */
+const antiShake = (fn, delay) => {
+    let timer = null;
+    return function () {
+        let content = this;
+        let args = arguments;
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+            fn.apply(content, args);
+        }, delay);
+    };
+}
+
 export {
     downloadIamgeFun,
     toUtf8,
@@ -175,5 +196,6 @@ export {
     timeConversion,
     timestampConversion,
     getPathParameter,
-    deepClone
+    deepClone,
+    antiShake
 }

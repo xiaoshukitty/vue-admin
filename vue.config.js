@@ -1,4 +1,5 @@
 const UglifyPlugin = require('uglifyjs-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin'); //引入gzip压缩插件
 module.exports = {
   publicPath: './', // 公共路径 默认为"/"，建议使用"./"相对路径
   // lintOnSave:false,//注释警告
@@ -34,10 +35,19 @@ module.exports = {
   productionSourceMap: false, // 取消.map文件的打包，加快打包速度
   configureWebpack: (config) => {
     // process.env为环境变量，分别对应.env.development文件和.env.production文件 此处表示加快开发环境打包速度
-    if (process.env.NODE_ENV === 'production') {
-    }
+    if (process.env.NODE_ENV === 'production') {}
     return { // 此处配置webpack.config.js的相关配置
-      plugins: [],
+      plugins: [
+        // new CompressionPlugin({ // gzip 压缩
+        //   // filename: '[path].gz[query]', //  使得多个.gz文件合并成一个文件，这种方式压缩后的文件少，建议使用
+        //   algorithm: 'gzip', // 官方默认压缩算法也是gzip
+        //   test: /\.js$|\.css$|\.html$|\.ttf$|\.eot$|\.woff$/, // 使用正则给匹配到的文件做压缩，这里是给html、css、js以及字体（.ttf和.woff和.eot）做压缩
+        //   threshold: 10240, //以字节为单位压缩超过此大小的文件，使用默认值10240吧
+        //   minRatio: 0.8, // 最小压缩比率，官方默认0.8
+        //   //是否删除原有静态资源文件，即只保留压缩后的.gz文件，建议这个置为false，还保留源文件。以防：
+        //   deleteOriginalAssets: false
+        // })
+      ],
       performance: {}
     }
   },

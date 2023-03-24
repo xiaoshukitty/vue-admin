@@ -23,6 +23,10 @@ const operationList = [{
         path: 'vuedraggable'
     },
     {
+        name: '拖动排序',
+        path: 'dragSort'
+    },
+    {
         name: '树形',
         path: 'tree'
     },

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_102" data-name="矩形 102" width="40" height="40" transform="translate(460 533)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="矩形_46" data-name="矩形 46" width="22.002" height="22.026" fill="#ffc4db"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="路径_68" data-name="路径 68" d="M483.379,115.681a13.532,13.532,0,0,0,9.1,12.962c9.6,3.537,13.972,4.561,20.466,15.248a19.134,19.134,0,0,1,0,20.124H472.855V115.681Z" transform="translate(-83.513 421.313)" fill="#ff93bd" opacity="0.73"/>
+    </clipPath>
+    <clipPath id="clip-path-4">
+      <rect id="矩形_46-2" data-name="矩形 46" width="22.002" height="22.026" fill="#ff93bd"/>
+    </clipPath>
+    <clipPath id="clip-path-5">
+      <path id="路径_69" data-name="路径 69" d="M483.379,115.681a13.532,13.532,0,0,0,9.1,12.962c9.6,3.537,13.972,4.561,20.466,15.248a19.134,19.134,0,0,1,0,20.124H472.855V115.681Z" transform="translate(-61.754 363.824) rotate(8)" fill="#fd418a" opacity="0.65"/>
+    </clipPath>
+    <clipPath id="clip-path-6">
+      <rect id="矩形_46-3" data-name="矩形 46" width="22.002" height="22.026" fill="#fd418a"/>
+    </clipPath>
+  </defs>
+  <g id="蒙版组_71" data-name="蒙版组 71" transform="translate(-460 -533)" clip-path="url(#clip-path)">
+    <g id="组_201" data-name="组 201">
+      <rect id="矩形_10" data-name="矩形 10" width="40" height="40" rx="5" transform="translate(460 533)" fill="#ffedf4"/>
+      <g id="组_200" data-name="组 200">
+        <g id="组_43" data-name="组 43" transform="translate(309.997 61.993)">
+          <g id="组_42" data-name="组 42" transform="translate(159.003 480.007)">
+            <g id="组_41" data-name="组 41" clip-path="url(#clip-path-2)">
+              <path id="路径_29" data-name="路径 29" d="M171.825,500.174h1.832V487.349a1.832,1.832,0,0,1,1.833-1.833h1.832a1.832,1.832,0,0,1,1.832,1.833v12.824h.916a.916.916,0,1,1,0,1.832H159.916a.916.916,0,1,1,0-1.832h.916V481.853a1.834,1.834,0,0,1,1.832-1.833h7.329a1.834,1.834,0,0,1,1.832,1.833Zm-9.161-12.824v1.832h3.665v-1.832Zm0,7.328v1.832h3.665v-1.832Zm5.5-7.328v1.832h1.833v-1.832Zm0,7.328v1.832h1.833v-1.832Zm-5.5-10.993v1.832h3.665v-1.832Zm0,7.328v1.833h3.665v-1.833Zm5.5-7.328v1.832h1.833v-1.832Zm0,7.328v1.833h1.833v-1.833Zm7.329-1.832v1.832h1.832v-1.832Zm0,3.665v1.832h1.832v-1.832Zm0,0" transform="translate(-159.003 -480.007)" fill="#ffc4db"/>
+            </g>
+          </g>
+        </g>
+        <g id="蒙版组_35" data-name="蒙版组 35" transform="translate(70)" clip-path="url(#clip-path-3)">
+          <g id="组_115" data-name="组 115" transform="translate(239.997 61.993)">
+            <g id="组_42-2" data-name="组 42" transform="translate(159.003 480.007)">
+              <g id="组_41-2" data-name="组 41" clip-path="url(#clip-path-4)">
+                <path id="路径_29-2" data-name="路径 29" d="M171.825,500.174h1.832V487.349a1.832,1.832,0,0,1,1.833-1.833h1.832a1.832,1.832,0,0,1,1.832,1.833v12.824h.916a.916.916,0,1,1,0,1.832H159.916a.916.916,0,1,1,0-1.832h.916V481.853a1.834,1.834,0,0,1,1.832-1.833h7.329a1.834,1.834,0,0,1,1.832,1.833Zm-9.161-12.824v1.832h3.665v-1.832Zm0,7.328v1.832h3.665v-1.832Zm5.5-7.328v1.832h1.833v-1.832Zm0,7.328v1.832h1.833v-1.832Zm-5.5-10.993v1.832h3.665v-1.832Zm0,7.328v1.833h3.665v-1.833Zm5.5-7.328v1.832h1.833v-1.832Zm0,7.328v1.833h1.833v-1.833Zm7.329-1.832v1.832h1.832v-1.832Zm0,3.665v1.832h1.832v-1.832Zm0,0" transform="translate(-159.003 -480.007)" fill="#ff93bd"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g id="蒙版组_36" data-name="蒙版组 36" transform="translate(70)" clip-path="url(#clip-path-5)">
+          <g id="组_116" data-name="组 116" transform="translate(239.997 61.993)">
+            <g id="组_42-3" data-name="组 42" transform="translate(159.003 480.007)">
+              <g id="组_41-3" data-name="组 41" clip-path="url(#clip-path-6)">
+                <path id="路径_29-3" data-name="路径 29" d="M171.825,500.174h1.832V487.349a1.832,1.832,0,0,1,1.833-1.833h1.832a1.832,1.832,0,0,1,1.832,1.833v12.824h.916a.916.916,0,1,1,0,1.832H159.916a.916.916,0,1,1,0-1.832h.916V481.853a1.834,1.834,0,0,1,1.832-1.833h7.329a1.834,1.834,0,0,1,1.832,1.833Zm-9.161-12.824v1.832h3.665v-1.832Zm0,7.328v1.832h3.665v-1.832Zm5.5-7.328v1.832h1.833v-1.832Zm0,7.328v1.832h1.833v-1.832Zm-5.5-10.993v1.832h3.665v-1.832Zm0,7.328v1.833h3.665v-1.833Zm5.5-7.328v1.832h1.833v-1.832Zm0,7.328v1.833h1.833v-1.833Zm7.329-1.832v1.832h1.832v-1.832Zm0,3.665v1.832h1.832v-1.832Zm0,0" transform="translate(-159.003 -480.007)" fill="#fd418a"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

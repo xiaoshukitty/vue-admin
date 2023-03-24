@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_96" data-name="矩形 96" width="40" height="40" transform="translate(462 353)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="矩形_33" data-name="矩形 33" width="22.973" height="20.692" fill="#c1e5c4"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="路径_58" data-name="路径 58" d="M483.379,115.681a13.532,13.532,0,0,0,9.1,12.962c9.6,3.537,13.972,4.561,20.466,15.248a19.134,19.134,0,0,1,0,20.124H472.855V115.681Z" transform="translate(-83.826 238.13)" fill="#83de89" opacity="0.2"/>
+    </clipPath>
+    <clipPath id="clip-path-4">
+      <rect id="矩形_33-2" data-name="矩形 33" width="22.973" height="20.692" fill="#83de89"/>
+    </clipPath>
+    <clipPath id="clip-path-5">
+      <path id="路径_59" data-name="路径 59" d="M483.379,115.681a13.532,13.532,0,0,0,9.1,12.962c9.6,3.537,13.972,4.561,20.466,15.248a19.134,19.134,0,0,1,0,20.124H472.855V115.681Z" transform="translate(-88.542 242.945)" fill="#26db31" opacity="0.2"/>
+    </clipPath>
+    <clipPath id="clip-path-6">
+      <rect id="矩形_33-3" data-name="矩形 33" width="22.973" height="20.692" fill="#26db31"/>
+    </clipPath>
+  </defs>
+  <g id="蒙版组_65" data-name="蒙版组 65" transform="translate(-462 -353)" clip-path="url(#clip-path)">
+    <g id="组_188" data-name="组 188">
+      <rect id="矩形_17" data-name="矩形 17" width="40" height="40" rx="5" transform="translate(462 353)" fill="#ecf9ed"/>
+      <g id="组_187" data-name="组 187">
+        <g id="组_22" data-name="组 22" transform="translate(315 63.996)">
+          <g id="组_21" data-name="组 21" transform="translate(156 299.004)">
+            <g id="组_20" data-name="组 20" clip-path="url(#clip-path-2)">
+              <path id="路径_13" data-name="路径 13" d="M178.78,305.31l-3.45-5.736a1.155,1.155,0,0,0-.976-.558H160.587a1.143,1.143,0,0,0-.985.558l-3.44,5.736a1.151,1.151,0,0,0,.1,1.314l10.328,12.627a1.147,1.147,0,0,0,1.775,0l10.328-12.62a1.149,1.149,0,0,0,.1-1.321Zm-4.6.613-5.97,7.3a.888.888,0,0,1-.688.328h-.105a.9.9,0,0,1-.687-.328l-5.97-7.3a.912.912,0,1,1,1.409-1.151l5.3,6.461,5.3-6.461a.91.91,0,0,1,1.409,1.151Zm0,0" transform="translate(-156 -299.006)" fill="#c1e5c4"/>
+            </g>
+          </g>
+        </g>
+        <g id="蒙版组_21" data-name="蒙版组 21" transform="translate(70)" clip-path="url(#clip-path-3)">
+          <g id="组_103" data-name="组 103" transform="translate(245 63.996)">
+            <g id="组_21-2" data-name="组 21" transform="translate(156 299.004)">
+              <g id="组_20-2" data-name="组 20" clip-path="url(#clip-path-4)">
+                <path id="路径_13-2" data-name="路径 13" d="M178.78,305.31l-3.45-5.736a1.155,1.155,0,0,0-.976-.558H160.587a1.143,1.143,0,0,0-.985.558l-3.44,5.736a1.151,1.151,0,0,0,.1,1.314l10.328,12.627a1.147,1.147,0,0,0,1.775,0l10.328-12.62a1.149,1.149,0,0,0,.1-1.321Zm-4.6.613-5.97,7.3a.888.888,0,0,1-.688.328h-.105a.9.9,0,0,1-.687-.328l-5.97-7.3a.912.912,0,1,1,1.409-1.151l5.3,6.461,5.3-6.461a.91.91,0,0,1,1.409,1.151Zm0,0" transform="translate(-156 -299.006)" fill="#83de89"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g id="蒙版组_22" data-name="蒙版组 22" transform="translate(70)" clip-path="url(#clip-path-5)">
+          <g id="组_104" data-name="组 104" transform="translate(245 63.996)">
+            <g id="组_21-3" data-name="组 21" transform="translate(156 299.004)">
+              <g id="组_20-3" data-name="组 20" clip-path="url(#clip-path-6)">
+                <path id="路径_13-3" data-name="路径 13" d="M178.78,305.31l-3.45-5.736a1.155,1.155,0,0,0-.976-.558H160.587a1.143,1.143,0,0,0-.985.558l-3.44,5.736a1.151,1.151,0,0,0,.1,1.314l10.328,12.627a1.147,1.147,0,0,0,1.775,0l10.328-12.62a1.149,1.149,0,0,0,.1-1.321Zm-4.6.613-5.97,7.3a.888.888,0,0,1-.688.328h-.105a.9.9,0,0,1-.687-.328l-5.97-7.3a.912.912,0,1,1,1.409-1.151l5.3,6.461,5.3-6.461a.91.91,0,0,1,1.409,1.151Zm0,0" transform="translate(-156 -299.006)" fill="#26db31"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

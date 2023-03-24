@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_97" data-name="矩形 97" width="40" height="40" transform="translate(544 353)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="路径_70" data-name="路径 70" d="M11.135,0A14.319,14.319,0,0,0,20.76,13.715c10.159,3.743,14.784,4.826,21.655,16.135a20.246,20.246,0,0,1,0,21.294H0V0Z" transform="translate(4.457 0) rotate(5)" fill="#83de89" opacity="0.2"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="路径_71" data-name="路径 71" d="M11.135,0A14.319,14.319,0,0,0,20.76,13.715c10.159,3.743,14.784,4.826,21.655,16.135a20.246,20.246,0,0,1,0,21.294H0V0Z" transform="translate(0 1.587) rotate(-2)" fill="#22db2e" opacity="0.2"/>
+    </clipPath>
+  </defs>
+  <g id="蒙版组_66" data-name="蒙版组 66" transform="translate(-544 -353)" clip-path="url(#clip-path)">
+    <g id="组_190" data-name="组 190">
+      <rect id="矩形_18" data-name="矩形 18" width="40" height="40" rx="5" transform="translate(544 353)" fill="#ecf9ed"/>
+      <g id="组_189" data-name="组 189">
+        <g id="组_23" data-name="组 23" transform="translate(553.297 363.417)">
+          <path id="路径_14" data-name="路径 14" d="M260.3,319.946H242.3a2.307,2.307,0,0,1-2.3-2.307v-8.763h22.6v8.763a2.307,2.307,0,0,1-2.307,2.307Zm-6-6-.922,3.23h5.534l.924-3.23ZM240,303.341a2.307,2.307,0,0,1,2.307-2.306H260.3a2.306,2.306,0,0,1,2.305,2.306v2.307H240v-2.307Zm0,0" transform="translate(-240 -301.035)" fill="#c1e5c4"/>
+        </g>
+        <g id="蒙版组_23" data-name="蒙版组 23" transform="translate(532.011 350.751)" clip-path="url(#clip-path-2)">
+          <g id="组_105" data-name="组 105" transform="translate(21.286 12.666)">
+            <path id="路径_14-2" data-name="路径 14" d="M260.3,319.946H242.3a2.307,2.307,0,0,1-2.3-2.307v-8.763h22.6v8.763a2.307,2.307,0,0,1-2.307,2.307Zm-6-6-.922,3.23h5.534l.924-3.23ZM240,303.341a2.307,2.307,0,0,1,2.307-2.306H260.3a2.306,2.306,0,0,1,2.305,2.306v2.307H240v-2.307Zm0,0" transform="translate(-240 -301.035)" fill="#83de89"/>
+          </g>
+        </g>
+        <g id="蒙版组_24" data-name="蒙版组 24" transform="translate(529.684 357.731)" clip-path="url(#clip-path-3)">
+          <g id="组_106" data-name="组 106" transform="translate(23.613 5.687)">
+            <path id="路径_14-3" data-name="路径 14" d="M260.3,319.946H242.3a2.307,2.307,0,0,1-2.3-2.307v-8.763h22.6v8.763a2.307,2.307,0,0,1-2.307,2.307Zm-6-6-.922,3.23h5.534l.924-3.23ZM240,303.341a2.307,2.307,0,0,1,2.307-2.306H260.3a2.306,2.306,0,0,1,2.305,2.306v2.307H240v-2.307Zm0,0" transform="translate(-240 -301.035)" fill="#22db2e"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

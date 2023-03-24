@@ -23,6 +23,14 @@ export default [{
         component: () => import('../views/tips/drag/vuedraggable')
     },
     {
+        path: '/dragSort',
+        name: 'dragSort',
+        meta: {
+            title: '拖动排序'
+        },
+        component: () => import('../views/tips/dragSort')
+    },
+    {
         path: '/tree',
         name: 'tree',
         meta: {

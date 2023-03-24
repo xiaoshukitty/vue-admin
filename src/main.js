@@ -9,6 +9,7 @@ import VueAMap from 'vue-amap';
 import Clipboard from 'clipboard'; //一键复制
 import VueQriously from 'vue-qriously'//生成二维码
 import '@/config/directive.js'
+import '@/icons/index' //导入 svg
 
 Vue.use(ElementUI);
 Vue.use(VueAMap);

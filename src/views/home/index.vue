@@ -32,9 +32,9 @@ export default {
       resizeTimer = setTimeout(function () {
         console.log(clientWidth);
         if (clientWidth < 750) {
-          console.log('进入了移动端')
+          // console.log('进入了移动端')
         } else {
-          console.log('不在移动端');
+          // console.log('不在移动端');
         }
       }, 100);
     })

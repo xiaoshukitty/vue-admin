@@ -1,0 +1,7 @@
+本地服务启动测试,有真实的接口则不用管
+
+1, 全局安装 npm i json-server
+2, 创建 JSON 文件
+3, 以 JSON 文件是所在的文件夹作为工作目录,执行一下命令
+    json-server --watch db.json
+4, 默认监听端口为 3000

@@ -10,6 +10,7 @@
   <script defer src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
   <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+  <script src="https://alpha-locallife.fpwan.com/vconsole.min.js"></script>
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <script>
@@ -27,7 +28,7 @@
     let url = window.location.href
     // 判断用户是否观看当前页面，浏览器兼容
     let state, visibilityChange;
-    console.log('当前地址---', url)
+    // console.log('当前地址---', url)
     if (typeof document.hidden !== 'undefined') {
       visibilityChange = 'visibilitychange';
       state = 'visibilityState';
@@ -52,6 +53,9 @@
         console.log('返回了当前页面')
       }
     });
+  </script>
+  <script>
+    // var vConsole = new VConsole(); // h5 vConsole 打开
   </script>
 </body>
 

@@ -1,6 +1,6 @@
 const url = {
     //登录
-    login: '/login',
+    jurisdiction: '/jurisdiction',
     //测试
     text: '/text'
 }

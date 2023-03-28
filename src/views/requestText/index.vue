@@ -4,7 +4,7 @@
 
 <script>
 import url from '@/server/url'
-import { postRequest } from '@/server/api'
+import { getJurisdiction } from '@/server/common'
 export default {
     data() {
         return {
@@ -16,15 +16,17 @@ export default {
     },
     methods: {
         async getPost() {
-            let data = {
-                user: '嘻嘻',
-                passWord: '123456'
-            }
-            postRequest(url.login, data).then(res => {
-                console.log('res---', res);
-            }, error => {
-                console.log('res---', error);
-            })
+            // let data = {
+            //     user: '嘻嘻',
+            //     passWord: '123456'
+            // }
+            // getJurisdiction(url.jurisdiction).then(res => {
+            //     console.log('res---', res);
+            // }, error => {
+            //     console.log('res---', error);
+            // })
+            const res = await getJurisdiction(url.jurisdiction).then(response => response)
+            console.log('res---', res);
         }
     }
 

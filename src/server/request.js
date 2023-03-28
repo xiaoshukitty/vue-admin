@@ -7,9 +7,11 @@ import axios from "axios";
 // }
 
 const instance = axios.create({
-    baseURL: 'https://some-domain.com/api/',
+    baseURL: ' http://localhost:3000/',
     timeout: 1000,
-    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+    },
 });
 
 // instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
@@ -55,6 +57,8 @@ instance.interceptors.response.use(
                 return Promise.resolve(response);
             }
         }
+        // 测试本地接口调试,有真实接口则注射掉
+        return Promise.resolve(response.data)
     },
     error => {
         //处理错误逻辑

@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 var cors = require('cors');
 
 // 引入 信息(info) 路由
-const info = require("./routers/info")
+const userInfo = require("./routers/userInfo")
 
 // 创建服务器对象
 var app = express();
@@ -35,7 +35,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 })); //Context-Type 为application/x-www-form-urlencoded 时 返回的对象是一个键值对，当extended为false的时候，键值对中的值就为'String'或'Array'形式，为true的时候，则可为任何数据类型。
 
-app.use(info)
+// 使用 用户信息(userInfo) 路由
+app.use(userInfo)
 
 // 指定服务器对象监听的端口号
 app.listen(3000, (err) => {

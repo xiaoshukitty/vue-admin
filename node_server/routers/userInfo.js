@@ -12,8 +12,6 @@ const userInfo = express.Router();
 
 // 用户信息
 userInfo.post('/userInfo/userList', (req, res) => {
-
-
     const {
         name: userName,
         age: userAge,

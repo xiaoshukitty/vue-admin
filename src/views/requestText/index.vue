@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { userList, deleteUserInfo } from '@/server/common'
+import { userList, deleteUserInfo,getMemoList } from '@/server/common'
 import BasePopUp from './components/BasePopUp.vue'
 export default {
     name: "RequestText",
@@ -69,9 +69,14 @@ export default {
         BasePopUp
     },
     created() {
-        this.getUserList()
+        this.getUserList();
+        this.getMemoList();
     },
     methods: {
+        async getMemoList(){
+            const res = await getMemoList();
+            console.log('res0000',res);
+        },
         async getUserList() {
             this.loading = true;
             let params = {

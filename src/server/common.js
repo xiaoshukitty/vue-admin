@@ -6,18 +6,11 @@ export const requestPostTest = (url, data) => {
     return instance.post(url, data);
 };
 
+// 用户列表
 export const userList = (param) => {
     return instance({
         method: 'post',
         url: 'userInfo/userList',
-        data: qs.stringify(param)
-    })
-}
-
-export const addList = (param) => {
-    return instance({
-        method: 'post',
-        url: 'add',
         data: qs.stringify(param)
     })
 }
@@ -36,6 +29,15 @@ export const deleteUserInfo = (param) => {
     return instance({
         method: 'post',
         url: 'userInfo/deleteUserInfo',
+        data: qs.stringify(param)
+    })
+}
+
+
+export const getMemoList = (param) => {
+    return instance({
+        method: 'post',
+        url: 'memo/getMemoList',
         data: qs.stringify(param)
     })
 }

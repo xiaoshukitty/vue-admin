@@ -1,0 +1,65 @@
+const weatherList = [{
+    id: 0,
+    weather: '晴'
+}, {
+    id: 1,
+    weather: '多云'
+}, {
+    id: 2,
+    weather: '阴'
+}, {
+    id: 3,
+    weather: '阵雨'
+}, {
+    id: 4,
+    weather: '雷阵雨'
+}, {
+    id: 5,
+    weather: '雷阵雨伴有冰雹'
+}, {
+    id: 6,
+    weather: '雨夹雪'
+}, {
+    id: 7,
+    weather: '小雨'
+}, {
+    id: 8,
+    weather: '中雨'
+}, {
+    id: 9,
+    weather: '大雨'
+}, {
+    id: 10,
+    weather: '暴雨'
+}, {
+    id: 11,
+    weather: '大暴雨'
+}, {
+    id: 12,
+    weather: '特大暴雨'
+}, {
+    id: 13,
+    weather: '阵雪'
+}, {
+    id: 14,
+    weather: '小雪'
+}, {
+    id: 15,
+    weather: '中雪'
+}, {
+    id: 16,
+    weather: '大雪'
+}, {
+    id: 17,
+    weather: '暴雪'
+}, {
+    id: 18,
+    weather: '雾'
+}, {
+    id: 19,
+    weather: '冻雨'
+}, ]
+
+export {
+    weatherList
+}

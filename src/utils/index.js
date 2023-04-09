@@ -119,21 +119,33 @@ const timeConversion = (timestamp) => {
 
 /**
  * 时间戳转化
- * @param {String | Object} input  
+ * @param {String | Object} input 
+ * @param {Number} value  判断返回的类型样式
  * @returns 
  */
-const timestampConversion = (input) => {
+const timestampConversion = (input, value) => {
     if (input == undefined || input == '') {
         return
     }
-    var d = new Date(Number(input) * 1000);
+    var d = new Date(Number(input));
     var year = d.getFullYear();
     var month = d.getMonth() + 1 < 10 ? '0' + (d.getMonth() + 1) : '' + (d.getMonth() + 1);
     var day = d.getDate() < 10 ? '0' + d.getDate() : '' + d.getDate();
     var hour = d.getHours();
     var minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : '' + d.getMinutes();
     var seconds = d.getSeconds();
-    return year + '-' + month + '-' + day + ' ' + hour + ':' + minutes + ':' + seconds
+
+
+    const getDataNum = (num) => {
+        // 我们可以根据用户类型来生成我们的折扣对象
+        let dataNum = new Map([
+            [1, year + '-' + month + '-' + day],
+            [2, year + '-' + month + '-' + day + ' ' + hour + ':' + minutes + ':' + seconds],
+            ['default', year + '-' + month + '-' + day + ' ' + hour + ':' + minutes + ':' + seconds]
+        ])
+        return dataNum.get(num) || dataNum.get('default')
+    }
+    return getDataNum(value)
 }
 
 /**

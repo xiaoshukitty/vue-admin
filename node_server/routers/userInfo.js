@@ -17,9 +17,6 @@ userInfo.post('/userInfo/userList', (req, res) => {
         age: userAge,
     } = req.body;
 
-    var page = parseInt(req.query.page) || 1;
-    var pagesize = parseInt(req.query.pagesize) || 2;
-
     let sql = 'SELECT * FROM userInfo WHERE 1=1 ';
     if (userName !== '') sql = sql + " and name = '" + userName + "'"
     if (userAge !== '') sql = sql + " and age= '" + userAge + "'"
@@ -37,7 +34,7 @@ userInfo.post('/userInfo/userList', (req, res) => {
 })
 
 //添加信息
-userInfo.post('/add', (req, res) => {
+userInfo.post('/userInfo/add', (req, res) => {
     const {
         name: userName,
         age: userAge

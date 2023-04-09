@@ -79,6 +79,10 @@ const operationList = [{
         path: 'requestText'
     },
     {
+        name: '备忘录',
+        path: 'memorandum'
+    },
+    {
         name: 'render函数测试',
         path: 'render'
     },

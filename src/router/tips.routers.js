@@ -119,6 +119,14 @@ export default [{
         component: () => import('../views/tips/customInstruction')
     },
     {
+        path: '/memorandum',
+        name: 'memorandum',
+        meta: {
+            title: '备忘录'
+        },
+        component: () => import('../views/tips/memorandum')
+    },
+    {
         path: '/waterfallFlow',
         name: 'waterfallFlow',
         meta: {

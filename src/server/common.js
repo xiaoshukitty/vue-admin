@@ -15,6 +15,16 @@ export const userList = (param) => {
     })
 }
 
+// 添加用户
+export const addList = (param) => {
+    return instance({
+        method: 'post',
+        url: 'userInfo/add',
+        data: qs.stringify(param)
+    })
+}
+
+
 // 更新用户数据
 export const updataUserInfo = (param) => {
     return instance({
@@ -34,6 +44,7 @@ export const deleteUserInfo = (param) => {
 }
 
 
+//备忘录列表
 export const getMemoList = (param) => {
     return instance({
         method: 'post',
@@ -41,3 +52,32 @@ export const getMemoList = (param) => {
         data: qs.stringify(param)
     })
 }
+
+//添加备忘录
+export const addMemoList = (param) => {
+    return instance({
+        method: 'post',
+        url: 'memo/addMemoList',
+        data: qs.stringify(param)
+    })
+}
+
+//更新备忘录
+export const updataMemoList = (param) => {
+    return instance({
+        method: 'post',
+        url: 'memo/updataMemoList',
+        data: qs.stringify(param)
+    })
+}
+
+//删除备忘录
+export const delMemoList = (param) => {
+    return instance({
+        method: 'post',
+        url: 'memo/delMemoList',
+        data: qs.stringify(param)
+    })
+}
+
+

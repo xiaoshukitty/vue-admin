@@ -33,7 +33,7 @@
     </el-dialog>
 </template>
 <script>
-import {  addMemoList, updataMemoList } from '@/server/common'
+import { addMemoList, updataMemoList } from '@/server/common'
 import { weatherList } from '../enumList'
 import { timestampConversion } from '@/utils/index'
 export default {
@@ -55,6 +55,7 @@ export default {
             default: ""
         }
     },
+    name: 'BasePopUp',
     data() {
         return {
             form: {
@@ -75,6 +76,10 @@ export default {
                 id: id
             }
             this.ind = weatherList.find(item => item.weather == weather).id
+        },
+        visibleType(newValue) {
+            console.log('newValue---', newValue)
+            newValue == 'add' ? this.init() : ""
         }
     },
     computed: {
@@ -140,7 +145,7 @@ export default {
         },
         selectItem({ id }) {
             this.ind = id;
-        }
+        },
     }
 }
 </script>

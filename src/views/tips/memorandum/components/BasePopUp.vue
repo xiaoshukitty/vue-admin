@@ -1,6 +1,6 @@
 <template>
     <el-dialog :title="title" :visible.sync="dialogOrder" width="30%" :append-to-body="true" :close-on-click-modal="true">
-        <div class="pop_up">
+        <div class="pop_up" v-loading="loading" :element-loading-text="loadingText" v-if="pageMistake">
             <div class="container">
                 <div class="w80">请输入时间</div>
                 <div>
@@ -30,12 +30,13 @@
                 <el-button @click="operationUserInfo" type="primary">{{ isShow ? '添加' : '更新' }}</el-button>
             </div>
         </div>
+        <el-empty v-else image="https://img.fphdcdn.com/member/2023-02-17QzWz4neFMa.png" description="页面加载出错"></el-empty>
     </el-dialog>
 </template>
 <script>
 import { addMemoList, updataMemoList } from '@/server/common'
 import { weatherList } from '../enumList'
-import { timestampConversion } from '@/utils/index'
+import { timestampConversion, isObjNull } from '@/utils/index'
 export default {
     props: {
         dialogVisible: {
@@ -64,11 +65,22 @@ export default {
             },
             weatherList,
             ind: "-1",
+            loading: false,
+            loadingText: "",
+            pageMistake: null,
         }
     },
     watch: {
         updataInfoVisible(newValue) {
-            console.log(newValue)
+            this.isTrueFalse();
+            if (!isObjNull(newValue)) {
+                this.loading = true;
+                this.init();
+                setTimeout(() => {
+                    this.pageMistake = isObjNull(newValue);
+                }, 3000)
+                return;
+            }
             const { create_date, weather, content, id } = newValue;
             this.form = {
                 date: new Date(create_date),
@@ -79,7 +91,7 @@ export default {
         },
         visibleType(newValue) {
             console.log('newValue---', newValue)
-            newValue == 'add' ? this.init() : ""
+            newValue == 'add' ? this.init() : "";
         }
     },
     computed: {
@@ -101,7 +113,8 @@ export default {
                 date: "",
                 content: ""
             };
-            this.ind = '-1'
+            this.ind = '-1';
+            this.visibleType == 'add' ? this.isTrueFalse() : ''
         },
         operationUserInfo() {
             this.isShow ? this.addMemorandumInfo() : this.updateMemoInfo();
@@ -146,6 +159,10 @@ export default {
         selectItem({ id }) {
             this.ind = id;
         },
+        isTrueFalse() {
+            this.pageMistake = true;
+            this.loading = false;
+        }
     }
 }
 </script>

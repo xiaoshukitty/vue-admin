@@ -201,6 +201,22 @@ const antiShake = (fn, delay) => {
     };
 }
 
+
+/**
+ * 判断对象中是否有存在属性为null
+ * @param {Object} newObj // 传递过来的对象
+ */
+const isObjNull = (newObj) => {
+    let flag = true;
+    Object.keys(newObj).forEach(function (key) {
+        if (newObj[key] === null || newObj[key] === undefined) {
+            flag = false;
+            return
+        }
+    })
+    return flag;
+}
+
 export {
     downloadIamgeFun,
     toUtf8,
@@ -209,5 +225,6 @@ export {
     timestampConversion,
     getPathParameter,
     deepClone,
-    antiShake
+    antiShake,
+    isObjNull,
 }

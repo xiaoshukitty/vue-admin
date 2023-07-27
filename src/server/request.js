@@ -9,6 +9,8 @@ import axios from "axios";
 const instance = axios.create({
     baseURL: ' http://localhost:3000/',
     timeout: 1000,
+    retry: 2, // 设置重新请求次数
+    retryDelay: 1000, // 设置请求延时
     headers: {
         'content-type': 'application/x-www-form-urlencoded'
     },
@@ -64,8 +66,33 @@ instance.interceptors.response.use(
         return Promise.resolve(response.data)
     },
     error => {
-        //处理错误逻辑
-        return Promise.reject(error);
+        let config = error.config;
+        // 如果配置不存在或未设置重试选项，则返回错误信息
+        if (!config || !config.retry) return Promise.reject(error);
+        // 设置变量即跟踪重试次数
+        config.retryCount = config.retryCount || 1;
+        console.log('config', config);
+        console.log('retryCount', config.retryCount);
+        // 检查我们是否已经超过了总重试次数
+        if (config.retryCount > config.retry) {
+            // 返回错误信息
+            return Promise.reject(error);
+        }
+        // 重试次数加1
+        config.retryCount++;
+        // 创建延时器等待发送重试请求
+        var backoff = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, config.retryDelay || 1)
+        });
+        // 返回调用axios来重试请求
+        return backoff.then(() => {
+            return request(config);
+        })
     }
 );
+const request = (config) => {
+    return instance(config)
+}
 export default instance;

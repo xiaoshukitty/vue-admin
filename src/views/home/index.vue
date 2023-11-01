@@ -1,27 +1,49 @@
 <template>
   <div class="container">
-    <div class="search_list">
-      <el-input placeholder="请输入要搜索的内容" v-model="ipt" class="input-with-select">
-        <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
-      </el-input>
+    <div class="language">
+      <div class="language_select">
+        <el-select v-model="langName" @change="changeLangUage">
+          <el-option v-for="(item, index) in languageList" :key="index" :label="item.lanName" :value="item.lanCode">
+          </el-option>
+        </el-select>
+      </div>
     </div>
-    <div class="max_height" v-if="operationList.length > 0">
-      <el-button class="m5" type="primary" v-for="(item, index) in operationList" :key="index"
-        @click="skip(item, index)">{{
-          item.name }}</el-button>
+    <div class="search_select">
+      <!-- <div class="search_list">
+        <el-input placeholder="请输入要搜索的内容" v-model="ipt" class="input-with-select">
+          <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
+        </el-input>
+      </div> -->
+      <div class="max_height" v-if="$t('operationList').length > 0">
+        <el-button class="m5" type="primary" v-for="(item, index) in $t('operationList')" :key="index"
+          @click="skip(item, index)">{{
+            item.name }}</el-button>
+      </div>
+      <el-empty v-else image="https://img.fphdcdn.com/member/2023-02-17QzWz4neFMa.png"
+        description="爱情是没有结果的哦！"></el-empty>
     </div>
-    <el-empty v-else image="https://img.fphdcdn.com/member/2023-02-17QzWz4neFMa.png" description="爱情是没有结果的哦！"></el-empty>
   </div>
 </template>
 
 <script>
-import { operationList } from '@/utils/routerList'
+// import { operationList } from '@/utils/routerList'
 import { antiShake } from '@/utils'
 export default {
   data() {
     return {
       ipt: '',
-      operationList,
+      // operationList,
+      languageList: [
+        {
+          lanCode: 'zh-CN',
+          lanName: '简体中文'
+        },
+        {
+          lanCode: 'en-US',
+          lanName: 'English',
+        }
+      ],
+      langName: '简体中文',
     }
   },
   created() {
@@ -70,13 +92,35 @@ export default {
         console.log('pc端')
       }
     },
+    changeLangUage(lang) {
+      if (lang == 'zh-CN') {
+        this.$i18n.locale = 'zh-CN';
+        this.langName = '简体中文';
+      } else {
+        this.$i18n.locale = 'en-US';
+        this.langName = 'English';
+      }
+    }
   },
 }
 </script>
 
 <style lang="less" scoped>
 .container {
-  padding: 100px 200px;
+  padding: 50px 0;
+
+  .language {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 70px;
+
+    .language_select {
+    }
+  }
+
+  .search_select {
+    padding: 70px 200px;
+  }
 
   .search_list {
     display: flex;

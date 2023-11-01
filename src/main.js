@@ -7,14 +7,18 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Print from 'vue-print-nb';
 import VueAMap from 'vue-amap';
 import Clipboard from 'clipboard'; //一键复制
-import VueQriously from 'vue-qriously'//生成二维码
+import VueQriously from 'vue-qriously'; //生成二维码
+import VueI18n from 'vue-i18n'
+
+
 import '@/config/directive.js'
 import '@/icons/index' //导入 svg
 
 Vue.use(ElementUI);
 Vue.use(VueAMap);
 Vue.use(Print); //打印
-Vue.use(VueQriously) 
+Vue.use(VueQriously);
+Vue.use(VueI18n)
 
 Vue.prototype.Clipboard = Clipboard
 
@@ -50,6 +54,16 @@ amapKeys.forEach(key => {
   localStorage.removeItem(key)
 })
 
+const i18n = new VueI18n({
+  locale: 'zh-CN', // 将要切换的语言，可以通过url拼的参数获取，用户行为select选择获取，本地manifest配置获取等，根据场景动态获取
+  messages: {
+    'zh-CN': require('./i18n/zh_CN.js'), // 本地资源文件，中文&英文，
+    'en-US': require('./i18n/en_US.js')
+  }
+});
+
+
+
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
@@ -76,6 +90,7 @@ Vue.config.productionTip = false
 
 let vue = new Vue({
   router,
+  i18n,
   store,
   render: h => h(App) //创建一个App的实例 h => 原生JS中createElement()
 }).$mount('#app')

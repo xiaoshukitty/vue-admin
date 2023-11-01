@@ -14,9 +14,14 @@
                                 <el-input v-model="ruleForm.accountNumber"
                                     :placeholder="$t('loginI18n.UserName')"></el-input>
                             </el-form-item>
-                            <el-form-item prop="password"
+                            <el-form-item prop="password" class="eye_form"
                                 :rules="[{ required: true, message: this.$t('loginI18n.PleaseInputPassword'), trigger: 'blur' },]">
-                                <el-input v-model="ruleForm.password" :placeholder="$t('loginI18n.PassWord')"></el-input>
+                                <el-input v-model="ruleForm.password" :placeholder="$t('loginI18n.PassWord')"
+                                    :type="isShow ? 'text' : 'password'"></el-input>
+                                <div class="eye" @click="updateShow">
+                                    <img v-if="isShow" src="@/assets/images/eye_show.png" alt="">
+                                    <img v-else src="@/assets/images/eye_hide.png" alt="">
+                                </div>
                             </el-form-item>
                         </el-form>
                         <div class="remember">
@@ -60,7 +65,7 @@ export default {
             },
             loginLoading: false,
             checked: false,
-
+            isShow: false,
         }
     },
     methods: {
@@ -84,6 +89,9 @@ export default {
                     message: this.$t('headerList.LoginSuccessful'),
                 });
             }, 1000)
+        },
+        updateShow() {
+            this.isShow = !this.isShow;
         }
     }
 }
@@ -123,6 +131,22 @@ export default {
                 .fule_login {
                     width: 400px;
                     margin: 0 50px;
+
+                    .eye_form {
+                        position: relative;
+
+                        .eye {
+                            display: flex;
+                            align-content: center;
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+
+                            img {
+                                width: 20px;
+                            }
+                        }
+                    }
 
                     /deep/ .el-input__inner {
                         width: 400px;

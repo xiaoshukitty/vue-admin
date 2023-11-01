@@ -107,10 +107,26 @@ const operationList = [{
 
 //头部
 const headerList = {
-    name:'全屏'
+    name: '全屏'
+}
+
+//登陆页面
+const loginI18n = {
+    LogIn: '登录',
+    SingIn: '注册',
+    UserName: '账号',
+    PassWord: "密码",
+    RememberMe: '记住我',
+    ForgetPasswodr: '忘记密码',
+    MobileSignIn: '手机登录',
+    QrCodeSignIn: '扫码登录',
+    SignInWith: '其他方式登录',
+    PleaseInputUsername:'请输入账号',
+    PleaseInputPassword:'请输入密码',
 }
 
 export {
     operationList,
-    headerList
+    headerList,
+    loginI18n
 }

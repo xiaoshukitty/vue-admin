@@ -20,6 +20,14 @@ console.log('routerList---', routerList)
 
 const routes = [{
     path: '/',
+    name: 'login',
+    meta: {
+      title: '登陆',
+      require: true, //需要验证的
+    },
+    component: () => import('../views/login')
+  }, {
+    path: '/home',
     name: 'home',
     meta: {
       title: '首页',

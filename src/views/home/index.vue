@@ -1,16 +1,7 @@
 <template>
   <div class="container">
     <div class="header">
-      <div class="language header_hover">
-        <el-popover placement="bottom" width="167" trigger="click" v-model="visiblePopover">
-          <div class="language_select">
-            <div v-for="(item, index) in languageList" :key="index" @click="changeLangUage(item.langCode)"
-              :class="langColor == item.langCode ? 'paint' : ''">{{ item.langName
-              }}</div>
-          </div>
-          <img class="header_img" src="@/assets/images/Translate.png" alt="" slot="reference">
-        </el-popover>
-      </div>
+      <I18nComponents :status="'hover'" />
       <div class="full_screen header_hover" @click="toggleFullScreen">
         <el-tooltip class="item" effect="dark" :content="$t('headerList.name')" placement="bottom">
           <img class="header_img" src="@/assets/images/fullScreen.png" alt="">
@@ -40,7 +31,11 @@
 <script>
 // import { operationList } from '@/utils/routerList'
 import { antiShake } from '@/utils'
+import I18nComponents from '@/components/i18nComponents'
 export default {
+  components: {
+    I18nComponents
+  },
   data() {
     return {
       ipt: '',

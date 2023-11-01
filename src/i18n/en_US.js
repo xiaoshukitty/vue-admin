@@ -110,8 +110,23 @@ const headerList = {
     name: 'Full Screen'
 }
 
+//登陆页面
+const loginI18n = {
+    LogIn:'Log In',
+    SingIn: 'Sing In',
+    UserName: 'UserName',
+    PassWord: "PassWord",
+    RememberMe: 'Remember Me',
+    ForgetPasswodr: 'Forget Passwodr',
+    MobileSignIn: 'Mobile sign in',
+    QrCodeSignIn: 'Qr Code sign in',
+    SignInWith: 'Sign in with',
+    PleaseInputUsername:'Please input username',
+    PleaseInputPassword:'Please input password',
+}
 
 export {
     operationList,
-    headerList
+    headerList,
+    loginI18n
 }

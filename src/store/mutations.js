@@ -14,5 +14,9 @@ export default {
     ////vuex持久化存储
     updateAdd: (state, payload) => {
         state.num++
+    },
+
+    setLang(state, payload) {
+        state.langColor = payload.newLang
     }
 }

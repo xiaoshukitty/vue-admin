@@ -107,12 +107,25 @@ const operationList = [{
 
 //头部
 const headerList = {
-    name: 'Full Screen'
+    name: 'Full Screen',
+    LogOut: 'Log Out',
+    Reminder: 'Reminder',
+    ConfirmToExitTheSystem: 'Confirm to exit the system',
+    Cancel: 'Cancel',
+    Ok: 'Ok',
+    HasSuccessfullyExited: 'Has successfully exited',
+    LoginSuccessful: 'Login successful',
+    ErrorPrompt: 'Error prompt',
+    IncorrectAccountOrPassword: 'Incorrect account or password',
 }
+
+const avatarList = [{
+    value: 'Log Out'
+}, ]
 
 //登陆页面
 const loginI18n = {
-    LogIn:'Log In',
+    LogIn: 'Log In',
     SingIn: 'Sing In',
     UserName: 'UserName',
     PassWord: "PassWord",
@@ -121,12 +134,13 @@ const loginI18n = {
     MobileSignIn: 'Mobile sign in',
     QrCodeSignIn: 'Qr Code sign in',
     SignInWith: 'Sign in with',
-    PleaseInputUsername:'Please input username',
-    PleaseInputPassword:'Please input password',
+    PleaseInputUsername: 'Please input username',
+    PleaseInputPassword: 'Please input password',
 }
 
 export {
     operationList,
     headerList,
-    loginI18n
+    loginI18n,
+    avatarList
 }

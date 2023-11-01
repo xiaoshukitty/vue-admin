@@ -54,8 +54,8 @@ export default {
     data() {
         return {
             ruleForm: {
-                accountNumber: '',
-                password: '',
+                accountNumber: 'admin',
+                password: '123456',
 
             },
             loginLoading: false,
@@ -65,9 +65,24 @@ export default {
     },
     methods: {
         login() {
+            if (!this.checked) {
+
+            }
+            if (this.ruleForm.accountNumber != 'admin' || this.ruleForm.password != '123456') {
+                this.$alert(this.$t('headerList.IncorrectAccountOrPassword') + '!', this.$t('headerList.ErrorPrompt'), {
+                    confirmButtonText: this.$t('headerList.Ok'),
+                    type: 'warning',
+                    showClose: false,
+                });
+                return
+            }
             this.loginLoading = true;
             setTimeout(() => {
                 this.$router.push('./home')
+                this.$message({
+                    type: 'success',
+                    message: this.$t('headerList.LoginSuccessful'),
+                });
             }, 1000)
         }
     }

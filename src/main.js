@@ -8,7 +8,7 @@ import Print from 'vue-print-nb';
 import VueAMap from 'vue-amap';
 import Clipboard from 'clipboard'; //一键复制
 import VueQriously from 'vue-qriously'; //生成二维码
-import VueI18n from 'vue-i18n'//国际化
+import VueI18n from 'vue-i18n' //国际化
 import echarts from 'echarts' //echarts图表
 
 
@@ -22,8 +22,8 @@ Vue.use(VueQriously);
 Vue.use(VueI18n)
 
 
- //挂载到Vue实例上面
-Vue.prototype.Clipboard = Clipboard 
+//挂载到Vue实例上面
+Vue.prototype.Clipboard = Clipboard
 Vue.prototype.$echarts = echarts
 
 // 适配立即调用函数
@@ -71,7 +71,7 @@ const i18n = new VueI18n({
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
-  // console.log('to',to);
+  console.log('to', to);
   // console.log('from',from);
   if (to.meta.title) {
     document.title = to.meta.title

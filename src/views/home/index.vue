@@ -7,8 +7,14 @@
           <img class="header_img" src="@/assets/images/fullScreen.png" alt="">
         </el-tooltip>
       </div>
-      <div class="avatar">
-        <img class="header_img round" src="@/assets/images/avatar1.jpg" alt="">
+      <div class="avatar header_hover">
+        <el-popover placement="bottom" width="167" trigger="click" v-model="visiblePopover">
+          <div class="avatar_select">
+            <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{ item.value
+            }}</div>
+          </div>
+          <img class="header_img round" src="@/assets/images/avatar1.jpg" alt="" slot="reference">
+        </el-popover>
       </div>
     </div>
     <div class="search_select">
@@ -40,22 +46,18 @@ export default {
     return {
       ipt: '',
       // operationList,
-      languageList: [
-        {
-          langCode: 'zh-CN',
-          langName: '简体中文'
-        },
-        {
-          langCode: 'en-US',
-          langName: 'English',
-        }
-      ],
       langName: '简体中文',
       visiblePopover: false,
-      langColor: 'zh-CN',
     }
   },
   created() {
+    //禁止返回登录页面
+    history.pushState(null, null, document.URL);
+    window.addEventListener("popstate", function () {
+      history.pushState(null, null, document.URL);
+    });
+
+
     console.log('测试')
     var resizeTimer = null;
     window.addEventListener('resize', function () {
@@ -92,6 +94,7 @@ export default {
       }
     },
     skip(item, index) {
+      console.log('item', item);
       this.$router.push(item.path)
     },
     _isMobile() {
@@ -101,6 +104,7 @@ export default {
         console.log('pc端')
       }
     },
+    //国际化
     changeLangUage(lang) {
       console.log(lang);
       if (lang == 'zh-CN') {
@@ -113,6 +117,7 @@ export default {
       this.visiblePopover = false;
       this.langColor = lang;
     },
+    //全屏
     toggleFullScreen() {
       const elem = document.documentElement;
       if (elem.requestFullscreen) {
@@ -124,9 +129,31 @@ export default {
       } else if (elem.msRequestFullscreen) {
         elem.msRequestFullscreen();
       }
+    },
+    //退出登录
+    open() {
+      this.$confirm(this.$t('headerList.ConfirmToExitTheSystem') + '?', this.$t('headerList.Reminder'), {
+        confirmButtonText: this.$t('headerList.Ok'),
+        cancelButtonText: this.$t('headerList.Cancel'),
+        type: 'warning'
+      }).then(() => {
+        this.logOut();
+      }).catch(() => {
+      });
+    },
+    logOut() {
+      localStorage.clear();
+      sessionStorage.clear();
+      setTimeout(() => {
+        this.$router.push('./')
+        this.$message({
+          type: 'success',
+          message: this.$t('headerList.HasSuccessfullyExited'),
+        });
+      }, 1000)
     }
-
   },
+
 }
 </script>
 
@@ -190,7 +217,7 @@ export default {
 
 }
 
-.language_select {
+.avatar_select {
   div {
     height: 32px;
     line-height: 32px;

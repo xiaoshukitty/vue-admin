@@ -22,7 +22,7 @@ const routes = [{
     path: '/',
     name: 'login',
     meta: {
-      title: '登陆',
+      title: '登录',
       require: true, //需要验证的
     },
     component: () => import('../views/login')

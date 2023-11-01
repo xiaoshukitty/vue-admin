@@ -107,8 +107,22 @@ const operationList = [{
 
 //头部
 const headerList = {
-    name: '全屏'
+    name: '全屏',
+    LogOut: '退出登录',
+    Reminder: '温馨提示',
+    ConfirmToExitTheSystem: '是否确定退出系统',
+    Cancel: '取消',
+    Ok: '确定',
+    HasSuccessfullyExited: '已成功退出了',
+    LoginSuccessful:'登录成功',
+    ErrorPrompt:'错误提示',
+    IncorrectAccountOrPassword:'帐号或密码不正确',
 }
+
+
+const avatarList = [{
+    value: '退出登录'
+}, ]
 
 //登陆页面
 const loginI18n = {
@@ -121,12 +135,13 @@ const loginI18n = {
     MobileSignIn: '手机登录',
     QrCodeSignIn: '扫码登录',
     SignInWith: '其他方式登录',
-    PleaseInputUsername:'请输入账号',
-    PleaseInputPassword:'请输入密码',
+    PleaseInputUsername: '请输入账号',
+    PleaseInputPassword: '请输入密码',
 }
 
 export {
     operationList,
     headerList,
-    loginI18n
+    loginI18n,
+    avatarList
 }

@@ -8,7 +8,8 @@ import Print from 'vue-print-nb';
 import VueAMap from 'vue-amap';
 import Clipboard from 'clipboard'; //一键复制
 import VueQriously from 'vue-qriously'; //生成二维码
-import VueI18n from 'vue-i18n'
+import VueI18n from 'vue-i18n'//国际化
+import echarts from 'echarts' //echarts图表
 
 
 import '@/config/directive.js'
@@ -20,7 +21,10 @@ Vue.use(Print); //打印
 Vue.use(VueQriously);
 Vue.use(VueI18n)
 
-Vue.prototype.Clipboard = Clipboard
+
+ //挂载到Vue实例上面
+Vue.prototype.Clipboard = Clipboard 
+Vue.prototype.$echarts = echarts
 
 // 适配立即调用函数
 // (function init(screenRatioByDesign = 16 / 9) {

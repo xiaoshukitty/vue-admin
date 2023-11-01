@@ -96,6 +96,10 @@ const operationList = [{
         path: 'waterfallFlow'
     },
     {
+        name: '图表',
+        path: 'echarts'
+    },
+    {
         name: 'test',
         path: 'test'
     },

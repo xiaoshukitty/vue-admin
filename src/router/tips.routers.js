@@ -142,4 +142,12 @@ export default [{
         },
         component: () => import('../views/tips/render')
     },
+    {
+        path: '/echarts',
+        name: 'echarts',
+        meta: {
+            title: '图表'
+        },
+        component: () => import('../views/tips/echarts')
+    },
 ]

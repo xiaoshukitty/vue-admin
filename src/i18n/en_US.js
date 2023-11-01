@@ -1,3 +1,4 @@
+//首页加导航
 const operationList = [{
         name: 'verificationCode',
         path: 'verificationCode'
@@ -100,6 +101,13 @@ const operationList = [{
     },
 ]
 
+//头部
+const headerList = {
+    name: 'Full Screen'
+}
+
+
 export {
-    operationList
+    operationList,
+    headerList
 }

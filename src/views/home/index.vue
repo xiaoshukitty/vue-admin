@@ -1,11 +1,23 @@
 <template>
   <div class="container">
-    <div class="language">
-      <div class="language_select">
-        <el-select v-model="langName" @change="changeLangUage">
-          <el-option v-for="(item, index) in languageList" :key="index" :label="item.lanName" :value="item.lanCode">
-          </el-option>
-        </el-select>
+    <div class="header">
+      <div class="language header_hover">
+        <el-popover placement="bottom" width="167" trigger="click" v-model="visiblePopover">
+          <div class="language_select">
+            <div v-for="(item, index) in languageList" :key="index" @click="changeLangUage(item.langCode)"
+              :class="langColor == item.langCode ? 'paint' : ''">{{ item.langName
+              }}</div>
+          </div>
+          <img class="header_img" src="@/assets/images/Translate.png" alt="" slot="reference">
+        </el-popover>
+      </div>
+      <div class="full_screen header_hover" @click="toggleFullScreen">
+        <el-tooltip class="item" effect="dark" :content="$t('headerList.name')" placement="bottom">
+          <img class="header_img" src="@/assets/images/fullScreen.png" alt="">
+        </el-tooltip>
+      </div>
+      <div class="avatar">
+        <img class="header_img round" src="@/assets/images/avatar1.jpg" alt="">
       </div>
     </div>
     <div class="search_select">
@@ -35,15 +47,17 @@ export default {
       // operationList,
       languageList: [
         {
-          lanCode: 'zh-CN',
-          lanName: '简体中文'
+          langCode: 'zh-CN',
+          langName: '简体中文'
         },
         {
-          lanCode: 'en-US',
-          lanName: 'English',
+          langCode: 'en-US',
+          langName: 'English',
         }
       ],
       langName: '简体中文',
+      visiblePopover: false,
+      langColor: 'zh-CN',
     }
   },
   created() {
@@ -93,6 +107,7 @@ export default {
       }
     },
     changeLangUage(lang) {
+      console.log(lang);
       if (lang == 'zh-CN') {
         this.$i18n.locale = 'zh-CN';
         this.langName = '简体中文';
@@ -100,21 +115,54 @@ export default {
         this.$i18n.locale = 'en-US';
         this.langName = 'English';
       }
+      this.visiblePopover = false;
+      this.langColor = lang;
+    },
+    toggleFullScreen() {
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
     }
+
   },
 }
 </script>
 
 <style lang="less" scoped>
 .container {
-  padding: 50px 0;
 
-  .language {
+  .header {
     display: flex;
     justify-content: flex-end;
-    margin: 20px 70px;
+    height: 50px;
+    line-height: 50px;
+    padding-right: 100px;
+    border-bottom: 1px solid #eee;
+    background-color: #fff !important;
 
-    .language_select {
+    >div {
+      padding: 0 10px;
+    }
+
+    .header_hover:hover {
+      background-color: #f6f6f6 !important;
+    }
+
+    .round {
+      border-radius: 50%;
+    }
+
+    .header_img {
+      width: 30px;
+      height: 30px;
+      margin-top: 10px;
     }
   }
 
@@ -136,10 +184,43 @@ export default {
     max-height: 350px;
     overflow: scroll;
 
+    /deep/ .el-button {
+      padding: 8px 15px;
+    }
+
     .m5 {
       margin: 5px;
     }
   }
 
+}
+
+.language_select {
+  div {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  div:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.paint {
+  color: #1677ff;
+  background-color: #e6f4ff;
+}
+
+.paint:hover {
+  background-color: #bae0ff !important;
+}
+
+/deep/ .el-popover {
+  padding: 5px !important;
 }
 </style>

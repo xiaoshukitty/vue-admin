@@ -144,11 +144,13 @@ const routerNavigation = [{
     path: 'module',
     id: '0',
     router: '/children',
+    icon:'el-icon-monitor',
 }, {
     name: 'Module',
     path: 'module',
     id: '1',
     router: '',
+    icon:'el-icon-s-grid',
     children: [{
             name: 'Print',
             path: 'print',
@@ -234,6 +236,7 @@ const routerNavigation = [{
     path: 'map',
     id: '2',
     router: '',
+    icon:'el-icon-map-location',
     children: [{
             name: 'El Map',
             path: 'elMap',
@@ -252,6 +255,7 @@ const routerNavigation = [{
     path: 'list',
     id: '3',
     router: '',
+    icon:'el-icon-notebook-2',
     children: [{
             name: 'Virtual',
             path: 'virtual',
@@ -269,6 +273,7 @@ const routerNavigation = [{
     name: 'Api',
     path: 'api',
     id: '4',
+    icon:'el-icon-orange',
     children: [{
             name: 'Memorandum',
             path: 'memorandum',
@@ -286,6 +291,7 @@ const routerNavigation = [{
     name: 'Feature',
     path: 'feature',
     id: '5',
+    icon:'el-icon-message',
     children: [{
             name: 'Custom Instruction',
             path: 'customInstruction',

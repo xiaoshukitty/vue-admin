@@ -35,15 +35,16 @@ const routes = [{
     },
     component: () => import('../views/home')
   },
+  // {
+  //   path: '/vuex',
+  //   name: 'vuex',
+  //   meta: {
+  //     title: 'vuex',
+  //     require: true,
+  //   },
+  //   component: () => import('../views/vuex')
+  // }, 
   {
-    path: '/vuex',
-    name: 'vuex',
-    meta: {
-      title: 'vuex',
-      require: true,
-    },
-    component: () => import('../views/vuex')
-  }, {
     path: '/test',
     name: 'test',
     meta: {

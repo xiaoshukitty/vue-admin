@@ -83,7 +83,7 @@ export default {
             }
             this.loginLoading = true;
             setTimeout(() => {
-                this.$router.push('./home')
+                this.$router.push('./homePage')
                 this.$message({
                     type: 'success',
                     message: this.$t('headerList.LoginSuccessful'),

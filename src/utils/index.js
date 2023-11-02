@@ -217,6 +217,28 @@ const isObjNull = (newObj) => {
     return flag;
 }
 
+/**
+ * 判断当前传入的字段值是否存在于树数据中
+ * @param {Array} nodesArr 
+ * @param {String} searchKey 
+ * @returns 
+ */
+const searchTree = (nodesArr, searchKey) => {
+    for (let i = 0; i < nodesArr.length; i++) {
+        if (nodesArr[i].router === searchKey) {
+            return nodesArr[i].name
+        } else {
+            if (nodesArr[i].children && nodesArr[i].children.length > 0) {
+                let res = searchTree(nodesArr[i].children, searchKey);
+                if (res) {
+                    return res
+                }
+            }
+        }
+    }
+    return null
+}
+
 export {
     downloadIamgeFun,
     toUtf8,
@@ -227,4 +249,5 @@ export {
     deepClone,
     antiShake,
     isObjNull,
+    searchTree
 }

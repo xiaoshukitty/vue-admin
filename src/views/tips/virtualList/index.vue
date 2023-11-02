@@ -1,5 +1,5 @@
 <template>
-    <VirtualListComponents :listData="data" :estimatedItemSize="100" v-slot="slotProps">
+    <VirtualListComponents :listData="data" :estimatedItemSize="100" v-slot="slotProps"> 
         <VirtualListComponentsItem :item="slotProps.item" />
     </VirtualListComponents>
 </template>

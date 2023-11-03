@@ -138,6 +138,25 @@ const loginI18n = {
     PleaseInputPassword: 'Please input password',
 }
 
+//注册
+const signInI18n={
+    SigIn:'Sig In',
+    Username:'Username',
+    PleaseInputUsername:'Please Input Username',
+    Mobile:'Mobile',
+    PleaseInputPhoneNumber:'Please Input Phone Number',
+    SMSCode:'SMS Code',
+    GetSMSCode:'Get SMS Code',
+    ReacquireIn:'Reacquire In',
+    PleaseInputSMSCode:'Please Input SMS Code',
+    Password:'Password',
+    PleaseInputPassword:'Please Input Password',
+    ConfirmPassword:'Confirm Password',
+    TheTwoPasswordsAreInconsistent:'The two passwords are inconsistent',
+    IAgreeToThexxxPrivacyPolicy:'I agree to the xxx Privacy Policy',
+    BackSigIn:'Back Sig In',
+}
+
 //导航
 const routerNavigation = [{
     name: 'HomePage',
@@ -323,8 +342,6 @@ const routerNavigation = [{
             router: '/vuex',
         },
 
-
-
     ]
 }]
 
@@ -333,5 +350,6 @@ export {
     headerList,
     loginI18n,
     avatarList,
-    routerNavigation
+    routerNavigation,
+    signInI18n
 }

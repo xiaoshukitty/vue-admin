@@ -139,6 +139,25 @@ const loginI18n = {
     PleaseInputPassword: '请输入密码',
 }
 
+//注册
+const signInI18n={
+    SigIn:'注册',
+    Username:'账号',
+    PleaseInputUsername:'请输入账号',
+    Mobile:'手机号',
+    PleaseInputPhoneNumber:'请输入手机号',
+    SMSCode:'短信验证码',
+    GetSMSCode:'获取验证码',
+    ReacquireIn:'后重新获取',
+    PleaseInputSMSCode:'请输入短信验证码',
+    Password:'密码',
+    PleaseInputPassword:'请输入密码',
+    ConfirmPassword:'确认密码',
+    TheTwoPasswordsAreInconsistent:'两次输入密码不一致',
+    IAgreeToThexxxPrivacyPolicy:'我同意xxx隐私政策',
+    BackSigIn:'返回',
+}
+
 //导航
 const routerNavigation = [{
     name: '首页',
@@ -331,5 +350,6 @@ export {
     headerList,
     loginI18n,
     avatarList,
-    routerNavigation
+    routerNavigation,
+    signInI18n
 }

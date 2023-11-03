@@ -146,7 +146,7 @@ const signInI18n={
     Mobile:'Mobile',
     PleaseInputPhoneNumber:'Please Input Phone Number',
     SMSCode:'SMS Code',
-    GetSMSCode:'Get SMS Code',
+    GetSMSCode:'SMS Code',
     ReacquireIn:'Reacquire In',
     PleaseInputSMSCode:'Please Input SMS Code',
     Password:'Password',

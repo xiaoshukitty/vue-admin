@@ -157,6 +157,28 @@ const signInI18n={
     BackSigIn:'Back Sig In',
 }
 
+// 手机号登录
+const phoneLoginI18n={
+    MobilePhoneNumber:'MobilePhoneNumber',
+    SMSCode:'SMS Code',
+    GetSMSCode:'Get SMS Code',
+    ReacquireIn:'Reacquire In',
+    PleaseInputPhoneNumber:'Please Input Phone Number',
+    PleaseInputSMSCode:'Please Input SMS Code',
+    BackPhoneLogin:'Back Sig In',
+    Login:"Login",
+    PhoneLogin:"Phone Login"
+}
+
+// 扫码登录
+const qrCodeI18m={
+    QrCodeLogin:"Qr Code Login",
+    ScanningTheCodeToCompleteTheLogin:'scanning the code to complete the login',
+    BackQrCodeLogin:'Back Sig In',
+}
+
+
+
 //导航
 const routerNavigation = [{
     name: 'HomePage',
@@ -351,5 +373,7 @@ export {
     loginI18n,
     avatarList,
     routerNavigation,
-    signInI18n
+    signInI18n,
+    phoneLoginI18n,
+    qrCodeI18m,
 }

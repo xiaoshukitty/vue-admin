@@ -1,83 +1,94 @@
 <template>
-    <div class="login">
-        <div class="login_panel">
-            <div class="flex">
-                <div class='box'>
-                    <div class="i18n">
-                        <I18nComponents :status="'noHover'" :isAccountNumber="isAccountNumber" />
-                    </div>
-                    <!-- <h2>{{ isAccountNumber ? $t('signInI18n.SigIn') : $t('loginI18n.LogIn') }}</h2> -->
-                    <div class="title">{{ isAccountNumber ? $t('signInI18n.SigIn') : $t('loginI18n.LogIn') }}</div>
-                    <Login :isAccountNumber="isAccountNumber" @updateAccountNumber="updateAccountNumber"
-                        v-if="!isAccountNumber" />
-                    <SigIn @updateSigIn="updateSigIn" v-else />
-                </div>
-            </div>
+  <div class="login">
+    <div class="login_panel">
+      <div class="flex">
+        <div class='box'>
+          <div class="i18n">
+            <I18nComponents :status="'noHover'"/>
+          </div>
+<!--          <div class="title">{{ isAccountNumber ? $t('signInI18n.SigIn') : $t('loginI18n.LogIn') }}</div>-->
+          <div class="title" v-if="isAccountNumber=='login'">{{$t('loginI18n.LogIn') }}</div>
+          <div class="title" v-if="isAccountNumber=='signIn'">{{$t('signInI18n.SigIn') }}</div>
+          <div class="title" v-if="isAccountNumber=='phoneLogin'">{{ $t('phoneLoginI18n.PhoneLogin') }}</div>
+          <div class="title" v-if="isAccountNumber=='qrCodeLogin'">{{ $t('qrCodeI18m.QrCodeLogin') }}</div>
 
+
+          <Login  @skip="skip"  v-if="isAccountNumber=='login'"/>
+          <SigIn @toBack="toBack" v-if="isAccountNumber=='signIn'"/>
+          <PhoneLogin @toBack="toBack" v-if="isAccountNumber=='phoneLogin'"/>
+          <QrCodeLogin @toBack="toBack" v-if="isAccountNumber=='qrCodeLogin'"/>
         </div>
+      </div>
+
     </div>
+  </div>
 </template>
 
 <script>
 import I18nComponents from '@/components/i18nComponents'
 import Login from './components/Login.vue'
 import SigIn from './components/SignIn.vue'
+import PhoneLogin from "@/views/login/components/PhoneLogin.vue";
+import QrCodeLogin from "@/views/login/components/QrCodeLogin.vue";
+
 export default {
-    components: {
-        I18nComponents,
-        Login,
-        SigIn
-    },
-    data() {
-        return {
-            isAccountNumber: false,
-        }
-    },
-    methods: {
-        updateAccountNumber(val) {
-            this.isAccountNumber = val;
-        },
-        updateSigIn(val) {
-            this.isAccountNumber = val;
-        },
+  components: {
+    I18nComponents,
+    Login,
+    SigIn,
+    PhoneLogin,
+    QrCodeLogin
+  },
+  data() {
+    return {
+      isAccountNumber: 'login',
     }
+  },
+  methods: {
+    skip(val) {
+      this.isAccountNumber = val;
+    },
+    toBack(val){
+      this.isAccountNumber = val;
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
 .login {
-    width: 100vw;
-    height: 100vh;
-    background-image: url('@/assets/images/bg.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('@/assets/images/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
 
 
-    .login_panel {
+  .login_panel {
 
 
-        .i18n {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .flex {
-            display: flex;
-            justify-content: flex-end;
-
-            .box {
-                background-color: rgba(255, 255, 255, 0.5);
-                margin: 100px 200px;
-                padding: 20px;
-
-                .title {
-                    font-size: 32px;
-                    font-weight: 700;
-                    padding:5px 20px 20px;
-                }
-            }
-        }
-
+    .i18n {
+      display: flex;
+      justify-content: flex-end;
     }
+
+    .flex {
+      display: flex;
+      justify-content: flex-end;
+
+      .box {
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 100px 200px;
+        padding: 20px;
+
+        .title {
+          font-size: 32px;
+          font-weight: 700;
+          padding: 5px 20px 20px;
+        }
+      }
+    }
+
+  }
 }
 </style>

@@ -99,7 +99,7 @@ export default {
             }
         },
         goToBack() {
-            this.$emit('updateSigIn', false)
+            this.$emit('toBack', 'login')
         }
     }
 }
@@ -174,9 +174,6 @@ export default {
     }
 
 }
-
-
-
 
 /deep/ .el-input__suffix {
     margin-right: 25px;

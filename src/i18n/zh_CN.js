@@ -158,6 +158,26 @@ const signInI18n={
     BackSigIn:'返回',
 }
 
+// 手机号登录
+const phoneLoginI18n={
+    MobilePhoneNumber:'手机号码',
+    SMSCode:'短信验证码',
+    GetSMSCode:'获取验证码',
+    ReacquireIn:'后重新获取',
+    PleaseInputPhoneNumber:'请输入手机号码',
+    PleaseInputSMSCode:'请输入短信验证码',
+    BackPhoneLogin:'返回',
+    Login:"登录",
+    PhoneLogin:"手机登录"
+}
+
+// 扫码登录
+const qrCodeI18m={
+    QrCodeLogin:"二维码登录",
+    ScanningTheCodeToCompleteTheLogin:'扫码后点击"确认"，即可完成登录',
+    BackQrCodeLogin:'返回',
+}
+
 //导航
 const routerNavigation = [{
     name: '首页',
@@ -351,5 +371,7 @@ export {
     loginI18n,
     avatarList,
     routerNavigation,
-    signInI18n
+    signInI18n,
+    phoneLoginI18n,
+    qrCodeI18m
 }

@@ -8,9 +8,13 @@
       <el-form-item prop="phoneVerificationCode"
                     :rules="[{ required: true, message: $t('phoneLoginI18n.PleaseInputSMSCode'), trigger: 'blur' },]">
         <div :class="codeShow ? 'flex_input2' : 'flex_input'">
-          <el-input v-model="phoneLoginForm.phoneVerificationCode" :placeholder="$t('phoneLoginI18n.SMSCode')"></el-input>
-          <el-button :disabled="codeShow" plain @click="getVerificationCode">{{ codeShow ?
-              codeNum + 's' + $t('phoneLoginI18n.ReacquireIn') : $t('phoneLoginI18n.SMSCode') }}</el-button>
+          <el-input v-model="phoneLoginForm.phoneVerificationCode"
+                    :placeholder="$t('phoneLoginI18n.SMSCode')"></el-input>
+          <el-button :disabled="codeShow" plain @click="getVerificationCode">{{
+              codeShow ?
+                  codeNum + 's' + $t('phoneLoginI18n.ReacquireIn') : $t('phoneLoginI18n.SMSCode')
+            }}
+          </el-button>
         </div>
       </el-form-item>
     </el-form>
@@ -35,7 +39,7 @@ export default {
       timer: null,
     }
   },
-  methods:{
+  methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -129,6 +133,7 @@ export default {
 
   .btn {
     padding-bottom: 20px;
+
     .el-button {
       width: 100%;
       margin-top: 15px;

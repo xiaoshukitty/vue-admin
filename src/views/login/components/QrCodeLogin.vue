@@ -3,7 +3,7 @@
     <div id="poster" class="poster">
       <div class="qrcode" id="qrcode" ref="qrCodeUrl"></div>
     </div>
-    <div class="text">{{$t('qrCodeI18m.ScanningTheCodeToCompleteTheLogin')}}</div>
+    <div class="text">{{ $t('qrCodeI18m.ScanningTheCodeToCompleteTheLogin') }}</div>
     <div class="btn">
       <el-button @click="goToBack" plain>{{ $t('qrCodeI18m.BackQrCodeLogin') }}</el-button>
     </div>
@@ -73,6 +73,7 @@ export default {
     margin: 20px 5px;
     display: flex;
     justify-content: center;
+
     .qrcode {
       width: 200px;
       height: 200px;
@@ -83,7 +84,8 @@ export default {
       }
     }
   }
-  .text{
+
+  .text {
     margin: 15px 0;
     font-size: 18px;
     font-weight: 400;

@@ -6,14 +6,12 @@
           <div class="i18n">
             <I18nComponents :status="'noHover'"/>
           </div>
-<!--          <div class="title">{{ isAccountNumber ? $t('signInI18n.SigIn') : $t('loginI18n.LogIn') }}</div>-->
-          <div class="title" v-if="isAccountNumber=='login'">{{$t('loginI18n.LogIn') }}</div>
-          <div class="title" v-if="isAccountNumber=='signIn'">{{$t('signInI18n.SigIn') }}</div>
+          <!--          <div class="title">{{ isAccountNumber ? $t('signInI18n.SigIn') : $t('loginI18n.LogIn') }}</div>-->
+          <div class="title" v-if="isAccountNumber=='login'">{{ $t('loginI18n.LogIn') }}</div>
+          <div class="title" v-if="isAccountNumber=='signIn'">{{ $t('signInI18n.SigIn') }}</div>
           <div class="title" v-if="isAccountNumber=='phoneLogin'">{{ $t('phoneLoginI18n.PhoneLogin') }}</div>
           <div class="title" v-if="isAccountNumber=='qrCodeLogin'">{{ $t('qrCodeI18m.QrCodeLogin') }}</div>
-
-
-          <Login  @skip="skip"  v-if="isAccountNumber=='login'"/>
+          <Login @skip="skip" v-if="isAccountNumber=='login'"/>
           <SigIn @toBack="toBack" v-if="isAccountNumber=='signIn'"/>
           <PhoneLogin @toBack="toBack" v-if="isAccountNumber=='phoneLogin'"/>
           <QrCodeLogin @toBack="toBack" v-if="isAccountNumber=='qrCodeLogin'"/>
@@ -48,7 +46,7 @@ export default {
     skip(val) {
       this.isAccountNumber = val;
     },
-    toBack(val){
+    toBack(val) {
       this.isAccountNumber = val;
     }
   }

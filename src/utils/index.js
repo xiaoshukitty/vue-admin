@@ -239,6 +239,93 @@ const searchTree = (nodesArr, searchKey) => {
     return null
 }
 
+
+/**
+ * //数字转中文
+ * @param {Number} num 
+ * @returns 
+ */
+const toChinesnNumber = (num) => {
+    const numStr = num
+        .toString()
+        .replace(/(?=(\d{4})+$)/g, ',')
+        .split(',')
+        .filter(Boolean); //分割每四位一组 [ '4567', '4567' ]
+
+    const chars = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+    const units = ['', '十', '百', '千']
+
+    function handleZero(str) {
+        return str
+            .replace(/零{2,}/g, '零') //零这个字出现两次以上就替换成一个 零
+            .replace(/零+$/g, '') //末尾有 零 就直接为空
+    }
+
+    function _transform(n) {
+        if (n === '0000') { // 中间 四位 全部都是 零，单独处理返回 一个 零
+            return chars[0]
+        }
+        let result = '';
+        for (let i = 0; i < n.length; i++) {
+            const c = chars[+n[i]];
+            //数字的长度减1减i就是上面 units 映射的
+            let u = units[n.length - 1 - i];
+            if (c === chars[0]) { //去单个 零
+                u = '';
+            }
+            result += c + u
+        }
+        result = handleZero(result)
+        return result
+    }
+
+    const bigUmits = ['', '万', '亿'];
+    let result = '';
+    for (let i = 0; i < numStr.length; i++) {
+        const part = numStr[i];
+        const c = _transform(part);
+        let u = bigUmits[numStr.length - 1 - i];
+        if (c === chars[0]) { // 中间四位都是零的时候去掉 万     一千二百三十四亿零万一千二百三十四 
+            u = '';
+        }
+        result += c + u;
+
+    }
+    result = handleZero(result) //去掉末尾全是零  一百二十三亿四千万零\
+    return result
+}
+
+/**
+ * 数字中文转大写中文
+ * @param {String} num 
+ * @returns 
+ */
+const toBigChinesnNumber = (num) => {
+    let result = toChinesnNumber(num); //先转成中文
+    const map = {
+        零: '零',
+        一: '壹',
+        二: '贰',
+        三: '叁',
+        四: '肆',
+        五: '伍',
+        六: '陆',
+        七: '柒',
+        八: '捌',
+        九: '玖',
+        十: '拾',
+        百: '佰',
+        千: '仟',
+        万: '万',
+        亿: '亿',
+    }; //建立映射表
+    return result
+        .split('')
+        .map(s => map[s])
+        .join('')
+}
+
+
 export {
     downloadIamgeFun,
     toUtf8,
@@ -249,5 +336,7 @@ export {
     deepClone,
     antiShake,
     isObjNull,
-    searchTree
+    searchTree,
+    toChinesnNumber,
+    toBigChinesnNumber
 }

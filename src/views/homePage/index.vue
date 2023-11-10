@@ -39,9 +39,10 @@
                 </div>
                 <div class="header">
                     <I18nComponents :status="'hover'" />
-                    <div class="full_screen header_hover" @click="toggleFullScreen">
-                        <el-tooltip class="item" effect="dark" :content="$t('headerList.name')" placement="bottom">
-                            <img class="header_img" src="@/assets/images/fullScreen.png" alt="">
+                    <div class="full_screen header_hover" @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
+                        <el-tooltip class="item" effect="dark" :content="fullScreenShow?$t('headerList.name'):$t('headerList.ExitFullScreen')" placement="bottom">
+                            <img v-if="fullScreenShow" class="header_img" src="@/assets/images/fullScreen.png" alt="">
+                            <img v-else class="header_img" src="@/assets/images/exit_full_screen.png" alt="">
                         </el-tooltip>
                     </div>
                     <div class="avatar header_hover">
@@ -73,6 +74,7 @@ export default {
             activeIndex: '/children',
             langName: '简体中文',
             visiblePopover: false,
+            fullScreenShow: true,
         }
     },
     created() {
@@ -124,6 +126,16 @@ export default {
             } else if (elem.msRequestFullscreen) {
                 elem.msRequestFullscreen();
             }
+            this.fullScreenShow = false;
+        },
+        exitFullscreen() {
+            if (document.exitFullscreen)
+                document.exitFullscreen()
+            else if (document.mozCancelFullScreen)
+                document.mozCancelFullScreen()
+            else if (document.webkitExitFullscreen)
+                document.webkitExitFullscreen()
+            this.fullScreenShow = true;
         },
         //退出登录
         open() {

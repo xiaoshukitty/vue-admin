@@ -231,7 +231,7 @@ const searchTree = (nodesArr, searchKey) => {
             if (nodesArr[i].children && nodesArr[i].children.length > 0) {
                 let res = searchTree(nodesArr[i].children, searchKey);
                 if (res) {
-                    return res
+                    return nodesArr[i].name +' / ' +res
                 }
             }
         }

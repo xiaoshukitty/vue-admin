@@ -40,7 +40,9 @@
                 <div class="header">
                     <I18nComponents :status="'hover'" />
                     <div class="full_screen header_hover" @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
-                        <el-tooltip class="item" effect="dark" :content="fullScreenShow?$t('headerList.name'):$t('headerList.ExitFullScreen')" placement="bottom">
+                        <el-tooltip class="item" effect="dark"
+                            :content="fullScreenShow ? $t('headerList.name') : $t('headerList.ExitFullScreen')"
+                            placement="bottom">
                             <img v-if="fullScreenShow" class="header_img" src="@/assets/images/fullScreen.png" alt="">
                             <img v-else class="header_img" src="@/assets/images/exit_full_screen.png" alt="">
                         </el-tooltip>
@@ -88,7 +90,6 @@ export default {
             return searchTree(this.$t('routerNavigation'), this.activeIndex)
         }
     },
-
     methods: {
         handleSelect(item) {
             console.log(item);

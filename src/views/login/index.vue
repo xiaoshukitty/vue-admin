@@ -59,7 +59,7 @@ export default {
   height: 100vh;
   background-image: url('@/assets/images/bg.jpg');
   background-repeat: no-repeat;
-  background-position: center;
+  background-size: cover;
 
 
   .login_panel {

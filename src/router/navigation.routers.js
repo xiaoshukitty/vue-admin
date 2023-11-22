@@ -13,8 +13,6 @@ export default [{
                 },
                 component: () => import('@/views/homePage/children.vue')
             },
-
-
             //组件
             {
                 path: '/print',

@@ -72,6 +72,9 @@ const i18n = new VueI18n({
 // 路由守卫
 router.beforeEach((to, from, next) => {
   console.log('to', to);
+  if(to.matched.length === 0){
+    next('/404') 
+  }
   // console.log('from',from);
   if (to.meta.title) {
     document.title = to.meta.title

@@ -20,6 +20,9 @@ console.log('routerList---', routerList)
 
 const routes = [{
     path: '/',
+    redirect: '/login',
+  }, {
+    path: '/login',
     name: 'login',
     meta: {
       title: '登录',
@@ -34,6 +37,11 @@ const routes = [{
       require: true, //需要验证的
     },
     component: () => import('../views/home')
+  },
+  {
+    path: '/404',
+    component: () => import('../views/404/index.vue'),
+    name: '404',
   },
   // {
   //   path: '/vuex',

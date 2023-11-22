@@ -10,6 +10,8 @@ import Clipboard from 'clipboard'; //一键复制
 import VueQriously from 'vue-qriously'; //生成二维码
 import VueI18n from 'vue-i18n' //国际化
 import echarts from 'echarts' //echarts图表
+import nprogress from "nprogress";
+import "nprogress/nprogress.css";
 
 
 import '@/config/directive.js'
@@ -67,30 +69,55 @@ const i18n = new VueI18n({
 });
 
 
+//自定义进度样式
+nprogress.configure({
+  easing: "ease", // 动画方式
+  speed: 1500, // 递增进度条的速度
+  showSpinner: false, // 是否显示加载ico
+  trickleSpeed: 200, // 自动递增间隔
+  minimum: 0.3, // 初始化时的最小百分比
+});
 
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
   console.log('to', to);
-  if(to.matched.length === 0){
-    next('/404') 
+  // 刚进来就开启进度条
+  nprogress.start()
+  if (to.matched.length === 0) { //路由不匹配强制跳转4040
+    next('/404')
   }
-  // console.log('from',from);
+  // console.log('from', from);
   if (to.meta.title) {
     document.title = to.meta.title
   }
   let token
+  const whiteList = ['/login', '404'] //设置白名单
   if (to.meta.require) { //页面是否需要验证
     if (token) {
-      next()
+      if (to.path === '/login') {
+        next('/')
+        // 强制跳转不会经过后置路由守卫，需要手动关闭进度条
+        nprogress.done()
+      } else {
+        next()
+      }
     } else {
-      next()
+      if (whiteList.includes(to.path)) {
+        next()
+      } else {
+        next('/login')
+        // 强制跳转不会经过后置路由守卫，需要手动关闭进度条
+        nprogress.done()
+      }
     }
   } else {
     next()
   }
-
-
+})
+router.afterEach(() => {
+  // 路由跳转完毕后关闭进度条
+  nprogress.done()
 })
 
 Vue.config.productionTip = false

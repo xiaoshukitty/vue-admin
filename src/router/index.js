@@ -66,7 +66,19 @@ const routes = [{
 
 const router = new VueRouter({
   routes,
-  // mode: "history" 修改成 history 模式，不设置就是默认 hash 模式
+  //滚动行为(路由切换)
+  // scrollBehavior(to, from, savedPosition) {
+  //   if (savedPosition) {
+  //     // 如果之前有保存滚动位置，则恢复到之前保存的位置
+  //     return savedPosition;
+  //   } else {
+  //     // 否则，默认滚动到页面顶部
+  //     return {
+  //       x: 0,
+  //       y: 0
+  //     };
+  //   }
+  // }
 })
 
 export default router

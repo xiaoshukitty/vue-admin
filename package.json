@@ -17,6 +17,7 @@
     "element-ui": "^2.15.10",
     "faker": "^4.1.0",
     "html2canvas": "^1.4.1",
+    "nprogress": "^0.2.0",
     "qrcode": "^1.5.1",
     "qrcodejs2": "0.0.2",
     "qs": "^6.11.0",

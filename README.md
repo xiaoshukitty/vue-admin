@@ -1,6 +1,10 @@
 # vue_test
 vue 后台常用的一些方法，工具
 
+# 项目在线链接
+
+[xiaoshukitty.github.io/vue_test/dist/#/](https://xiaoshukitty.github.io/vue_test/dist/#/)
+
 ## 项目启动	
 
 cd 到 node_server目录，命令 nodemon app.js 启动服务，项目就可以启动了

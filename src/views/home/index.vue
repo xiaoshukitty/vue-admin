@@ -104,19 +104,6 @@ export default {
         console.log('pc端')
       }
     },
-    //国际化
-    changeLangUage(lang) {
-      console.log(lang);
-      if (lang == 'zh-CN') {
-        this.$i18n.locale = 'zh-CN';
-        this.langName = '简体中文';
-      } else {
-        this.$i18n.locale = 'en-US';
-        this.langName = 'English';
-      }
-      this.visiblePopover = false;
-      this.langColor = lang;
-    },
     //全屏
     toggleFullScreen() {
       const elem = document.documentElement;

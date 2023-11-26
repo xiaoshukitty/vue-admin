@@ -72,10 +72,12 @@ export default {
         localStorage.setItem('TOKEN', reslut.token);
         setTimeout(() => {
           this.$router.push('./homePage')
-          this.$message({
-            type: 'success',
-            message: this.$t('headerList.LoginSuccessful'),
+          this.$notify({
+            title: this.$t('headerList.LoginSuccessful'),
+            message: `Hi,${this.getTime()}`,
+            type: 'success'
           });
+          this.loginLoading = false;
         }, 1000)
       } else {
         this.$alert(this.$t('headerList.IncorrectAccountOrPassword') + '!', this.$t('headerList.ErrorPrompt'), {
@@ -83,14 +85,27 @@ export default {
           type: 'warning',
           showClose: false,
         });
+        this.loginLoading = false;
       }
-      this.loginLoading = false;
     },
     updateShow() {
       this.isShow = !this.isShow;
     },
     toBack(val) {
       this.$emit('skip', val)
+    },
+    // 封装函数：获取 早上｜下午｜上午｜晚上
+    getTime() {
+      let message = ''
+      let hours = new Date().getHours()
+      if (hours <= 12) {
+        message = this.$t('headerList.GoodMorning')
+      } else if (hours <= 18) {
+        message = this.$t('headerList.GoodAfternoon')
+      } else {
+        message = this.$t('headerList.GoodEvening')
+      }
+      return message
     }
   }
 }

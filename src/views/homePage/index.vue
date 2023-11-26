@@ -2,7 +2,7 @@
     <div class="home_page">
         <div class="left">
             <div>
-                <div v-if="!isCollapse">小小舒</div>
+                <div v-if="!isCollapse">{{ $t('headerList.UserName') }}</div>
                 <img v-else class="left_img" src="@/assets/images/avatar1.jpg" alt="">
             </div>
             <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" unique-opened :collapse="isCollapse"
@@ -103,19 +103,6 @@ export default {
         takeBack() {
             this.isCollapse = !this.isCollapse;
         },
-        //国际化
-        changeLangUage(lang) {
-            console.log(lang);
-            if (lang == 'zh-CN') {
-                this.$i18n.locale = 'zh-CN';
-                this.langName = '简体中文';
-            } else {
-                this.$i18n.locale = 'en-US';
-                this.langName = 'English';
-            }
-            this.visiblePopover = false;
-            this.langColor = lang;
-        },
         //全屏
         toggleFullScreen() {
             const elem = document.documentElement;
@@ -156,7 +143,7 @@ export default {
             }
             const reslut = await logout(params)
             if (reslut.code == 200) {
-                localStorage.clear();
+                localStorage.removeItem('TOKEN')
                 sessionStorage.clear();
                 this.$store.commit('setToken', {
                     token: ''

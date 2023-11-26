@@ -120,6 +120,10 @@ const headerList = {
     IncorrectAccountOrPassword: '帐号或密码不正确',
     NoTokenProvided:'未提供token',
     TokenAuthenticationFailed:'token验证失败',
+    GoodMorning:'上午好',
+    GoodAfternoon:'下午好',
+    GoodEvening:'晚上好',
+    UserName:'小小舒',
 }
 
 

@@ -37,9 +37,11 @@ export default {
             console.log(lang);
             if (lang == 'zh-CN') {
                 this.$i18n.locale = 'zh-CN';
+                localStorage.setItem('lang','zh-CN')
                 this.langName = '简体中文';
             } else {
                 this.$i18n.locale = 'en-US';
+                localStorage.setItem('lang','en-US')
                 this.langName = 'English';
             }
             this.visiblePopover = false;

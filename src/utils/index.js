@@ -231,7 +231,7 @@ const searchTree = (nodesArr, searchKey) => {
             if (nodesArr[i].children && nodesArr[i].children.length > 0) {
                 let res = searchTree(nodesArr[i].children, searchKey);
                 if (res) {
-                    return nodesArr[i].name +' / ' +res
+                    return nodesArr[i].name + ' / ' + res
                 }
             }
         }
@@ -325,6 +325,40 @@ const toBigChinesnNumber = (num) => {
         .join('')
 }
 
+/**
+ * 封装函数：获取 早上｜下午｜上午｜晚上
+ * @returns 
+ */
+const getTime = () => {
+    let message = ''
+    let hours = new Date().getHours()
+    console.log(hours, 'hours')
+
+    if (hours <= 9) {
+        message = this.$t('headerList.GoodMorning')
+    } else if (hours <= 12) {
+        message = this.$t('headerList.GoodMorning')
+    } else if (hours <= 18) {
+        message = this.$t('headerList.GoodMorning')
+    } else {
+        message = this.$t('headerList.GoodMorning')
+    }
+    return message
+}
+
+
+const generateTitle = (title) => {
+    const hasKey = this.$te('route.' + title)
+
+    if (hasKey) {
+        // $t :this method from vue-i18n, inject in @/lang/index.js
+        const translatedTitle = this.$t('route.' + title)
+
+        return translatedTitle
+    }
+    return title
+}
+
 
 export {
     downloadIamgeFun,
@@ -338,5 +372,7 @@ export {
     isObjNull,
     searchTree,
     toChinesnNumber,
-    toBigChinesnNumber
+    toBigChinesnNumber,
+    getTime,
+    generateTitle
 }

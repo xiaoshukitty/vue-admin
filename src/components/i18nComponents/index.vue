@@ -33,7 +33,7 @@ export default {
             ],
             langName: '简体中文',
             visiblePopover: false,
-            langColor: this.$store.state.langColor,
+            langColor: localStorage.getItem('lang')
         }
     },
     watch: {

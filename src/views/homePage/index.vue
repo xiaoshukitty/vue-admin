@@ -66,6 +66,7 @@
 <script>
 import I18nComponents from '@/components/i18nComponents'
 import { searchTree } from '@/utils'
+import { logout } from '@/server/common'
 export default {
     components: {
         I18nComponents
@@ -149,16 +150,37 @@ export default {
             }).catch(() => {
             });
         },
-        logOut() {
-            localStorage.clear();
-            sessionStorage.clear();
-            setTimeout(() => {
-                this.$router.push('./')
-                this.$message({
-                    type: 'success',
-                    message: this.$t('headerList.HasSuccessfullyExited'),
-                });
-            }, 1000)
+        async logOut() {
+            let params = {
+                token: localStorage.getItem('TOKEN')
+            }
+            const reslut = await logout(params)
+            if (reslut.code == 200) {
+                localStorage.clear();
+                sessionStorage.clear();
+                this.$store.commit('setToken', {
+                    token: ''
+                })
+                setTimeout(() => {
+                    this.$router.push('./')
+                    this.$message({
+                        type: 'success',
+                        message: this.$t('headerList.HasSuccessfullyExited'),
+                    });
+                }, 1000)
+            } else {
+                if (reslut.code == 401) {
+                    this.$message({
+                        message: this.$t('headerList.NoTokenProvided'),
+                        type: 'warning'
+                    });
+                } else if (reslut.code == 403) {
+                    this.$message({
+                        message: this.$t('headerList.TokenAuthenticationFailed'),
+                        type: 'warning'
+                    });
+                }
+            }
         }
     }
 }

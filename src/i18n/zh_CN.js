@@ -118,6 +118,8 @@ const headerList = {
     LoginSuccessful: '登录成功',
     ErrorPrompt: '错误提示',
     IncorrectAccountOrPassword: '帐号或密码不正确',
+    NoTokenProvided:'未提供token',
+    TokenAuthenticationFailed:'token验证失败',
 }
 
 

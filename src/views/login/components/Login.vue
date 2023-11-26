@@ -3,13 +3,13 @@
     <div class="fule_login">
       <el-form :model="ruleForm" ref="ruleForm" class="demo-ruleForm">
         <el-form-item prop="accountNumber"
-                      :rules="[{ required: true, message: this.$t('loginI18n.PleaseInputUsername'), trigger: 'blur' },]">
+          :rules="[{ required: true, message: this.$t('loginI18n.PleaseInputUsername'), trigger: 'blur' },]">
           <el-input v-model="ruleForm.accountNumber" :placeholder="$t('loginI18n.UserName')"></el-input>
         </el-form-item>
         <el-form-item prop="password" class="eye_form"
-                      :rules="[{ required: true, message: this.$t('loginI18n.PleaseInputPassword'), trigger: 'blur' },]">
+          :rules="[{ required: true, message: this.$t('loginI18n.PleaseInputPassword'), trigger: 'blur' },]">
           <el-input v-model="ruleForm.password" :placeholder="$t('loginI18n.PassWord')"
-                    :type="isShow ? 'text' : 'password'"></el-input>
+            :type="isShow ? 'text' : 'password'"></el-input>
           <div class="eye" @click="updateShow">
             <img v-if="isShow" src="@/assets/images/eye_show.png" alt="">
             <img v-else src="@/assets/images/eye_hide.png" alt="">
@@ -24,8 +24,8 @@
       </div>
       <div class="login_btn">
         <el-button type="primary" :loading="loginLoading" @click="login">{{
-            $t('loginI18n.LogIn')
-          }}
+          $t('loginI18n.LogIn')
+        }}
         </el-button>
       </div>
       <div class="other_btn">
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { userLogin } from '@/server/common'
 export default {
   data() {
     return {
@@ -54,26 +55,36 @@ export default {
     }
   },
   methods: {
-    login() {
+    async login() {
       if (!this.checked) {
 
       }
-      if (this.ruleForm.accountNumber != 'admin' || this.ruleForm.password != '123456') {
+      this.loginLoading = true;
+      let params = {
+        username: this.ruleForm.accountNumber,
+        password: this.ruleForm.password
+      }
+      const reslut = await userLogin(params)
+      if (reslut.code == 200) {
+        this.$store.commit('setToken', {
+          token: reslut.token
+        })
+        localStorage.setItem('TOKEN', reslut.token);
+        setTimeout(() => {
+          this.$router.push('./homePage')
+          this.$message({
+            type: 'success',
+            message: this.$t('headerList.LoginSuccessful'),
+          });
+        }, 1000)
+      } else {
         this.$alert(this.$t('headerList.IncorrectAccountOrPassword') + '!', this.$t('headerList.ErrorPrompt'), {
           confirmButtonText: this.$t('headerList.Ok'),
           type: 'warning',
           showClose: false,
         });
-        return
       }
-      this.loginLoading = true;
-      setTimeout(() => {
-        this.$router.push('./homePage')
-        this.$message({
-          type: 'success',
-          message: this.$t('headerList.LoginSuccessful'),
-        });
-      }, 1000)
+      this.loginLoading = false;
     },
     updateShow() {
       this.isShow = !this.isShow;

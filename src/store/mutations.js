@@ -18,5 +18,10 @@ export default {
 
     setLang(state, payload) {
         state.langColor = payload.newLang
+    },
+
+    //存储token
+    setToken(state, payload) {
+        state.token = payload.token
     }
 }

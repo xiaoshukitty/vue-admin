@@ -118,6 +118,8 @@ const headerList = {
     LoginSuccessful: 'Login successful',
     ErrorPrompt: 'Error prompt',
     IncorrectAccountOrPassword: 'Incorrect account or password',
+    NoTokenProvided:'No Token Provided',
+    TokenAuthenticationFailed:'Token Authentication Failed',
 }
 
 const avatarList = [{

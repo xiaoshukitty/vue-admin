@@ -46,14 +46,14 @@ instance.interceptors.response.use(
             return Promise.resolve(response);
         }
         if (response.data.hasOwnProperty("code")) {
-
             if (response.data.code != 200) { //判断接口状态码
                 // this.$message.error({
-                //     message: response.data.msg,
+                //     message: response.data.message,
                 //     type: "error",
                 //     duration: 3000,
                 // })
-                return Promise.reject(response.data.msg);
+                // return Promise.reject(response.data.message);
+                return Promise.resolve(response.data)
             } else if (response.data.code == 200) {
                 return Promise.resolve(response.data)
             } else {

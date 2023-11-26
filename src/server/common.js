@@ -80,4 +80,20 @@ export const delMemoList = (param) => {
     })
 }
 
+//登录
+export const userLogin = (param) =>{
+    return instance({
+        method: 'post',
+        url: 'login/userLogin',
+        data: qs.stringify(param)
+    })
+}
 
+//退出登录
+export const logout = (param) =>{
+    return instance({
+        method: 'post',
+        url: '/login/logout',
+        data: qs.stringify(param)
+    })
+}

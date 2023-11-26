@@ -43,7 +43,8 @@
             </div>
         </div>
         <div class="btn">
-            <el-button @click="submitForm('form')" type="primary">{{ $t('signInI18n.SigIn') }}</el-button>
+            <el-button :loading="loginLoading" @click="submitForm('form')" type="primary">{{ $t('signInI18n.SigIn')
+            }}</el-button>
             <el-button @click="goToBack" plain>{{ $t('signInI18n.BackSigIn') }}</el-button>
         </div>
     </div>
@@ -67,6 +68,7 @@ export default {
             isShowPassword: false,
             isShowConfirmPassword: false,
             checked: '',
+            loginLoading: false,
         }
     },
     methods: {
@@ -81,6 +83,7 @@ export default {
             });
         },
         async siginUsername() {
+            this.loginLoading = true;
             let params = {
                 username: this.signInForm.userName,
                 phoneNumber: this.signInForm.phoneNumber,
@@ -88,11 +91,15 @@ export default {
             }
             const result = await signIn(params);
             if (result.code == 200) {
-                this.$emit('newUserInfo', {
-                    username: this.signInForm.userName,
-                    password: this.signInForm.password,
-                })
+                setTimeout(() => {
+                    this.$emit('newUserInfo', {
+                        username: this.signInForm.userName,
+                        password: this.signInForm.password,
+                    })
+                    this.loginLoading = false;
+                }, 1000)
             }
+            this.loginLoading = false;
         },
         // 获取手机验证码
         getVerificationCode() {

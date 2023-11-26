@@ -60,11 +60,14 @@ export default {
     }
   },
   created() {
-    let { username, password } = this.userInfo;
-    this.ruleForm = {
-      accountNumber: username,
-      password: password,
+    if (JSON.stringify(this.userInfo) != '{}') {
+      let { username, password } = this.userInfo;
+      this.ruleForm = {
+        accountNumber: username,
+        password: password,
+      }
     }
+
   },
   methods: {
     async login() {

@@ -12,9 +12,11 @@
           <div class="title" v-if="isAccountNumber == 'phoneLogin'">{{ $t('phoneLoginI18n.PhoneLogin') }}</div>
           <div class="title" v-if="isAccountNumber == 'qrCodeLogin'">{{ $t('qrCodeI18m.QrCodeLogin') }}</div>
           <Login @skip="skip" :userInfo="userInfo" v-if="isAccountNumber == 'login'" />
+          <!-- <transition name="fade"> -->
           <SigIn @toBack="toBack" @newUserInfo="newUserInfo" v-if="isAccountNumber == 'signIn'" />
           <PhoneLogin @toBack="toBack" v-if="isAccountNumber == 'phoneLogin'" />
           <QrCodeLogin @toBack="toBack" v-if="isAccountNumber == 'qrCodeLogin'" />
+          <!-- </transition> -->
         </div>
       </div>
 
@@ -70,7 +72,6 @@ export default {
 
   .login_panel {
 
-
     .i18n {
       display: flex;
       justify-content: flex-end;
@@ -84,6 +85,7 @@ export default {
         background-color: rgba(255, 255, 255, 0.5);
         margin: 100px 200px;
         padding: 20px;
+        overflow: hidden;
 
         .title {
           font-size: 32px;
@@ -95,4 +97,20 @@ export default {
 
   }
 }
+
+/* 配置过度动画 */
+// .fade-enter-active,
+// .fade-leave-active {
+//   transition: all .8s ease;
+// }
+
+// .slide-fade-leave-active {
+//   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+// }
+
+// .fade-enter,
+// .fade-leave-to {
+//   transform: translateX(10px);
+//   opacity: 0;
+// }
 </style>

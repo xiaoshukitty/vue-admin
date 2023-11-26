@@ -25,7 +25,7 @@ memo.post('/memo/getMemoList', (req, res) => {
         }
         res.send({
             status: 200,
-            msg: '成功',
+            message: '成功',
             data: results
         })
     })
@@ -46,7 +46,7 @@ memo.post('/memo/addMemoList', (req, res) => {
         }
         res.send({
             status: 200,
-            msg: '添加数据成功',
+            message: '添加数据成功',
             data: resulte
         })
     })
@@ -69,7 +69,7 @@ memo.post('/memo/updataMemoList', (req, res) => {
         }
         res.send({
             status: 200,
-            msg: '更新数据成功',
+            message: '更新数据成功',
             data: results
         })
     })
@@ -89,7 +89,7 @@ memo.post('/memo/delMemoList', (req, res) => {
         }
         res.send({
             status: 200,
-            msg: '更新数据成功',
+            message: '更新数据成功',
             data: results
         })
     })

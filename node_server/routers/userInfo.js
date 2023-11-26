@@ -27,7 +27,7 @@ userInfo.post('/userInfo/userList', (req, res) => {
         }
         res.send({
             status: 200,
-            msg: '查询数据成功',
+            message: '查询数据成功',
             data: results
         })
     })
@@ -48,7 +48,7 @@ userInfo.post('/userInfo/add', (req, res) => {
         }
         res.send({
             status: 200,
-            msg: '添加数据成功',
+            message: '添加数据成功',
             data: results
         })
     })
@@ -70,7 +70,7 @@ userInfo.post('/userInfo/updataUserInfo', (req, res) => {
         }
         res.send({
             status: 200,
-            msg: '更新数据成功',
+            message: '更新数据成功',
             data: results
         })
     })
@@ -89,7 +89,7 @@ userInfo.post('/userInfo/deleteUserInfo', (req, res) => {
         }
         res.send({
             status: 200,
-            msg: '删除数据成功',
+            message: '删除数据成功',
             data: results
         })
     })
@@ -110,7 +110,7 @@ module.exports = userInfo;
 //         }
 //         res.send({
 //             code: 200,
-//             msg: '获取数据成功',
+//             message: '获取数据成功',
 //             data: results
 //         })
 //     })

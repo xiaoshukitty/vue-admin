@@ -9,6 +9,8 @@ var cors = require('cors');
 const userInfo = require("./routers/userInfo")
 // 引入 备忘录(memo) 路由
 const memo = require('./routers/memo')
+// 引入 登录(login) 路由
+const login = require('./routers/login')
 
 // 创建服务器对象
 var app = express();
@@ -39,8 +41,11 @@ app.use(bodyParser.urlencoded({
 
 // 使用 用户信息(userInfo) 路由
 app.use(userInfo)
-//使用 备忘录(memo) 路由
+// 使用 备忘录(memo) 路由
 app.use(memo)
+// 使用 登录(login) 路由
+app.use(login)
+
 
 // 指定服务器对象监听的端口号
 app.listen(3000, (err) => {

@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { signIn } from '@/server/common'
 export default {
     data() {
         return {
@@ -72,12 +73,26 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    alert('submit!');
+                    this.siginUsername();
                 } else {
                     console.log('error submit!!');
                     return false;
                 }
             });
+        },
+        async siginUsername() {
+            let params = {
+                username: this.signInForm.userName,
+                phoneNumber: this.signInForm.phoneNumber,
+                password: this.signInForm.password,
+            }
+            const result = await signIn(params);
+            if (result.code == 200) {
+                this.$emit('newUserInfo', {
+                    username: this.signInForm.userName,
+                    password: this.signInForm.password,
+                })
+            }
         },
         // 获取手机验证码
         getVerificationCode() {
@@ -163,6 +178,7 @@ export default {
 
     .btn {
         padding-bottom: 20px;
+
         .el-button {
             width: 100%;
             margin-top: 15px;

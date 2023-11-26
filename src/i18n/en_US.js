@@ -120,10 +120,13 @@ const headerList = {
     IncorrectAccountOrPassword: 'Incorrect account or password',
     NoTokenProvided:'No Token Provided',
     TokenAuthenticationFailed:'Token Authentication Failed',
-    GoodMorning:'GoodMorning',
-    GoodAfternoon:'GoodAfternoon',
-    GoodEvening:'GoodEvening',
-    UserName:'XiaoShu',
+    GoodMorning:'Good Morning',
+    GoodAfternoon:'Good Afternoon',
+    GoodEvening:'Good Evening',
+    UserName:'Xiao Shu',
+    PasswordError:'Password Error',
+    UsernameError:'Username Error',
+    PleaseCheckRememberMe:"Please Chec kRemember Me"
 }
 
 const avatarList = [{

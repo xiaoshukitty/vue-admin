@@ -43,6 +43,11 @@
 <script>
 import { userLogin } from '@/server/common'
 export default {
+  props: {
+    userInfo: {
+      type: Object
+    }
+  },
   data() {
     return {
       ruleForm: {
@@ -54,10 +59,18 @@ export default {
       isShow: false,
     }
   },
+  created() {
+    let { username, password } = this.userInfo;
+    this.ruleForm = {
+      accountNumber: username,
+      password: password,
+    }
+  },
   methods: {
     async login() {
       if (!this.checked) {
-
+        this.$message.error(this.$t('headerList.PleaseCheckRememberMe'));
+        return
       }
       this.loginLoading = true;
       let params = {
@@ -80,11 +93,14 @@ export default {
           this.loginLoading = false;
         }, 1000)
       } else {
-        this.$alert(this.$t('headerList.IncorrectAccountOrPassword') + '!', this.$t('headerList.ErrorPrompt'), {
-          confirmButtonText: this.$t('headerList.Ok'),
-          type: 'warning',
-          showClose: false,
-        });
+        const getResponseCode = (code) => {
+          let responseCode = new Map([
+            [300, this.$t('headerList.UsernameError')],
+            [400, this.$t('headerList.PasswordError')],
+          ]);
+          return responseCode.get(code)
+        }
+        this.$message.error(getResponseCode(reslut.code));
         this.loginLoading = false;
       }
     },
@@ -100,7 +116,7 @@ export default {
       let hours = new Date().getHours()
       if (hours <= 12) {
         message = this.$t('headerList.GoodMorning')
-      } else if (hours <= 18) {
+      } else if (hours < 18) {
         message = this.$t('headerList.GoodAfternoon')
       } else {
         message = this.$t('headerList.GoodEvening')

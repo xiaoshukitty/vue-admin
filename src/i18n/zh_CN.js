@@ -124,6 +124,9 @@ const headerList = {
     GoodAfternoon:'下午好',
     GoodEvening:'晚上好',
     UserName:'小小舒',
+    PasswordError:'密码错误',
+    UsernameError:'账号错误',
+    PleaseCheckRememberMe:'请勾选记住我'
 }
 
 

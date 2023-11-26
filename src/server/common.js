@@ -97,3 +97,12 @@ export const logout = (param) =>{
         data: qs.stringify(param)
     })
 }
+
+// 注册账号
+export const signIn = (param) =>{
+    return instance({
+        method: 'post',
+        url: '/login/signIn',
+        data: qs.stringify(param)
+    })
+}

@@ -21,4 +21,21 @@ body {
   height: 0;
 }
 
+
+//滚动条外观设置
+//滚动条背景宽度
+// ::-webkit-scrollbar{
+//     width: 10px;
+// }
+// //滚动条背景色
+// ::-webkit-scrollbar-track{
+//     background-color: $base-menu-background;
+// }
+// //滚动条样式
+// ::-webkit-scrollbar-thumb{
+//     width: 10px;
+//     background-color: yellow;
+//     border-radius: 10px;
+// }
+
 </style>

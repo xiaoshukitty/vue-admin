@@ -81,7 +81,7 @@ export const delMemoList = (param) => {
 }
 
 //登录
-export const userLogin = (param) =>{
+export const userLogin = (param) => {
     return instance({
         method: 'post',
         url: 'login/userLogin',
@@ -90,7 +90,7 @@ export const userLogin = (param) =>{
 }
 
 //退出登录
-export const logout = (param) =>{
+export const logout = (param) => {
     return instance({
         method: 'post',
         url: '/login/logout',
@@ -99,10 +99,19 @@ export const logout = (param) =>{
 }
 
 // 注册账号
-export const signIn = (param) =>{
+export const signIn = (param) => {
     return instance({
         method: 'post',
         url: '/login/signIn',
+        data: qs.stringify(param)
+    })
+}
+
+// 修改密码
+export const updatePassword = (param) => {
+    return instance({
+        method: 'post',
+        url: '/login/updatePassword',
         data: qs.stringify(param)
     })
 }

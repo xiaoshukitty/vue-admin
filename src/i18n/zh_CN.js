@@ -108,7 +108,7 @@ const operationList = [{
 //头部
 const headerList = {
     name: '全屏',
-    ExitFullScreen:'退出全屏',
+    ExitFullScreen: '退出全屏',
     LogOut: '退出登录',
     Reminder: '温馨提示',
     ConfirmToExitTheSystem: '是否确定退出系统',
@@ -118,15 +118,18 @@ const headerList = {
     LoginSuccessful: '登录成功',
     ErrorPrompt: '错误提示',
     IncorrectAccountOrPassword: '帐号或密码不正确',
-    NoTokenProvided:'未提供token',
-    TokenAuthenticationFailed:'token验证失败',
-    GoodMorning:'上午好',
-    GoodAfternoon:'下午好',
-    GoodEvening:'晚上好',
-    UserName:'小小舒',
-    PasswordError:'密码错误',
-    UsernameError:'账号错误',
-    PleaseCheckRememberMe:'请勾选记住我'
+    NoTokenProvided: '未提供token',
+    TokenAuthenticationFailed: 'token验证失败',
+    GoodMorning: '上午好',
+    GoodAfternoon: '下午好',
+    GoodEvening: '晚上好',
+    UserName: '小小舒',
+    PasswordError: '密码错误',
+    UsernameError: '账号错误',
+    PleaseCheckRememberMe: '请勾选记住我',
+    PasswordChangedSuccessfully:'密码修改成功',
+    UpdatePassword:'修改密码',
+    Update:'修改',
 }
 
 
@@ -150,42 +153,42 @@ const loginI18n = {
 }
 
 //注册
-const signInI18n={
-    SigIn:'注册',
-    Username:'账号',
-    PleaseInputUsername:'请输入账号',
-    Mobile:'手机号',
-    PleaseInputPhoneNumber:'请输入手机号',
-    SMSCode:'短信验证码',
-    GetSMSCode:'获取验证码',
-    ReacquireIn:'后重新获取',
-    PleaseInputSMSCode:'请输入短信验证码',
-    Password:'密码',
-    PleaseInputPassword:'请输入密码',
-    ConfirmPassword:'确认密码',
-    TheTwoPasswordsAreInconsistent:'两次输入密码不一致',
-    IAgreeToThexxxPrivacyPolicy:'我同意xxx隐私政策',
-    BackSigIn:'返回',
+const signInI18n = {
+    SigIn: '注册',
+    Username: '账号',
+    PleaseInputUsername: '请输入账号',
+    Mobile: '手机号',
+    PleaseInputPhoneNumber: '请输入手机号',
+    SMSCode: '短信验证码',
+    GetSMSCode: '获取验证码',
+    ReacquireIn: '后重新获取',
+    PleaseInputSMSCode: '请输入短信验证码',
+    Password: '密码',
+    PleaseInputPassword: '请输入密码',
+    ConfirmPassword: '确认密码',
+    TheTwoPasswordsAreInconsistent: '两次输入密码不一致',
+    IAgreeToThexxxPrivacyPolicy: '我同意xxx隐私政策',
+    BackSigIn: '返回',
 }
 
 // 手机号登录
-const phoneLoginI18n={
-    MobilePhoneNumber:'手机号码',
-    SMSCode:'短信验证码',
-    GetSMSCode:'获取验证码',
-    ReacquireIn:'后重新获取',
-    PleaseInputPhoneNumber:'请输入手机号码',
-    PleaseInputSMSCode:'请输入短信验证码',
-    BackPhoneLogin:'返回',
-    Login:"登录",
-    PhoneLogin:"手机登录"
+const phoneLoginI18n = {
+    MobilePhoneNumber: '手机号码',
+    SMSCode: '短信验证码',
+    GetSMSCode: '获取验证码',
+    ReacquireIn: '后重新获取',
+    PleaseInputPhoneNumber: '请输入手机号码',
+    PleaseInputSMSCode: '请输入短信验证码',
+    BackPhoneLogin: '返回',
+    Login: "登录",
+    PhoneLogin: "手机登录"
 }
 
 // 扫码登录
-const qrCodeI18m={
-    QrCodeLogin:"二维码登录",
-    ScanningTheCodeToCompleteTheLogin:'扫码后点击"确认"，即可完成登录',
-    BackQrCodeLogin:'返回',
+const qrCodeI18m = {
+    QrCodeLogin: "二维码登录",
+    ScanningTheCodeToCompleteTheLogin: '扫码后点击"确认"，即可完成登录',
+    BackQrCodeLogin: '返回',
 }
 
 //导航
@@ -194,13 +197,13 @@ const routerNavigation = [{
     path: 'module',
     id: '0',
     router: '/children',
-    icon:'el-icon-monitor',
+    icon: 'el-icon-monitor',
 }, {
     name: '组件',
     path: 'module',
     id: '1',
     router: '',
-    icon:'el-icon-s-grid',
+    icon: 'el-icon-s-grid',
     children: [{
             name: '打印',
             path: 'print',
@@ -279,14 +282,14 @@ const routerNavigation = [{
             id: '1-13',
             router: '/tree',
         },
-        
+
     ]
 }, {
     name: '地图',
     path: 'map',
     id: '2',
     router: '',
-    icon:'el-icon-map-location',
+    icon: 'el-icon-map-location',
     children: [{
             name: '高德地图',
             path: 'elMap',
@@ -305,7 +308,7 @@ const routerNavigation = [{
     path: 'list',
     id: '3',
     router: '',
-    icon:'el-icon-notebook-2',
+    icon: 'el-icon-notebook-2',
     children: [{
             name: '虚拟列表(固定高度)',
             path: 'virtual',
@@ -323,7 +326,7 @@ const routerNavigation = [{
     name: '接口',
     path: 'api',
     id: '4',
-    icon:'el-icon-orange',
+    icon: 'el-icon-orange',
     children: [{
             name: '备忘录',
             path: 'memorandum',
@@ -337,11 +340,11 @@ const routerNavigation = [{
             router: '/requestText',
         },
     ]
-},{
+}, {
     name: '功能',
     path: 'feature',
     id: '5',
-    icon:'el-icon-message',
+    icon: 'el-icon-message',
     children: [{
             name: '自定义指令',
             path: 'customInstruction',
@@ -373,6 +376,13 @@ const routerNavigation = [{
             router: '/vuex',
         },
     ]
+}, {
+
+    name: '设置',
+    path: 'setting',
+    id: '6',
+    icon: 'el-icon-setting',
+    router: '/setting',
 }]
 
 export {

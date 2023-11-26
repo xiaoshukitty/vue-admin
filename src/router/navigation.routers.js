@@ -216,7 +216,14 @@ export default [{
                 },
                 component: () => import('../views/vuex')
             },
-
+            {
+                path: '/setting',
+                name: 'setting',
+                meta: {
+                    title: '设置',
+                },
+                component: () => import('../views/setting')
+            },
         ]
     },
 

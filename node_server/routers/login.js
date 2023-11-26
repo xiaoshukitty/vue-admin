@@ -143,4 +143,20 @@ login.post('/login/signIn', (req, res) => {
     })
 })
 
+//修改密码
+login.post('/login/updatePassword', (req, res) => {
+    const {
+        password,
+        username
+    } = req.body;
+
+    const sql = "update login set password=? WHERE username=? "
+    db.query(sql, [password, username], (err, result) => {
+        console.log('result---', result);
+        res.json({
+            code: 200,
+            message: '更新成功'
+        });
+    })
+})
 module.exports = login;

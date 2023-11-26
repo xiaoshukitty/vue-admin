@@ -58,7 +58,9 @@
                     </div>
                 </div>
             </div>
-            <router-view />
+            <div class="marin">
+                <router-view />
+            </div>
         </div>
     </div>
 </template>
@@ -143,27 +145,28 @@ export default {
             }
             const reslut = await logout(params)
             if (reslut.code == 200) {
-                localStorage.removeItem('TOKEN')
+                localStorage.removeItem('TOKEN');
+                localStorage.removeItem('USERINFO');
                 sessionStorage.clear();
                 this.$store.commit('setToken', {
                     token: ''
                 })
                 setTimeout(() => {
                     this.$router.push('./')
-                    this.$message({
-                        type: 'success',
-                        message: this.$t('headerList.HasSuccessfullyExited'),
+                    this.$notify({
+                        title: this.$t('headerList.HasSuccessfullyExited'),
+                        type: 'success'
                     });
                 }, 1000)
             } else {
                 if (reslut.code == 401) {
-                    this.$message({
-                        message: this.$t('headerList.NoTokenProvided'),
+                    this.$notify({
+                        title: this.$t('headerList.NoTokenProvided'),
                         type: 'warning'
                     });
                 } else if (reslut.code == 403) {
-                    this.$message({
-                        message: this.$t('headerList.TokenAuthenticationFailed'),
+                    this.$notify({
+                        title: this.$t('headerList.TokenAuthenticationFailed'),
                         type: 'warning'
                     });
                 }
@@ -255,6 +258,11 @@ export default {
                     margin-top: 10px;
                 }
             }
+        }
+
+        .marin {
+            height: calc(100vh - 50px);
+            overflow: auto;
         }
 
     }

@@ -85,6 +85,10 @@ export default {
         this.$store.commit('setToken', {
           token: reslut.token
         })
+        localStorage.setItem('USERINFO', JSON.stringify({
+          username: this.ruleForm.accountNumber,
+          password: this.ruleForm.password
+        }))
         localStorage.setItem('TOKEN', reslut.token);
         setTimeout(() => {
           this.$router.push('./homePage')

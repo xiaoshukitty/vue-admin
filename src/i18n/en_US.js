@@ -108,7 +108,7 @@ const operationList = [{
 //头部
 const headerList = {
     name: 'Full Screen',
-    ExitFullScreen:'Exit Full Screen',
+    ExitFullScreen: 'Exit Full Screen',
     LogOut: 'Log Out',
     Reminder: 'Reminder',
     ConfirmToExitTheSystem: 'Confirm to exit the system',
@@ -118,15 +118,18 @@ const headerList = {
     LoginSuccessful: 'Login successful',
     ErrorPrompt: 'Error prompt',
     IncorrectAccountOrPassword: 'Incorrect account or password',
-    NoTokenProvided:'No Token Provided',
-    TokenAuthenticationFailed:'Token Authentication Failed',
-    GoodMorning:'Good Morning',
-    GoodAfternoon:'Good Afternoon',
-    GoodEvening:'Good Evening',
-    UserName:'Xiao Shu',
-    PasswordError:'Password Error',
-    UsernameError:'Username Error',
-    PleaseCheckRememberMe:"Please Chec kRemember Me"
+    NoTokenProvided: 'No Token Provided',
+    TokenAuthenticationFailed: 'Token Authentication Failed',
+    GoodMorning: 'Good Morning',
+    GoodAfternoon: 'Good Afternoon',
+    GoodEvening: 'Good Evening',
+    UserName: 'Xiao Shu',
+    PasswordError: 'Password Error',
+    UsernameError: 'Username Error',
+    PleaseCheckRememberMe: "Please Chec kRemember Me",
+    PasswordChangedSuccessfully:'Password Changed Successfully',
+    UpdatePassword:'Update Password',
+    Update:'修改',
 }
 
 const avatarList = [{
@@ -149,42 +152,42 @@ const loginI18n = {
 }
 
 //注册
-const signInI18n={
-    SigIn:'Sig In',
-    Username:'Username',
-    PleaseInputUsername:'Please Input Username',
-    Mobile:'Mobile',
-    PleaseInputPhoneNumber:'Please Input Phone Number',
-    SMSCode:'SMS Code',
-    GetSMSCode:'SMS Code',
-    ReacquireIn:'Reacquire In',
-    PleaseInputSMSCode:'Please Input SMS Code',
-    Password:'Password',
-    PleaseInputPassword:'Please Input Password',
-    ConfirmPassword:'Confirm Password',
-    TheTwoPasswordsAreInconsistent:'The two passwords are inconsistent',
-    IAgreeToThexxxPrivacyPolicy:'I agree to the xxx Privacy Policy',
-    BackSigIn:'Back Sig In',
+const signInI18n = {
+    SigIn: 'Sig In',
+    Username: 'Username',
+    PleaseInputUsername: 'Please Input Username',
+    Mobile: 'Mobile',
+    PleaseInputPhoneNumber: 'Please Input Phone Number',
+    SMSCode: 'SMS Code',
+    GetSMSCode: 'SMS Code',
+    ReacquireIn: 'Reacquire In',
+    PleaseInputSMSCode: 'Please Input SMS Code',
+    Password: 'Password',
+    PleaseInputPassword: 'Please Input Password',
+    ConfirmPassword: 'Confirm Password',
+    TheTwoPasswordsAreInconsistent: 'The two passwords are inconsistent',
+    IAgreeToThexxxPrivacyPolicy: 'I agree to the xxx Privacy Policy',
+    BackSigIn: 'Back Sig In',
 }
 
 // 手机号登录
-const phoneLoginI18n={
-    MobilePhoneNumber:'MobilePhoneNumber',
-    SMSCode:'SMS Code',
-    GetSMSCode:'Get SMS Code',
-    ReacquireIn:'Reacquire In',
-    PleaseInputPhoneNumber:'Please Input Phone Number',
-    PleaseInputSMSCode:'Please Input SMS Code',
-    BackPhoneLogin:'Back Sig In',
-    Login:"Login",
-    PhoneLogin:"Phone Login"
+const phoneLoginI18n = {
+    MobilePhoneNumber: 'MobilePhoneNumber',
+    SMSCode: 'SMS Code',
+    GetSMSCode: 'Get SMS Code',
+    ReacquireIn: 'Reacquire In',
+    PleaseInputPhoneNumber: 'Please Input Phone Number',
+    PleaseInputSMSCode: 'Please Input SMS Code',
+    BackPhoneLogin: 'Back Sig In',
+    Login: "Login",
+    PhoneLogin: "Phone Login"
 }
 
 // 扫码登录
-const qrCodeI18m={
-    QrCodeLogin:"Qr Code Login",
-    ScanningTheCodeToCompleteTheLogin:'scanning the code to complete the login',
-    BackQrCodeLogin:'Back Sig In',
+const qrCodeI18m = {
+    QrCodeLogin: "Qr Code Login",
+    ScanningTheCodeToCompleteTheLogin: 'scanning the code to complete the login',
+    BackQrCodeLogin: 'Back Sig In',
 }
 
 
@@ -195,13 +198,13 @@ const routerNavigation = [{
     path: 'module',
     id: '0',
     router: '/children',
-    icon:'el-icon-monitor',
+    icon: 'el-icon-monitor',
 }, {
     name: 'Module',
     path: 'module',
     id: '1',
     router: '',
-    icon:'el-icon-s-grid',
+    icon: 'el-icon-s-grid',
     children: [{
             name: 'Print',
             path: 'print',
@@ -287,7 +290,7 @@ const routerNavigation = [{
     path: 'map',
     id: '2',
     router: '',
-    icon:'el-icon-map-location',
+    icon: 'el-icon-map-location',
     children: [{
             name: 'El Map',
             path: 'elMap',
@@ -306,7 +309,7 @@ const routerNavigation = [{
     path: 'list',
     id: '3',
     router: '',
-    icon:'el-icon-notebook-2',
+    icon: 'el-icon-notebook-2',
     children: [{
             name: 'Virtual',
             path: 'virtual',
@@ -324,7 +327,7 @@ const routerNavigation = [{
     name: 'Api',
     path: 'api',
     id: '4',
-    icon:'el-icon-orange',
+    icon: 'el-icon-orange',
     children: [{
             name: 'Memorandum',
             path: 'memorandum',
@@ -342,7 +345,7 @@ const routerNavigation = [{
     name: 'Feature',
     path: 'feature',
     id: '5',
-    icon:'el-icon-message',
+    icon: 'el-icon-message',
     children: [{
             name: 'Custom Instruction',
             path: 'customInstruction',
@@ -375,6 +378,13 @@ const routerNavigation = [{
         },
 
     ]
+}, {
+
+    name: 'setting',
+    path: 'setting',
+    id: '6',
+    icon: 'el-icon-setting',
+    router: '/setting',
 }]
 
 export {

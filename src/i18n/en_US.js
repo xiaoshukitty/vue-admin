@@ -152,6 +152,8 @@ const loginI18n = {
     SignInWith: 'Sign in with',
     PleaseInputUsername: 'Please input username',
     PleaseInputPassword: 'Please input password',
+    PleaseEnterTheVerificationCode:'Please Enter The Verification Code',
+    VerificationCodeError:"Verification Code Error"
 }
 
 //注册

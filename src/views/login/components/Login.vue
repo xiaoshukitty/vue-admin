@@ -15,6 +15,13 @@
             <img v-else src="@/assets/images/eye_hide.png" alt="">
           </div>
         </el-form-item>
+        <el-form-item class="yzm_box" prop="yzmIpt"
+          :rules="[{ required: true, message: this.$t('loginI18n.PleaseEnterTheVerificationCode'), trigger: 'blur' },]">
+          <div class="container_box">
+            <div id="v_yzm" @click="change"></div>
+            <el-input class="ipt" v-model="ruleForm.yzmIpt" size='small'></el-input>
+          </div>
+        </el-form-item>
       </el-form>
       <div class="remember">
         <div class="remember_me">
@@ -23,7 +30,7 @@
         <div class="disappointment">{{ $t('loginI18n.ForgetPasswodr') }}?</div>
       </div>
       <div class="login_btn">
-        <el-button type="primary" :loading="loginLoading" @click="login">{{
+        <el-button type="primary" :loading="loginLoading" @click="login('ruleForm')">{{
           !loginLoading ? $t('loginI18n.LogIn') : $t('loginI18n.BeLoggingIn')
         }}
         </el-button>
@@ -42,6 +49,7 @@
 
 <script>
 import { userLogin } from '@/server/common'
+import { Code } from '@/utils/verificationCode'
 export default {
   props: {
     userInfo: {
@@ -53,10 +61,14 @@ export default {
       ruleForm: {
         accountNumber: 'admin',
         password: '123456',
+        yzmIpt: '',//输入框绑定的值
       },
       loginLoading: false,
       checked: false,
       isShow: false,
+      yzmCode: '',//验证码
+      picture: '',//图片
+
     }
   },
   created() {
@@ -69,8 +81,26 @@ export default {
     }
 
   },
+  mounted() {
+    this.yzmCode = new Code('v_yzm');
+    this.picture = this.yzmCode.options.code;
+  },
   methods: {
-    async login() {
+    login(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.passVerification();
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+    },
+    async passVerification() {
+      if (this.yzmCode.options.code != this.ruleForm.yzmIpt) {
+        this.$message.error(this.$t('loginI18n.VerificationCodeError'));
+        return
+      }
       if (!this.checked) {
         this.$message.error(this.$t('headerList.PleaseCheckRememberMe'));
         return
@@ -119,6 +149,11 @@ export default {
     toBack(val) {
       this.$emit('skip', val)
     },
+    change() {
+      this.picture = this.yzmCode.options.code.substring(
+        this.yzmCode.options.code.length - 4
+      );
+    },
     // 封装函数：获取 早上｜下午｜上午｜晚上
     getTime() {
       let message = ''
@@ -144,6 +179,23 @@ export default {
   .eye_form {
     position: relative;
   }
+
+  .yzm_box {
+    .container_box {
+      display: flex;
+
+      /deep/.el-input__inner {
+        width: 230px;
+        height: 40px;
+        margin-left: 30px;
+      }
+    }
+
+    /deep/ .el-form-item__error {
+      left: 170px;
+    }
+  }
+
 
   .remember {
     display: flex;

@@ -153,6 +153,8 @@ const loginI18n = {
     SignInWith: '其他方式登录',
     PleaseInputUsername: '请输入账号',
     PleaseInputPassword: '请输入密码',
+    PleaseEnterTheVerificationCode:'请输入验证码',
+    VerificationCodeError:"验证码错误",
 }
 
 //注册

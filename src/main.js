@@ -81,38 +81,38 @@ nprogress.configure({
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
-  console.log('to', to);
   // 刚进来就开启进度条
   nprogress.start()
   if (to.matched.length === 0) { //路由不匹配强制跳转4040
     next('/404')
   }
-  // console.log('from', from);
   if (to.meta.title) {
     document.title = to.meta.title
   }
-  let token
-  const whiteList = ['/login', '404'] //设置白名单
-  if (to.meta.require) { //页面是否需要验证
-    if (token) {
-      if (to.path === '/login') {
-        next('/')
-        // 强制跳转不会经过后置路由守卫，需要手动关闭进度条
-        nprogress.done()
-      } else {
-        next()
-      }
+  let token = localStorage.getItem('TOKEN')
+
+  const whiteList = ['/login', '/404'] //设置白名单
+
+  if (token) {
+    if (to.path === '/login') {
+      next({
+        path: '/children'
+      })
+      // 强制跳转不会经过后置路由守卫，需要手动关闭进度条
+      nprogress.done()
     } else {
-      if (whiteList.includes(to.path)) {
-        next()
-      } else {
-        next('/login')
-        // 强制跳转不会经过后置路由守卫，需要手动关闭进度条
-        nprogress.done()
-      }
+      next()
     }
   } else {
-    next()
+    if (whiteList.includes(to.path)) {
+      next()
+    } else {
+      next({
+        path: '/login',
+      })
+      // 强制跳转不会经过后置路由守卫，需要手动关闭进度条
+      nprogress.done()
+    }
   }
 })
 router.afterEach(() => {

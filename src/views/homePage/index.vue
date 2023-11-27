@@ -81,7 +81,7 @@ export default {
     data() {
         return {
             isCollapse: false,
-            activeIndex: '/children',
+            activeIndex: this.$route.path,
             langName: '简体中文',
             visiblePopover: false,
             fullScreenShow: true,
@@ -117,7 +117,6 @@ export default {
                 return
             }
             this.activeIndex = item.router;
-            console.log(this.activeIndex);
         },
         takeBack() {
             this.isCollapse = !this.isCollapse;
@@ -158,7 +157,7 @@ export default {
             this.$confirm(this.$t('headerList.ConfirmToExitTheSystem') + '?', this.$t('headerList.Reminder'), {
                 confirmButtonText: this.$t('headerList.Ok'),
                 cancelButtonText: this.$t('headerList.Cancel'),
-                showClose:false,
+                showClose: false,
                 type: 'warning'
             }).then(() => {
                 this.logOut();
@@ -178,7 +177,7 @@ export default {
                     token: ''
                 })
                 setTimeout(() => {
-                    this.$router.push('./')
+                    this.$router.push({ path: '/login', query: { redirect: this.$route.path } })
                     this.$notify({
                         title: this.$t('headerList.HasSuccessfullyExited'),
                         type: 'success'
@@ -294,7 +293,7 @@ export default {
     }
 }
 
-.avatar_select{
+.avatar_select {
     cursor: pointer;
 }
 

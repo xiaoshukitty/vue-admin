@@ -110,6 +110,7 @@ export default {
         username: this.ruleForm.accountNumber,
         password: this.ruleForm.password
       }
+      let redirect = this.$route.query.redirect;
       const result = await userLogin(params)
       console.log('result---', result);
       if (result.code == 200) {
@@ -122,7 +123,8 @@ export default {
         }))
         localStorage.setItem('TOKEN', result.token);
         setTimeout(() => {
-          this.$router.push('./homePage')
+          // this.$router.push('./homePage')
+          this.$router.push({ path: redirect || '/homePage' })
           this.$notify({
             title: this.$t('headerList.LoginSuccessful'),
             message: `Hi,${this.getTime()}`,

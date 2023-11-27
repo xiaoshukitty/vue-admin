@@ -4,7 +4,7 @@
             <div slot="header" class="clearfix">
                 <span>{{ $t('headerList.UpdatePassword') }}</span>
             </div>
-            <el-form ref="userForm" :model="userForm" :rules="rules" label-width="180px" style="width: 400px;">
+            <el-form ref="userForm" :model="userForm" :rules="rules" label-width="180px" style="width: 480px;">
                 <el-form-item :label="$t('loginI18n.UserName') + ':'" prop="username">
                     <el-input v-model="userForm.username"></el-input>
                 </el-form-item>

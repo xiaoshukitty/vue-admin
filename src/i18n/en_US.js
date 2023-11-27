@@ -129,7 +129,8 @@ const headerList = {
     PleaseCheckRememberMe: "Please Chec kRemember Me",
     PasswordChangedSuccessfully:'Password Changed Successfully',
     UpdatePassword:'Update Password',
-    Update:'修改',
+    Update:'Update',
+    ServerNotLinked:'Server Not Linked'
 }
 
 const avatarList = [{
@@ -139,6 +140,7 @@ const avatarList = [{
 //登陆页面
 const loginI18n = {
     LogIn: 'Log In',
+    BeLoggingIn:'Be Logging In',
     SingIn: 'Sing In',
     UserName: 'UserName',
     PassWord: "PassWord",

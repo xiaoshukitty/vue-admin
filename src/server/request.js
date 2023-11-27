@@ -75,9 +75,11 @@ instance.interceptors.response.use(
         console.log('retryCount', config.retryCount);
         // 检查我们是否已经超过了总重试次数
         if (config.retryCount > config.retry) {
+            console.log('error----',error.message);
             // 返回错误信息
             // 可做借口请求失败页面跳转
-            return Promise.reject(error);
+            // return Promise.reject(error);
+            return error;
         }
         // 重试次数加1
         config.retryCount++;

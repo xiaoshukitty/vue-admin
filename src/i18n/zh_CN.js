@@ -130,6 +130,7 @@ const headerList = {
     PasswordChangedSuccessfully:'密码修改成功',
     UpdatePassword:'修改密码',
     Update:'修改',
+    ServerNotLinked:'服务器未链接'
 }
 
 
@@ -140,6 +141,7 @@ const avatarList = [{
 //登陆页面
 const loginI18n = {
     LogIn: '登录',
+    BeLoggingIn:'登录中',
     SingIn: '注册',
     UserName: '账号',
     PassWord: "密码",

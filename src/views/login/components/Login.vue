@@ -24,7 +24,7 @@
       </div>
       <div class="login_btn">
         <el-button type="primary" :loading="loginLoading" @click="login">{{
-          $t('loginI18n.LogIn')
+          !loginLoading ? $t('loginI18n.LogIn') : $t('loginI18n.BeLoggingIn')
         }}
         </el-button>
       </div>
@@ -80,16 +80,17 @@ export default {
         username: this.ruleForm.accountNumber,
         password: this.ruleForm.password
       }
-      const reslut = await userLogin(params)
-      if (reslut.code == 200) {
+      const result = await userLogin(params)
+      console.log('result---', result);
+      if (result.code == 200) {
         this.$store.commit('setToken', {
-          token: reslut.token
+          token: result.token
         })
         localStorage.setItem('USERINFO', JSON.stringify({
           username: this.ruleForm.accountNumber,
           password: this.ruleForm.password
         }))
-        localStorage.setItem('TOKEN', reslut.token);
+        localStorage.setItem('TOKEN', result.token);
         setTimeout(() => {
           this.$router.push('./homePage')
           this.$notify({
@@ -104,10 +105,11 @@ export default {
           let responseCode = new Map([
             [300, this.$t('headerList.UsernameError')],
             [400, this.$t('headerList.PasswordError')],
+            ["ERR_NETWORK", this.$t('headerList.ServerNotLinked')]
           ]);
           return responseCode.get(code)
         }
-        this.$message.error(getResponseCode(reslut.code));
+        this.$message.error(getResponseCode(result.code));
         this.loginLoading = false;
       }
     },

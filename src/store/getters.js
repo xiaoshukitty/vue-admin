@@ -4,5 +4,8 @@ export default {
     },
     getLangColor: (state) => {
         return state.langColor;
+    },
+    getRefsh: (state) => {
+        return state.refsh
     }
 }

@@ -23,5 +23,10 @@ export default {
     //存储token
     setToken(state, payload) {
         state.token = payload.token
+    },
+
+    //控制页面刷新
+    updateRefsh(state, payload) {
+        state.refsh = payload.refsh;
     }
 }

@@ -108,6 +108,7 @@ const operationList = [{
 //头部
 const headerList = {
     name: 'Full Screen',
+    Refresh:'Refresh',
     ExitFullScreen: 'Exit Full Screen',
     LogOut: 'Log Out',
     Reminder: 'Reminder',

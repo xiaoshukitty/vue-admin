@@ -108,6 +108,7 @@ const operationList = [{
 //头部
 const headerList = {
     name: '全屏',
+    Refresh:'刷新',
     ExitFullScreen: '退出全屏',
     LogOut: '退出登录',
     Reminder: '温馨提示',

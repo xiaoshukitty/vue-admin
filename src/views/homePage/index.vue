@@ -38,17 +38,21 @@
                     </div>
                 </div>
                 <div class="header">
+                    <div class="header_hover">
+                        <el-tooltip class="item" effect="dark" :content="$t('headerList.Refresh')" placement="bottom">
+                            <el-button icon="el-icon-refresh-right" size="small" circle @click="updateRefsh"></el-button>
+                        </el-tooltip>
+                    </div>
                     <I18nComponents :status="'hover'" />
                     <div class="full_screen header_hover" @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
                         <el-tooltip class="item" effect="dark"
                             :content="fullScreenShow ? $t('headerList.name') : $t('headerList.ExitFullScreen')"
                             placement="bottom">
-                            <img v-if="fullScreenShow" class="header_img" src="@/assets/images/fullScreen.png" alt="">
-                            <img v-else class="header_img" src="@/assets/images/exit_full_screen.png" alt="">
+                            <el-button icon="el-icon-full-screen" size="small" circle></el-button>
                         </el-tooltip>
                     </div>
                     <div class="avatar header_hover">
-                        <el-popover placement="bottom" width="167" trigger="click" v-model="visiblePopover">
+                        <el-popover placement="bottom" width="150" trigger="hover" v-model="visiblePopover">
                             <div class="avatar_select">
                                 <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{ item.value
                                 }}</div>
@@ -59,7 +63,7 @@
                 </div>
             </div>
             <div class="marin">
-                <router-view />
+                <router-view v-if="flag" />
             </div>
         </div>
     </div>
@@ -69,6 +73,7 @@
 import I18nComponents from '@/components/i18nComponents'
 import { searchTree } from '@/utils'
 import { logout } from '@/server/common'
+import { mapGetters, mapState } from 'vuex'
 export default {
     components: {
         I18nComponents
@@ -80,6 +85,7 @@ export default {
             langName: '简体中文',
             visiblePopover: false,
             fullScreenShow: true,
+            flag: true,
         }
     },
     created() {
@@ -88,7 +94,18 @@ export default {
             history.pushState(null, null, document.URL);
         });
     },
+    watch: {
+        getRefsh(newValue, OldValue) {
+            //点击刷新组件销毁
+            this.flag = false;
+            // nextTick 响应式数据发生变化之后，获取更新之后的 dom。不要用延迟器不靠谱
+            this.$nextTick(() => {
+                this.flag = true;
+            })
+        }
+    },
     computed: {
+        ...mapGetters(['getRefsh']),
         text() {
             return searchTree(this.$t('routerNavigation'), this.activeIndex)
         }
@@ -104,6 +121,14 @@ export default {
         },
         takeBack() {
             this.isCollapse = !this.isCollapse;
+        },
+        //刷新
+        updateRefsh() {
+            let flag = this.$store.state.refsh;
+            flag = !flag
+            this.$store.commit('updateRefsh', {
+                refsh: flag
+            })
         },
         //全屏
         toggleFullScreen() {
@@ -133,6 +158,7 @@ export default {
             this.$confirm(this.$t('headerList.ConfirmToExitTheSystem') + '?', this.$t('headerList.Reminder'), {
                 confirmButtonText: this.$t('headerList.Ok'),
                 cancelButtonText: this.$t('headerList.Cancel'),
+                showClose:false,
                 type: 'warning'
             }).then(() => {
                 this.logOut();
@@ -266,6 +292,10 @@ export default {
         }
 
     }
+}
+
+.avatar_select{
+    cursor: pointer;
 }
 
 .header_hover:hover {

@@ -6,6 +6,7 @@ export default [{
             path: '/views/homePage'
         },
         component: () => import('@/views/homePage'),
+        redirect: '/children',
         children: [{
                 path: '/children',
                 meta: {

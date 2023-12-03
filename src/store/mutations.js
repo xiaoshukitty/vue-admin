@@ -28,5 +28,10 @@ export default {
     //控制页面刷新
     updateRefsh(state, payload) {
         state.refsh = payload.refsh;
-    }
+    },
+
+    //修改头像
+    updateProfilePhoto(state, payload) {
+        state.profilePhoto = payload.profilePhoto;
+    },
 }

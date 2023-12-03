@@ -131,7 +131,10 @@ const headerList = {
     PasswordChangedSuccessfully:'Password Changed Successfully',
     UpdatePassword:'Update Password',
     Update:'Update',
-    ServerNotLinked:'Server Not Linked'
+    ServerNotLinked:'Server Not Linked',
+    UpdateProfilePhoto:'Update Profile Photo',
+    UploadPictures:"Upload Pictures",
+    SelectImage:"Select Image",
 }
 
 const avatarList = [{

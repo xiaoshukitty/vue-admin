@@ -131,7 +131,11 @@ const headerList = {
     PasswordChangedSuccessfully:'密码修改成功',
     UpdatePassword:'修改密码',
     Update:'修改',
-    ServerNotLinked:'服务器未链接'
+    ServerNotLinked:'服务器未链接',
+    UpdateProfilePhoto:'修改头像',
+    UploadPictures:"上传",
+    SelectImage:"选择",
+    
 }
 
 

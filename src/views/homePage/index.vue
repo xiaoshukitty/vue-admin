@@ -57,7 +57,7 @@
                                 <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{ item.value
                                 }}</div>
                             </div>
-                            <img class="header_img round" src="@/assets/images/avatar1.jpg" alt="" slot="reference">
+                            <img class="header_img round" :src="profilePhoto" alt="" slot="reference">
                         </el-popover>
                     </div>
                 </div>
@@ -86,6 +86,7 @@ export default {
             visiblePopover: false,
             fullScreenShow: true,
             flag: true,
+            profilePhoto: this.$store.state.profilePhoto
         }
     },
     created() {
@@ -102,10 +103,13 @@ export default {
             this.$nextTick(() => {
                 this.flag = true;
             })
+        },
+        getProfilePhoto(newValue, OldValue) {
+            this.profilePhoto = newValue;
         }
     },
     computed: {
-        ...mapGetters(['getRefsh']),
+        ...mapGetters(['getRefsh', 'getProfilePhoto']),
         text() {
             return searchTree(this.$t('routerNavigation'), this.activeIndex)
         }

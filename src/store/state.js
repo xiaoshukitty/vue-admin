@@ -3,5 +3,6 @@ export default {
     num: 1,
     langColor: 'zh-CN',
     token: localStorage.getItem('TOKEN'),
-    refsh:false,
+    refsh: false,
+    profilePhoto: require('@/assets/images/avatar1.jpg'),
 }

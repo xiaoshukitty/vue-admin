@@ -16,7 +16,6 @@ function Code(options) { // 创建一个图形验证码对象，接收 options �
     }
     this.options.numArr = '0,1,2,3,4,5,6,7,8,9'.split(',')
     this.options.letterArr = getAllLetter()
-    console.log('options参数---', this.options);
 
     this.init()
     this.refresh()
@@ -63,6 +62,9 @@ Code.prototype = {
         for (var i = 1; i <= 4; i++) {
             var txt = txtArr[randomNum(0, txtArr.length)]
             this.options.code += txt
+            if(this.options.code.length>4){
+                this.options.code=this.options.code.substr(-4);
+            }
             ctx.font = randomNum(this.options.height / 2, this.options.height) + 'px SimHei' // 随机生成字体大小
             ctx.fillStyle = randomColor(50, 160) // 随机生成字体颜色
             ctx.shadowOffsetX = randomNum(-3, 3)

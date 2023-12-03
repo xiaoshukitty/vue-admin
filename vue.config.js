@@ -1,5 +1,5 @@
-const UglifyPlugin = require('uglifyjs-webpack-plugin')
-const CompressionPlugin = require('compression-webpack-plugin'); //引入gzip压缩插件
+// const UglifyPlugin = require('uglifyjs-webpack-plugin')
+// const CompressionPlugin = require('compression-webpack-plugin'); //引入gzip压缩插件
 const path = require('path')
 module.exports = {
   publicPath: './', // 公共路径 默认为"/"，建议使用"./"相对路径
@@ -49,7 +49,7 @@ module.exports = {
         //   deleteOriginalAssets: false
         // })
       ],
-      performance: {}
+      performance: {},
     }
   },
   chainWebpack: config => {

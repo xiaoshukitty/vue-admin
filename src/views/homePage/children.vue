@@ -1,15 +1,24 @@
 <template>
-  <div>
-    123
-  </div>
+  <div id="particles"></div>
 </template>
 
 <script>
-export default {
 
+export default {
+  mounted() {
+    let particlesJson = require('../../utils/particles.json')
+    particlesJS('particles', particlesJson,);
+  }
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
+#particles {
+  position: absolute;
+  width: calc(100% - 200px);
+  height:calc(100vh - 50px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
 </style>

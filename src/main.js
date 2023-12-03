@@ -12,6 +12,7 @@ import VueI18n from 'vue-i18n' //国际化
 import echarts from 'echarts' //echarts图表
 import nprogress from "nprogress";
 import "nprogress/nprogress.css";
+import particles from 'particles.js' //引入动画粒子
 
 
 import '@/config/directive.js'
@@ -22,6 +23,7 @@ Vue.use(VueAMap);
 Vue.use(Print); //打印
 Vue.use(VueQriously);
 Vue.use(VueI18n)
+Vue.use(particles)
 
 
 //挂载到Vue实例上面
@@ -89,7 +91,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title
   }
-  let token = localStorage.getItem('TOKEN')
+  let token = sessionStorage.getItem('TOKEN')
 
   const whiteList = ['/login', '/404'] //设置白名单
 

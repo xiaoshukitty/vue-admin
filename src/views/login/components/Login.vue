@@ -64,7 +64,7 @@ export default {
         yzmIpt: '',//输入框绑定的值
       },
       loginLoading: false,
-      checked: false,
+      checked: true,
       isShow: false,
       yzmCode: '',//验证码
       picture: '',//图片
@@ -97,6 +97,8 @@ export default {
       });
     },
     async passVerification() {
+      console.log('1', this.yzmCode.options.code);
+      console.log('2', this.ruleForm.yzmIpt);
       if (this.yzmCode.options.code != this.ruleForm.yzmIpt) {
         this.$message.error(this.$t('loginI18n.VerificationCodeError'));
         return
@@ -121,7 +123,7 @@ export default {
           username: this.ruleForm.accountNumber,
           password: this.ruleForm.password
         }))
-        localStorage.setItem('TOKEN', result.token);
+        sessionStorage.setItem('TOKEN', result.token);
         setTimeout(() => {
           // this.$router.push('./homePage')
           this.$router.push({ path: redirect || '/homePage' })

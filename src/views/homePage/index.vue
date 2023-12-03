@@ -170,11 +170,11 @@ export default {
         },
         async logOut() {
             let params = {
-                token: localStorage.getItem('TOKEN')
+                token: sessionStorage.getItem('TOKEN')
             }
             const reslut = await logout(params)
             if (reslut.code == 200) {
-                localStorage.removeItem('TOKEN');
+                sessionStorage.removeItem('TOKEN');
                 localStorage.removeItem('USERINFO');
                 sessionStorage.clear();
                 this.$store.commit('setToken', {
@@ -243,6 +243,7 @@ export default {
         width: 100%;
 
         .head {
+            box-sizing: border-box;
             height: 50px;
             display: flex;
             justify-content: space-between;

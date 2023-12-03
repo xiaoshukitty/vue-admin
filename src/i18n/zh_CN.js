@@ -388,6 +388,19 @@ const routerNavigation = [{
     id: '6',
     icon: 'el-icon-setting',
     router: '/setting',
+    children:[
+        {
+            name: '修改头像',
+            path: 'editHeadPortrait',
+            id: '6-1',
+            router: '/editHeadPortrait',
+        },{
+            name: '修改密码',
+            path: 'updataPassword',
+            id: '6-2',
+            router: '/updataPassword',
+        }
+    ]
 }]
 
 export {

@@ -390,6 +390,19 @@ const routerNavigation = [{
     id: '6',
     icon: 'el-icon-setting',
     router: '/setting',
+    children:[
+        {
+            name: 'editHeadPortrait',
+            path: 'editHeadPortrait',
+            id: '6-1',
+            router: '/editHeadPortrait',
+        },{
+            name: 'updataPassword',
+            path: 'updataPassword',
+            id: '6-2',
+            router: '/updataPassword',
+        }
+    ]
 }]
 
 export {

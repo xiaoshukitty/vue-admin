@@ -218,12 +218,20 @@ export default [{
                 component: () => import('../views/vuex')
             },
             {
-                path: '/setting',
-                name: 'setting',
+                path: '/editHeadPortrait',
+                name: 'editHeadPortrait',
                 meta: {
-                    title: '设置',
+                    title: '修改头像',
                 },
-                component: () => import('../views/setting')
+                component: () => import('../views/setting/editHeadPortrait')
+            },
+            {
+                path: '/updataPassword',
+                name: 'updataPassword',
+                meta: {
+                    title: '修改密码',
+                },
+                component: () => import('../views/setting/updataPassword')
             },
         ]
     },

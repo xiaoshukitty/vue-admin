@@ -6,7 +6,7 @@
             </div>
             <el-form ref="userForm" :model="userForm" :rules="rules" label-width="180px" style="width: 480px;">
                 <el-form-item :label="$t('loginI18n.UserName') + ':'" prop="username">
-                    <el-input v-model="userForm.username"></el-input>
+                    <el-input disabled v-model="userForm.username"></el-input>
                 </el-form-item>
                 <el-form-item :label="$t('loginI18n.PassWord') + ':'" prop="password">
                     <el-input v-model="userForm.password" autocomplete="off"></el-input>
@@ -83,6 +83,14 @@ export default {
                     title: this.$t('headerList.PasswordChangedSuccessfully'),
                     type: 'success'
                 });
+                this.reset();
+            }
+        },
+        reset() {
+            this.userForm = {
+                username: JSON.parse(localStorage.getItem('USERINFO')).username,
+                confirmPassword: "",
+                password: "",
             }
         }
     }

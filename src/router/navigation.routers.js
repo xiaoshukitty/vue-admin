@@ -24,6 +24,14 @@ export default [{
                 component: () => import('../views/tips/print')
             },
             {
+                path: '/richText',
+                name: 'richText',
+                meta: {
+                    title: '富文本'
+                },
+                component: () => import('../views/tips/richText')
+            },
+            {
                 path: '/copy',
                 name: 'copy',
                 meta: {

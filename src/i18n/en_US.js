@@ -135,6 +135,7 @@ const headerList = {
     UpdateProfilePhoto:'Update Profile Photo',
     UploadPictures:"Upload Pictures",
     SelectImage:"Select Image",
+    RichText:'RichText',
 }
 
 const avatarList = [{
@@ -291,6 +292,13 @@ const routerNavigation = [{
             id: '1-13',
             router: '/tree',
         },
+        {
+            name: 'richText',
+            path: 'richText',
+            id: '1-14',
+            router: '/richText',
+        },
+
 
     ]
 }, {

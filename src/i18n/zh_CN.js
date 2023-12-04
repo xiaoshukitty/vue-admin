@@ -135,7 +135,7 @@ const headerList = {
     UpdateProfilePhoto:'修改头像',
     UploadPictures:"上传",
     SelectImage:"选择",
-    
+    RichText:'富文本'
 }
 
 
@@ -290,6 +290,12 @@ const routerNavigation = [{
             path: 'tree',
             id: '1-13',
             router: '/tree',
+        },
+        {
+            name: '富文本',
+            path: 'richText',
+            id: '1-14',
+            router: '/richText',
         },
 
     ]

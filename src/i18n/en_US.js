@@ -416,6 +416,15 @@ const routerNavigation = [{
     ]
 }]
 
+//代码块 
+const routerChunkI18n = [{
+    name: 'HomePage',
+    path: 'module',
+    id: '0',
+    router: '/children',
+    icon: 'el-icon-monitor',
+}]
+
 export {
     operationList,
     headerList,
@@ -425,4 +434,5 @@ export {
     signInI18n,
     phoneLoginI18n,
     qrCodeI18m,
+    routerChunkI18n
 }

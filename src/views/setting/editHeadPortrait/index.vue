@@ -106,7 +106,7 @@ export default {
 
     .box-card {
         width: 100%;
-        height: calc(100vh - 90px);
+        height: calc(100vh - 140px);
 
         .clearfix:before,
         .clearfix:after {

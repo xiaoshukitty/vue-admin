@@ -108,7 +108,7 @@ const operationList = [{
 //头部
 const headerList = {
     name: '全屏',
-    Refresh:'刷新',
+    Refresh: '刷新',
     ExitFullScreen: '退出全屏',
     LogOut: '退出登录',
     Reminder: '温馨提示',
@@ -128,14 +128,14 @@ const headerList = {
     PasswordError: '密码错误',
     UsernameError: '账号错误',
     PleaseCheckRememberMe: '请勾选记住我',
-    PasswordChangedSuccessfully:'密码修改成功',
-    UpdatePassword:'修改密码',
-    Update:'修改',
-    ServerNotLinked:'服务器未链接',
-    UpdateProfilePhoto:'修改头像',
-    UploadPictures:"上传",
-    SelectImage:"选择",
-    RichText:'富文本'
+    PasswordChangedSuccessfully: '密码修改成功',
+    UpdatePassword: '修改密码',
+    Update: '修改',
+    ServerNotLinked: '服务器未链接',
+    UpdateProfilePhoto: '修改头像',
+    UploadPictures: "上传",
+    SelectImage: "选择",
+    RichText: '富文本'
 }
 
 
@@ -146,7 +146,7 @@ const avatarList = [{
 //登陆页面
 const loginI18n = {
     LogIn: '登录',
-    BeLoggingIn:'登录中',
+    BeLoggingIn: '登录中',
     SingIn: '注册',
     UserName: '账号',
     PassWord: "密码",
@@ -157,8 +157,8 @@ const loginI18n = {
     SignInWith: '其他方式登录',
     PleaseInputUsername: '请输入账号',
     PleaseInputPassword: '请输入密码',
-    PleaseEnterTheVerificationCode:'请输入验证码',
-    VerificationCodeError:"验证码错误",
+    PleaseEnterTheVerificationCode: '请输入验证码',
+    VerificationCodeError: "验证码错误",
 }
 
 //注册
@@ -398,21 +398,27 @@ const routerNavigation = [{
     id: '6',
     icon: 'el-icon-setting',
     router: '/setting',
-    children:[
-        {
-            name: '修改头像',
-            path: 'editHeadPortrait',
-            id: '6-1',
-            router: '/editHeadPortrait',
-        },{
-            name: '修改密码',
-            path: 'updataPassword',
-            id: '6-2',
-            router: '/updataPassword',
-        }
-    ]
+    children: [{
+        name: '修改头像',
+        path: 'editHeadPortrait',
+        id: '6-1',
+        router: '/editHeadPortrait',
+    }, {
+        name: '修改密码',
+        path: 'updataPassword',
+        id: '6-2',
+        router: '/updataPassword',
+    }]
 }]
 
+//代码块 
+const routerChunkI18n = [{
+    name: '首页',
+    path: 'module',
+    id: '0',
+    router: '/children',
+    icon: 'el-icon-monitor',
+}]
 export {
     operationList,
     headerList,
@@ -421,5 +427,6 @@ export {
     routerNavigation,
     signInI18n,
     phoneLoginI18n,
-    qrCodeI18m
+    qrCodeI18m,
+    routerChunkI18n
 }

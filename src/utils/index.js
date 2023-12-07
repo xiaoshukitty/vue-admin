@@ -239,6 +239,35 @@ const searchTree = (nodesArr, searchKey) => {
     return null
 }
 
+/**
+ * 找树形数组中的某一项
+ * @param {Array} nodesArr 
+ * @param {String} searchKey 
+ * @returns 
+ */
+const searchTreeCertain = (nodesArr, searchKey) => {
+    console.log('nodesArr---', nodesArr);
+    console.log('searchKey+++', searchKey);
+    var isGet = false
+    var retNode = null
+
+    function deepSearch(nodesArr, searchKey) {
+        for (var i = 0; i < nodesArr.length; i++) {
+            if (nodesArr[i].children && nodesArr[i].children.length > 0) {
+                deepSearch(nodesArr[i].children, searchKey)
+            }
+            if (searchKey === nodesArr[i].router || isGet) {
+                isGet || (retNode = nodesArr[i])
+                isGet = true
+                break
+            }
+        }
+    }
+    deepSearch(nodesArr, searchKey)
+    return retNode
+}
+
+
 
 /**
  * //数字转中文
@@ -374,5 +403,6 @@ export {
     toChinesnNumber,
     toBigChinesnNumber,
     getTime,
-    generateTitle
+    generateTitle,
+    searchTreeCertain
 }

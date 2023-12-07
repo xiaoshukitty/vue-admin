@@ -63,6 +63,15 @@
                 </div>
             </div>
             <div class="marin">
+                <div class="recordRouteList">
+                    <!-- 路由块 -->
+                    <div v-for="(item, index) in recordRouteList" :key="item.id"
+                        :class="['tag', activeIndexRoute == item.id ? 'active' : '']" @click="routerSkip(item)">
+                        <i v-if="activeIndexRoute == item.id" class="el-icon-star-on"></i>
+                        <span>{{ item.name }}</span>
+                        <i v-if="item.id != 0" class="el-icon-close" @click.stop="closeRoute(item)"></i>
+                    </div>
+                </div>
                 <router-view v-if="flag" />
             </div>
         </div>
@@ -71,12 +80,13 @@
 
 <script>
 import I18nComponents from '@/components/i18nComponents'
-import { searchTree } from '@/utils'
+import { searchTree, searchTreeCertain } from '@/utils'
 import { logout } from '@/server/common'
 import { mapGetters, mapState } from 'vuex'
 export default {
+    name: 'HomePage',
     components: {
-        I18nComponents
+        I18nComponents,
     },
     data() {
         return {
@@ -86,7 +96,11 @@ export default {
             visiblePopover: false,
             fullScreenShow: true,
             flag: true,
-            profilePhoto: this.$store.state.profilePhoto
+            profilePhoto: this.$store.state.profilePhoto,
+            routerList: {},
+            recordRouteList: this.$t('routerChunkI18n'),
+            activeIndexRoute: '0', //记录当前路由块的id
+            activeItem: {}
         }
     },
     created() {
@@ -94,6 +108,9 @@ export default {
         window.addEventListener("popstate", function () {
             history.pushState(null, null, document.URL);
         });
+        let routerGather = searchTreeCertain(this.$t('routerNavigation'), this.$route.path)
+        console.log('routerGather---', routerGather);
+        this.routerPush(routerGather)
     },
     watch: {
         getRefsh(newValue, OldValue) {
@@ -115,12 +132,62 @@ export default {
         }
     },
     methods: {
+        // 横向点击跳转路由
+        routerSkip(val) {
+            this.routerSkipChunk(val);
+        },
+        // 删除指定横向路由块
+        closeRoute(val) {
+            let list
+            this.recordRouteList.forEach(item => {
+                if (item.id == this.activeIndexRoute) {
+                    list = item
+                }
+            })
+            let flag = this.recordRouteList.indexOf(list);
+            let delFlag = this.recordRouteList.indexOf(val);
+
+            let copyRecordRoute = JSON.parse(JSON.stringify(this.recordRouteList))
+            this.recordRouteList = copyRecordRoute.filter(item => {
+                return item.id != val.id
+            })
+            if (flag == delFlag || flag == -1) {
+                let Obj = this.recordRouteList[this.recordRouteList.length - 1];
+                this.activeIndexRoute = this.recordRouteList[this.recordRouteList.length - 1].id;
+                this.routerSkipChunk(Obj)
+            }
+        },
+        //路由块挑战方法
+        routerSkipChunk(val) {
+            this.$router.push(val.router)
+            this.activeIndexRoute = val.id;
+            this.activeIndex = val.router;
+            this.activeItem = val;
+        },
+        deWeight(arr, newArr) {
+            for (let i = 0; i <= arr.length; i++) {
+                if (JSON.stringify(arr[i]) == JSON.stringify(newArr)) {
+                    return -1
+                }
+            }
+            return 1
+        },
+        //记录路由块
+        routerPush(newValue) {
+            let flag = this.deWeight(this.recordRouteList, newValue)
+            this.activeItem = newValue;
+            this.activeIndexRoute = newValue.id;
+            if (flag == 1) {
+                this.recordRouteList.push(newValue)
+            }
+        },
+        //路由切换
         handleSelect(item) {
-            console.log(item);
             if (item.router == this.activeIndex) {
                 return
             }
             this.activeIndex = item.router;
+            this.routerPush(item)
         },
         takeBack() {
             this.isCollapse = !this.isCollapse;
@@ -240,7 +307,7 @@ export default {
     }
 
     .right {
-        width: 100%;
+        width: calc(100% - 200px);
 
         .head {
             box-sizing: border-box;
@@ -270,7 +337,7 @@ export default {
                 justify-content: flex-end;
                 height: 50px;
                 line-height: 50px;
-                padding-right: 100px;
+                padding-right: 50px;
 
 
                 >div {
@@ -311,5 +378,36 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
+}
+
+.recordRouteList {
+    box-sizing: border-box;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid #eee;
+    overflow-x: scroll;
+
+
+    .tag {
+        padding: 0 10px;
+        cursor: pointer;
+        border: 1px solid #d8dce5;
+        color: rgb(153, 153, 153);
+        cursor: pointer;
+        height: 30px;
+        line-height: 30px;
+        margin-left: 10px;
+
+        .el-icon-close {
+            margin-left: 5px;
+        }
+    }
+
+    .active {
+        background-color: yellowgreen;
+        color: #fff;
+    }
 }
 </style>

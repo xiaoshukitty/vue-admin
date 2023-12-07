@@ -107,7 +107,6 @@ export default {
             //     );
             // }, 0);
             // this.capture()
-
         },
         // canvas 画图
         xianDuan() {

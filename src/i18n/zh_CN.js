@@ -139,6 +139,9 @@ const headerList = {
     Signature:"签名",
     Eliminate:"清除",
     Download:'下载',
+    VideoDisplay:'视频播放',
+    Share:'分享',
+
 }
 
 
@@ -399,7 +402,7 @@ const routerNavigation = [{
     path: 'module',
     id: '7',
     router: '/rests',
-    icon: 'el-icon-monitor',
+    icon: 'el-icon-s-platform',
     children: [{
             name: '抽奖',
             path: 'lottery',
@@ -417,6 +420,17 @@ const routerNavigation = [{
             path: 'signature',
             id: '7-3',
             router: '/signature',
+        },
+        {
+            name: '视频播放',
+            path: 'videoDisplay',
+            id: '7-4',
+            router: '/videoDisplay',
+        }, {
+            name: '分享',
+            path: 'share',
+            id: '7-5',
+            router: '/share',
         }
     ]
 }, {

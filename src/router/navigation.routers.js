@@ -265,6 +265,23 @@ export default [{
                 },
                 component: () => import('../views/rests/signature')
             },
+            {
+                path: '/videoDisplay',
+                name: 'videoDisplay',
+                meta: {
+                    title: '视频播放',
+                },
+                component: () => import('../views/rests/videoDisplay')
+            },
+            ,
+            {
+                path: '/share',
+                name: 'share',
+                meta: {
+                    title: '分享',
+                },
+                component: () => import('../views/rests/share')
+            },
         ]
     },
 

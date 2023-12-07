@@ -139,6 +139,8 @@ const headerList = {
     Signature:"Signature",
     Eliminate:"liminate",
     Download:'Download',
+    VideoDisplay:'VideoDisplay',
+    Share:'Share',
 }
 
 const avatarList = [{
@@ -403,7 +405,7 @@ const routerNavigation = [{
         path: 'module',
         id: '7',
         router: '/rests',
-        icon: 'el-icon-monitor',
+        icon: 'el-icon-s-platform',
         children: [{
                 name: 'lottery',
                 path: 'lottery',
@@ -421,6 +423,17 @@ const routerNavigation = [{
                 path: 'signature',
                 id: '7-3',
                 router: '/signature',
+            },
+            {
+                name: 'videoDisplay',
+                path: 'videoDisplay',
+                id: '7-4',
+                router: '/videoDisplay',
+            }, {
+                name: 'share',
+                path: 'share',
+                id: '7-5',
+                router: '/share',
             }
         ]
     }, {

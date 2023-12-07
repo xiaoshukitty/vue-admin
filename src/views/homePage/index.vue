@@ -98,12 +98,13 @@ export default {
             flag: true,
             profilePhoto: this.$store.state.profilePhoto,
             routerList: {},
-            recordRouteList: this.$t('routerChunkI18n'),
+            recordRouteList: [],
             activeIndexRoute: '0', //记录当前路由块的id
             activeItem: {}
         }
     },
     created() {
+        this.recordRouteList = this.$t('routerChunkI18n')
         history.pushState(null, null, document.URL);
         window.addEventListener("popstate", function () {
             history.pushState(null, null, document.URL);

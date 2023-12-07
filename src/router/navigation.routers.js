@@ -241,6 +241,30 @@ export default [{
                 },
                 component: () => import('../views/setting/updataPassword')
             },
+            {
+                path: '/lottery',
+                name: 'lottery',
+                meta: {
+                    title: '其他',
+                },
+                component: () => import('../views/rests/lottery')
+            },
+            {
+                path: '/sliderVerification',
+                name: 'sliderVerification',
+                meta: {
+                    title: '滑块验证',
+                },
+                component: () => import('../views/rests/sliderVerification')
+            },
+            {
+                path: '/signature',
+                name: 'signature',
+                meta: {
+                    title: '签名',
+                },
+                component: () => import('../views/rests/signature')
+            },
         ]
     },
 

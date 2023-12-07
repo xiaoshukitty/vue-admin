@@ -60,7 +60,6 @@ export default {
                     tainttest: true,
                 }).then((canvas) => {
                     this.imgURLs = canvas.toDataURL();
-                    // console.log('this.imgURLs', this.imgURLs);
                 });
             }, 100);
         },

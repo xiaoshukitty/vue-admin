@@ -135,7 +135,10 @@ const headerList = {
     UpdateProfilePhoto: '修改头像',
     UploadPictures: "上传",
     SelectImage: "选择",
-    RichText: '富文本'
+    RichText: '富文本',
+    Signature:"签名",
+    Eliminate:"清除",
+    Download:'下载',
 }
 
 
@@ -392,6 +395,31 @@ const routerNavigation = [{
         },
     ]
 }, {
+    name: '其他',
+    path: 'module',
+    id: '7',
+    router: '/rests',
+    icon: 'el-icon-monitor',
+    children: [{
+            name: '抽奖',
+            path: 'lottery',
+            id: '7-1',
+            router: '/lottery',
+        },
+        {
+            name: '滑块验证',
+            path: 'sliderVerification',
+            id: '7-2',
+            router: '/sliderVerification',
+        },
+        {
+            name: '签名',
+            path: 'signature',
+            id: '7-3',
+            router: '/signature',
+        }
+    ]
+}, {
 
     name: '设置',
     path: 'setting',
@@ -409,7 +437,7 @@ const routerNavigation = [{
         id: '6-2',
         router: '/updataPassword',
     }]
-}]
+}, ]
 
 //代码块 
 const routerChunkI18n = [{

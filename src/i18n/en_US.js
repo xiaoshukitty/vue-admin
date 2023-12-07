@@ -108,7 +108,7 @@ const operationList = [{
 //头部
 const headerList = {
     name: 'Full Screen',
-    Refresh:'Refresh',
+    Refresh: 'Refresh',
     ExitFullScreen: 'Exit Full Screen',
     LogOut: 'Log Out',
     Reminder: 'Reminder',
@@ -128,14 +128,17 @@ const headerList = {
     PasswordError: 'Password Error',
     UsernameError: 'Username Error',
     PleaseCheckRememberMe: "Please Chec kRemember Me",
-    PasswordChangedSuccessfully:'Password Changed Successfully',
-    UpdatePassword:'Update Password',
-    Update:'Update',
-    ServerNotLinked:'Server Not Linked',
-    UpdateProfilePhoto:'Update Profile Photo',
-    UploadPictures:"Upload Pictures",
-    SelectImage:"Select Image",
-    RichText:'RichText',
+    PasswordChangedSuccessfully: 'Password Changed Successfully',
+    UpdatePassword: 'Update Password',
+    Update: 'Update',
+    ServerNotLinked: 'Server Not Linked',
+    UpdateProfilePhoto: 'Update Profile Photo',
+    UploadPictures: "Upload Pictures",
+    SelectImage: "Select Image",
+    RichText: 'RichText',
+    Signature:"Signature",
+    Eliminate:"liminate",
+    Download:'Download',
 }
 
 const avatarList = [{
@@ -145,7 +148,7 @@ const avatarList = [{
 //登陆页面
 const loginI18n = {
     LogIn: 'Log In',
-    BeLoggingIn:'Be Logging In',
+    BeLoggingIn: 'Be Logging In',
     SingIn: 'Sing In',
     UserName: 'UserName',
     PassWord: "PassWord",
@@ -156,8 +159,8 @@ const loginI18n = {
     SignInWith: 'Sign in with',
     PleaseInputUsername: 'Please input username',
     PleaseInputPassword: 'Please input password',
-    PleaseEnterTheVerificationCode:'Please Enter The Verification Code',
-    VerificationCodeError:"Verification Code Error"
+    PleaseEnterTheVerificationCode: 'Please Enter The Verification Code',
+    VerificationCodeError: "Verification Code Error"
 }
 
 //注册
@@ -203,218 +206,243 @@ const qrCodeI18m = {
 
 //导航
 const routerNavigation = [{
-    name: 'HomePage',
-    path: 'module',
-    id: '0',
-    router: '/children',
-    icon: 'el-icon-monitor',
-}, {
-    name: 'Module',
-    path: 'module',
-    id: '1',
-    router: '',
-    icon: 'el-icon-s-grid',
-    children: [{
-            name: 'Print',
-            path: 'print',
-            id: '1-1',
-            router: '/print'
-        },
-        {
-            name: 'Copy',
-            path: 'copy',
-            id: '1-2',
-            router: '/copy',
-        },
-        {
-            name: 'BarCode',
-            path: 'barCode',
-            id: '1-3',
-            router: '/barCode',
-        },
-        {
-            name: 'Drag',
-            path: 'drag',
-            id: '1-4',
-            router: '/drag',
-        },
-        {
-            name: 'Vuedraggable',
-            path: 'vuedraggable',
-            id: '1-5',
-            router: '/vuedraggable',
-        },
-        {
-            name: 'DragSort',
-            path: 'dragSort',
-            id: '1-6',
-            router: '/dragSort',
-        },
-        {
-            name: 'Verification Code',
-            path: 'verificationCode',
-            id: '1-7',
-            router: '/verificationCode',
-        },
-        {
-            name: 'Canvas',
-            path: 'canvas',
-            id: '1-8',
-            router: '/canvas',
-        },
-        {
-            name: 'Img Preview',
-            path: 'imgPreview',
-            id: '1-9',
-            router: '/imgPreview',
-        },
-        {
-            name: 'Render',
-            path: 'render',
-            id: '1-10',
-            router: '/render',
-        },
-        {
-            name: 'Echarts',
-            path: 'echarts',
-            id: '1-11',
-            router: '/echarts',
-        },
-        {
-            name: 'Waterfall Flow',
-            path: 'waterfallFlow',
-            id: '1-12',
-            router: '/waterfallFlow',
-        },
-        {
-            name: 'Tree',
-            path: 'tree',
-            id: '1-13',
-            router: '/tree',
-        },
-        {
-            name: 'richText',
-            path: 'richText',
-            id: '1-14',
-            router: '/richText',
-        },
+        name: 'HomePage',
+        path: 'module',
+        id: '0',
+        router: '/children',
+        icon: 'el-icon-monitor',
+    }, {
+        name: 'Module',
+        path: 'module',
+        id: '1',
+        router: '',
+        icon: 'el-icon-s-grid',
+        children: [{
+                name: 'Print',
+                path: 'print',
+                id: '1-1',
+                router: '/print'
+            },
+            {
+                name: 'Copy',
+                path: 'copy',
+                id: '1-2',
+                router: '/copy',
+            },
+            {
+                name: 'BarCode',
+                path: 'barCode',
+                id: '1-3',
+                router: '/barCode',
+            },
+            {
+                name: 'Drag',
+                path: 'drag',
+                id: '1-4',
+                router: '/drag',
+            },
+            {
+                name: 'Vuedraggable',
+                path: 'vuedraggable',
+                id: '1-5',
+                router: '/vuedraggable',
+            },
+            {
+                name: 'DragSort',
+                path: 'dragSort',
+                id: '1-6',
+                router: '/dragSort',
+            },
+            {
+                name: 'Verification Code',
+                path: 'verificationCode',
+                id: '1-7',
+                router: '/verificationCode',
+            },
+            {
+                name: 'Canvas',
+                path: 'canvas',
+                id: '1-8',
+                router: '/canvas',
+            },
+            {
+                name: 'Img Preview',
+                path: 'imgPreview',
+                id: '1-9',
+                router: '/imgPreview',
+            },
+            {
+                name: 'Render',
+                path: 'render',
+                id: '1-10',
+                router: '/render',
+            },
+            {
+                name: 'Echarts',
+                path: 'echarts',
+                id: '1-11',
+                router: '/echarts',
+            },
+            {
+                name: 'Waterfall Flow',
+                path: 'waterfallFlow',
+                id: '1-12',
+                router: '/waterfallFlow',
+            },
+            {
+                name: 'Tree',
+                path: 'tree',
+                id: '1-13',
+                router: '/tree',
+            },
+            {
+                name: 'richText',
+                path: 'richText',
+                id: '1-14',
+                router: '/richText',
+            },
 
 
-    ]
-}, {
-    name: 'Map',
-    path: 'map',
-    id: '2',
-    router: '',
-    icon: 'el-icon-map-location',
-    children: [{
-            name: 'El Map',
-            path: 'elMap',
-            id: '2-1',
-            router: '/elMap',
-        },
-        {
-            name: 'QQ Map',
-            path: 'qqMap',
-            id: '2-2',
-            router: '/qqMap',
-        },
-    ]
-}, {
-    name: 'List',
-    path: 'list',
-    id: '3',
-    router: '',
-    icon: 'el-icon-notebook-2',
-    children: [{
-            name: 'Virtual',
-            path: 'virtual',
-            id: '3-1',
-            router: '/virtual',
-        },
-        {
-            name: 'Virtual List',
-            path: 'virtualList',
-            id: '3-2',
-            router: '/virtualList',
-        },
-    ]
-}, {
-    name: 'Api',
-    path: 'api',
-    id: '4',
-    icon: 'el-icon-orange',
-    children: [{
-            name: 'Memorandum',
-            path: 'memorandum',
-            id: '4-1',
-            router: '/memorandum',
-        },
-        {
-            name: 'Request Text',
-            path: 'requestText',
-            id: '4-2',
-            router: '/requestText',
-        },
-    ]
-}, {
-    name: 'Feature',
-    path: 'feature',
-    id: '5',
-    icon: 'el-icon-message',
-    children: [{
-            name: 'Custom Instruction',
-            path: 'customInstruction',
-            id: '5-1',
-            router: '/customInstruction',
-        },
-        {
-            name: 'Date Conversion',
-            path: 'dateConversion',
-            id: '5-2',
-            router: '/dateConversion',
-        },
-        {
-            name: 'Table Search',
-            path: 'tableSearch',
-            id: '5-3',
-            router: '/tableSearch',
-        },
-        {
-            name: 'Methods',
-            path: 'methods',
-            id: '5-4',
-            router: '/methods',
-        },
-        {
-            name: 'Vuex',
-            path: 'vuex',
-            id: '5-5',
-            router: '/vuex',
-        },
+        ]
+    }, {
+        name: 'Map',
+        path: 'map',
+        id: '2',
+        router: '',
+        icon: 'el-icon-map-location',
+        children: [{
+                name: 'El Map',
+                path: 'elMap',
+                id: '2-1',
+                router: '/elMap',
+            },
+            {
+                name: 'QQ Map',
+                path: 'qqMap',
+                id: '2-2',
+                router: '/qqMap',
+            },
+        ]
+    }, {
+        name: 'List',
+        path: 'list',
+        id: '3',
+        router: '',
+        icon: 'el-icon-notebook-2',
+        children: [{
+                name: 'Virtual',
+                path: 'virtual',
+                id: '3-1',
+                router: '/virtual',
+            },
+            {
+                name: 'Virtual List',
+                path: 'virtualList',
+                id: '3-2',
+                router: '/virtualList',
+            },
+        ]
+    }, {
+        name: 'Api',
+        path: 'api',
+        id: '4',
+        icon: 'el-icon-orange',
+        children: [{
+                name: 'Memorandum',
+                path: 'memorandum',
+                id: '4-1',
+                router: '/memorandum',
+            },
+            {
+                name: 'Request Text',
+                path: 'requestText',
+                id: '4-2',
+                router: '/requestText',
+            },
+        ]
+    }, {
+        name: 'Feature',
+        path: 'feature',
+        id: '5',
+        icon: 'el-icon-message',
+        children: [{
+                name: 'Custom Instruction',
+                path: 'customInstruction',
+                id: '5-1',
+                router: '/customInstruction',
+            },
+            {
+                name: 'Date Conversion',
+                path: 'dateConversion',
+                id: '5-2',
+                router: '/dateConversion',
+            },
+            {
+                name: 'Table Search',
+                path: 'tableSearch',
+                id: '5-3',
+                router: '/tableSearch',
+            },
+            {
+                name: 'Methods',
+                path: 'methods',
+                id: '5-4',
+                router: '/methods',
+            },
+            {
+                name: 'Vuex',
+                path: 'vuex',
+                id: '5-5',
+                router: '/vuex',
+            },
 
-    ]
-}, {
+        ]
+    },
+    {
+        name: 'rests',
+        path: 'module',
+        id: '7',
+        router: '/rests',
+        icon: 'el-icon-monitor',
+        children: [{
+                name: 'lottery',
+                path: 'lottery',
+                id: '7-1',
+                router: '/lottery',
+            },
+            {
+                name: 'sliderVerification',
+                path: 'sliderVerification',
+                id: '7-2',
+                router: '/sliderVerification',
+            },
+            {
+                name: 'signature',
+                path: 'signature',
+                id: '7-3',
+                router: '/signature',
+            }
+        ]
+    }, {
 
-    name: 'setting',
-    path: 'setting',
-    id: '6',
-    icon: 'el-icon-setting',
-    router: '/setting',
-    children:[
-        {
+        name: 'setting',
+        path: 'setting',
+        id: '6',
+        icon: 'el-icon-setting',
+        router: '/setting',
+        children: [{
             name: 'editHeadPortrait',
             path: 'editHeadPortrait',
             id: '6-1',
             router: '/editHeadPortrait',
-        },{
+        }, {
             name: 'updataPassword',
             path: 'updataPassword',
             id: '6-2',
             router: '/updataPassword',
-        }
-    ]
-}]
+        }]
+    }
+]
 
 //代码块 
 const routerChunkI18n = [{

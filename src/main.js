@@ -13,6 +13,8 @@ import echarts from 'echarts' //echarts图表
 import nprogress from "nprogress";
 import "nprogress/nprogress.css";
 import particles from 'particles.js' //引入动画粒子
+import VueLuckyCanvas from '@lucky-canvas/vue' //抽奖插件
+import SlideVerify from 'vue-monoplasty-slide-verify'; //滑块验证
 
 
 import '@/config/directive.js'
@@ -24,7 +26,8 @@ Vue.use(Print); //打印
 Vue.use(VueQriously);
 Vue.use(VueI18n)
 Vue.use(particles)
-
+Vue.use(VueLuckyCanvas)
+Vue.use(SlideVerify)
 
 //挂载到Vue实例上面
 Vue.prototype.Clipboard = Clipboard

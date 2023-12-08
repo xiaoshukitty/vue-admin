@@ -28,41 +28,43 @@
         </div>
         <div class="right">
             <!-- header头部 -->
-            <div class="head">
-                <div class="head_left">
-                    <div class="take_back header_hover" @click="takeBack">
-                        <img src="@/assets/images/take_back.png" alt="">
+            <div>
+                <div class="head">
+                    <div class="head_left">
+                        <div class="take_back header_hover" @click="takeBack">
+                            <img src="@/assets/images/take_back.png" alt="">
+                        </div>
+                        <div style="color: #999;">
+                            {{ text }}
+                        </div>
                     </div>
-                    <div style="color: #999;">
-                        {{ text }}
+                    <div class="header">
+                        <div class="header_hover">
+                            <el-tooltip class="item" effect="dark" :content="$t('headerList.Refresh')" placement="bottom">
+                                <el-button icon="el-icon-refresh-right" size="small" circle
+                                    @click="updateRefsh"></el-button>
+                            </el-tooltip>
+                        </div>
+                        <I18nComponents :status="'hover'" />
+                        <div class="full_screen header_hover"
+                            @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
+                            <el-tooltip class="item" effect="dark"
+                                :content="fullScreenShow ? $t('headerList.name') : $t('headerList.ExitFullScreen')"
+                                placement="bottom">
+                                <el-button icon="el-icon-full-screen" size="small" circle></el-button>
+                            </el-tooltip>
+                        </div>
+                        <div class="avatar header_hover">
+                            <el-popover placement="bottom" width="150" trigger="hover" v-model="visiblePopover">
+                                <div class="avatar_select">
+                                    <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{ item.value
+                                    }}</div>
+                                </div>
+                                <img class="header_img round" :src="profilePhoto" alt="" slot="reference">
+                            </el-popover>
+                        </div>
                     </div>
                 </div>
-                <div class="header">
-                    <div class="header_hover">
-                        <el-tooltip class="item" effect="dark" :content="$t('headerList.Refresh')" placement="bottom">
-                            <el-button icon="el-icon-refresh-right" size="small" circle @click="updateRefsh"></el-button>
-                        </el-tooltip>
-                    </div>
-                    <I18nComponents :status="'hover'" />
-                    <div class="full_screen header_hover" @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
-                        <el-tooltip class="item" effect="dark"
-                            :content="fullScreenShow ? $t('headerList.name') : $t('headerList.ExitFullScreen')"
-                            placement="bottom">
-                            <el-button icon="el-icon-full-screen" size="small" circle></el-button>
-                        </el-tooltip>
-                    </div>
-                    <div class="avatar header_hover">
-                        <el-popover placement="bottom" width="150" trigger="hover" v-model="visiblePopover">
-                            <div class="avatar_select">
-                                <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{ item.value
-                                }}</div>
-                            </div>
-                            <img class="header_img round" :src="profilePhoto" alt="" slot="reference">
-                        </el-popover>
-                    </div>
-                </div>
-            </div>
-            <div class="marin">
                 <div class="recordRouteList">
                     <!-- 路由块 -->
                     <div v-for="(item, index) in recordRouteList" :key="item.id"
@@ -72,6 +74,10 @@
                         <i v-if="item.id != 0" class="el-icon-close" @click.stop="closeRoute(item)"></i>
                     </div>
                 </div>
+            </div>
+
+            <div class="marin">
+
                 <router-view v-if="flag" />
             </div>
         </div>
@@ -276,7 +282,8 @@ export default {
 <style lang="less" scoped>
 .home_page {
     display: flex;
-    height: calc(100vh - 50px) !important;
+    // height: calc(100vh - 100px) !important;
+    height: 100vh !important;
 
     .left {
         /*设置动画过渡 和<el-menu>内部的一样 */
@@ -359,7 +366,7 @@ export default {
         }
 
         .marin {
-            height: calc(100vh - 50px);
+            height: calc(100vh - 100px);
             overflow: auto;
         }
 

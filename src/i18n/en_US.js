@@ -466,6 +466,14 @@ const routerChunkI18n = [{
     icon: 'el-icon-monitor',
 }]
 
+// 标题
+const titleI18n ={
+    ChinaMap:'China Map',
+    LineChart:'Line Chart',
+    ColumnDiagram:'Column Diagram',
+    Pie:'Pie',
+}
+
 export {
     operationList,
     headerList,
@@ -475,5 +483,6 @@ export {
     signInI18n,
     phoneLoginI18n,
     qrCodeI18m,
-    routerChunkI18n
+    routerChunkI18n,
+    titleI18n
 }

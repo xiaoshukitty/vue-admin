@@ -16,7 +16,7 @@ export default {
 #particles {
   position: absolute;
   width: calc(100% - 200px);
-  height:calc(100vh - 50px);
+  height:calc(100vh - 100px);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;

@@ -42,10 +42,8 @@ export default {
 
 <style lang="less" scoped>
 .EchartsComponents {
-    width: 900px;
-    height: 400px;
-    margin: 0px 30px;
-
+    width: 100%;
+    height: 350px;
     div {
         width: 100%;
         height: 100%;

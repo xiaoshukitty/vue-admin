@@ -1,6 +1,6 @@
 <template>
     <div class="EchartsComponents">
-        <div id="echart"></div>
+        <div id="echartPie"></div>
     </div>
 </template>
 
@@ -17,31 +17,12 @@ export default {
     },
     methods: {
         pieFigure() {
-            var myChart = echarts.init(document.getElementById('echart'));
+            var myChart = echarts.init(document.getElementById('echartPie'));
             // 指定图表的配置项和数据
             var option = {
-                title: {
-                    text: ' ',
-                    subtext: ' ',
-                    left: 'center'
-                },
-                tooltip: {
-                    trigger: 'item',
-                    formatter: '{a} <br/>{b} : {c} ({d}%)'
-                },
+
                 legend: {
-                    left: 'center',
-                    top: 'bottom',
-                    data: [
-                        'rose1',
-                        'rose2',
-                        'rose3',
-                        'rose4',
-                        'rose5',
-                        'rose6',
-                        'rose7',
-                        'rose8'
-                    ]
+                    top: 'bottom'
                 },
                 toolbox: {
                     show: true,
@@ -54,51 +35,23 @@ export default {
                 },
                 series: [
                     {
-                        name: 'Radius Mode',
+                        name: 'Nightingale Chart',
                         type: 'pie',
-                        radius: [20, 140],
-                        center: ['25%', '50%'],
-                        roseType: 'radius',
+                        radius: [10, 100],
+                        center: ['50%', '50%'],
+                        roseType: 'area',
                         itemStyle: {
-                            borderRadius: 5
-                        },
-                        label: {
-                            show: false
-                        },
-                        emphasis: {
-                            label: {
-                                show: true
-                            }
+                            borderRadius: 8
                         },
                         data: [
                             { value: 40, name: 'rose 1' },
-                            { value: 33, name: 'rose 2' },
-                            { value: 28, name: 'rose 3' },
-                            { value: 22, name: 'rose 4' },
-                            { value: 20, name: 'rose 5' },
-                            { value: 15, name: 'rose 6' },
-                            { value: 12, name: 'rose 7' },
-                            { value: 10, name: 'rose 8' }
-                        ]
-                    },
-                    {
-                        name: 'Area Mode',
-                        type: 'pie',
-                        radius: [20, 140],
-                        center: ['75%', '50%'],
-                        roseType: 'area',
-                        itemStyle: {
-                            borderRadius: 5
-                        },
-                        data: [
-                            { value: 30, name: 'rose 1' },
-                            { value: 28, name: 'rose 2' },
-                            { value: 26, name: 'rose 3' },
-                            { value: 24, name: 'rose 4' },
-                            { value: 22, name: 'rose 5' },
-                            { value: 20, name: 'rose 6' },
-                            { value: 18, name: 'rose 7' },
-                            { value: 16, name: 'rose 8' }
+                            { value: 38, name: 'rose 2' },
+                            { value: 32, name: 'rose 3' },
+                            { value: 30, name: 'rose 4' },
+                            { value: 28, name: 'rose 5' },
+                            { value: 26, name: 'rose 6' },
+                            { value: 22, name: 'rose 7' },
+                            { value: 18, name: 'rose 8' }
                         ]
                     }
                 ]
@@ -111,9 +64,8 @@ export default {
 
 <style lang="less" scoped>
 .EchartsComponents {
-    width: 900px;
-    height: 400px;
-    margin: 0px 30px;
+    width: 100%;
+    height: 350px;
 
     div {
         width: 100%;

@@ -40,12 +40,24 @@
                     </div>
                     <div class="header">
                         <div class="header_hover">
+                            <el-tooltip class="item" effect="dark" :content="$t('headerList.LockScreen')" placement="bottom">
+                                <el-button icon="el-icon-lock" size="small" circle
+                                    @click="lockScreen"></el-button>
+                            </el-tooltip>
+                        </div>
+                        <div class="header_hover">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.Refresh')" placement="bottom">
                                 <el-button icon="el-icon-refresh-right" size="small" circle
                                     @click="updateRefsh"></el-button>
                             </el-tooltip>
                         </div>
                         <I18nComponents :status="'hover'" />
+                        <div class="header_hover">
+                            <el-tooltip class="item" effect="dark" :content="$t('headerList.Inform')" placement="bottom">
+                                <el-button icon="el-icon-chat-line-round" size="small" circle
+                                    @click="inform"></el-button>
+                            </el-tooltip>
+                        </div>
                         <div class="full_screen header_hover"
                             @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
                             <el-tooltip class="item" effect="dark"
@@ -206,6 +218,14 @@ export default {
             this.$store.commit('updateRefsh', {
                 refsh: flag
             })
+        },
+        //锁屏
+        lockScreen(){
+            console.log('点击了锁屏');
+        },
+        //通知
+        inform(){
+            console.log('点击了通知');
         },
         //全屏
         toggleFullScreen() {

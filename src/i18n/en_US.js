@@ -142,6 +142,8 @@ const headerList = {
     VideoDisplay:'VideoDisplay',
     Share:'Share',
     SeamlessRolling:'Seamless Rolling',
+    LockScreen:'Lock Screen',
+    Inform:"Inform"
 }
 
 const avatarList = [{

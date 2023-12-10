@@ -142,6 +142,8 @@ const headerList = {
     VideoDisplay:'视频播放',
     Share:'分享',
     SeamlessRolling:'自动滚动',
+    LockScreen:'锁屏',
+    Inform:'通知',
 
 }
 

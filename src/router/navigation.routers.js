@@ -281,6 +281,13 @@ export default [{
                     title: '分享',
                 },
                 component: () => import('../views/rests/share')
+            },{
+                path: '/seamlessRolling',
+                name: 'seamlessRolling',
+                meta: {
+                    title: '无缝滚动',
+                },
+                component: () => import('../views/rests/seamlessRolling')
             },
         ]
     },

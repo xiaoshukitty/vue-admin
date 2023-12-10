@@ -141,6 +141,7 @@ const headerList = {
     Download:'下载',
     VideoDisplay:'视频播放',
     Share:'分享',
+    SeamlessRolling:'自动滚动',
 
 }
 
@@ -431,6 +432,11 @@ const routerNavigation = [{
             path: 'share',
             id: '7-5',
             router: '/share',
+        }, {
+            name: '无缝滚动',
+            path: 'seamlessRolling',
+            id: '7-6',
+            router: '/seamlessRolling',
         }
     ]
 }, {

@@ -141,6 +141,7 @@ const headerList = {
     Download:'Download',
     VideoDisplay:'VideoDisplay',
     Share:'Share',
+    SeamlessRolling:'Seamless Rolling',
 }
 
 const avatarList = [{
@@ -434,6 +435,11 @@ const routerNavigation = [{
                 path: 'share',
                 id: '7-5',
                 router: '/share',
+            }, {
+                name: 'seamlessRolling',
+                path: 'seamlessRolling',
+                id: '7-6',
+                router: '/seamlessRolling',
             }
         ]
     }, {

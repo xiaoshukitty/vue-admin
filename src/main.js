@@ -16,6 +16,8 @@ import particles from 'particles.js' //引入动画粒子
 import VueLuckyCanvas from '@lucky-canvas/vue' //抽奖插件
 import SlideVerify from 'vue-monoplasty-slide-verify'; //滑块验证
 import VueVideoPlayer from 'vue-video-player' //视频播放
+import scroll from 'vue-seamless-scroll' // 无缝滚动
+
 
 import '@/config/directive.js'
 import '@/icons/index' //导入 svg
@@ -32,6 +34,7 @@ Vue.use(particles)
 Vue.use(VueLuckyCanvas)
 Vue.use(SlideVerify)
 Vue.use(VueVideoPlayer)
+Vue.use(scroll)
 
 //挂载到Vue实例上面
 Vue.prototype.Clipboard = Clipboard

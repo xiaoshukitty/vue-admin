@@ -16,7 +16,7 @@ const routerList = moduleFn.keys().reduce((p, v) => {
   return p;
 }, [])
 
-console.log('routerList---', routerList)
+// console.log('routerList---', routerList)
 
 const routes = [{
     path: '/',

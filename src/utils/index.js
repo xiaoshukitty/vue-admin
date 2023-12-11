@@ -246,8 +246,6 @@ const searchTree = (nodesArr, searchKey) => {
  * @returns 
  */
 const searchTreeCertain = (nodesArr, searchKey) => {
-    console.log('nodesArr---', nodesArr);
-    console.log('searchKey+++', searchKey);
     var isGet = false
     var retNode = null
 

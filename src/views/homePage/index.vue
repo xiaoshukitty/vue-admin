@@ -71,7 +71,10 @@
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{ item.value
                                     }}</div>
                                 </div>
-                                <img class="header_img round" :src="profilePhoto" alt="" slot="reference">
+                                <div style="display: flex;" slot="reference">
+                                    <img class="header_img round" :src="profilePhoto" alt="">
+                                    <span style="font-size: 14px; margin-left: 5px; color: #606266;">{{ $t('headerList.UserName') }}</span>
+                                </div>
                             </el-popover>
                         </div>
                     </div>
@@ -137,7 +140,6 @@ export default {
             history.pushState(null, null, document.URL);
         });
         let routerGather = searchTreeCertain(this.$t('routerNavigation'), this.$route.path)
-        console.log('routerGather---', routerGather);
         this.routerPush(routerGather)
     },
     mounted() {
@@ -262,7 +264,7 @@ export default {
             // lockScreenBack.style.boxShadow =
             //     "0 0 0 " + this.lockScreenSize + "px #667aa6 inset";
             this.showUnlock = true;
-            console.log('---',this.$route.path);
+            console.log('---', this.$route.path);
             Cookies.set("last_page_lockscreen", this.$route.path); // 本地存储锁屏之前打开的页面以便解锁后打开
             setTimeout(() => {
                 // lockScreenBack.style.transition = "all 0s";

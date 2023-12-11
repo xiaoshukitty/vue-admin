@@ -50,7 +50,6 @@ export default {
     mounted() {
         const context = require.context('@/assets/images/lockScreenWallpaper', false, /\.(png|jpe?g|gif|svg)$/);
         this.images = context.keys().map(context);
-        console.log('图片---', this.images);
         this.$nextTick(() => {
             this.$refs.ipt.focus();
         })

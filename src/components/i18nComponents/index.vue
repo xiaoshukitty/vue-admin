@@ -9,7 +9,7 @@
             <!-- <img :class="status == 'noHover' ? 'header_img pointer' : 'header_img'" src="@/assets/images/Translate.png"
                 alt="" slot="reference"> -->
 
-            <el-button class="header_img" v-if="status == 'hover'" icon="el-icon-headset" size="small" circle slot="reference"></el-button>
+            <el-button class="header_img" v-if="status == 'hover'" icon="el-icon-connection" size="small" circle slot="reference"></el-button>
             <img v-else class="header_img pointer" src="@/assets/images/Translate.png" alt="" slot="reference">
         </el-popover>
     </div>

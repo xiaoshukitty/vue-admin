@@ -17,6 +17,7 @@ import VueLuckyCanvas from '@lucky-canvas/vue' //抽奖插件
 import SlideVerify from 'vue-monoplasty-slide-verify'; //滑块验证
 import VueVideoPlayer from 'vue-video-player' //视频播放
 import scroll from 'vue-seamless-scroll' // 无缝滚动
+import Cookies from 'js-cookie';
 
 
 import '@/config/directive.js'
@@ -95,6 +96,19 @@ nprogress.configure({
 router.beforeEach((to, from, next) => {
   // 刚进来就开启进度条
   nprogress.start()
+
+  //判断是否是锁屏页面
+  if (Cookies.get('locking') == '1' && to.path != '/lockscreen') {
+    next({
+      replace: true,
+      path: '/lockscreen'
+    })
+    nprogress.done()
+  }
+  if (Cookies.get('locking') == '0' && to.name == 'lockscreen') {
+    next();
+  }
+
   if (to.matched.length === 0) { //路由不匹配强制跳转4040
     next('/404')
   }

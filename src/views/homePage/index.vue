@@ -40,9 +40,9 @@
                     </div>
                     <div class="header">
                         <div class="header_hover">
-                            <el-tooltip class="item" effect="dark" :content="$t('headerList.LockScreen')" placement="bottom">
-                                <el-button icon="el-icon-lock" size="small" circle
-                                    @click="lockScreen"></el-button>
+                            <el-tooltip class="item" effect="dark" :content="$t('headerList.LockScreen')"
+                                placement="bottom">
+                                <el-button icon="el-icon-lock" size="small" circle @click="lockScreen"></el-button>
                             </el-tooltip>
                         </div>
                         <div class="header_hover">
@@ -54,8 +54,7 @@
                         <I18nComponents :status="'hover'" />
                         <div class="header_hover">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.Inform')" placement="bottom">
-                                <el-button icon="el-icon-chat-line-round" size="small" circle
-                                    @click="inform"></el-button>
+                                <el-button icon="el-icon-chat-line-round" size="small" circle @click="inform"></el-button>
                             </el-tooltip>
                         </div>
                         <div class="full_screen header_hover"
@@ -97,10 +96,20 @@
 </template>
 
 <script>
+
+import Cookies from "js-cookie";
 import I18nComponents from '@/components/i18nComponents'
 import { searchTree, searchTreeCertain } from '@/utils'
 import { logout } from '@/server/common'
 import { mapGetters, mapState } from 'vuex'
+
+const setLockBackSize = () => {
+    let x = document.body.clientWidth;
+    let y = document.body.clientHeight;
+    let r = Math.sqrt(x * x + y * y);
+    return parseInt(r);
+};
+
 export default {
     name: 'HomePage',
     components: {
@@ -130,6 +139,31 @@ export default {
         let routerGather = searchTreeCertain(this.$t('routerNavigation'), this.$route.path)
         console.log('routerGather---', routerGather);
         this.routerPush(routerGather)
+    },
+    mounted() {
+        // let lockScreenBack;
+        // //判断有没有这个div
+        // if (!document.getElementById("lock_screen_back")) {
+        //     let lockdiv = document.createElement("div"); // 创建一个div
+        //     lockdiv.setAttribute("id", "lock_screen_back"); // id 为 lock_screen_back
+        //     lockdiv.setAttribute("class", "lock-screen-back"); // class 为 lock-screen-back
+        //     document.body.appendChild(lockdiv); //添加到 body 上去
+        //     lockScreenBack = document.getElementById("lock_screen_back");
+        //     window.addEventListener("resize", () => { //监听浏览器的缩放
+        //         let size = setLockBackSize();
+        //         this.lockScreenSize = size;
+        //         lockScreenBack.style.transition = "all 0s"; //添加动画
+        //         lockScreenBack.style.width = lockScreenBack.style.height = size + "px"; //添加样式
+        //     });
+        // } else {
+        //     lockScreenBack = document.getElementById("lock_screen_back"); // 有这个 div 直接获取 dom
+        // }
+        // let size = setLockBackSize();
+        // console.log('size---', size);
+        // this.lockScreenSize = size;
+        // lockScreenBack.style.transition = "all 3s";//添加动画
+        // lockScreenBack.style.width = lockScreenBack.style.height = size + "px"; //添加样式
+        // console.log('样式----', lockScreenBack);
     },
     watch: {
         getRefsh(newValue, OldValue) {
@@ -220,11 +254,29 @@ export default {
             })
         },
         //锁屏
-        lockScreen(){
-            console.log('点击了锁屏');
+        lockScreen() {
+
+            // let lockScreenBack = document.getElementById("lock_screen_back");
+            // lockScreenBack.style.transition = "all 3s";
+            // lockScreenBack.style.zIndex = 10000;
+            // lockScreenBack.style.boxShadow =
+            //     "0 0 0 " + this.lockScreenSize + "px #667aa6 inset";
+            this.showUnlock = true;
+            console.log('---',this.$route.path);
+            Cookies.set("last_page_lockscreen", this.$route.path); // 本地存储锁屏之前打开的页面以便解锁后打开
+            setTimeout(() => {
+                // lockScreenBack.style.transition = "all 0s";
+                this.$router.push({
+                    name: "lockscreen"
+                });
+            }, 800);
+            Cookies.set("locking", "1");
+            // console.log('点击了锁屏', lockScreenBack);
+
+
         },
         //通知
-        inform(){
+        inform() {
             console.log('点击了通知');
         },
         //全屏

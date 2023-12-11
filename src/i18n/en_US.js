@@ -143,7 +143,12 @@ const headerList = {
     Share:'Share',
     SeamlessRolling:'Seamless Rolling',
     LockScreen:'Lock Screen',
-    Inform:"Inform"
+    Inform:"Inform",
+    PleaseEnterTheScreenLockPassword:'Please Enter The Screen Lock Password',
+    LockedScreen:'Locked Screen',
+    Unlock:"Unlock",
+    SwitchWallpaper:"Switch Wallpaper",
+    TheScreenLockPasswordCannotBeEmpty:"The Screen Lock Password Cannot Be Empty",
 }
 
 const avatarList = [{

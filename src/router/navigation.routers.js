@@ -291,5 +291,14 @@ export default [{
             },
         ]
     },
+    {
+        path: '/lockscreen',
+        name: 'lockscreen',
+        meta: {
+            title: '锁屏',
+            path: '/views/lockscreen'
+        },
+        component: () => import('@/views/lockscreen'),
+    }
 
 ]

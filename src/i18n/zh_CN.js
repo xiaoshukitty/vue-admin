@@ -144,7 +144,11 @@ const headerList = {
     SeamlessRolling:'自动滚动',
     LockScreen:'锁屏',
     Inform:'通知',
-
+    PleaseEnterTheScreenLockPassword:'请输入锁屏密码',
+    LockedScreen:'已锁屏',
+    Unlock:"解锁",
+    SwitchWallpaper:"切换壁纸",
+    TheScreenLockPasswordCannotBeEmpty:"锁屏密码不能为空",
 }
 
 

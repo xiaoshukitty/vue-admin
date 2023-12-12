@@ -39,6 +39,16 @@
                         </div>
                     </div>
                     <div class="header">
+                        <div class="">
+                            <el-select ref="elSelect" style="width: 220px;" :value="valueTitle">
+                                <el-option :value="valueTitle" :label="valueTitle" class="options">
+                                    <el-tree id="tree-option" ref="selectTree" :data="options" :props="props"
+                                        :node-key="props.value" :default-expanded-keys="defaultExpandedKey"
+                                        @node-click="handleNodeClick" :highlight-current="true" accordion>
+                                    </el-tree>
+                                </el-option>
+                            </el-select>
+                        </div>
                         <div class="header_hover">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.LockScreen')"
                                 placement="bottom">
@@ -73,7 +83,8 @@
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
-                                    <span style="font-size: 14px; margin-left: 5px; color: #606266;">{{ $t('headerList.UserName') }}</span>
+                                    <span style="font-size: 14px; margin-left: 5px; color: #606266;">{{
+                                        $t('headerList.UserName') }}</span>
                                 </div>
                             </el-popover>
                         </div>
@@ -106,13 +117,6 @@ import { searchTree, searchTreeCertain } from '@/utils'
 import { logout } from '@/server/common'
 import { mapGetters, mapState } from 'vuex'
 
-const setLockBackSize = () => {
-    let x = document.body.clientWidth;
-    let y = document.body.clientHeight;
-    let r = Math.sqrt(x * x + y * y);
-    return parseInt(r);
-};
-
 export default {
     name: 'HomePage',
     components: {
@@ -130,10 +134,21 @@ export default {
             routerList: {},
             recordRouteList: [],
             activeIndexRoute: '0', //记录当前路由块的id
-            activeItem: {}
+            activeItem: {},
+            options: this.$t('routerNavigation'),
+            valueTitle: '',
+            props: {
+                value: 'id',             // ID字段名
+                label: 'name',         // 显示名称
+                children: 'children'
+            },
+            defaultExpandedKey: [],//默认展开
+
         }
     },
     created() {
+
+        console.log('options-----', this.options);
         this.recordRouteList = this.$t('routerChunkI18n')
         history.pushState(null, null, document.URL);
         window.addEventListener("popstate", function () {
@@ -143,29 +158,6 @@ export default {
         this.routerPush(routerGather)
     },
     mounted() {
-        // let lockScreenBack;
-        // //判断有没有这个div
-        // if (!document.getElementById("lock_screen_back")) {
-        //     let lockdiv = document.createElement("div"); // 创建一个div
-        //     lockdiv.setAttribute("id", "lock_screen_back"); // id 为 lock_screen_back
-        //     lockdiv.setAttribute("class", "lock-screen-back"); // class 为 lock-screen-back
-        //     document.body.appendChild(lockdiv); //添加到 body 上去
-        //     lockScreenBack = document.getElementById("lock_screen_back");
-        //     window.addEventListener("resize", () => { //监听浏览器的缩放
-        //         let size = setLockBackSize();
-        //         this.lockScreenSize = size;
-        //         lockScreenBack.style.transition = "all 0s"; //添加动画
-        //         lockScreenBack.style.width = lockScreenBack.style.height = size + "px"; //添加样式
-        //     });
-        // } else {
-        //     lockScreenBack = document.getElementById("lock_screen_back"); // 有这个 div 直接获取 dom
-        // }
-        // let size = setLockBackSize();
-        // console.log('size---', size);
-        // this.lockScreenSize = size;
-        // lockScreenBack.style.transition = "all 3s";//添加动画
-        // lockScreenBack.style.width = lockScreenBack.style.height = size + "px"; //添加样式
-        // console.log('样式----', lockScreenBack);
     },
     watch: {
         getRefsh(newValue, OldValue) {
@@ -187,6 +179,20 @@ export default {
         }
     },
     methods: {
+        handleNodeClick(node) {
+            if (node.children) {
+                return
+            }
+            this.valueTitle = node.name;
+            console.log('node---', node);
+            this.$router.push({ path: node.path })
+            setTimeout(() => {
+                this.$refs.elSelect.blur()
+                this.routerPush(node)
+            }, 50)
+
+
+        },
         // 横向点击跳转路由
         routerSkip(val) {
             this.routerSkipChunk(val);
@@ -214,10 +220,12 @@ export default {
         },
         //路由块挑战方法
         routerSkipChunk(val) {
+            console.log('val', val);
             this.$router.push(val.router)
             this.activeIndexRoute = val.id;
             this.activeIndex = val.router;
             this.activeItem = val;
+            this.changeTree(val);
         },
         deWeight(arr, newArr) {
             for (let i = 0; i <= arr.length; i++) {
@@ -229,12 +237,14 @@ export default {
         },
         //记录路由块
         routerPush(newValue) {
+            console.log('newValue---', newValue);
             let flag = this.deWeight(this.recordRouteList, newValue)
             this.activeItem = newValue;
             this.activeIndexRoute = newValue.id;
             if (flag == 1) {
                 this.recordRouteList.push(newValue)
             }
+            this.changeTree(newValue);
         },
         //路由切换
         handleSelect(item) {
@@ -243,6 +253,24 @@ export default {
             }
             this.activeIndex = item.router;
             this.routerPush(item)
+        },
+        //树形默认展示切换展示
+        changeTree(newValue) {
+            this.$nextTick(() => {
+                // console.log('现在的节点',newValue.id);
+                // console.log('上次的节点',this.defaultExpandedKey);
+
+                //关闭 accordion 出现的多次节点展开问题
+                if(this.defaultExpandedKey.length!=0){
+                    this.$refs.selectTree.store.nodesMap[this.defaultExpandedKey].expanded=false;
+                }
+
+
+                this.$refs.selectTree.setCurrentKey(newValue.id);
+                this.$refs.selectTree.setCheckedKeys([newValue.id]);
+                this.defaultExpandedKey = [newValue.id.charAt(0)];
+                this.valueTitle = newValue.name;
+            });
         },
         takeBack() {
             this.isCollapse = !this.isCollapse;
@@ -257,25 +285,14 @@ export default {
         },
         //锁屏
         lockScreen() {
-
-            // let lockScreenBack = document.getElementById("lock_screen_back");
-            // lockScreenBack.style.transition = "all 3s";
-            // lockScreenBack.style.zIndex = 10000;
-            // lockScreenBack.style.boxShadow =
-            //     "0 0 0 " + this.lockScreenSize + "px #667aa6 inset";
             this.showUnlock = true;
-            console.log('---', this.$route.path);
             Cookies.set("last_page_lockscreen", this.$route.path); // 本地存储锁屏之前打开的页面以便解锁后打开
             setTimeout(() => {
-                // lockScreenBack.style.transition = "all 0s";
                 this.$router.push({
                     name: "lockscreen"
                 });
             }, 800);
             Cookies.set("locking", "1");
-            // console.log('点击了锁屏', lockScreenBack);
-
-
         },
         //通知
         inform() {
@@ -491,5 +508,15 @@ export default {
         background-color: yellowgreen;
         color: #fff;
     }
+}
+</style>
+<style>
+.el-select-dropdown__item.selected {
+    height: auto !important;
+    background-color: #Fff !important;
+}
+
+.el-tree-node__content {
+    height: 30px;
 }
 </style>

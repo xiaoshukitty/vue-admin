@@ -62,10 +62,11 @@
                             </el-tooltip>
                         </div>
                         <I18nComponents :status="'hover'" />
-                        <div class="header_hover">
+                        <div class="header_hover location">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.Inform')" placement="bottom">
-                                <el-button icon="el-icon-chat-line-round" size="small" circle @click="inform"></el-button>
+                                <el-button icon="el-icon-bell" size="small" circle @click="inform"></el-button>
                             </el-tooltip>
+                            <div class="circle">2</div>
                         </div>
                         <div class="full_screen header_hover"
                             @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
@@ -195,7 +196,7 @@ export default {
         },
         // 横向点击跳转路由
         routerSkip(val) {
-            this.routerSkipChunk(val);
+            this.routerSkipChunk(val, 'flag');
         },
         // 删除指定横向路由块
         closeRoute(val) {
@@ -218,9 +219,12 @@ export default {
                 this.routerSkipChunk(Obj)
             }
         },
-        //路由块挑战方法
-        routerSkipChunk(val) {
+        //路由块跳转方法
+        routerSkipChunk(val, flag) {
             console.log('val', val);
+            if (val.id == this.activeIndexRoute && flag == 'flag') {
+                return
+            }
             this.$router.push(val.router)
             this.activeIndexRoute = val.id;
             this.activeIndex = val.router;
@@ -261,8 +265,8 @@ export default {
                 // console.log('上次的节点',this.defaultExpandedKey);
 
                 //关闭 accordion 出现的多次节点展开问题
-                if(this.defaultExpandedKey.length!=0){
-                    this.$refs.selectTree.store.nodesMap[this.defaultExpandedKey].expanded=false;
+                if (this.defaultExpandedKey.length != 0) {
+                    this.$refs.selectTree.store.nodesMap[this.defaultExpandedKey].expanded = false;
                 }
 
 
@@ -452,6 +456,22 @@ export default {
                     width: 30px;
                     height: 30px;
                     margin-top: 10px;
+                }
+                .location{
+                    position: relative;
+                    .circle{
+                        position: absolute;
+                        top: 5px;
+                        right: 5px;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        text-align: center;
+                        line-height: 20px;
+                        background-color: red;
+                        font-size: 12px;
+                        color: #fff;
+                    }
                 }
             }
         }

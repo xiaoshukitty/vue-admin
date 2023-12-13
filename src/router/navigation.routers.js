@@ -288,6 +288,13 @@ export default [{
                     title: '无缝滚动',
                 },
                 component: () => import('../views/rests/seamlessRolling')
+            },{
+                path: '/notepad',
+                name: 'notepad',
+                meta: {
+                    title: '记事本',
+                },
+                component: () => import('../views/rests/notepad')
             },
         ]
     },

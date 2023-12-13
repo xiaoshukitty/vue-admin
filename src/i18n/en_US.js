@@ -447,6 +447,11 @@ const routerNavigation = [{
                 path: 'seamlessRolling',
                 id: '7-6',
                 router: '/seamlessRolling',
+            }, {
+                name: 'notepad',
+                path: 'notepad',
+                id: '7-7',
+                router: '/notepad',
             }
         ]
     }, {

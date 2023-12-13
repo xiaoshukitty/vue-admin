@@ -6,6 +6,29 @@
   </div>
 </template>
 
+
+<script>
+
+export default {
+  mounted() {
+    let that = this;
+    document.addEventListener('visibilitychange', function () {
+      if (document[state] === 'hidden') {
+        console.log('已离开当前页面')
+      } else if (document[state] === 'visible') {
+        console.log('123213123123')
+        that.$notify({
+          title: '尊敬的小小舒，欢迎回来',
+          // message: '右下角弹出的消息',
+          position: 'bottom-right',
+          type: 'success'
+        });
+      }
+    });
+  },
+}
+</script>
+
 <style lang="less">
 body {
   margin: 0;
@@ -37,5 +60,4 @@ body {
 //     background-color: yellow;
 //     border-radius: 10px;
 // }
-
 </style>

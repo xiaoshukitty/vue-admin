@@ -148,9 +148,8 @@ export default {
         }
     },
     created() {
-
-        console.log('options-----', this.options);
         this.recordRouteList = this.$t('routerChunkI18n')
+        console.log('this.recordRouteList----',this.recordRouteList);
         history.pushState(null, null, document.URL);
         window.addEventListener("popstate", function () {
             history.pushState(null, null, document.URL);
@@ -186,7 +185,9 @@ export default {
             }
             this.valueTitle = node.name;
             console.log('node---', node);
-            this.$router.push({ path: node.path })
+            this.$router.push({ path: node.router })
+            this.activeIndex = node.router;
+
             setTimeout(() => {
                 this.$refs.elSelect.blur()
                 this.routerPush(node)
@@ -252,6 +253,7 @@ export default {
         },
         //路由切换
         handleSelect(item) {
+            console.log('---...', item.router);
             if (item.router == this.activeIndex) {
                 return
             }
@@ -457,9 +459,11 @@ export default {
                     height: 30px;
                     margin-top: 10px;
                 }
-                .location{
+
+                .location {
                     position: relative;
-                    .circle{
+
+                    .circle {
                         position: absolute;
                         top: 5px;
                         right: 5px;

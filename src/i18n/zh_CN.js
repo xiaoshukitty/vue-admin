@@ -216,13 +216,13 @@ const qrCodeI18m = {
 //导航
 const routerNavigation = [{
     name: '首页',
-    path: 'module',
+    path: 'home',
     id: '0',
-    router: '/children',
+    router: '/home',
     icon: 'el-icon-monitor',
 }, {
     name: '组件',
-    path: 'module',
+    path: 'tips',
     id: '1',
     router: '',
     icon: 'el-icon-s-grid',
@@ -230,85 +230,97 @@ const routerNavigation = [{
             name: '打印',
             path: 'print',
             id: '1-1',
-            router: '/print'
+            router: '/tips/print'
         },
         {
             name: '复制',
             path: 'copy',
             id: '1-2',
-            router: '/copy',
+            router: '/tips/copy',
         },
         {
             name: '条形码',
             path: 'barCode',
             id: '1-3',
-            router: '/barCode',
+            router: '/tips/barCode',
         },
         {
             name: '原生拖拽',
             path: 'drag',
             id: '1-4',
-            router: '/drag',
+            router: '/tips/drag',
         },
         {
             name: '组件拖拽',
             path: 'vuedraggable',
             id: '1-5',
-            router: '/vuedraggable',
+            router: '/tips/vuedraggable',
         },
         {
             name: '拖动排序',
             path: 'dragSort',
             id: '1-6',
-            router: '/dragSort',
+            router: '/tips/dragSort',
         },
         {
             name: '验证码',
             path: 'verificationCode',
             id: '1-7',
-            router: '/verificationCode',
+            router: '/tips/verificationCode',
         },
         {
             name: 'canvas画图',
             path: 'canvas',
             id: '1-8',
-            router: '/canvas',
+            router: '/tips/canvas',
         },
         {
             name: '图片预览',
             path: 'imgPreview',
             id: '1-9',
-            router: '/imgPreview',
+            router: '/tips/imgPreview',
         },
         {
             name: 'render函数',
             path: 'render',
             id: '1-10',
-            router: '/render',
+            router: '/tips/render',
         },
         {
             name: '图表',
             path: 'echarts',
             id: '1-11',
-            router: '/echarts',
+            router: '/tips/echarts',
         },
         {
             name: '瀑布流',
             path: 'waterfallFlow',
             id: '1-12',
-            router: '/waterfallFlow',
+            router: '/tips/waterfallFlow',
         },
         {
             name: '树形结构',
             path: 'tree',
             id: '1-13',
-            router: '/tree',
+            router: '/tips/tree',
         },
         {
             name: '富文本',
             path: 'richText',
             id: '1-14',
-            router: '/richText',
+            router: '/tips/richText',
+        },
+        {
+            name: '虚拟列表(固定高度)',
+            path: 'virtual',
+            id: '1-15',
+            router: '/tips/virtual',
+        },
+        {
+            name: '虚拟列表(不固定高度)',
+            path: 'virtualList',
+            id: '1-16',
+            router: '/tips/virtualList',
         },
 
     ]
@@ -322,86 +334,67 @@ const routerNavigation = [{
             name: '高德地图',
             path: 'elMap',
             id: '2-1',
-            router: '/elMap',
+            router: '/map/elMap',
         },
         {
             name: 'QQ地图',
             path: 'qqMap',
             id: '2-2',
-            router: '/qqMap',
-        },
-    ]
-}, {
-    name: '列表',
-    path: 'list',
-    id: '3',
-    router: '',
-    icon: 'el-icon-notebook-2',
-    children: [{
-            name: '虚拟列表(固定高度)',
-            path: 'virtual',
-            id: '3-1',
-            router: '/virtual',
-        },
-        {
-            name: '虚拟列表(不固定高度)',
-            path: 'virtualList',
-            id: '3-2',
-            router: '/virtualList',
+            router: '/map/qqMap',
         },
     ]
 }, {
     name: '接口',
-    path: 'api',
+    path: 'port',
     id: '4',
     icon: 'el-icon-orange',
     children: [{
             name: '备忘录',
             path: 'memorandum',
             id: '4-1',
-            router: '/memorandum',
+            router: '/port/memorandum',
         },
         {
             name: '接口测试',
             path: 'requestText',
             id: '4-2',
-            router: '/requestText',
+            router: '/port/requestText',
         },
     ]
 }, {
     name: '功能',
-    path: 'feature',
+    path: 'function',
     id: '5',
     icon: 'el-icon-message',
     children: [{
             name: '自定义指令',
             path: 'customInstruction',
             id: '5-1',
-            router: '/customInstruction',
+            router: '/function/customInstruction',
         },
         {
             name: '时间转化',
             path: 'dateConversion',
             id: '5-2',
-            router: '/dateConversion',
+            router: '/function/dateConversion',
         },
         {
             name: '后台常用模版',
             path: 'tableSearch',
             id: '5-3',
-            router: '/tableSearch',
+            router: '/function/tableSearch',
         },
         {
             name: '常用的',
             path: 'methods',
             id: '5-4',
-            router: '/methods',
+            router: '/function/methods',
         },
         {
             name: 'vuex',
             path: 'vuex',
             id: '5-5',
-            router: '/vuex',
+            router: '/function/vuex',
         },
     ]
 }, {
@@ -414,40 +407,40 @@ const routerNavigation = [{
             name: '抽奖',
             path: 'lottery',
             id: '7-1',
-            router: '/lottery',
+            router: '/rests/lottery',
         },
         {
             name: '滑块验证',
             path: 'sliderVerification',
             id: '7-2',
-            router: '/sliderVerification',
+            router: '/rests/sliderVerification',
         },
         {
             name: '签名',
             path: 'signature',
             id: '7-3',
-            router: '/signature',
+            router: '/rests/signature',
         },
         {
             name: '视频播放',
             path: 'videoDisplay',
             id: '7-4',
-            router: '/videoDisplay',
+            router: '/rests/videoDisplay',
         }, {
             name: '分享',
             path: 'share',
             id: '7-5',
-            router: '/share',
+            router: '/rests/share',
         }, {
             name: '无缝滚动',
             path: 'seamlessRolling',
             id: '7-6',
-            router: '/seamlessRolling',
+            router: '/rests/seamlessRolling',
         }, {
             name: '记事本',
             path: 'notepad',
             id: '7-7',
-            router: '/notepad',
+            router: '/rests/notepad',
         }
     ]
 }, {
@@ -461,21 +454,21 @@ const routerNavigation = [{
         name: '修改头像',
         path: 'editHeadPortrait',
         id: '6-1',
-        router: '/editHeadPortrait',
+        router: '/setting/editHeadPortrait',
     }, {
         name: '修改密码',
         path: 'updataPassword',
         id: '6-2',
-        router: '/updataPassword',
+        router: '/setting/updataPassword',
     }]
 }, ]
 
 //代码块 
 const routerChunkI18n = [{
     name: '首页',
-    path: 'module',
+    path: 'home',
     id: '0',
-    router: '/children',
+    router: '/home',
     icon: 'el-icon-monitor',
 }]
 

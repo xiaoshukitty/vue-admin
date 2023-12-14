@@ -126,7 +126,7 @@ export default {
         sessionStorage.setItem('TOKEN', result.token);
         setTimeout(() => {
           // this.$router.push('./homePage')
-          this.$router.push({ path: redirect || '/homePage' })
+          this.$router.push({ path: redirect || '/' })
           this.$notify({
             title: this.$t('headerList.LoginSuccessful'),
             message: `Hi,${this.getTime()}`,

@@ -219,11 +219,11 @@ const routerNavigation = [{
         name: 'HomePage',
         path: 'module',
         id: '0',
-        router: '/children',
+        router: '/home',
         icon: 'el-icon-monitor',
     }, {
-        name: 'Module',
-        path: 'module',
+        name: 'tips',
+        path: 'tips',
         id: '1',
         router: '',
         icon: 'el-icon-s-grid',
@@ -231,85 +231,85 @@ const routerNavigation = [{
                 name: 'Print',
                 path: 'print',
                 id: '1-1',
-                router: '/print'
+                router: '/tips/print'
             },
             {
                 name: 'Copy',
                 path: 'copy',
                 id: '1-2',
-                router: '/copy',
+                router: '/tips/copy',
             },
             {
                 name: 'BarCode',
                 path: 'barCode',
                 id: '1-3',
-                router: '/barCode',
+                router: '/tips/barCode',
             },
             {
                 name: 'Drag',
                 path: 'drag',
                 id: '1-4',
-                router: '/drag',
+                router: '/tips/drag',
             },
             {
                 name: 'Vuedraggable',
                 path: 'vuedraggable',
                 id: '1-5',
-                router: '/vuedraggable',
+                router: '/tips/vuedraggable',
             },
             {
                 name: 'DragSort',
                 path: 'dragSort',
                 id: '1-6',
-                router: '/dragSort',
+                router: '/tips/dragSort',
             },
             {
                 name: 'Verification Code',
                 path: 'verificationCode',
                 id: '1-7',
-                router: '/verificationCode',
+                router: '/tips/verificationCode',
             },
             {
                 name: 'Canvas',
                 path: 'canvas',
                 id: '1-8',
-                router: '/canvas',
+                router: '/tips/canvas',
             },
             {
-                name: 'Img Preview',
+                name: 'ImgPreview',
                 path: 'imgPreview',
                 id: '1-9',
-                router: '/imgPreview',
+                router: '/tips/imgPreview',
             },
             {
                 name: 'Render',
                 path: 'render',
                 id: '1-10',
-                router: '/render',
+                router: '/tips/render',
             },
             {
                 name: 'Echarts',
                 path: 'echarts',
                 id: '1-11',
-                router: '/echarts',
+                router: '/tips/echarts',
             },
             {
                 name: 'Waterfall Flow',
                 path: 'waterfallFlow',
                 id: '1-12',
-                router: '/waterfallFlow',
+                router: '/tips/waterfallFlow',
             },
             {
                 name: 'Tree',
                 path: 'tree',
                 id: '1-13',
-                router: '/tree',
+                router: '/tips/tree',
             },
             {
                 name: 'richText',
                 path: 'richText',
                 id: '1-14',
-                router: '/richText',
+                router: '/tips/richText',
             },
 
 
@@ -324,86 +324,67 @@ const routerNavigation = [{
                 name: 'El Map',
                 path: 'elMap',
                 id: '2-1',
-                router: '/elMap',
+                router: '/map/elMap',
             },
             {
                 name: 'QQ Map',
                 path: 'qqMap',
                 id: '2-2',
-                router: '/qqMap',
+                router: '/map/qqMap',
             },
         ]
-    }, {
-        name: 'List',
-        path: 'list',
-        id: '3',
-        router: '',
-        icon: 'el-icon-notebook-2',
-        children: [{
-                name: 'Virtual',
-                path: 'virtual',
-                id: '3-1',
-                router: '/virtual',
-            },
-            {
-                name: 'Virtual List',
-                path: 'virtualList',
-                id: '3-2',
-                router: '/virtualList',
-            },
-        ]
-    }, {
-        name: 'Api',
-        path: 'api',
+    },  {
+        name: 'port',
+        path: 'port',
         id: '4',
         icon: 'el-icon-orange',
         children: [{
                 name: 'Memorandum',
                 path: 'memorandum',
                 id: '4-1',
-                router: '/memorandum',
+                router: '/port/memorandum',
             },
             {
                 name: 'Request Text',
                 path: 'requestText',
                 id: '4-2',
-                router: '/requestText',
+                router: '/port/requestText',
             },
         ]
     }, {
-        name: 'Feature',
-        path: 'feature',
+        name: 'function',
+        path: 'function',
         id: '5',
         icon: 'el-icon-message',
         children: [{
                 name: 'Custom Instruction',
                 path: 'customInstruction',
                 id: '5-1',
-                router: '/customInstruction',
+                router: '/function/customInstruction',
             },
             {
                 name: 'Date Conversion',
                 path: 'dateConversion',
                 id: '5-2',
-                router: '/dateConversion',
+                router: '/function/dateConversion',
             },
             {
                 name: 'Table Search',
                 path: 'tableSearch',
                 id: '5-3',
-                router: '/tableSearch',
+                router: '/function/tableSearch',
             },
             {
                 name: 'Methods',
                 path: 'methods',
                 id: '5-4',
-                router: '/methods',
+                router: '/function/methods',
             },
             {
                 name: 'Vuex',
                 path: 'vuex',
                 id: '5-5',
-                router: '/vuex',
+                router: '/function/vuex',
             },
 
         ]
@@ -418,40 +399,40 @@ const routerNavigation = [{
                 name: 'lottery',
                 path: 'lottery',
                 id: '7-1',
-                router: '/lottery',
+                router: '/rests/lottery',
             },
             {
                 name: 'sliderVerification',
                 path: 'sliderVerification',
                 id: '7-2',
-                router: '/sliderVerification',
+                router: '/rests/sliderVerification',
             },
             {
                 name: 'signature',
                 path: 'signature',
                 id: '7-3',
-                router: '/signature',
+                router: '/rests/signature',
             },
             {
                 name: 'videoDisplay',
                 path: 'videoDisplay',
                 id: '7-4',
-                router: '/videoDisplay',
+                router: '/rests/videoDisplay',
             }, {
                 name: 'share',
                 path: 'share',
                 id: '7-5',
-                router: '/share',
+                router: '/rests/share',
             }, {
                 name: 'seamlessRolling',
                 path: 'seamlessRolling',
                 id: '7-6',
-                router: '/seamlessRolling',
+                router: '/rests/seamlessRolling',
             }, {
                 name: 'notepad',
                 path: 'notepad',
                 id: '7-7',
-                router: '/notepad',
+                router: '/rests/notepad',
             }
         ]
     }, {
@@ -465,12 +446,12 @@ const routerNavigation = [{
             name: 'editHeadPortrait',
             path: 'editHeadPortrait',
             id: '6-1',
-            router: '/editHeadPortrait',
+            router: '/setting/editHeadPortrait',
         }, {
             name: 'updataPassword',
             path: 'updataPassword',
             id: '6-2',
-            router: '/updataPassword',
+            router: '/setting/updataPassword',
         }]
     }
 ]
@@ -480,7 +461,7 @@ const routerChunkI18n = [{
     name: 'HomePage',
     path: 'module',
     id: '0',
-    router: '/children',
+    router: '/home',
     icon: 'el-icon-monitor',
 }]
 

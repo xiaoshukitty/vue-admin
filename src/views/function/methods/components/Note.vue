@@ -7,7 +7,7 @@
         <el-backtop target=".note" :bottom="100" :visibility-height="500">
             <div class="top_box">
                 <div class="top">
-                    <img src="../../../assets/images/top.png" alt="">
+                    <img src="../../../../assets//images/top.png" alt="">
                 </div>
             </div>
         </el-backtop>

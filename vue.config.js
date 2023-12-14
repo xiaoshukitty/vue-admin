@@ -74,7 +74,7 @@ module.exports = {
     config
       .plugin('html')
       .tap(args => {
-        args[0].title = '测试文件'
+        args[0].title = 'vue_test'
         return args
       })
   },

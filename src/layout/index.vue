@@ -61,13 +61,40 @@
                                     @click="updateRefsh"></el-button>
                             </el-tooltip>
                         </div>
-                        <I18nComponents :status="'hover'" />
                         <div class="header_hover location">
-                            <el-tooltip class="item" effect="dark" :content="$t('headerList.Inform')" placement="bottom">
-                                <el-button icon="el-icon-bell" size="small" circle @click="inform"></el-button>
-                            </el-tooltip>
-                            <div class="circle">2</div>
+                            <el-popover placement="bottom" width="300" trigger="hover" ref="popover">
+                                <el-tabs v-model="activeName">
+                                    <el-tab-pane label="通知" name="inform">
+                                        <div class="informs">
+                                            <div class="informs_box" v-for="(item, index) in informsList" :key="index">
+                                                <img :src="item.pic" alt="">
+                                                <div>{{ item.name }}：</div>
+                                                <div class="githubSkip" @click="githubSkip">点我</div>
+                                            </div>
+                                            <el-empty v-if="informsList.length == 0" description="描述文字"></el-empty>
+                                        </div>
+                                        <el-button icon="el-icon-circle-close"
+                                            @click="clearInfo('informsList')">清空消息</el-button>
+                                    </el-tab-pane>
+                                    <el-tab-pane label="邮件" name="email">
+                                        <div class="informs">
+                                            <div class="informs_box" v-for="(item, index) in emailList" :key="index">
+                                                <img :src="item.pic" alt="">
+                                                <div>{{ item.name }}：</div>
+                                            </div>
+                                            <el-empty v-if="emailList.length == 0" description="描述文字"></el-empty>
+                                        </div>
+                                        <el-button icon="el-icon-circle-close"
+                                            @click="clearInfo('emailList')">清空消息</el-button>
+                                    </el-tab-pane>
+                                </el-tabs>
+                                <el-button icon="el-icon-bell" size="small" circle @click="inform" slot="reference">
+                                </el-button>
+                                <div class="circle" slot="reference" v-if="informsList.length != 0">{{ informsList.length }}
+                                </div>
+                            </el-popover>
                         </div>
+                        <I18nComponents :status="'hover'" />
                         <div class="full_screen header_hover"
                             @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
                             <el-tooltip class="item" effect="dark"
@@ -115,6 +142,7 @@
 import Cookies from "js-cookie";
 import I18nComponents from '@/components/i18nComponents'
 import { searchTree, searchTreeCertain } from '@/utils'
+import { informsList, emailList } from '@/utils/falseData'
 import { logout } from '@/server/common'
 import { mapGetters, mapState } from 'vuex'
 
@@ -144,7 +172,9 @@ export default {
                 children: 'children'
             },
             defaultExpandedKey: [],//默认展开
-
+            activeName: 'inform',
+            informsList,
+            emailList
         }
     },
     created() {
@@ -179,6 +209,21 @@ export default {
         }
     },
     methods: {
+        githubSkip() {
+            window.open('https://github.com/xiaoshukitty/vue_test', '_blank');
+        },
+        //清空通知
+        clearInfo(val) {
+            if (val == 'informsList') {
+                this.informsList = []
+            } else {
+                this.emailList = []
+            }
+            setTimeout(() => {
+                this.$refs.popover.doClose()
+            }, 500);
+        },
+        //el-tree 切换点击
         handleNodeClick(node) {
             if (node.children) {
                 return
@@ -536,6 +581,47 @@ export default {
     .active {
         background-color: yellowgreen;
         color: #fff;
+    }
+}
+
+.el-tabs {
+    .informs {
+        height: 350px;
+        overflow-y: auto;
+
+        .informs_box {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+                border-radius: 50%;
+            }
+
+            .githubSkip {
+                color: #99afe1;
+                cursor: pointer;
+            }
+        }
+
+        .informs_box:hover {
+            background-color: #eee;
+            border-radius: 5px;
+        }
+
+    }
+
+    .el-button {
+        border: none;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .el-button:hover {
+        background-color: #f5fcfa !important;
     }
 }
 </style>

@@ -170,7 +170,8 @@ const loginI18n = {
     PleaseInputUsername: 'Please input username',
     PleaseInputPassword: 'Please input password',
     PleaseEnterTheVerificationCode: 'Please Enter The Verification Code',
-    VerificationCodeError: "Verification Code Error"
+    VerificationCodeError: "Verification Code Error",
+    TheVerificationCodeCannotBeEmpty:'The Verification Code Cannot Be Empty'
 }
 
 //注册

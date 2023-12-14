@@ -79,13 +79,21 @@ export default {
         password: password,
       }
     }
-
+    document.addEventListener("keyup", this.keyDown);
   },
   mounted() {
     this.yzmCode = new Code('v_yzm');
     this.picture = this.yzmCode.options.code;
   },
+  destroyed() {
+    document.removeEventListener("keyup", this.enterKey);
+  },
   methods: {
+    keyDown(e) {
+      if (e.keyCode === 13) {
+        this.passVerification();
+      }
+    },
     login(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -99,6 +107,10 @@ export default {
     async passVerification() {
       console.log('1', this.yzmCode.options.code);
       console.log('2', this.ruleForm.yzmIpt);
+      if(this.ruleForm.yzmIpt==''){
+        this.$message.error(this.$t('loginI18n.TheVerificationCodeCannotBeEmpty'));
+        return
+      }
       if (this.yzmCode.options.code != this.ruleForm.yzmIpt) {
         this.$message.error(this.$t('loginI18n.VerificationCodeError'));
         return

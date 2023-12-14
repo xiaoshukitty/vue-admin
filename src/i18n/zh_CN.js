@@ -172,6 +172,7 @@ const loginI18n = {
     PleaseInputPassword: '请输入密码',
     PleaseEnterTheVerificationCode: '请输入验证码',
     VerificationCodeError: "验证码错误",
+    TheVerificationCodeCannotBeEmpty:'验证码不能为空',
 }
 
 //注册

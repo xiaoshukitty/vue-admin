@@ -128,6 +128,16 @@ export default {
 
       // 打包的时候放开，设置假的 token
       // sessionStorage.setItem('TOKEN', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAyNTQ3NjM1LCJleHAiOjE3MDI1NTEyMzV9.9rT1tptioYKHK9HhWHr_duAZ0An_BFaafRd01XBSojA');
+      // setTimeout(() => {
+      //   this.$router.push({ path: redirect || '/' })
+      //   this.$notify({
+      //     title: this.$t('headerList.LoginSuccessful'),
+      //     message: `Hi,${this.getTime()}`,
+      //     type: 'success'
+      //   });
+      //   this.loginLoading = false;
+      // }, 1000)
+      // return
 
 
       const result = await userLogin(params)

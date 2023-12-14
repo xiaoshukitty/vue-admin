@@ -391,6 +391,14 @@ export default {
 
             // 打包的时候放开，删除假的 token
             // sessionStorage.removeItem("TOKEN")
+            // setTimeout(() => {
+            //     this.$router.push({ path: '/login', query: { redirect: this.$route.path } })
+            //     this.$notify({
+            //         title: this.$t('headerList.HasSuccessfullyExited'),
+            //         type: 'success'
+            //     });
+            // }, 1000)
+            // return
 
 
             const reslut = await logout(params)

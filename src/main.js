@@ -122,7 +122,7 @@ router.beforeEach((to, from, next) => {
   if (token) {
     if (to.path === '/login') {
       next({
-        path: '/children'
+        path: '/home'
       })
       // 强制跳转不会经过后置路由守卫，需要手动关闭进度条
       nprogress.done()

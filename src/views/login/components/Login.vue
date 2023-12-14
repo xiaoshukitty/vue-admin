@@ -107,7 +107,7 @@ export default {
     async passVerification() {
       console.log('1', this.yzmCode.options.code);
       console.log('2', this.ruleForm.yzmIpt);
-      if(this.ruleForm.yzmIpt==''){
+      if (this.ruleForm.yzmIpt == '') {
         this.$message.error(this.$t('loginI18n.TheVerificationCodeCannotBeEmpty'));
         return
       }
@@ -125,6 +125,11 @@ export default {
         password: this.ruleForm.password
       }
       let redirect = this.$route.query.redirect;
+
+      // 打包的时候放开，设置假的 token
+      // sessionStorage.setItem('TOKEN', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAyNTQ3NjM1LCJleHAiOjE3MDI1NTEyMzV9.9rT1tptioYKHK9HhWHr_duAZ0An_BFaafRd01XBSojA');
+
+
       const result = await userLogin(params)
       console.log('result---', result);
       if (result.code == 200) {

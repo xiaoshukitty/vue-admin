@@ -149,7 +149,7 @@ export default {
     },
     created() {
         this.recordRouteList = this.$t('routerChunkI18n')
-        console.log('this.recordRouteList----',this.recordRouteList);
+        console.log('this.recordRouteList----', this.recordRouteList);
         history.pushState(null, null, document.URL);
         window.addEventListener("popstate", function () {
             history.pushState(null, null, document.URL);
@@ -343,6 +343,11 @@ export default {
             let params = {
                 token: sessionStorage.getItem('TOKEN')
             }
+
+            // 打包的时候放开，删除假的 token
+            // sessionStorage.removeItem("TOKEN")
+
+
             const reslut = await logout(params)
             if (reslut.code == 200) {
                 sessionStorage.removeItem('TOKEN');

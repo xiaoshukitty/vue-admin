@@ -7,6 +7,7 @@
             <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :options="playerOptions"
                 @ready="handleReady" @start="handleStart" @play="handlePlay" @pause="handlePause" @ended="handleEnded"
                 @error="handleError" @timeupdate="handleTimeUpdate" @volumechange="handleVolumeChange"></video-player>
+                <!-- <video class="aspect-video w-full" :src="mvUrl" autoplay controls/> -->
         </el-card>
     </div>
 </template>
@@ -15,6 +16,7 @@
 export default {
     data() {
         return {
+            // mvUrl:require('@/assets/video/dance.mp4')
         }
     },
     computed: {

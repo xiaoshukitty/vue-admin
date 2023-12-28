@@ -25,17 +25,17 @@ cd 到 node_server目录，命令 nodemon app.js 启动服务，项目就可以�
 
 
 
-![](/Users/shuhuan/Desktop/test/codefile/Vue/Vue2/vue_test/src/assets/images/WechatIMG199.jpg)
+https://i.postimg.cc/h47Yk430/Wechat-IMG199.png
 
 
 
-![](/Users/shuhuan/Desktop/test/codefile/Vue/Vue2/vue_test/src/assets/images/WechatIMG200.jpg)
+https://i.postimg.cc/Qd6SBvyt/Wechat-IMG200.png
 
 
 
-![](/Users/shuhuan/Desktop/test/codefile/Vue/Vue2/vue_test/src/assets/images/WechatIMG201.jpg)
+https://i.postimg.cc/cJg7vC39/Wechat-IMG201.png
 
 
 
-![](/Users/shuhuan/Desktop/test/codefile/Vue/Vue2/vue_test/src/assets/images/WechatIMG202.jpg)
+https://i.postimg.cc/PxbwDw54/Wechat-IMG202.png
 

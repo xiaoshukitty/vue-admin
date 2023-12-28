@@ -23,7 +23,7 @@ cd 到 node_server目录，命令 nodemon app.js 启动服务，项目就可以�
 
 在 src 目录下
 
-
+![Image text](https://github.com/xiaoshukitty/img-folder/blob/main/WechatIMG199.jpg?raw=true)
 
 https://i.postimg.cc/h47Yk430/Wechat-IMG199.png
 

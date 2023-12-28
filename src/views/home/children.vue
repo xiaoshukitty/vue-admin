@@ -8,6 +8,7 @@ export default {
   mounted() {
     let particlesJson = require('../../utils/particles.json')
     particlesJS('particles', particlesJson,);
+    console.log('测试-----测试');
   }
 }
 </script>

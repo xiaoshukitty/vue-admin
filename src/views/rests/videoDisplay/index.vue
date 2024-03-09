@@ -13,7 +13,7 @@
                 <div id="dplayer" class="video-player"></div>
                 <div class="video_introduce">
                     <el-button class="video_download" type="primary" plain
-                        @click="videoDownload(playerOptions)">下载</el-button>
+                        @click="videoDownload(playerOptions)">{{ $t('headerList.Download') }}</el-button>
                 </div>
             </div>
 

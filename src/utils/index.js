@@ -28,6 +28,46 @@ const downloadIamgeFun = (imgsrc, name) => {
     image.src = imgsrc;
 }
 
+
+/**
+ * 通过url 转为blob格式的数据(下载视频)
+ * @param {String} url 下载地址
+ * @param {any} name 下载名称
+ */
+const getVideoArrayBuffer = (url, name) => {
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', url, true)
+    xhr.responseType = 'arraybuffer' // 返回类型blob
+    xhr.onload = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const blob = this.response
+            // console.log(blob)
+            // 转换一个blob链接
+            // 注: URL.createObjectURL() 静态方法会创建一个 DOMString(DOMString 是一个UTF-16字符串)，
+            // 其中包含一个表示参数中给出的对象的URL。这个URL的生命周期和创建它的窗口中的document绑定
+            const downLoadUrl = window.URL.createObjectURL(new Blob([blob], {
+                type: 'video/mp4'
+            }))
+            // 视频的type是video/mp4，图片是image/jpeg
+            // 01.创建a标签
+            const a = document.createElement('a')
+            // 02.给a标签的属性download设定名称
+            a.download = name
+            // 03.设置下载的文件名
+            a.href = downLoadUrl
+            // 04.对a标签做一个隐藏处理
+            a.style.display = 'none'
+            // 05.向文档中添加a标签
+            document.body.appendChild(a)
+            // 06.启动点击事件
+            a.click()
+            // 07.下载完毕删除此标签
+            a.remove()
+        }
+    }
+    xhr.send()
+}
+
 /**
  * 解决生成二维码乱码
  * @param {String} str  需要解决乱码的中文
@@ -389,6 +429,7 @@ const generateTitle = (title) => {
 
 export {
     downloadIamgeFun,
+    getVideoArrayBuffer,
     toUtf8,
     getDistances,
     timeConversion,

@@ -4,15 +4,25 @@
             <div slot="header" class="clearfix">
                 <span>{{ $t('headerList.VideoDisplay') }}</span>
             </div>
-            <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :options="playerOptions"
-                @ready="handleReady" @start="handleStart" @play="handlePlay" @pause="handlePause" @ended="handleEnded"
-                @error="handleError" @timeupdate="handleTimeUpdate" @volumechange="handleVolumeChange"></video-player>
+            <div class="video_box">
+                <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :options="playerOptions"
+                    @ready="handleReady" @start="handleStart" @play="handlePlay" @pause="handlePause"
+                    @ended="handleEnded" @error="handleError" @timeupdate="handleTimeUpdate"
+                    @volumechange="handleVolumeChange"></video-player>
                 <!-- <video class="aspect-video w-full" :src="mvUrl" autoplay controls/> -->
+
+                <div class="video_introduce">
+                    <el-button class="video_download" type="primary" plain
+                        @click="videoDownload(playerOptions)">下载</el-button>
+                </div>
+            </div>
+
         </el-card>
     </div>
 </template>
 
 <script>
+import { getVideoArrayBuffer } from '@/utils/index'
 export default {
     data() {
         return {
@@ -47,7 +57,7 @@ export default {
                 preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
             }
             return playerOptionsObj
-        }
+        },
     },
     mounted() {
 
@@ -56,9 +66,14 @@ export default {
         // this.$refs.videoPlayer.player.play()
     },
     methods: {
+        // 视频下载
+        videoDownload({ sources }) {
+            const { src } = sources[0];
+            getVideoArrayBuffer(src, 'downloadTest')
+        },
         //视频播放器准备好时触发
         handleReady(player) {
-            console.log('视频播放器准备好时触发',player);
+            console.log('视频播放器准备好时触发', player);
         },
         //视频开始播放时触发
         handleStart() {
@@ -109,8 +124,24 @@ export default {
         .clearfix:after {
             clear: both
         }
-        .video-player{
-            width: calc(100% / 1.3);
+
+        .video_box {
+            display: flex;
+
+            .video-player {
+                // width: calc(100% / 1.3);
+                width: 70%;
+            }
+
+            .video_introduce {
+                width: 30%;
+                text-align: left;
+                margin: 20px;
+
+                .video_download {}
+
+                .video_minification {}
+            }
         }
 
     }

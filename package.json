@@ -14,6 +14,7 @@
     "clipboard": "^2.0.11",
     "compression-webpack-plugin": "^6.1.1",
     "core-js": "^3.8.3",
+    "dplayer": "^1.27.1",
     "echarts": "^5.4.3",
     "element-ui": "^2.15.10",
     "faker": "^4.1.0",

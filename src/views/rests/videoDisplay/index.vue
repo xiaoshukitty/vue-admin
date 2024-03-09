@@ -5,12 +5,12 @@
                 <span>{{ $t('headerList.VideoDisplay') }}</span>
             </div>
             <div class="video_box">
-                <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :options="playerOptions"
+                <!-- <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :options="playerOptions"
                     @ready="handleReady" @start="handleStart" @play="handlePlay" @pause="handlePause"
                     @ended="handleEnded" @error="handleError" @timeupdate="handleTimeUpdate"
-                    @volumechange="handleVolumeChange"></video-player>
+                    @volumechange="handleVolumeChange"></video-player> -->
                 <!-- <video class="aspect-video w-full" :src="mvUrl" autoplay controls/> -->
-
+                <div id="dplayer" class="video-player"></div>
                 <div class="video_introduce">
                     <el-button class="video_download" type="primary" plain
                         @click="videoDownload(playerOptions)">下载</el-button>
@@ -22,7 +22,10 @@
 </template>
 
 <script>
-import { getVideoArrayBuffer } from '@/utils/index'
+import { getVideoArrayBuffer } from '@/utils/index';
+
+// 插件地址：https://dplayer.diygod.dev/
+import DPlayer from 'dplayer';
 export default {
     data() {
         return {
@@ -60,7 +63,72 @@ export default {
         },
     },
     mounted() {
+        const dp = new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: false,//视频自动播放
+            theme: '#FADFA3',//主题色
+            loop: false,//视频循环播放
+            lang: 'zh-cn',//可选值: 'en', 'zh-cn', 'zh-tw'
+            screenshot: true,//开启截图，如果开启，视频和视频封面需要允许跨域
+            hotkey: true,//开启热键，支持快进、快退、音量控制、播放暂停
+            preload: 'auto',//视频预加载，可选值: 'none', 'metadata', 'auto'
+            logo: require('@/assets/images/avatar1.jpg'), //视频logo图
+            volume: 0.7, //默认音量
+            mutex: true, //互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
+            // 视频信息 设置
+            video: {
+                url: require('@/assets/video/dance.mp4'), //视频链接
+                pic:require('@/assets/images/avatar1.jpg'),//视频封面
+            },
 
+            // 外挂字幕 设置
+            subtitle: {
+                url: '', //字幕链接
+                type: 'webvtt',//'webvtt'	字幕类型，可选值: 'webvtt', 'ass'，目前只支持 webvtt
+                fontSize: '25px',//字幕字号
+                bottom: '10%',//字幕距离播放器底部的距离，取值形如: '10px' '10%'
+                color: '#b7daff',//字幕颜色
+            },
+
+            // 显示弹幕 设置
+            // danmaku: { 
+            // id: '9E2E3368B56CDBB4',
+            // api: 'https://api.prprpr.me/dplayer/',
+            // token: 'tokendemo',
+            // maximum: 1000,
+            // addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142'],
+            // user: 'DIYgod',
+            // bottom: '15%',
+            // unlimited: true,
+            // speedRate: 0.5,
+            // },
+
+            // 自定义右键菜单 设置
+            // contextmenu: [
+            // {
+            //     text: 'custom1',
+            //     link: 'https://github.com/DIYgod/DPlayer',
+            // },
+            // {
+            //     text: 'custom2',
+            //     click: (player) => {
+            //         console.log(player);
+            //     },
+            // },
+            // ],
+
+            // 自定义进度条提示点 设置
+            highlight: [
+                {
+                    time: 20,
+                    text: '这是第 20 秒',
+                },
+                {
+                    time: 120,
+                    text: '这是 2 分钟',
+                },
+            ],
+        });
         // 通过 ref 访问 videoPlayer 组件实例
         // this.$refs.videoPlayer.player.load()
         // this.$refs.videoPlayer.player.play()
@@ -145,5 +213,9 @@ export default {
         }
 
     }
+}
+
+::v-deep .dplayer-video {
+    height: calc(100vh - 240px);
 }
 </style>

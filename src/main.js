@@ -8,7 +8,7 @@ import Print from 'vue-print-nb';
 import VueAMap from 'vue-amap';
 import Clipboard from 'clipboard'; //一键复制
 import VueQriously from 'vue-qriously'; //生成二维码
-import VueI18n from 'vue-i18n' //国际化
+// import VueI18n from 'vue-i18n' //国际化
 import echarts from 'echarts' //echarts图表
 import nprogress from "nprogress";
 import "nprogress/nprogress.css";
@@ -18,7 +18,7 @@ import SlideVerify from 'vue-monoplasty-slide-verify'; //滑块验证
 import VueVideoPlayer from 'vue-video-player' //视频播放
 import scroll from 'vue-seamless-scroll' // 无缝滚动
 import Cookies from 'js-cookie';
-
+import i18n from './utils/lang';
 
 import '@/config/directive.js'
 import '@/icons/index' //导入 svg
@@ -30,7 +30,7 @@ Vue.use(ElementUI);
 Vue.use(VueAMap);
 Vue.use(Print); //打印
 Vue.use(VueQriously);
-Vue.use(VueI18n)
+// Vue.use(VueI18n)
 Vue.use(particles)
 Vue.use(VueLuckyCanvas)
 Vue.use(SlideVerify)
@@ -74,13 +74,13 @@ amapKeys.forEach(key => {
   localStorage.removeItem(key)
 })
 
-const i18n = new VueI18n({
-  locale: localStorage.getItem('lang') || 'zh-CN', // 将要切换的语言，可以通过url拼的参数获取，用户行为select选择获取，本地manifest配置获取等，根据场景动态获取
-  messages: {
-    'zh-CN': require('./i18n/zh_CN.js'), // 本地资源文件，中文&英文，
-    'en-US': require('./i18n/en_US.js')
-  }
-});
+// const i18n = new VueI18n({
+//   locale: localStorage.getItem('lang') || 'zh-CN', // 将要切换的语言，可以通过url拼的参数获取，用户行为select选择获取，本地manifest配置获取等，根据场景动态获取
+//   messages: {
+//     'zh-CN': require('./i18n/zh_CN.js'), // 本地资源文件，中文&英文，
+//     'en-US': require('./i18n/en_US.js')
+//   }
+// });
 
 
 //自定义进度样式

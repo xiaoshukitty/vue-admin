@@ -61,6 +61,7 @@ export default {
             this.$store.commit('setLang', {
                 newLang: lang
             })
+            this.$eventBus.$emit('langEdit', lang);
 
         },
     }

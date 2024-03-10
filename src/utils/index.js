@@ -306,6 +306,25 @@ const searchTreeCertain = (nodesArr, searchKey) => {
 }
 
 
+/**
+ * 树形数据转换成扁平化数据
+ * @param {Array} data 
+ * @returns 
+ */
+const flattTree = (data) => {
+    let res = []
+    data.forEach(el => {
+        if (el.children) {
+            res.push(el, ...flattTree(el.children)) //递归
+            delete el['children']
+        } else {
+            res.push(el)
+        }
+    })
+    return res
+}
+
+
 
 /**
  * //数字转中文
@@ -443,5 +462,6 @@ export {
     toBigChinesnNumber,
     getTime,
     generateTitle,
-    searchTreeCertain
+    searchTreeCertain,
+    flattTree
 }

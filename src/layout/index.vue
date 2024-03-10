@@ -152,6 +152,7 @@ import { searchTree, searchTreeCertain } from '@/utils'
 import { informsList, emailList } from '@/utils/falseData'
 import { logout } from '@/server/common'
 import { mapGetters, mapState } from 'vuex'
+import { flattTree } from '@/utils/index'
 
 export default {
     name: 'HomePage',
@@ -173,6 +174,7 @@ export default {
             activeItem: {},
             options: this.$t('routerNavigation'),
             valueTitle: '',
+            valueId: '',
             props: {
                 value: 'id',             // ID字段名
                 label: 'name',         // 显示名称
@@ -187,6 +189,7 @@ export default {
     created() {
 
         this.$eventBus.$on('guide', this.guideProcedure); //引导页步骤
+        this.$eventBus.$on('langEdit', this.langEditClick); //引导页步骤
         this.recordRouteList = this.$t('routerChunkI18n')
         console.log('this.recordRouteList----', this.recordRouteList);
         history.pushState(null, null, document.URL);
@@ -195,6 +198,7 @@ export default {
         });
         let routerGather = searchTreeCertain(this.$t('routerNavigation'), this.$route.path)
         this.routerPush(routerGather)
+        this.isCollapse = localStorage.getItem('ISCOLLAPSE') == 'CLOSE' ? true : false;
     },
     mounted() {
     },
@@ -218,6 +222,33 @@ export default {
         }
     },
     methods: {
+        //横向导航设置
+        langEditClick(lang) {
+            if (this.recordRouteList[0].id != 0) {
+                this.recordRouteList[0].push({
+                    name: '首页',
+                    path: 'home',
+                    id: '0',
+                    router: '/home',
+                    icon: 'el-icon-monitor',
+                })
+            }
+            const langData = flattTree(JSON.parse(JSON.stringify(this.$t('routerNavigation'))))
+            for (let i = 0; i < langData.length; i++) {
+                for (let j = 0; j < this.recordRouteList.length; j++) {
+                    if (this.recordRouteList[j].id == langData[i].id) {
+                        this.recordRouteList[j] = langData[i]
+                    }
+                }
+            }
+            this.options = this.$t('routerNavigation');
+            let routerGather = langData.filter(item => {
+                return item.id == this.valueId
+            })
+            this.valueTitle = routerGather[0].name;
+        },
+
+        //引导页
         guideProcedure(data) {
             intro()
                 .setOptions({
@@ -289,10 +320,9 @@ export default {
                 return
             }
             this.valueTitle = node.name;
-            console.log('node---', node);
+            this.valueId = node.id;
             this.$router.push({ path: node.router })
             this.activeIndex = node.router;
-
             setTimeout(() => {
                 this.$refs.elSelect.blur()
                 this.routerPush(node)
@@ -381,9 +411,18 @@ export default {
                 this.$refs.selectTree.setCheckedKeys([newValue.id]);
                 this.defaultExpandedKey = [newValue.id.charAt(0)];
                 this.valueTitle = newValue.name;
+                this.valueId = newValue.id;
             });
         },
         takeBack() {
+            if (this.isCollapse) {
+                this.isCollapse = false;
+                localStorage.setItem('ISCOLLAPSE', 'OPEN')
+            } else {
+                this.isCollapse = true;
+                localStorage.setItem('ISCOLLAPSE', 'CLOSE')
+            }
+            return
             this.isCollapse = !this.isCollapse;
         },
         //刷新
@@ -530,7 +569,8 @@ export default {
     }
 
     .right {
-        width: calc(100% - 200px);
+        // width: calc(100% - 200px);
+        width: 100%;
 
         .head {
             box-sizing: border-box;

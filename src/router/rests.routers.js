@@ -60,6 +60,13 @@ export default [{
                 title: '记事本',
             },
             component: () => import('../views/rests/notepad')
+        }, {
+            path: '/rests/introductionPage',
+            name: 'introductionPage',
+            meta: {
+                title: '引导页',
+            },
+            component: () => import('../views/rests/introductionPage')
         },
     ]
 }]

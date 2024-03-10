@@ -1,6 +1,6 @@
 <template>
     <div class="home_page">
-        <div class="left">
+        <div class="left" ref="menuGuide">
             <div>
                 <div v-if="!isCollapse">{{ $t('headerList.UserName') }}</div>
                 <img v-else class="left_img" src="@/assets/images/avatar1.jpg" alt="">
@@ -31,7 +31,7 @@
             <div>
                 <div class="head">
                     <div class="head_left">
-                        <div class="take_back header_hover" @click="takeBack">
+                        <div class="take_back header_hover" @click="takeBack" ref="takeBackGuide">
                             <img src="@/assets/images/take_back.png" alt="">
                         </div>
                         <div style="color: #999;">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="header">
-                        <div class="">
+                        <div class="" ref="elSelectGuide">
                             <el-select ref="elSelect" style="width: 220px;" :value="valueTitle">
                                 <el-option :value="valueTitle" :label="valueTitle" class="options">
                                     <el-tree id="tree-option" ref="selectTree" :data="options" :props="props"
@@ -49,19 +49,20 @@
                                 </el-option>
                             </el-select>
                         </div>
-                        <div class="header_hover">
+                        <div class="header_hover" ref="lockScreenGuide">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.LockScreen')"
                                 placement="bottom">
                                 <el-button icon="el-icon-lock" size="small" circle @click="lockScreen"></el-button>
                             </el-tooltip>
                         </div>
-                        <div class="header_hover">
-                            <el-tooltip class="item" effect="dark" :content="$t('headerList.Refresh')" placement="bottom">
+                        <div class="header_hover" ref="refreshGuide">
+                            <el-tooltip class="item" effect="dark" :content="$t('headerList.Refresh')"
+                                placement="bottom">
                                 <el-button icon="el-icon-refresh-right" size="small" circle
                                     @click="updateRefsh"></el-button>
                             </el-tooltip>
                         </div>
-                        <div class="header_hover location">
+                        <div class="header_hover location" ref="notificationGuide">
                             <el-popover placement="bottom" width="300" trigger="hover" ref="popover">
                                 <el-tabs v-model="activeName">
                                     <el-tab-pane label="通知" name="inform">
@@ -90,12 +91,15 @@
                                 </el-tabs>
                                 <el-button icon="el-icon-bell" size="small" circle @click="inform" slot="reference">
                                 </el-button>
-                                <div class="circle" slot="reference" v-if="informsList.length != 0">{{ informsList.length }}
+                                <div class="circle" slot="reference" v-if="informsList.length != 0">{{
+                    informsList.length }}
                                 </div>
                             </el-popover>
                         </div>
-                        <I18nComponents :status="'hover'" />
-                        <div class="full_screen header_hover"
+                        <div ref="i18nGuide">
+                            <I18nComponents :status="'hover'" />
+                        </div>
+                        <div class="full_screen header_hover" ref="fullScreenGuide"
                             @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
                             <el-tooltip class="item" effect="dark"
                                 :content="fullScreenShow ? $t('headerList.name') : $t('headerList.ExitFullScreen')"
@@ -106,13 +110,14 @@
                         <div class="avatar header_hover">
                             <el-popover placement="bottom" width="150" trigger="hover" v-model="visiblePopover">
                                 <div class="avatar_select">
-                                    <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{ item.value
-                                    }}</div>
+                                    <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
+                    item.value
+                }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
                                     <span style="font-size: 14px; margin-left: 5px; color: #606266;">{{
-                                        $t('headerList.UserName') }}</span>
+                    $t('headerList.UserName') }}</span>
                                 </div>
                             </el-popover>
                         </div>
@@ -139,6 +144,8 @@
 
 <script>
 
+import intro from 'intro.js';
+import 'intro.js/minified/introjs.min.css';
 import Cookies from "js-cookie";
 import I18nComponents from '@/components/i18nComponents'
 import { searchTree, searchTreeCertain } from '@/utils'
@@ -178,6 +185,8 @@ export default {
         }
     },
     created() {
+
+        this.$eventBus.$on('guide', this.guideProcedure); //引导页步骤
         this.recordRouteList = this.$t('routerChunkI18n')
         console.log('this.recordRouteList----', this.recordRouteList);
         history.pushState(null, null, document.URL);
@@ -209,6 +218,57 @@ export default {
         }
     },
     methods: {
+        guideProcedure(data) {
+            intro()
+                .setOptions({
+                    steps: [{
+                        title: this.$t('guide.Welcome'),
+                        intro: this.$t('guide.GoToTheBootPage'),
+                    },
+                    {
+                        title: this.$t('guide.Menu'),
+                        element: this.$refs.elSelectGuide,
+                        intro: this.$t('guide.QuickMenuSwitch'),
+                    },
+                    {
+                        title: this.$t('guide.LockScreen'),
+                        element: this.$refs.lockScreenGuide,
+                        intro: this.$t('guide.TapTheLockScreenWhenYouLeave'),
+                    },
+                    {
+                        title: this.$t('guide.Refresh'),
+                        element: this.$refs.refreshGuide,
+                        intro: this.$t('guide.RefreshIntroduce'),
+                    },
+                    {
+                        title: this.$t('guide.Notification'),
+                        element: this.$refs.notificationGuide,
+                        intro: this.$t('guide.NotificationIntroduce'),
+                    },
+                    {
+                        title: this.$t('guide.Language'),
+                        element: this.$refs.i18nGuide,
+                        intro: this.$t('guide.LanguageIntroduce'),
+                    },
+                    {
+                        title: this.$t('guide.FullScreen'),
+                        element: this.$refs.fullScreenGuide,
+                        intro: this.$t('guide.FullScreenIntroduce'),
+                    },
+                    {
+                        title: this.$t('guide.Minification'),
+                        element: this.$refs.takeBackGuide,
+                        intro: this.$t('guide.MinificationIntroduce'),
+                    },
+                    {
+                        title: this.$t('guide.RouteMenu'),
+                        element: this.$refs.menuGuide,
+                        intro: this.$t('guide.RouteMenuIntroduce'),
+                    },
+                    ]
+                })
+                .start();
+        },
         githubSkip() {
             window.open('https://github.com/xiaoshukitty/vue_test', '_blank');
         },

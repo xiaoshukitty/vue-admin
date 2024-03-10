@@ -136,19 +136,19 @@ const headerList = {
     UploadPictures: "Upload Pictures",
     SelectImage: "Select Image",
     RichText: 'RichText',
-    Signature:"Signature",
-    Eliminate:"liminate",
-    Download:'Download',
-    VideoDisplay:'VideoDisplay',
-    Share:'Share',
-    SeamlessRolling:'Seamless Rolling',
-    LockScreen:'Lock Screen',
-    Inform:"Inform",
-    PleaseEnterTheScreenLockPassword:'Please Enter The Screen Lock Password',
-    LockedScreen:'Locked Screen',
-    Unlock:"Unlock",
-    SwitchWallpaper:"Switch Wallpaper",
-    TheScreenLockPasswordCannotBeEmpty:"The Screen Lock Password Cannot Be Empty",
+    Signature: "Signature",
+    Eliminate: "liminate",
+    Download: 'Download',
+    VideoDisplay: 'VideoDisplay',
+    Share: 'Share',
+    SeamlessRolling: 'Seamless Rolling',
+    LockScreen: 'Lock Screen',
+    Inform: "Inform",
+    PleaseEnterTheScreenLockPassword: 'Please Enter The Screen Lock Password',
+    LockedScreen: 'Locked Screen',
+    Unlock: "Unlock",
+    SwitchWallpaper: "Switch Wallpaper",
+    TheScreenLockPasswordCannotBeEmpty: "The Screen Lock Password Cannot Be Empty",
 }
 
 const avatarList = [{
@@ -171,7 +171,7 @@ const loginI18n = {
     PleaseInputPassword: 'Please input password',
     PleaseEnterTheVerificationCode: 'Please Enter The Verification Code',
     VerificationCodeError: "Verification Code Error",
-    TheVerificationCodeCannotBeEmpty:'The Verification Code Cannot Be Empty'
+    TheVerificationCodeCannotBeEmpty: 'The Verification Code Cannot Be Empty'
 }
 
 //注册
@@ -334,7 +334,7 @@ const routerNavigation = [{
                 router: '/map/qqMap',
             },
         ]
-    },  {
+    }, {
         name: 'port',
         path: 'port',
         id: '4',
@@ -434,6 +434,11 @@ const routerNavigation = [{
                 path: 'notepad',
                 id: '7-7',
                 router: '/rests/notepad',
+            }, {
+                name: 'introductionPage',
+                path: 'introductionPage',
+                id: '7-8',
+                router: '/rests/introductionPage',
             }
         ]
     }, {
@@ -467,12 +472,36 @@ const routerChunkI18n = [{
 }]
 
 // 标题
-const titleI18n ={
-    ChinaMap:'China Map',
-    LineChart:'Line Chart',
-    ColumnDiagram:'Column Diagram',
-    Pie:'Pie',
+const titleI18n = {
+    ChinaMap: 'China Map',
+    LineChart: 'Line Chart',
+    ColumnDiagram: 'Column Diagram',
+    Pie: 'Pie',
 }
+
+//引导
+const guide = {
+    Guide:'Guide',
+    Welcome: 'Welcome',
+    GoToTheBootPage: 'Go to the boot page 👋',
+    Menu: 'Menu',
+    QuickMenuSwitch: 'Quick menu switch 👋',
+    LockScreen: 'LockScreen',
+    TapTheLockScreenWhenYouLeave: 'Tap the lock screen when you leave 👋',
+    Refresh: 'Refresh',
+    RefreshIntroduce: 'If you do not perform operations for a long time, you can refresh the page 👋', //If you do not perform operations for a long time, you can refresh the page
+    Notification: 'Notification',
+    NotificationIntroduce: 'You can view new information 👋', //You can view new information
+    Language:'Language',
+    LanguageIntroduce:'Language switching 👋',//Language switching
+    FullScreen:"FullScreen",
+    FullScreenIntroduce:'The page is displayed in full screen 👋',//The page is displayed in full screen
+    Minification:"Minification",
+    MinificationIntroduce:'Shrink the route menu bar 👋',//Shrink the route menu bar
+    RouteMenu:'RouteMenu',
+    RouteMenuIntroduce:'Route menu switch skip 👋'//Route menu switch skip
+}
+
 
 export {
     operationList,
@@ -484,5 +513,6 @@ export {
     phoneLoginI18n,
     qrCodeI18m,
     routerChunkI18n,
-    titleI18n
+    titleI18n,
+    guide
 }

@@ -136,19 +136,19 @@ const headerList = {
     UploadPictures: "上传",
     SelectImage: "选择",
     RichText: '富文本',
-    Signature:"签名",
-    Eliminate:"清除",
-    Download:'下载',
-    VideoDisplay:'视频播放',
-    Share:'分享',
-    SeamlessRolling:'自动滚动',
-    LockScreen:'锁屏',
-    Inform:'通知',
-    PleaseEnterTheScreenLockPassword:'请输入锁屏密码',
-    LockedScreen:'已锁屏',
-    Unlock:"解锁",
-    SwitchWallpaper:"切换壁纸",
-    TheScreenLockPasswordCannotBeEmpty:"锁屏密码不能为空",
+    Signature: "签名",
+    Eliminate: "清除",
+    Download: '下载',
+    VideoDisplay: '视频播放',
+    Share: '分享',
+    SeamlessRolling: '自动滚动',
+    LockScreen: '锁屏',
+    Inform: '通知',
+    PleaseEnterTheScreenLockPassword: '请输入锁屏密码',
+    LockedScreen: '已锁屏',
+    Unlock: "解锁",
+    SwitchWallpaper: "切换壁纸",
+    TheScreenLockPasswordCannotBeEmpty: "锁屏密码不能为空",
 }
 
 
@@ -172,7 +172,7 @@ const loginI18n = {
     PleaseInputPassword: '请输入密码',
     PleaseEnterTheVerificationCode: '请输入验证码',
     VerificationCodeError: "验证码错误",
-    TheVerificationCodeCannotBeEmpty:'验证码不能为空',
+    TheVerificationCodeCannotBeEmpty: '验证码不能为空',
 }
 
 //注册
@@ -442,6 +442,11 @@ const routerNavigation = [{
             path: 'notepad',
             id: '7-7',
             router: '/rests/notepad',
+        }, {
+            name: '引导页',
+            path: 'introductionPage',
+            id: '7-8',
+            router: '/rests/introductionPage',
         }
     ]
 }, {
@@ -474,12 +479,36 @@ const routerChunkI18n = [{
 }]
 
 // 标题
-const titleI18n ={
-    ChinaMap:'中国地图',
-    LineChart:'折线图',
-    ColumnDiagram:'柱形图',
-    Pie:'饼图',
+const titleI18n = {
+    ChinaMap: '中国地图',
+    LineChart: '折线图',
+    ColumnDiagram: '柱形图',
+    Pie: '饼图',
 }
+
+//引导
+const guide = {
+    Guide:'引导页',
+    Welcome: '欢迎',
+    GoToTheBootPage: '进入引导页 👋',
+    Menu: '菜单',
+    QuickMenuSwitch: '快速菜单切换 👋',
+    LockScreen: '锁屏',
+    TapTheLockScreenWhenYouLeave: '离开时可以点击锁屏 👋',
+    Refresh: '刷新',
+    RefreshIntroduce: '如果长时间不操作，可以刷新页面 👋', //If you do not perform operations for a long time, you can refresh the page
+    Notification: '通知',
+    NotificationIntroduce: '可以查看新的信息 👋', //You can view new information
+    Language:'语言',
+    LanguageIntroduce:'语言切换 👋',//Language switching
+    FullScreen:"全屏",
+    FullScreenIntroduce:'全屏显示页面 👋',//The page is displayed in full screen
+    Minification:"缩小",
+    MinificationIntroduce:'收缩路由菜单栏 👋',//Shrink the route menu bar
+    RouteMenu:'路由菜单',
+    RouteMenuIntroduce:'路由菜单切换跳转 👋'//Route menu switch skip
+}
+
 
 export {
     operationList,
@@ -491,5 +520,6 @@ export {
     phoneLoginI18n,
     qrCodeI18m,
     routerChunkI18n,
-    titleI18n
+    titleI18n,
+    guide
 }

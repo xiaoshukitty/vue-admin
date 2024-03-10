@@ -40,6 +40,7 @@ Vue.use(scroll)
 //挂载到Vue实例上面
 Vue.prototype.Clipboard = Clipboard
 Vue.prototype.$echarts = echarts
+Vue.prototype.$eventBus = new Vue() // $eventBus 挂在到
 
 // 适配立即调用函数
 // (function init(screenRatioByDesign = 16 / 9) {

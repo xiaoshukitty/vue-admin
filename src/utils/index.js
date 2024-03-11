@@ -445,6 +445,20 @@ const generateTitle = (title) => {
     return title
 }
 
+/**
+ * 解析路径路由上面的参数 如："age=&name=&page=1&pageSize=10"
+ * @param {String} str 
+ * @returns 
+ */
+const analyzeArgument = (str) => {
+    const strs = str.split("&");
+    let result = new Object();
+    for (var i = 0; i < strs.length; i++) {
+        result[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+    }
+    return result
+}
+
 
 export {
     downloadIamgeFun,
@@ -463,5 +477,6 @@ export {
     getTime,
     generateTitle,
     searchTreeCertain,
-    flattTree
+    flattTree,
+    analyzeArgument
 }

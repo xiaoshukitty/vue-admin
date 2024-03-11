@@ -1,10 +1,8 @@
 import axios from "axios";
-
-//获取token
-// const getToken = () => {
-//     let token = sessionStorage.getItem('token');
-//     return token
-// }
+import store from '@/store/index'
+import {
+    analyzeArgument
+} from '@/utils/index'
 
 const instance = axios.create({
     baseURL: ' http://localhost:3000/',
@@ -16,6 +14,7 @@ const instance = axios.create({
     },
 });
 
+
 // instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 // instance.defaults.headers.common['Authorization'] = '自己的token';
 
@@ -24,14 +23,15 @@ instance.interceptors.request.use(
     config => {
         // 在发送请求之前做些什么
         // 让每一个接口都带 token
-        // const token = store.state.token;
-        // token && (config.headers.Authorization = token); //方法一
+        const result = store.state;
+        if (result && result.token) {
+            config.headers.Authorization = `Bearer ${result.token}`;
 
-        // if (token !== null) {
-        //     config.headers['token'] = store.state.token; //方法二
-        // } else { 
-        // }
-
+        }
+        let isToken = analyzeArgument(config.data).hasOwnProperty('token');
+        if (!isToken) {
+            config.data += "&token=" + result.token;
+        }
         return config;
     },
     error => {
@@ -75,7 +75,7 @@ instance.interceptors.response.use(
         console.log('retryCount', config.retryCount);
         // 检查我们是否已经超过了总重试次数
         if (config.retryCount > config.retry) {
-            console.log('error----',error.message);
+            console.log('error----', error.message);
             // 返回错误信息
             // 可做借口请求失败页面跳转
             // return Promise.reject(error);

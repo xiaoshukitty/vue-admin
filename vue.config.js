@@ -52,6 +52,15 @@ module.exports = {
       performance: {},
     }
   },
+  // 去掉 log
+  terser: {
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      }
+    }
+  },
   chainWebpack: config => {
     /* svg 相关配置 */
     // svg图标加载

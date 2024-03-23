@@ -34,7 +34,7 @@ export default {
         return {
             imgURLs: '',
             lookQrcodeDialog: false,
-            codeUrl:'bindCode=bobbobsbtvso'
+            codeUrl: 'bindCode=bobbobsbtvso'
         }
     },
     mounted() {
@@ -65,7 +65,7 @@ export default {
         },
         // qriously 生成二维码
         qriously() {
-            this.lookQrcodeDialog=true;
+            this.lookQrcodeDialog = true;
         },
         // 生成二维码
         qrcode() {
@@ -110,6 +110,10 @@ export default {
         },
         // canvas 画图
         xianDuan() {
+            // 解决 canvas 清晰度
+            //  原始尺寸 = 样式尺寸 * 缩放比
+            // devicePixelRatio 缩放比
+
             var canvas = document.getElementById("myCanvas");
             var ctx = canvas.getContext("2d");
             console.log('ctx', ctx);

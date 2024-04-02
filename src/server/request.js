@@ -3,6 +3,9 @@ import store from '@/store/index'
 import {
     analyzeArgument
 } from '@/utils/index'
+import {
+    startTime
+} from '@/utils/time'
 
 const instance = axios.create({
     baseURL: ' http://localhost:3000/',
@@ -18,6 +21,10 @@ const instance = axios.create({
 // instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 // instance.defaults.headers.common['Authorization'] = '自己的token';
 
+/**
+ * token 过期处理
+ */
+
 // 添加请求拦截器
 instance.interceptors.request.use(
     config => {
@@ -26,12 +33,25 @@ instance.interceptors.request.use(
         const result = store.state;
         if (result && result.token) {
             config.headers.Authorization = `Bearer ${result.token}`;
+            const endTime = JSON.parse(sessionStorage.getItem('TOKENINFO'));
+            console.log('endTime.exp是', endTime.exp);
+            console.log('startTime是', startTime());
 
+            if (endTime.exp < startTime()) {
+                console.log('过期了');
+                //token 过期就存入 vuex 然后 layout 页面监听 token 是否过期，在做其他操作
+                store.commit('updateTokenInvalidation', {
+                    isTokenInvalidation: true
+                })
+            }
         }
         let isToken = analyzeArgument(config.data).hasOwnProperty('token');
         if (!isToken) {
             config.data += "&token=" + result.token;
         }
+
+
+
         return config;
     },
     error => {

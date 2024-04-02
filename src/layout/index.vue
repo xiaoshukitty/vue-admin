@@ -139,6 +139,7 @@
                 <router-view v-if="flag" />
             </div>
         </div>
+
     </div>
 </template>
 
@@ -201,6 +202,7 @@ export default {
         this.isCollapse = localStorage.getItem('ISCOLLAPSE') == 'CLOSE' ? true : false;
     },
     mounted() {
+
     },
     watch: {
         getRefsh(newValue, OldValue) {
@@ -211,17 +213,53 @@ export default {
                 this.flag = true;
             })
         },
+        //监听 头像 是否变化
         getProfilePhoto(newValue, OldValue) {
             this.profilePhoto = newValue;
-        }
+        },
+        //监听 token 是否过期
+        getTokenInvalidation(newValue, OldValue) {
+            if (newValue) {
+                this.tokenExpired();
+            }
+        },
     },
     computed: {
-        ...mapGetters(['getRefsh', 'getProfilePhoto']),
+        ...mapGetters(['getRefsh', 'getProfilePhoto', 'getTokenInvalidation']),
         text() {
             return searchTree(this.$t('routerNavigation'), this.activeIndex)
         }
     },
     methods: {
+        // token过期跳转
+        tokenExpired() {
+            this.$alert(this.$t('headerList.TokenExpired'), this.$t('headerList.Reminder'), {
+                confirmButtonText: this.$t('headerList.Ok'),
+                showClose: false,
+                type: 'warning'
+            }).then(() => {
+                this.$store.commit('updateTokenInvalidation', {
+                    isTokenInvalidation: false
+                });
+
+                sessionStorage.removeItem('TOKEN');
+                localStorage.removeItem('USERINFO');
+                sessionStorage.removeItem("TOKENINFO")
+                sessionStorage.clear();
+                this.$store.commit('setToken', {
+                    token: ''
+                })
+                setTimeout(() => {
+                    this.$router.push({ path: '/login', query: { redirect: this.$route.path } })
+                    this.$notify({
+                        title: this.$t('headerList.HasSuccessfullyExited'),
+                        type: 'success'
+                    });
+                }, 1000)
+
+            }).catch(() => {
+            });
+        },
         //横向导航设置
         langEditClick(lang) {
             if (this.recordRouteList[0].id != 0) {
@@ -504,6 +542,7 @@ export default {
             if (reslut.code == 200) {
                 sessionStorage.removeItem('TOKEN');
                 localStorage.removeItem('USERINFO');
+                sessionStorage.removeItem("TOKENINFO")
                 sessionStorage.clear();
                 this.$store.commit('setToken', {
                     token: ''

@@ -113,6 +113,7 @@ const headerList = {
     LogOut: 'Log Out',
     Reminder: 'Reminder',
     ConfirmToExitTheSystem: 'Confirm to exit the system',
+    TokenExpired:"If the token expires, close and log in again",
     Cancel: 'Cancel',
     Ok: 'Ok',
     HasSuccessfullyExited: 'Has successfully exited',

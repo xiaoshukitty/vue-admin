@@ -34,4 +34,9 @@ export default {
     updateProfilePhoto(state, payload) {
         state.profilePhoto = payload.profilePhoto;
     },
+
+    //token过期重新登陆
+    updateTokenInvalidation(state,payload){
+        state.isTokenInvalidation = payload.isTokenInvalidation;
+    }
 }

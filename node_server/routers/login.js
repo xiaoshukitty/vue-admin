@@ -84,7 +84,7 @@ login.post('/login/userLogin', (req, res) => {
                     // const secretKey = '147258'; // 按照需求设置密钥
                     const secretKey = '123456';
                     const token = jwt.sign(payload, secretKey, {
-                        expiresIn: '1h'
+                        expiresIn: 3600
                     }); // 生成token，设置过期时间1小时
                     // 将token返回给客户端
                     res.json({

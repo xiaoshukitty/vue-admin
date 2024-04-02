@@ -113,6 +113,7 @@ const headerList = {
     LogOut: '退出登录',
     Reminder: '温馨提示',
     ConfirmToExitTheSystem: '是否确定退出系统',
+    TokenExpired:'token过期，关闭重新登陆',
     Cancel: '取消',
     Ok: '确定',
     HasSuccessfullyExited: '已成功退出了',

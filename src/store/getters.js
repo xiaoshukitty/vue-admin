@@ -12,5 +12,10 @@ export default {
     //获取头像
     getProfilePhoto: (state) => {
         return state.profilePhoto
+    },
+
+    //获取token是否过期
+    getTokenInvalidation:(state)=>{
+        return state.isTokenInvalidation
     }
 }

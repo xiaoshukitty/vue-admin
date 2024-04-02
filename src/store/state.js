@@ -5,4 +5,5 @@ export default {
     token: sessionStorage.getItem('TOKEN'),
     refsh: false,
     profilePhoto: require('@/assets/images/avatar1.jpg'),
+    isTokenInvalidation: false, //token是否过期
 }

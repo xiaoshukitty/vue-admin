@@ -31,8 +31,8 @@
       </div>
       <div class="login_btn">
         <el-button type="primary" :loading="loginLoading" @click="login('ruleForm')">{{
-          !loginLoading ? $t('loginI18n.LogIn') : $t('loginI18n.BeLoggingIn')
-        }}
+        !loginLoading ? $t('loginI18n.LogIn') : $t('loginI18n.BeLoggingIn')
+      }}
         </el-button>
       </div>
       <div class="other_btn">
@@ -48,6 +48,8 @@
 </template>
 
 <script>
+//引入 jwt-decode 解析token
+import { jwtDecode } from "jwt-decode";
 import { userLogin } from '@/server/common'
 import { Code } from '@/utils/verificationCode'
 export default {
@@ -151,6 +153,10 @@ export default {
           password: this.ruleForm.password
         }))
         sessionStorage.setItem('TOKEN', result.token);
+        //获取token中时间戳过期时间
+        const tokenInfo = jwtDecode(result.token);
+        sessionStorage.setItem('TOKENINFO', JSON.stringify(tokenInfo));
+
         setTimeout(() => {
           // this.$router.push('./homePage')
           this.$router.push({ path: redirect || '/' })

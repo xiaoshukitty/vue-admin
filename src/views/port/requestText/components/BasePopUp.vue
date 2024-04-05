@@ -62,6 +62,7 @@ export default {
     computed: {
         dialogOrder: {
             get() {
+                console.log('dialogVisible',dialogVisible);
                 return this.dialogVisible;
             },
             set(val) {

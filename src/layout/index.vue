@@ -139,7 +139,7 @@
                 <router-view v-if="flag" />
             </div>
         </div>
-
+        <GlobalSearch :isSearch="isSearch" @update:visible="updateVisible"></GlobalSearch>
     </div>
 </template>
 
@@ -148,7 +148,9 @@
 import intro from 'intro.js';
 import 'intro.js/minified/introjs.min.css';
 import Cookies from "js-cookie";
+import keymaster from 'keymaster';
 import I18nComponents from '@/components/i18nComponents'
+import GlobalSearch from '@/components/GlobalSearch'
 import { searchTree, searchTreeCertain } from '@/utils'
 import { informsList, emailList } from '@/utils/falseData'
 import { logout } from '@/server/common'
@@ -159,6 +161,7 @@ export default {
     name: 'HomePage',
     components: {
         I18nComponents,
+        GlobalSearch
     },
     data() {
         return {
@@ -184,11 +187,11 @@ export default {
             defaultExpandedKey: [],//默认展开
             activeName: 'inform',
             informsList,
-            emailList
+            emailList,
+            isSearch: false,
         }
     },
     created() {
-
         this.$eventBus.$on('guide', this.guideProcedure); //引导页步骤
         this.$eventBus.$on('langEdit', this.langEditClick); //引导页步骤
         this.recordRouteList = this.$t('routerChunkI18n')
@@ -202,7 +205,8 @@ export default {
         this.isCollapse = localStorage.getItem('ISCOLLAPSE') == 'CLOSE' ? true : false;
     },
     mounted() {
-
+        //快捷键 command + k 唤起全局搜索
+        keymaster('command+k', this.globalSearch);
     },
     watch: {
         getRefsh(newValue, OldValue) {
@@ -231,6 +235,14 @@ export default {
         }
     },
     methods: {
+        //全局搜索
+        globalSearch() {
+            this.isSearch = true;
+            return false
+        },
+        updateVisible() {
+            this.isSearch = false;
+        },
         // token过期跳转
         tokenExpired() {
             this.$alert(this.$t('headerList.TokenExpired'), this.$t('headerList.Reminder'), {

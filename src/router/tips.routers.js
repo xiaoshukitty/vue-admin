@@ -136,6 +136,15 @@ export default [{
             component: () => import('../views/tips/virtual')
 
         },
+        {
+            path: '/tips/animations',
+            name: 'animations',
+            meta: {
+                title: '动画'
+            },
+            component: () => import('../views/tips/animations')
+
+        },
 
     ]
 }, ]

@@ -324,6 +324,12 @@ const routerNavigation = [{
             id: '1-16',
             router: '/tips/virtualList',
         },
+        {
+            name: '动画',
+            path: 'animations',
+            id: '1-17',
+            router: '/tips/animations',
+        },
 
     ]
 }, {

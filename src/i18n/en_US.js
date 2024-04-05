@@ -313,8 +313,24 @@ const routerNavigation = [{
                 id: '1-14',
                 router: '/tips/richText',
             },
-
-
+            {
+                name: 'virtual',
+                path: 'virtual',
+                id: '1-15',
+                router: '/tips/virtual',
+            },
+            {
+                name: 'virtualList',
+                path: 'virtualList',
+                id: '1-16',
+                router: '/tips/virtualList',
+            },
+            {
+                name: 'animations',
+                path: 'animations',
+                id: '1-17',
+                router: '/tips/animations',
+            },
         ]
     }, {
         name: 'Map',

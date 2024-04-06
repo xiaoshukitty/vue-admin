@@ -139,7 +139,7 @@
                 <router-view v-if="flag" />
             </div>
         </div>
-        <GlobalSearch :isSearch="isSearch" @update:visible="updateVisible"></GlobalSearch>
+        <GlobalSearch :isSearch="isSearch" @update:visible="updateVisible" @update:skipTo="updateSkipTo"></GlobalSearch>
     </div>
 </template>
 
@@ -242,6 +242,19 @@ export default {
         },
         updateVisible() {
             this.isSearch = false;
+        },
+        //跳转
+        updateSkipTo(val) {
+            this.isSearch = false;
+            let flag = this.recordRouteList.findIndex(item => item.id == val.id);
+            //跳转
+            if(flag=='-1'){ //判断是否有这一个路由id记录
+                this.handleNodeClick(val); //没有就记录id并挑转
+            }else{
+                //有id 就直接跳转
+                this.routerSkip(val)
+            }
+          
         },
         // token过期跳转
         tokenExpired() {
@@ -365,17 +378,18 @@ export default {
             }, 500);
         },
         //el-tree 切换点击
-        handleNodeClick(node) {
+        handleNodeClick(node, flag) {
             if (node.children) {
                 return
             }
+            console.log('node---', node);
             this.valueTitle = node.name;
             this.valueId = node.id;
             this.$router.push({ path: node.router })
             this.activeIndex = node.router;
             setTimeout(() => {
                 this.$refs.elSelect.blur()
-                this.routerPush(node)
+                this.routerPush(node, flag)
             }, 50)
 
 
@@ -407,7 +421,6 @@ export default {
         },
         //路由块跳转方法
         routerSkipChunk(val, flag) {
-            console.log('val', val);
             if (val.id == this.activeIndexRoute && flag == 'flag') {
                 return
             }
@@ -426,7 +439,7 @@ export default {
             return 1
         },
         //记录路由块
-        routerPush(newValue) {
+        routerPush(newValue, e) {
             console.log('newValue---', newValue);
             let flag = this.deWeight(this.recordRouteList, newValue)
             this.activeItem = newValue;
@@ -438,7 +451,6 @@ export default {
         },
         //路由切换
         handleSelect(item) {
-            console.log('---...', item.router);
             if (item.router == this.activeIndex) {
                 return
             }
@@ -447,6 +459,7 @@ export default {
         },
         //树形默认展示切换展示
         changeTree(newValue) {
+            console.log('d',this.recordRouteList);
             this.$nextTick(() => {
                 // console.log('现在的节点',newValue.id);
                 // console.log('上次的节点',this.defaultExpandedKey);
@@ -455,8 +468,6 @@ export default {
                 if (this.defaultExpandedKey.length != 0) {
                     this.$refs.selectTree.store.nodesMap[this.defaultExpandedKey].expanded = false;
                 }
-
-
                 this.$refs.selectTree.setCurrentKey(newValue.id);
                 this.$refs.selectTree.setCheckedKeys([newValue.id]);
                 this.defaultExpandedKey = [newValue.id.charAt(0)];

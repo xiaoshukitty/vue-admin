@@ -34,5 +34,7 @@ cd 到 node_server目录，命令 nodemon app.js 启动服务，项目就可以�
 
 ![Image text](https://github.com/xiaoshukitty/img-folder/blob/main/WechatIMG202.jpg?raw=true)
 
+![Image text](https://raw.githubusercontent.com/xiaoshukitty/img-folder/main/WX20240407-191515%402x.png)
+
 
 

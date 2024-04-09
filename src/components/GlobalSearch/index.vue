@@ -63,7 +63,7 @@ export default {
     props: {
         isSearch: {
             type: Boolean,
-            default: true,
+            default: false,
         }
     },
     data() {
@@ -112,8 +112,8 @@ export default {
 
     },
     created() {
-        this.searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
-        this.collect = JSON.parse(localStorage.getItem('collect'));
+        this.searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+        this.collect = JSON.parse(localStorage.getItem('collect')) || [];
     },
     mounted() {
 
@@ -161,7 +161,6 @@ export default {
         collectHistory(val) {
             this.searchHistory = this.searchHistory.filter(item => item.id != val.id)
             localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
-            console.log('this.collect---', this.collect);
             let array = this.collect.findIndex(item => item.id == val.id);
             if (array == '-1') {
                 this.collect.push(val);

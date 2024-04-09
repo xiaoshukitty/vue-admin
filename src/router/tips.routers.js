@@ -134,7 +134,6 @@ export default [{
                 title: '固定高度虚拟列表'
             },
             component: () => import('../views/tips/virtual')
-
         },
         {
             path: '/tips/animations',
@@ -143,7 +142,14 @@ export default [{
                 title: '动画'
             },
             component: () => import('../views/tips/animations')
-
+        },
+        {
+            path: '/tips/dragBlock',
+            name: 'dragBlock',
+            meta: {
+                title: '拖拽块'
+            },
+            component: () => import('../views/tips/dragBlock')
         },
 
     ]

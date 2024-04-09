@@ -330,6 +330,12 @@ const routerNavigation = [{
             id: '1-17',
             router: '/tips/animations',
         },
+        {
+            name: '拖动块',
+            path: 'dragBlock',
+            id: '1-18',
+            router: '/tips/dragBlock',
+        },
 
     ]
 }, {

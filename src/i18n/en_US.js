@@ -331,6 +331,12 @@ const routerNavigation = [{
                 id: '1-17',
                 router: '/tips/animations',
             },
+            {
+                name: 'dragBlock',
+                path: 'dragBlock',
+                id: '1-18',
+                router: '/tips/dragBlock',
+            },
         ]
     }, {
         name: 'Map',

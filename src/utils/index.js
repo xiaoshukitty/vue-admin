@@ -459,6 +459,23 @@ const analyzeArgument = (str) => {
     return result
 }
 
+/**
+ * 获取随机颜色(16进制)
+ * @returns 
+ */
+export const randomColor = () => {
+    return '#' +
+        Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, '0')
+}
+
+/**
+ * 获取随机字符串
+ * @returns 
+ */
+export const randomString = () => {
+    return Math.random().toString(36).slice(2);
+}
+
 
 export {
     downloadIamgeFun,

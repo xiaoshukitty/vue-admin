@@ -48,5 +48,14 @@ export default [{
             },
             component: () => import('../views/function/vuex')
         },
+        {
+            path: '/function/test',
+            name: 'test',
+            meta: {
+                title: 'test',
+                require: true,
+            },
+            component: () => import('../views/test')
+        },
     ]
 }, ]

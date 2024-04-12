@@ -410,6 +410,12 @@ const routerNavigation = [{
             id: '5-5',
             router: '/function/vuex',
         },
+        {
+            name: 'test',
+            path: 'test',
+            id: '5-6',
+            router: '/function/test',
+        },
     ]
 }, {
     name: '其他',

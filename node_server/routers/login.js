@@ -86,9 +86,16 @@ login.post('/login/userLogin', (req, res) => {
                     const token = jwt.sign(payload, secretKey, {
                         expiresIn: 3600
                     }); // 生成token，设置过期时间1小时
+
+                    //刷新token
+                    const refreshToken = jwt.sign(payload, secretKey, {
+                        expiresIn: '7d'
+                    });
+
                     // 将token返回给客户端
                     res.json({
                         token: token,
+                        refreshToken:refreshToken,
                         code: 200,
                         message: '登录成功'
                     });

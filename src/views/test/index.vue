@@ -1,6 +1,6 @@
 <template>
     <div class="test">
-        <el-upload class="upload-demo" :action="actionUrl" ref="upload" :on-preview="handlePreview" multiple :limit="2"
+        <el-upload class="upload-demo" :action="actionUrl" ref="upload" :on-preview="handlePreview" multiple :limit="1"
             :on-exceed="handleExceed" :http-request="handleFileUpload" list-type="picture-card" :headers="headerConfig">
             <i class="el-icon-plus"></i>
         </el-upload>

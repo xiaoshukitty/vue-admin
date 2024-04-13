@@ -28,17 +28,17 @@ const instance = axios.create({
 // 添加请求拦截器
 instance.interceptors.request.use(
     config => {
+        console.log('4')
         // 在发送请求之前做些什么
         // 让每一个接口都带 token
         const result = store.state;
+        console.log('1');
         if (result && result.token) {
+            console.log('2');
             config.headers.Authorization = `Bearer ${result.token}`;
             const endTime = JSON.parse(sessionStorage.getItem('TOKENINFO'));
-            console.log('endTime.exp是', endTime.exp);
-            console.log('startTime是', startTime());
 
             if (endTime.exp < startTime()) {
-                console.log('过期了');
                 //token 过期就存入 vuex 然后 layout 页面监听 token 是否过期，在做其他操作
                 store.commit('updateTokenInvalidation', {
                     isTokenInvalidation: true
@@ -49,8 +49,7 @@ instance.interceptors.request.use(
         if (!isToken) {
             config.data += "&token=" + result.token;
         }
-
-
+        console.log('3');
 
         return config;
     },

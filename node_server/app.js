@@ -11,6 +11,8 @@ const userInfo = require("./routers/userInfo")
 const memo = require('./routers/memo')
 // 引入 登录(login) 路由
 const login = require('./routers/login')
+//引入 图片库(pictures) 路由
+const pictures = require('./routers/pictures')
 
 // 创建服务器对象
 var app = express();
@@ -45,6 +47,8 @@ app.use(userInfo)
 app.use(memo)
 // 使用 登录(login) 路由
 app.use(login)
+// // 使用 图片库(pictures) 路由
+app.use(pictures)
 
 
 // 指定服务器对象监听的端口号

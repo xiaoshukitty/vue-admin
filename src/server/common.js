@@ -115,3 +115,13 @@ export const updatePassword = (param) => {
         data: qs.stringify(param)
     })
 }
+
+//上传图片
+export const updatePic = (param)=>{
+    console.log('param---',param);
+    return instance({
+        method: 'post',
+        url: '/pictures/update',
+        data: qs.stringify(param)
+    })
+}

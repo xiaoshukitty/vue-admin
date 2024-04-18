@@ -195,7 +195,7 @@ export default {
 
         .video_box {
             display: flex;
-
+            height: calc(100vh - 240px);
             .video-player {
                 // width: calc(100% / 1.3);
                 width: 70%;

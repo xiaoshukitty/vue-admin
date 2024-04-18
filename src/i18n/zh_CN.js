@@ -374,6 +374,12 @@ const routerNavigation = [{
             id: '4-2',
             router: '/port/requestText',
         },
+        {
+            name: '图片上传',
+            path: 'updatePic',
+            id: '4-3',
+            router: '/port/updatePic',
+        },
     ]
 }, {
     name: '功能',

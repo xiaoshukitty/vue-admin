@@ -20,6 +20,13 @@ export default [{
         meta: {
             title: '接口测试'
         },
-        component: () => import('../views/port/requestText')
+        component: () => import('../views/port/updatePic')
+    }, {
+        path: '/port/updatePic',
+        name: 'updatePic',
+        meta: {
+            title: '图片上传'
+        },
+        component: () => import('../views/port/updatePic')
     }, ]
-},]
+}, ]

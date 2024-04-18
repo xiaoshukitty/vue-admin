@@ -374,6 +374,12 @@ const routerNavigation = [{
                 id: '4-2',
                 router: '/port/requestText',
             },
+            {
+                name: 'updatePic',
+                path: 'updatePic',
+                id: '4-3',
+                router: '/port/updatePic',
+            },
         ]
     }, {
         name: 'function',

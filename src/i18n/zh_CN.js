@@ -144,6 +144,7 @@ const headerList = {
     Share: '分享',
     SeamlessRolling: '自动滚动',
     LockScreen: '锁屏',
+    GlobalSearch:'搜索 ⌘ + K',
     Inform: '通知',
     PleaseEnterTheScreenLockPassword: '请输入锁屏密码',
     LockedScreen: '已锁屏',

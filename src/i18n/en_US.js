@@ -143,6 +143,7 @@ const headerList = {
     VideoDisplay: 'VideoDisplay',
     Share: 'Share',
     SeamlessRolling: 'Seamless Rolling',
+    GlobalSearch:'GlobalSearch ⌘ + K',
     LockScreen: 'Lock Screen',
     Inform: "Inform",
     PleaseEnterTheScreenLockPassword: 'Please Enter The Screen Lock Password',

@@ -49,12 +49,21 @@
                                 </el-option>
                             </el-select>
                         </div>
+                        <!-- 全局搜索 -->
+                        <div class="header_hover" ref="lockScreenGuide">
+                            <el-tooltip class="item" effect="dark" :content="$t('headerList.GlobalSearch')"
+                                placement="bottom">
+                                <el-button icon="el-icon-search" size="small" circle @click="handleGlobalSearch"></el-button>
+                            </el-tooltip>
+                        </div>
+                        <!-- 锁屏 -->
                         <div class="header_hover" ref="lockScreenGuide">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.LockScreen')"
                                 placement="bottom">
                                 <el-button icon="el-icon-lock" size="small" circle @click="lockScreen"></el-button>
                             </el-tooltip>
                         </div>
+                        <!-- 刷新 -->
                         <div class="header_hover" ref="refreshGuide">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.Refresh')"
                                 placement="bottom">
@@ -62,6 +71,7 @@
                                     @click="updateRefsh"></el-button>
                             </el-tooltip>
                         </div>
+                        <!-- 通知 -->
                         <div class="header_hover location" ref="notificationGuide">
                             <el-popover placement="bottom" width="300" trigger="hover" ref="popover">
                                 <el-tabs v-model="activeName">
@@ -96,9 +106,11 @@
                                 </div>
                             </el-popover>
                         </div>
+                        <!-- 语言切换 -->
                         <div ref="i18nGuide">
                             <I18nComponents :status="'hover'" />
                         </div>
+                        <!-- 全屏 -->
                         <div class="full_screen header_hover" ref="fullScreenGuide"
                             @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
                             <el-tooltip class="item" effect="dark"
@@ -237,6 +249,10 @@ export default {
     methods: {
         //全局搜索
         globalSearch() {
+            this.isSearch = true;
+            return false
+        },
+        handleGlobalSearch(){
             this.isSearch = true;
             return false
         },

@@ -1,7 +1,7 @@
 <template>
     <div class="digitalAnimation">
         <div class="ipt">
-            <div class="w180">
+            <div class="w160">
                 <el-input v-model="startMoeny" placeholder="开始金额" type="number"></el-input>
             </div>
             <div class="line">
@@ -80,12 +80,12 @@ export default {
         display: flex;
 
         .w160 {
-            width: 160px;
+            width: 120px;
         }
 
         .line {
             line-height: 40px;
-            margin: 0 20px;
+            margin: 0 10px;
         }
 
         .el-button {

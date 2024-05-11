@@ -13,6 +13,7 @@
                 <div slot="header" class="clearfix">
                     <span>其他</span>
                 </div>
+                <Load/>
             </el-card>
         </div>
         <div>
@@ -26,9 +27,11 @@
 </template>
 <script>
 import DigitalAnimation from './components/DigitalAnimation.vue'
+import Load from '@/components/Load/index.vue'
 export default {
     components: {
         DigitalAnimation,
+        Load
     }
 }
 </script>

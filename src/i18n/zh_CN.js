@@ -362,7 +362,7 @@ const routerNavigation = [{
     name: '图片',
     path: 'picture',
     id: '3',
-    icon: 'el-icon-map-location',
+    icon: 'el-icon-picture',
     children: [{
             name: '图片预览',
             path: 'copywriting',

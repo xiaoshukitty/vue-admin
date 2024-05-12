@@ -363,7 +363,7 @@ const routerNavigation = [{
         path: 'picture',
         id: '3',
         router: '',
-        icon: 'el-icon-map-location',
+        icon: 'el-icon-picture',
         children: [{
                 name: 'copywriting',
                 path: 'copywriting',

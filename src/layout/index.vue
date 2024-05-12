@@ -622,6 +622,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// @import '../styles/global.less';
 .home_page {
     display: flex;
     // height: calc(100vh - 100px) !important;
@@ -840,7 +841,8 @@ export default {
     }
 
     .active {
-        background-color: yellowgreen;
+        // @head-record-base-bgColor
+        background-color: @head-record-base-bgColor;
         color: #fff;
     }
 }

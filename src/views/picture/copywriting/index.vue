@@ -104,7 +104,7 @@ export default {
     justify-content: center;
     background: url('https://images.pexels.com/photos/2267873/pexels-photo-2267873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'), #402a2bd8;
     background-size: cover;
-    height: 100vh;
+    height: calc(100vh - 100px);
 }
 
 /* .copywriting::before {

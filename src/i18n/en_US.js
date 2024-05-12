@@ -359,6 +359,24 @@ const routerNavigation = [{
             },
         ]
     }, {
+        name: 'picture',
+        path: 'picture',
+        id: '3',
+        router: '',
+        icon: 'el-icon-map-location',
+        children: [{
+                name: 'copywriting',
+                path: 'copywriting',
+                id: '3-1',
+                router: '/picture/copywriting',
+            },{
+                name: 'pictureEffect',
+                path: 'pictureEffect',
+                id: '3-2',
+                router: '/picture/pictureEffect',
+            },
+        ]
+    },  {
         name: 'port',
         path: 'port',
         id: '4',

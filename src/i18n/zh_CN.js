@@ -358,6 +358,23 @@ const routerNavigation = [{
             router: '/map/qqMap',
         },
     ]
+},  {
+    name: '图片',
+    path: 'picture',
+    id: '3',
+    icon: 'el-icon-map-location',
+    children: [{
+            name: '图片预览',
+            path: 'copywriting',
+            id: '3-1',
+            router: '/picture/copywriting',
+        },{
+            name: '图片效果',
+            path: 'pictureEffect',
+            id: '3-2',
+            router: '/picture/pictureEffect',
+        },
+    ]
 }, {
     name: '接口',
     path: 'port',

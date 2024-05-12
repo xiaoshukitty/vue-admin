@@ -134,7 +134,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                    }}</div>
+                                        }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -151,7 +151,7 @@
                         :class="['tag', activeIndexRoute == item.id ? 'active' : '']" @click="routerSkip(item)">
                         <i v-if="activeIndexRoute == item.id" class="el-icon-star-on"></i>
                         <span>{{ item.name }}</span>
-                        <i v-if="item.id != 0" class="el-icon-close close-hover"  @click.stop="closeRoute(item)"></i>
+                        <i v-if="item.id != 0" class="el-icon-close close-hover" @click.stop="closeRoute(item)"></i>
                     </div>
                 </div>
             </div>
@@ -822,12 +822,15 @@ export default {
     align-items: center;
     padding: 0 10px;
     border-bottom: 1px solid #eee;
-    overflow-x: scroll;
+    overflow-x: auto;
+    /* 使容器横向滚动 */
+    white-space: nowrap;
+    /* 确保内容不换行 */
 
     .tag {
         padding: 0 10px;
         cursor: pointer;
-        border: 1px solid #dcdfe6 ;
+        border: 1px solid #dcdfe6;
         color: @head-record-base-color;
         cursor: pointer;
         height: 30px;
@@ -836,24 +839,28 @@ export default {
         border-radius: 3px;
         background-color: @head-record-base-bgColor;
         font-size: 14px;
+
         .el-icon-close {
             margin-left: 5px;
         }
     }
 
     .active {
-        background-color:@head-record-base-select-bgColor !important;
+        background-color: @head-record-base-select-bgColor !important;
         color: @head-record-base-select-color !important;
         border: 1px solid @head-record-base-select-border !important;
     }
-    .close-hover{
+
+    .close-hover {
         width: 14px;
         height: 14px;
         border-radius: 50%;
     }
-    .close-hover:hover{
-        color:  #fff;
-        background-color: @head-record-base-close-hover;;
+
+    .close-hover:hover {
+        color: #fff;
+        background-color: @head-record-base-close-hover;
+        ;
     }
 }
 

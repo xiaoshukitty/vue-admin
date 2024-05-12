@@ -475,12 +475,14 @@ const routerNavigation = [{
             path: 'share',
             id: '7-5',
             router: '/rests/share',
-        }, {
-            name: '无缝滚动',
-            path: 'seamlessRolling',
-            id: '7-6',
-            router: '/rests/seamlessRolling',
-        }, {
+        }, 
+        // {
+        //     name: '无缝滚动',
+        //     path: 'seamlessRolling',
+        //     id: '7-6',
+        //     router: '/rests/seamlessRolling',
+        // }, 
+        {
             name: '记事本',
             path: 'notepad',
             id: '7-7',

@@ -2,7 +2,16 @@
     <div class="home_page">
         <div class="left" ref="menuGuide">
             <div>
-                <div v-if="!isCollapse">{{ $t('headerList.UserName') }}</div>
+                <!-- <div v-if="!isCollapse">{{ $t('headerList.UserName') }}</div> -->
+                <div v-if="!isCollapse" class="title_name">
+                    <span>x</span>
+                    <span>i</span>
+                    <span>a</span>
+                    <span>o</span>
+                    <span>s</span>
+                    <span>h</span>
+                    <span>u</span>
+                </div>
                 <img v-else class="left_img" src="@/assets/images/avatar1.jpg" alt="">
             </div>
             <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" unique-opened :collapse="isCollapse"
@@ -53,7 +62,8 @@
                         <div class="header_hover" ref="lockScreenGuide">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.GlobalSearch')"
                                 placement="bottom">
-                                <el-button icon="el-icon-search" size="small" circle @click="handleGlobalSearch"></el-button>
+                                <el-button icon="el-icon-search" size="small" circle
+                                    @click="handleGlobalSearch"></el-button>
                             </el-tooltip>
                         </div>
                         <!-- 锁屏 -->
@@ -102,7 +112,7 @@
                                 <el-button icon="el-icon-bell" size="small" circle @click="inform" slot="reference">
                                 </el-button>
                                 <div class="circle" slot="reference" v-if="informsList.length != 0">{{
-                    informsList.length }}
+                                    informsList.length }}
                                 </div>
                             </el-popover>
                         </div>
@@ -123,13 +133,13 @@
                             <el-popover placement="bottom" width="150" trigger="hover" v-model="visiblePopover">
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
-                    item.value
-                }}</div>
+                                        item.value
+                                    }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
                                     <span style="font-size: 14px; margin-left: 5px; color: #606266;">{{
-                    $t('headerList.UserName') }}</span>
+                                        $t('headerList.UserName') }}</span>
                                 </div>
                             </el-popover>
                         </div>
@@ -252,7 +262,7 @@ export default {
             this.isSearch = true;
             return false
         },
-        handleGlobalSearch(){
+        handleGlobalSearch() {
             this.isSearch = true;
             return false
         },
@@ -264,13 +274,13 @@ export default {
             this.isSearch = false;
             let flag = this.recordRouteList.findIndex(item => item.id == val.id);
             //跳转
-            if(flag=='-1'){ //判断是否有这一个路由id记录
+            if (flag == '-1') { //判断是否有这一个路由id记录
                 this.handleNodeClick(val); //没有就记录id并挑转
-            }else{
+            } else {
                 //有id 就直接跳转
                 this.routerSkip(val)
             }
-          
+
         },
         // token过期跳转
         tokenExpired() {
@@ -475,7 +485,7 @@ export default {
         },
         //树形默认展示切换展示
         changeTree(newValue) {
-            console.log('d',this.recordRouteList);
+            console.log('d', this.recordRouteList);
             this.$nextTick(() => {
                 // console.log('现在的节点',newValue.id);
                 // console.log('上次的节点',this.defaultExpandedKey);
@@ -620,6 +630,71 @@ export default {
     .left {
         /*设置动画过渡 和<el-menu>内部的一样 */
         transition: 0.3s ease-in;
+
+        .title_name span {
+            position: relative;
+            top: 10px;
+            display: inline-block;
+            animation: bounce .6s ease infinite alternate;
+            font-family: 'Titan One', cursive;
+            font-size: 30px;
+            color: #FFF;
+            text-shadow: 0 1px 0 #CCC,
+                0 2px 0 #CCC,
+                0 3px 0 #CCC,
+                0 4px 0 #CCC,
+                0 5px 0 #CCC,
+                0 6px 0 transparent,
+                0 7px 0 transparent,
+                0 8px 0 transparent,
+                0 9px 0 transparent,
+                0 10px 10px rgba(0, 0, 0, .4);
+        }
+
+        .title_name span:nth-child(2) {
+            animation-delay: .1s;
+        }
+
+        .title_name span:nth-child(3) {
+            animation-delay: .2s;
+        }
+
+        .title_name span:nth-child(4) {
+            animation-delay: .3s;
+        }
+
+        .title_name span:nth-child(5) {
+            animation-delay: .4s;
+        }
+
+        .title_name span:nth-child(6) {
+            animation-delay: .5s;
+        }
+
+        .title_name span:nth-child(7) {
+            animation-delay: .6s;
+        }
+
+        .title_name span:nth-child(8) {
+            animation-delay: .7s;
+        }
+
+        @keyframes bounce {
+            100% {
+                top: -20px;
+                text-shadow: 0 1px 0 #CCC,
+                    0 2px 0 #CCC,
+                    0 3px 0 #CCC,
+                    0 4px 0 #CCC,
+                    0 5px 0 #CCC,
+                    0 6px 0 #CCC,
+                    0 7px 0 #CCC,
+                    0 8px 0 #CCC,
+                    0 9px 0 #CCC,
+                    0 50px 25px rgba(0, 0, 0, .2);
+            }
+
+        }
 
         .left_img {
             width: 30px;

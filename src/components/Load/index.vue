@@ -15,6 +15,7 @@ export default {
 
 <style>
 .load {
+    padding: 0 !important;
     position: absolute;
     top: 50%;
     left: 50%;

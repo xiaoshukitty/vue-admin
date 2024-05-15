@@ -26,7 +26,7 @@
                     </div>
                     <div class="write">
                         <a href="javascript:;" class="write-link attach"></a>
-                        <el-input class="msg-ipt" type="text" v-model="msg" placeholder="请输入内容" @keyup.enter.native="sendMsg"/>
+                        <el-input class="msg-ipt" ref="iptFocus" type="text" v-model="msg" placeholder="请输入内容" @keyup.enter.native="sendMsg"/>
                         <a href="javascript:;" class="write-link smiley" @click="OpenEmotions"></a>
                         <a href="javascript:;" class="write-link send" @click="sendMsg"></a>
                     </div>
@@ -140,6 +140,7 @@ export default {
         AppendMessageText: function (EmotionChinese) {
             this.isEmoji = false;
             this.msg += EmotionChinese;
+            this.$refs.iptFocus.focus();
         },
         // 展示的时候正则匹配替换汉字表情为gif动图标签即可。
         // 'https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/' + i + '.gif'

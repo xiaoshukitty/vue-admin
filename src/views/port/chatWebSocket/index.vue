@@ -10,41 +10,18 @@
                         <div class="conversation-start">
                             <span>Today, 5:38 PM</span>
                         </div>
-                        <div class="bubble you">
-                            喂，能听到我说话吗?
-                        </div>
-                        <div class="bubble you">
-                            你吃饭了吗?
-                        </div>
-                        <div class="bubble me">
-                            嗯，我在吃东西。
-                        </div>
-                        <div class="bubble me">
-                            你呢?
-                        </div>
-                        <div class="bubble you">
-                            我在想你。
-                        </div>
-                        <div class="bubble you">
-                            你有没有发现，我好像有点喜欢上你了。
-                        </div>
-                        <div class="bubble me">
-                            ...
-                        </div>
-                        <div class="bubble me">
-                            嗯，我在吃东西。
-                        </div>
-                        <div class="bubble me">
-                            你呢?
-                        </div>
-                        <div class="bubble you">
-                            我在想你。
-                        </div>
-                        <div class="bubble you">
-                            你有没有发现，我好像有点喜欢上你了<img :src="'https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/' + '1' + '.gif'" alt="">
-                        </div>
-                        <div class="bubble me">
-                            ...
+                        <div v-for="(item, index) in messages" :key="index">
+                            <div class="bubble you" v-if="item.type !== 'you'">
+                                <span v-for="(msg, i) in item.chatMsg" :key="i">
+                                    <div v-html="msg"></div>
+                                </span>
+                            </div>
+                            <div class="bubble me" v-else>
+                                <!-- {{ item.chatMsg }} -->
+                                <span v-for="(msg, i) in item.chatMsg" :key="i">
+                                    <div v-html="msg"></div>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="write">
@@ -63,7 +40,9 @@
 </template>
 
 <script>
+
 import Emotion from '@/components/Emotion/index.vue'
+
 export default {
     components: {
         Emotion
@@ -73,11 +52,71 @@ export default {
             msg: '',
             isEmoji: false,
             emoji: '',
+            username: '',
+            message: '',
+            messages: [],
+            ws: null
         }
     },
+    mounted() {
+        this.connectWebSocket();
+    },
     methods: {
+        //连接 webscoket
+        connectWebSocket() {
+            this.ws = new WebSocket('ws://localhost:3000');
+            this.ws.onmessage = this.onMessage;
+            this.ws.onclose = this.onClose;
+            this.ws.onopen = this.onOpen;
+        },
+        onMessage(event) {
+            const EmotionList = ['微笑', '撇嘴', '色', '发呆', '得意', '流泪', '害羞', '闭嘴', '睡', '大哭',
+                '尴尬', '发怒', '调皮', '呲牙', '惊讶', '难过', '酷', '冷汗', '抓狂', '吐', '偷笑', '可爱',
+                '白眼', '傲慢', '饥饿', '困', '惊恐', '流汗', '憨笑', '大兵', '奋斗', '咒骂', '疑问', '嘘',
+                '晕', '折磨', '衰', '骷髅', '敲打', '再见', '擦汗', '抠鼻', '鼓掌', '糗大了', '坏笑', '左哼哼',
+                '右哼哼', '哈欠', '鄙视', '委屈', '快哭了', '阴险', '亲亲', '吓', '可怜', '菜刀', '西瓜', '啤酒',
+                '篮球', '乒乓', '咖啡', '饭', '猪头', '玫瑰', '凋谢', '示爱', '爱心', '心碎', '蛋糕', '闪电', '炸弹',
+                '刀', '足球', '瓢虫', '便便', '月亮', '太阳', '礼物', '拥抱', '强', '弱', '握手', '胜利', '抱拳', '勾引',
+                '拳头', '差劲', '爱你', 'NO', 'OK', '爱情', '飞吻', '跳跳', '发抖', '怄火', '转圈', '磕头', '回头', '跳绳', '挥手',
+                '激动', '街舞', '献吻', '左太极', '右太极'
+            ]
+            this.messages.push(JSON.parse(event.data));
+            this.messages.forEach(item => {
+                if (this.containsNestedBrackets(item.chatMsg)) {
+                    const res = item.chatMsg;
+                    let arr = this.splitByNestedBrackets(res);
+                    //拿表情在表情库里面的索引
+                    let index = EmotionList.findIndex(item => item == this.takeValue(res));
+                    for (let i = 0; i < arr.length; i++) {
+                        if (this.containsNestedBrackets(arr[i])) {
+                            arr[i] = "<img src='https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/" + index + ".gif' />"
+
+                        } else {
+                            arr[i] = '<span>' + arr[i] + '</span>'
+                        }
+                    }
+                    item.chatMsg = arr
+                    // console.log(arr, 'arr');
+                }
+            })
+            console.log('this.messages', this.messages);
+        },
+        onClose() {
+            console.log('WebSocket 连接已关闭,请重新连接...');
+            setTimeout(this.connectWebSocket, 1000);
+        },
+        onOpen() {
+            console.log('WebSocket 连接已建立');
+        },
         sendMsg() {
-            console.log('发送消息：', this.msg);
+            let userMsg = {
+                userId: '234567',
+                chatMsg: this.msg,
+                type: 'my',
+                timestamp: new Date().getTime()
+            }
+            this.ws.send(JSON.stringify(userMsg));
+            this.msg = '';
         },
         // 打开表情包弹框
         OpenEmotions: function () {
@@ -93,9 +132,38 @@ export default {
         AppendMessageText: function (EmotionChinese) {
             this.isEmoji = false;
             this.msg += EmotionChinese;
-        }
+        },
         // 展示的时候正则匹配替换汉字表情为gif动图标签即可。
         // 'https://res.wx.qq.com/mpres/htmledition/images/icon/emotion/' + i + '.gif'
+
+
+        //分割接受到的消息
+        splitByNestedBrackets(str) {
+            // 使用捕获组匹配 [[...]]
+            const regex = /(\[\[.*?\]\])/;
+            // 使用正则表达式进行分割
+            return str.split(regex).filter(Boolean);
+        },
+        //判断消息中是否有表情包
+        containsNestedBrackets(str) {
+            const regex = /\[\[.*?\]\]/;
+            return regex.test(str);
+        },
+        //拿[[]] 中的值
+        takeValue(res) {
+            // 使用 match 方法来获取所有匹配的内容
+            const regex = /\[\[(.*?)\]\]/g;
+            const matches = res.match(regex);
+            let val;
+            matches.map(match => {
+                // 使用捕获组 $1 获取 [[...]] 中的内容
+                val = match.replace(/^\[\[|\]\]$/g, '')
+
+            });
+            return val;
+        }
+
+
     }
 }
 </script>

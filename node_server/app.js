@@ -1,5 +1,8 @@
 // 加载Express模块
 var express = require('express');
+const http = require('http');
+const WebSocket = require('ws');
+
 // 加载bodyParser模块
 var bodyParser = require("body-parser");
 // 加载CORS模块
@@ -16,6 +19,18 @@ const pictures = require('./routers/pictures')
 
 // 创建服务器对象
 var app = express();
+const server = http.createServer(app);
+
+// 创建WebSocket服务器
+const wss = new WebSocket.Server({
+    server
+});
+
+// 引入连接池
+const db = require('./utils/db');
+
+// 存储已连接的客户端
+const clients = new Set();
 
 // 使用CORS中间件
 app.use(cors({
@@ -51,9 +66,83 @@ app.use(login)
 app.use(pictures)
 
 
+// 处理WebSocket连接
+wss.on('connection', (ws) => {
+    console.log('New client connected');
+    clients.add(ws);
+
+    // //加载历史消息发送给新连接的客户端
+    const historySql = 'SELECT userId, chatMsg, type,timestamp FROM webSocketChatTable ORDER BY timestamp ASC';
+    db.query(historySql, (err, results) => {
+        if (err) {
+            console.error('Error retrieving history messages:', err);
+            return;
+        }
+        results.forEach(msg => {
+            const historyMessage = JSON.stringify(msg);
+            ws.send(historyMessage);
+        })
+    })
+
+    // 处理客户端发送的消息
+    ws.on('message', (message) => {
+        console.log('Received:', message.toString());
+        const {
+            userId,
+            chatMsg,
+            type,
+            timestamp
+        } = JSON.parse(message.toString());
+        //将消息存在数据库
+
+        const sql = 'INSERT INTO webSocketChatTable (userId, chatMsg,type,timestamp) VALUES (?,?,?,?)'
+        db.query(sql, [userId, chatMsg, 'you', timestamp], (err, result) => {
+            if (err) {
+                console.error('Error inserting message into database:', err);
+                return;
+            }
+            // 将消息广播给所有连接的客户端
+            const broadcastMessage = JSON.stringify({
+                userId,
+                chatMsg,
+                type:'you',
+                timestamp
+            });
+            clients.forEach(client => {
+                if (client.readyState === WebSocket.OPEN) {
+                    client.send(broadcastMessage);
+                }
+            });
+        })
+
+        // // 将消息广播给所有连接的客户端
+        // clients.forEach(client => {
+        //     if (client.readyState === WebSocket.OPEN) {
+        //         client.send(message);
+        //     }
+        // });
+    });
+
+    // 处理客户端断开连接
+    ws.on('close', () => {
+        console.log('Client disconnected');
+        clients.delete(ws);
+    });
+
+    // 发送欢迎消息给新连接的客户端
+    // ws.send('Welcome to the chat');
+    // ws.send(JSON.stringify({ userId: '234567', message: 'Welcome to the chat', timestamp: new Date() }));
+});
+
+// 启动服务器
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
 // 指定服务器对象监听的端口号
-app.listen(3000, (err) => {
-    if (!err) {
-        console.log('服务器启动成功了')
-    }
-})
+// app.listen(3000, (err) => {
+//     if (!err) {
+//         console.log('服务器启动成功了')
+//     }
+// })

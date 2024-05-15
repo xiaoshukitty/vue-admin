@@ -6,7 +6,7 @@
             </div>
             <div class="chat">
                 <div class="wrapper">
-                    <div class="conversation">
+                    <div class="conversation" ref="chatContainer">
                         <div class="conversation-start">
                             <span>Today, 5:38 PM</span>
                         </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="write">
                         <a href="javascript:;" class="write-link attach"></a>
-                        <el-input class="msg-ipt" type="text" v-model="msg" placeholder="请输入内容" />
+                        <el-input class="msg-ipt" type="text" v-model="msg" placeholder="请输入内容" @keyup.enter.native="sendMsg"/>
                         <a href="javascript:;" class="write-link smiley" @click="OpenEmotions"></a>
                         <a href="javascript:;" class="write-link send" @click="sendMsg"></a>
                     </div>
@@ -56,6 +56,16 @@ export default {
             message: '',
             messages: [],
             ws: null
+        }
+    },
+    created() {
+    },
+    watch: {
+        messages() {
+            this.$nextTick(() => {
+                const chatContainer = this.$refs.chatContainer;
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            });
         }
     },
     mounted() {
@@ -96,10 +106,8 @@ export default {
                         }
                     }
                     item.chatMsg = arr
-                    // console.log(arr, 'arr');
                 }
             })
-            console.log('this.messages', this.messages);
         },
         onClose() {
             console.log('WebSocket 连接已关闭,请重新连接...');
@@ -162,9 +170,10 @@ export default {
             });
             return val;
         }
-
-
-    }
+    },
+    destroyed() {
+        this.onClose();
+    },
 }
 </script>
 

@@ -375,6 +375,12 @@ const routerNavigation = [{
                 id: '3-2',
                 router: '/picture/pictureEffect',
             },
+            {
+                name: 'chatWebSocket',
+                path: 'chatWebSocket',
+                id: '4-4',
+                router: '/port/chatWebSocket',
+            },
         ]
     },  {
         name: 'port',

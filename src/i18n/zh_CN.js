@@ -398,6 +398,12 @@ const routerNavigation = [{
             id: '4-3',
             router: '/port/updatePic',
         },
+        {
+            name: '聊天-websocket',
+            path: 'chatWebSocket',
+            id: '4-4',
+            router: '/port/chatWebSocket',
+        },
     ]
 }, {
     name: '功能',

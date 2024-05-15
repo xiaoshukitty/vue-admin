@@ -28,5 +28,12 @@ export default [{
             title: '图片上传'
         },
         component: () => import('../views/port/updatePic')
+    }, {
+        path: '/port/chatWebSocket',
+        name: 'chatWebSocket',
+        meta: {
+            title: '聊天-websocket'
+        },
+        component: () => import('../views/port/chatWebSocket')
     }, ]
 }, ]

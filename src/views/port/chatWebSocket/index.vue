@@ -117,6 +117,11 @@ export default {
             console.log('WebSocket 连接已建立');
         },
         sendMsg() {
+            if (this.msg == '') {
+                this.$message.error('消息不能为空');
+                return;
+            }
+            // 发送消息
             let userMsg = {
                 userId: '234567',
                 chatMsg: this.msg,

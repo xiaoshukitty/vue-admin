@@ -16,6 +16,8 @@ const memo = require('./routers/memo')
 const login = require('./routers/login')
 //引入 图片库(pictures) 路由
 const pictures = require('./routers/pictures')
+//引入 菜品(dishes) 路由
+const dishes = require('./routers/dishes')
 
 // 创建服务器对象
 var app = express();
@@ -62,8 +64,10 @@ app.use(userInfo)
 app.use(memo)
 // 使用 登录(login) 路由
 app.use(login)
-// // 使用 图片库(pictures) 路由
+// 使用 图片库(pictures) 路由
 app.use(pictures)
+// 使用 菜品(dishes) 路由
+app.use(dishes)
 
 
 // 处理WebSocket连接

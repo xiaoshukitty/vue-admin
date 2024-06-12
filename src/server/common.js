@@ -125,3 +125,12 @@ export const updatePic = (param)=>{
         data: qs.stringify(param)
     })
 }
+
+//获取菜品
+export const getDishesList = (param)=>{
+    return instance({
+        method: 'post',
+        url: '/dishes/getDishesList',
+        data: qs.stringify(param)
+    })
+}

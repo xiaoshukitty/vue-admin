@@ -20,6 +20,8 @@ const pictures = require('./routers/pictures')
 const dishes = require('./routers/dishes')
 //引入 chatGPT(chatGPT) 路由
 const chatGPT = require('./routers/chatGPT')
+//引入 wxMsg(wxMsg) 路由
+const wxMsg = require('./routers/wxMsg')
 
 // 创建服务器对象
 var app = express();
@@ -72,6 +74,8 @@ app.use(pictures)
 app.use(dishes)
 // 使用 chatGPT(chatGPT) 路由
 app.use(chatGPT)
+// 使用 wxMsg(wxMsg) 路由
+app.use(wxMsg)
 
 
 // 处理WebSocket连接

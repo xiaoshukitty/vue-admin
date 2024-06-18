@@ -74,14 +74,20 @@ function sendTempMsg(formInfo, success) {
             "touser": user.openid,
             "template_id": temp_id,
             "data": {
+                "thing3": {
+                    "value": formInfo.storeName
+                },
                 "thing9": {
                     "value": formInfo.orderName
                 },
-                "time8": {
-                    "value": formInfo.submitDate
+                "thing6": {
+                    "value": formInfo.dishes
                 },
                 "amount5": {
                     "value": formInfo.moeny
+                },
+                "time2": {
+                    "value": formInfo.submitDate
                 },
             },
             "miniprogram_state": "developer",

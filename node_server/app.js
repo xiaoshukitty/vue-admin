@@ -18,6 +18,8 @@ const login = require('./routers/login')
 const pictures = require('./routers/pictures')
 //引入 菜品(dishes) 路由
 const dishes = require('./routers/dishes')
+//引入 chatGPT(chatGPT) 路由
+const chatGPT = require('./routers/chatGPT')
 
 // 创建服务器对象
 var app = express();
@@ -68,6 +70,8 @@ app.use(login)
 app.use(pictures)
 // 使用 菜品(dishes) 路由
 app.use(dishes)
+// 使用 chatGPT(chatGPT) 路由
+app.use(chatGPT)
 
 
 // 处理WebSocket连接

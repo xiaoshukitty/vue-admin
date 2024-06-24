@@ -1,12 +1,12 @@
 // 加载Express模块
-var express = require('express');
+let express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 
 // 加载bodyParser模块
-var bodyParser = require("body-parser");
+let bodyParser = require("body-parser");
 // 加载CORS模块
-var cors = require('cors');
+let cors = require('cors');
 
 // 引入 信息(info) 路由
 const userInfo = require("./routers/userInfo")
@@ -22,9 +22,11 @@ const dishes = require('./routers/dishes')
 const chatGPT = require('./routers/chatGPT')
 //引入 wxMsg(wxMsg) 路由
 const wxMsg = require('./routers/wxMsg')
+//引入 订单列表(orderList) 路由
+const orderList = require('./routers/orderList')
 
 // 创建服务器对象
-var app = express();
+let app = express();
 const server = http.createServer(app);
 
 // 创建WebSocket服务器
@@ -76,6 +78,8 @@ app.use(dishes)
 app.use(chatGPT)
 // 使用 wxMsg(wxMsg) 路由
 app.use(wxMsg)
+// 使用 订单列表(orderList) 路由
+app.use(orderList)
 
 
 // 处理WebSocket连接
@@ -117,7 +121,7 @@ wss.on('connection', (ws) => {
             const broadcastMessage = JSON.stringify({
                 userId,
                 chatMsg,
-                type:'you',
+                type: 'you',
                 timestamp
             });
             clients.forEach(client => {

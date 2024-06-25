@@ -117,8 +117,8 @@ export const updatePassword = (param) => {
 }
 
 //上传图片
-export const updatePic = (param)=>{
-    console.log('param---',param);
+export const updatePic = (param) => {
+    console.log('param---', param);
     return instance({
         method: 'post',
         url: '/pictures/update',
@@ -127,10 +127,37 @@ export const updatePic = (param)=>{
 }
 
 //获取菜品
-export const getDishesList = (param)=>{
+export const getDishesList = (param) => {
     return instance({
         method: 'post',
         url: '/dishes/getDishesList',
+        data: qs.stringify(param)
+    })
+}
+
+//添加菜品
+export const addDishes = (param) => {
+    return instance({
+        method: 'post',
+        url: '/dishes/addDishes',
+        data: qs.stringify(param)
+    })
+}
+
+//更新菜品
+export const updataDishes = (param) => {
+    return instance({
+        method: 'post',
+        url: '/dishes/updateDishes',
+        data: qs.stringify(param)
+    })
+}
+
+//删除菜品
+export const deleteDishes = (param) => {
+    return instance({
+        method: 'post',
+        url: '/dishes/deleteDishes',
         data: qs.stringify(param)
     })
 }

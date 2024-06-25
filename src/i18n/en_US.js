@@ -405,6 +405,18 @@ const routerNavigation = [{
                 id: '4-3',
                 router: '/port/updatePic',
             },
+            {
+                name: 'chatWebSocket',
+                path: 'chatWebSocket',
+                id: '4-4',
+                router: '/port/chatWebSocket',
+            },
+            {
+                name: 'xcxFoods',
+                path: 'xcxFoods',
+                id: '4-5',
+                router: '/port/xcxFoods',
+            },
         ]
     }, {
         name: 'function',

@@ -404,6 +404,12 @@ const routerNavigation = [{
             id: '4-4',
             router: '/port/chatWebSocket',
         },
+        {
+            name: '小程序菜单管理',
+            path: 'xcxFoods',
+            id: '4-5',
+            router: '/port/xcxFoods',
+        },
     ]
 }, {
     name: '功能',

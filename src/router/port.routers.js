@@ -35,5 +35,12 @@ export default [{
             title: '聊天-websocket'
         },
         component: () => import('../views/port/chatWebSocket')
+    },{
+        path: '/port/xcxFoods',
+        name: 'xcxFoods',
+        meta: {
+            title: '小程序菜单管理'
+        },
+        component: () => import('../views/port/xcxFoods')
     }, ]
 }, ]

@@ -11,11 +11,11 @@ const db = require('../utils/db');
 const dishes = express.Router();
 
 
-
 // 获取菜品列表
 dishes.post('/dishes/getDishesList', (req, res) => {
-    let sql = 'select * from dishes';
-    db.query(sql, (err, result) => {
+    const name = req.body.name;
+    let sql = 'select * from dishes where name like ?';
+    db.query(sql, ['%' + name + '%'], (err, result) => {
         if (err) return console.log(err.message);
         res.send({
             code: 200,
@@ -25,6 +25,69 @@ dishes.post('/dishes/getDishesList', (req, res) => {
     })
 })
 
+//添加菜品
+dishes.post('/dishes/addDishes', (req, res) => {
 
+    const {
+        name,
+        food_img,
+        price,
+        inventory,
+        uid,
+    } = req.body;
+
+    // 下单数据添加到mysql
+    const sql = 'INSERT INTO dishes(name,food_img,price,inventory,uid) VALUES(?,?,?,?,?)';
+
+    db.query(sql, [name, food_img, price, inventory, uid], (err, result) => {
+        if (err) return console.log(err.message);
+        res.send({
+            code: 200,
+            message: '添加数据成功',
+            data: result
+        })
+    })
+})
+
+// 更新菜单
+dishes.post('/dishes/updateDishes', (req, res) => {
+    const {
+        id,
+        name,
+        food_img,
+        price,
+        inventory,
+        uid,
+    } = req.body;
+
+    // 下单数据添加到mysql
+    const sql = 'UPDATE dishes SET name=?,food_img=?,price=?,inventory=?,uid=? WHERE id=?';
+    db.query(sql, [name, food_img, price, inventory, uid, id], (err, result) => {
+        if (err) return console.log(err.message);
+        res.send({
+            code: 200,
+            message: '更新数据成功',
+            data: result
+        })
+    })
+})
+
+//删除菜单
+dishes.post('/dishes/deleteDishes', (req, res) => {
+    const {
+        id,
+    } = req.body;
+
+    // 下单数据添加到mysql
+    const sql = 'DELETE FROM dishes WHERE id=?';
+    db.query(sql, [id], (err, result) => {
+        if (err) return console.log(err.message);
+        res.send({
+            code: 200,
+            message: '删除数据成功',
+            data: result
+        })
+    })
+})
 
 module.exports = dishes;

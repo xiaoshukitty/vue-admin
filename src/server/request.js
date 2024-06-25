@@ -28,13 +28,13 @@ const instance = axios.create({
 // 添加请求拦截器
 instance.interceptors.request.use(
     config => {
-        console.log('4')
+        // console.log('4')
         // 在发送请求之前做些什么
         // 让每一个接口都带 token
         const result = store.state;
-        console.log('1');
+        // console.log('1');
         if (result && result.token) {
-            console.log('2');
+            // console.log('2');
             config.headers.Authorization = `Bearer ${result.token}`;
             const endTime = JSON.parse(sessionStorage.getItem('TOKENINFO'));
 
@@ -49,7 +49,7 @@ instance.interceptors.request.use(
         if (!isToken) {
             config.data += "&token=" + result.token;
         }
-        console.log('3');
+        // console.log('3');
 
         return config;
     },
@@ -90,11 +90,11 @@ instance.interceptors.response.use(
         if (!config || !config.retry) return Promise.reject(error);
         // 设置变量即跟踪重试次数
         config.retryCount = config.retryCount || 1;
-        console.log('config', config);
-        console.log('retryCount', config.retryCount);
+        // console.log('config', config);
+        // console.log('retryCount', config.retryCount);
         // 检查我们是否已经超过了总重试次数
         if (config.retryCount > config.retry) {
-            console.log('error----', error.message);
+            // console.log('error----', error.message);
             // 返回错误信息
             // 可做借口请求失败页面跳转
             // return Promise.reject(error);

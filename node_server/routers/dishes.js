@@ -71,11 +71,12 @@ dishes.post('/dishes/updateDishes', (req, res) => {
         price,
         inventory,
         uid,
+        attribute
     } = req.body;
 
     // 下单数据添加到mysql
-    const sql = 'UPDATE dishes SET name=?,food_img=?,price=?,inventory=?,uid=? WHERE id=?';
-    db.query(sql, [name, food_img, price, inventory, uid, id], (err, result) => {
+    const sql = 'UPDATE dishes SET name=?,food_img=?,price=?,inventory=?,uid=?,attribute=? WHERE id=?';
+    db.query(sql, [name, food_img, price, inventory, uid, attribute, id], (err, result) => {
         if (err) return console.log(err.message);
         res.send({
             code: 200,

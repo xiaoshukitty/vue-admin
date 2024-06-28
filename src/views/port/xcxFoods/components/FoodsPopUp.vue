@@ -89,7 +89,8 @@ export default {
                     { required: true, message: '请选择商品所属分类', trigger: 'change' }
                 ],
             },
-            attrList: [{ attrName: '' }]
+            attrList: [{ attrName: '' }],
+            attributeCopy: []
         }
     },
     computed: {
@@ -106,7 +107,7 @@ export default {
     },
     watch: {
         foodInfo(newValue, oldValue) {
-            const { name, food_img, price, inventory, uid, id } = newValue;
+            const { name, food_img, price, inventory, uid, id, attribute } = newValue;
             this.form = {
                 name: name,
                 pic: food_img,
@@ -115,7 +116,13 @@ export default {
                 uid: uid == 1 ? '炒菜' : uid == 2 ? '主食' : uid == 3 ? '汤' :
                     uid == 4 ? '饮料' : uid == 5 ? '火锅' : '零食'
             }
-            console.log(this.form);
+            if (attribute && attribute != null) {
+                this.attrList = attribute;
+            } else {
+                this.attrList = [{ attrName: '' }]
+            }
+
+            this.attributeCopy = attribute;
             this.id = id;
         },
         titlePopUp(newValue, oldValue) {
@@ -146,13 +153,26 @@ export default {
         },
 
         async updataDishes() {
+            if (this.attributeCopy && this.attributeCopy != null) {
+                const flag = this.attrList.every(item => {
+                    return item.attrName != ''
+                })
+                if (!flag) {
+                    this.$message({
+                        message: '请把规格输入框都输入或者删除！',
+                        type: 'warning'
+                    });
+                }
+            }
+
             let params = {
                 name: this.form.name,
                 food_img: this.form.pic,
                 price: this.form.price,
                 inventory: this.form.inventory,
                 uid: this.form.uid,
-                id: this.id
+                id: this.id,
+                attribute: JSON.stringify(this.attrList)
             }
             console.log('params--', params);
             const result = await updataDishes(params);

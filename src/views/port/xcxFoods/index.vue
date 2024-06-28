@@ -7,11 +7,11 @@
             <div class="form">
                 <div class="search">
                     <div class="mr10">菜品名称：</div>
-                    <el-input class="w200" v-model="cuisineIpt" placeholder="请输入菜品名称" clearable   @clear="search"></el-input>
+                    <el-input class="w200" v-model="cuisineIpt" placeholder="请输入菜品名称" clearable
+                        @clear="search"></el-input>
                 </div>
                 <div class="search-btn">
-                    <el-button type="primary" icon="el-icon-search" plain class="ml30"  @click="search"
-                       >搜索</el-button>
+                    <el-button type="primary" icon="el-icon-search" plain class="ml30" @click="search">搜索</el-button>
                 </div>
                 <div class="search-btn">
                     <el-button type="primary" plain class="ml30" @click="addFoods">添加商品</el-button>
@@ -35,6 +35,15 @@
                         </template>
                     </el-table-column>
                     <el-table-column prop="inventory" label="库存" align="center">
+                    </el-table-column>
+                    <el-table-column prop="attribute" label="规格" align="center">
+                        <template slot-scope="scope">
+                            <template v-if="scope.row.attribute && scope.row.attribute.length > 0">
+                                <span v-for="(item, index) in scope.row.attribute" :key="index">{{
+                                    item.attrName }},</span>
+                            </template>
+                            <span v-else>--</span>
+                        </template>
                     </el-table-column>
                     <el-table-column prop="uid" label="所属分类" align="center">
                         <template slot-scope="scope">

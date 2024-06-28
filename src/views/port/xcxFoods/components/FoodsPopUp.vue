@@ -14,6 +14,18 @@
                 <el-form-item label="库存：" prop="inventory">
                     <el-input class="w300" v-model="form.inventory" placeholder="请输入菜品库存" type="number"></el-input>
                 </el-form-item>
+                <el-form-item label="规格：" prop="attr">
+                    <div class="attr">
+                        <div class="attr-conter" v-for="(item, index) in attrList" :key="index">
+                            <el-input class="w105" v-model="item.attrName" placeholder="规格描述"></el-input>
+                            <i class="el-icon-circle-close fs30" @click="closeAttr(index)"></i>
+                        </div>
+                        <div class="icon-add">
+                            <i class="el-icon-circle-plus-outline " @click="addAttr"></i>
+                        </div>
+
+                    </div>
+                </el-form-item>
                 <el-form-item label="所属分类：" prop="uid">
                     <el-select v-model="form.uid" placeholder="请选择商品所属分类" class="w300">
                         <el-option v-for="item in foodClassify" :key="item.value" :label="item.label"
@@ -56,7 +68,8 @@ export default {
                 price: '',
                 inventory: '',
                 uid: '',
-                id: ''
+                id: '',
+                attr: '',
             },
             foodClassify,
             rules: {
@@ -75,7 +88,8 @@ export default {
                 uid: [
                     { required: true, message: '请选择商品所属分类', trigger: 'change' }
                 ],
-            }
+            },
+            attrList: [{ attrName: '' }]
         }
     },
     computed: {
@@ -89,7 +103,6 @@ export default {
         },
     },
     created() {
-        console.log('foodClassify--', foodClassify);
     },
     watch: {
         foodInfo(newValue, oldValue) {
@@ -99,9 +112,11 @@ export default {
                 pic: food_img,
                 price: price,
                 inventory: inventory,
-                uid: uid
-            },
-                this.id = id;
+                uid: uid == 1 ? '炒菜' : uid == 2 ? '主食' : uid == 3 ? '汤' :
+                    uid == 4 ? '饮料' : uid == 5 ? '火锅' : '零食'
+            }
+            console.log(this.form);
+            this.id = id;
         },
         titlePopUp(newValue, oldValue) {
             newValue == '商品编辑' ? '' : this.init();
@@ -153,13 +168,26 @@ export default {
         },
 
         async submitFood() {
-
+            // Promise.all(this.attrList).then(item=>{
+            //     console.log('item---',item);
+            // })
+            const flag = this.attrList.every(item => {
+                return item.attrName != ''
+            })
+            if (!flag) {
+                this.$message({
+                    message: '请把规格输入框都输入或者删除！',
+                    type: 'warning'
+                });
+            }
+            console.log('flag---', flag);
             let params = {
                 name: this.form.name,
                 food_img: this.form.pic,
                 price: this.form.price,
                 inventory: this.form.inventory,
                 uid: this.form.uid,
+                attribute: JSON.stringify(this.attrList)
             }
             const result = await addDishes(params);
             if (result.code == 200) {
@@ -181,6 +209,15 @@ export default {
                 uid: ''
             }
         },
+        //增加输入框
+        addAttr() {
+            // attrList: [{ attrName: '' }]
+            this.attrList.push({ attrName: '' })
+        },
+        //删除输入框
+        closeAttr(i) {
+            this.attrList.splice(i, 1)
+        },
         handleClose() {
             this.$emit('update:visible', false);
         }
@@ -198,6 +235,31 @@ export default {
     .conter-item {
         display: flex;
         align-items: center;
+    }
+
+    .attr {
+        width: 300px;
+        display: flex;
+        flex-wrap: wrap;
+
+        .attr-conter {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+        }
+
+        .icon-add {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            height: 40px;
+        }
+    }
+
+    .attr>div:nth-child(2n-1) {
+        margin-right: 30px;
+
     }
 }
 
@@ -219,7 +281,16 @@ export default {
     margin-left: 30px;
 }
 
+
 .w300 {
     width: 300px;
+}
+
+.w105 {
+    width: 105px;
+}
+
+.fs30 {
+    font-size: 30px;
 }
 </style>

@@ -17,6 +17,15 @@ dishes.post('/dishes/getDishesList', (req, res) => {
     let sql = 'select * from dishes where name like ?';
     db.query(sql, ['%' + name + '%'], (err, result) => {
         if (err) return console.log(err.message);
+
+        // console.log('result---', result.length);
+        for (let i = 0; i < result.length; i++) {
+            if (result[i].attribute && result[i].attribute != null) {
+                result[i].attribute = JSON.parse(result[i].attribute);
+            }
+        }
+
+
         res.send({
             code: 200,
             message: '获取菜品列表成功',
@@ -34,12 +43,16 @@ dishes.post('/dishes/addDishes', (req, res) => {
         price,
         inventory,
         uid,
+        attribute
     } = req.body;
 
-    // 下单数据添加到mysql
-    const sql = 'INSERT INTO dishes(name,food_img,price,inventory,uid) VALUES(?,?,?,?,?)';
+    console.log('attribute---', attribute);
 
-    db.query(sql, [name, food_img, price, inventory, uid], (err, result) => {
+
+    // 下单数据添加到mysql
+    const sql = 'INSERT INTO dishes(name,food_img,price,inventory,uid,attribute) VALUES(?,?,?,?,?,?)';
+
+    db.query(sql, [name, food_img, price, inventory, uid, attribute], (err, result) => {
         if (err) return console.log(err.message);
         res.send({
             code: 200,

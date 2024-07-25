@@ -146,14 +146,25 @@
                     </div>
                 </div>
                 <div class="recordRouteList">
-                    <!-- 路由块 -->
-                    <div v-for="(item, index) in recordRouteList" :key="item.id"
-                        :class="['tag', activeIndexRoute == item.id ? 'active' : '']" @click="routerSkip(item)">
-                        <i v-if="activeIndexRoute == item.id" class="el-icon-star-on"></i>
-                        <span>{{ item.name }}</span>
-                        <i v-if="item.id != 0" class="el-icon-close close-hover" @click.stop="closeRoute(item)"></i>
+                    <div class="recordRouterBox">
+                        <!-- 路由块 -->
+                        <div v-for="(item, index) in recordRouteList" :key="item.id"
+                            :class="['tag', activeIndexRoute == item.id ? 'active' : '']" @click="routerSkip(item)">
+                            <i v-if="activeIndexRoute == item.id" class="el-icon-star-on"></i>
+                            <span>{{ item.name }}</span>
+                            <i v-if="item.id != 0" class="el-icon-close close-hover" @click.stop="closeRoute(item)"></i>
+                        </div>
+                    </div>
+                    <div class="recordBlock">
+                        <el-dropdown @command="closeRouterBlock">
+                            <i class="el-icon-menu" style="font-size: 25px; margin-top: 14px; cursor: pointer;"></i>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item icon="el-icon-close" command="close">全部关闭</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
                     </div>
                 </div>
+
             </div>
 
             <div class="marin">
@@ -449,6 +460,23 @@ export default {
                 this.activeIndexRoute = this.recordRouteList[this.recordRouteList.length - 1].id;
                 this.routerSkipChunk(Obj)
             }
+        },
+        //全部关闭路由导航
+        closeRouterBlock(command) {
+            console.log('222', command);
+            if (command == 'close') {
+                this.recordRouteList = [{
+                    name: '首页',
+                    path: 'home',
+                    id: '0',
+                    router: '/home',
+                    icon: 'el-icon-monitor',
+                }];
+                this.activeIndexRoute = '0';
+                this.activeIndex = '/home';
+                this.$router.push('/home')
+            }
+
         },
         //路由块跳转方法
         routerSkipChunk(val, flag) {
@@ -821,51 +849,72 @@ export default {
 }
 
 .recordRouteList {
-    box-sizing: border-box;
-    height: 50px;
-    display: flex;
-    align-items: center;
+    position: relative;
     padding: 0 10px;
+    width: calc(100vw - 200px);
     border-bottom: 1px solid #eee;
-    overflow-x: auto;
-    /* 使容器横向滚动 */
-    white-space: nowrap;
-    /* 确保内容不换行 */
 
-    .tag {
-        padding: 0 10px;
-        cursor: pointer;
-        border: 1px solid #dcdfe6;
-        color: @head-record-base-color;
-        cursor: pointer;
-        height: 30px;
-        line-height: 30px;
-        margin-left: 10px;
-        border-radius: 3px;
-        background-color: @head-record-base-bgColor;
-        font-size: 14px;
+    .recordRouterBox {
+        box-sizing: border-box;
+        height: 50px;
+        display: flex;
+        align-items: center;
 
-        .el-icon-close {
-            margin-left: 5px;
+        overflow-x: auto;
+        /* 使容器横向滚动 */
+        white-space: nowrap;
+        /* 确保内容不换行 */
+        width: calc(100vw - 260px);
+
+        .tag {
+            padding: 0 10px;
+            cursor: pointer;
+            border: 1px solid #dcdfe6;
+            color: @head-record-base-color;
+            cursor: pointer;
+            height: 30px;
+            line-height: 30px;
+            margin-left: 10px;
+            border-radius: 3px;
+            background-color: @head-record-base-bgColor;
+            font-size: 14px;
+
+            .el-icon-close {
+                margin-left: 5px;
+            }
         }
+
+        .active {
+            background-color: @head-record-base-select-bgColor !important;
+            color: @head-record-base-select-color !important;
+            border: 1px solid @head-record-base-select-border !important;
+        }
+
+        .close-hover {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+
+        .close-hover:hover {
+            color: #fff;
+            background-color: @head-record-base-close-hover;
+        }
+
     }
 
-    .active {
-        background-color: @head-record-base-select-bgColor !important;
-        color: @head-record-base-select-color !important;
-        border: 1px solid @head-record-base-select-border !important;
-    }
 
-    .close-hover {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-    }
+    .recordBlock {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        width: 60px;
+        height: 48px;
+        text-align: center;
+        line-height: 40px;
+        background-color: #fff;
+        color: #000;
 
-    .close-hover:hover {
-        color: #fff;
-        background-color: @head-record-base-close-hover;
-        ;
     }
 }
 

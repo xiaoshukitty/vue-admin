@@ -5,6 +5,10 @@
                 <h3 style="margin: 0 auto;">WebSocket 聊天室：</h3>
             </div>
             <div class="chat">
+                <div class="openSocket">
+                    <el-button type="primary" @click="openSocket" v-if="!isConnect">开启连接</el-button>
+                    <el-button type="danger" @click="closeSocket" v-else>断开链接</el-button>
+                </div>
                 <div class="wrapper">
                     <div class="conversation" ref="chatContainer">
                         <div class="conversation-start">
@@ -26,7 +30,8 @@
                     </div>
                     <div class="write">
                         <a href="javascript:;" class="write-link attach"></a>
-                        <el-input class="msg-ipt" ref="iptFocus" type="text" v-model="msg" placeholder="请输入内容" @keyup.enter.native="sendMsg"/>
+                        <el-input class="msg-ipt" ref="iptFocus" type="text" v-model="msg" placeholder="请输入内容"
+                            @keyup.enter.native="sendMsg" />
                         <a href="javascript:;" class="write-link smiley" @click="OpenEmotions"></a>
                         <a href="javascript:;" class="write-link send" @click="sendMsg"></a>
                     </div>
@@ -55,7 +60,8 @@ export default {
             username: '',
             message: '',
             messages: [],
-            ws: null
+            ws: null,
+            isConnect: false
         }
     },
     created() {
@@ -69,15 +75,26 @@ export default {
         }
     },
     mounted() {
-        this.connectWebSocket();
+
     },
     methods: {
+        //开启连接
+        openSocket() {
+            this.connectWebSocket();
+        },
+        //断开链接
+        closeSocket() {
+            this.ws.close();
+            this.isConnect = false;
+        },
+
         //连接 webscoket
         connectWebSocket() {
             this.ws = new WebSocket('ws://localhost:3000');
             this.ws.onmessage = this.onMessage;
             this.ws.onclose = this.onClose;
             this.ws.onopen = this.onOpen;
+            this.isConnect = true;
         },
         onMessage(event) {
             const EmotionList = ['微笑', '撇嘴', '色', '发呆', '得意', '流泪', '害羞', '闭嘴', '睡', '大哭',
@@ -111,12 +128,14 @@ export default {
         },
         onClose() {
             console.log('WebSocket 连接已关闭,请重新连接...');
-            setTimeout(this.connectWebSocket, 1000);
+            this.$message.warning('WebSocket 连接已关闭,请重新连接...');
+            // setTimeout(this.connectWebSocket, 1000);
         },
         onOpen() {
             console.log('WebSocket 连接已建立');
         },
         sendMsg() {
+            if (!this.isConnect) return this.$message.warning('WebSocket 连接已关闭,请重新连接...');
             if (this.msg == '') {
                 this.$message.error('消息不能为空');
                 return;

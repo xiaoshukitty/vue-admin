@@ -559,6 +559,8 @@ const guide = {
     GoToTheBootPage: 'Go to the boot page 👋',
     Menu: 'Menu',
     QuickMenuSwitch: 'Quick menu switch 👋',
+    GlobalSearch:'Global Search 👋',
+    GlobalSearchCommandK:'Global Search Command + K 👋',
     LockScreen: 'LockScreen',
     TapTheLockScreenWhenYouLeave: 'Tap the lock screen when you leave 👋',
     Refresh: 'Refresh',

@@ -550,6 +550,8 @@ const guide = {
     GoToTheBootPage: '进入引导页 👋',
     Menu: '菜单',
     QuickMenuSwitch: '快速菜单切换 👋',
+    GlobalSearch:'全局搜索 👋',
+    GlobalSearchCommandK:'Command + K 可全局搜索 👋',
     LockScreen: '锁屏',
     TapTheLockScreenWhenYouLeave: '离开时可以点击锁屏 👋',
     Refresh: '刷新',

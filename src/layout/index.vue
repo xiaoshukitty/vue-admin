@@ -59,7 +59,7 @@
                             </el-select>
                         </div>
                         <!-- 全局搜索 -->
-                        <div class="header_hover" ref="lockScreenGuide">
+                        <div class="header_hover" ref="GlobalSearch">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.GlobalSearch')"
                                 placement="bottom">
                                 <el-button icon="el-icon-search" size="small" circle
@@ -349,6 +349,11 @@ export default {
                         title: this.$t('guide.Menu'),
                         element: this.$refs.elSelectGuide,
                         intro: this.$t('guide.QuickMenuSwitch'),
+                    },
+                    {
+                        title: this.$t('guide.GlobalSearch'),
+                        element: this.$refs.GlobalSearch,
+                        intro: this.$t('guide.GlobalSearchCommandK'),
                     },
                     {
                         title: this.$t('guide.LockScreen'),

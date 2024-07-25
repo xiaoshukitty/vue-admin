@@ -10,12 +10,12 @@ const axios = require('axios');
 
 // 用户信息
 const user = {
-    appid: '', // 填写你自己的appid ( 微信公众平台获取 )
-    secret: '', // 填写你自己的appsecret密钥 ( 微信公众平台获取 )
+    appid: 'wxaa27f5ce3a59d0f8', // 填写你自己的appid ( 微信公众平台获取 )
+    secret: '7de5d1c82dc7187a856bc720aac604bc', // 填写你自己的appsecret密钥 ( 微信公众平台获取 )
     openid: ''
 }
 // 模板ID - template_id
-const temp_id = '' // 填写你申请选用的模板id
+const temp_id = 'Pbur9QdHiyABD54MGFrDUKhiLMHKOUOQLSWhMMePbQ4' // 填写你申请选用的模板id
 
 // 获取Openid请求接口
 wxMsg.post('/wxMsg/getOpenId', (req, res) => {
@@ -112,6 +112,7 @@ function sendTempMsg(formInfo, success) {
 
 // 获取access_token函数
 function getAccessToken(success) {
+    // 获取小程序全局唯一后台接口调用凭据，token有效期为7200s，开发者需要进行妥善保存。
     let url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' + user.appid + '&secret=' + user.secret
     axios({
         url,

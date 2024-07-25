@@ -151,6 +151,13 @@ export default [{
             },
             component: () => import('../views/tips/dragBlock')
         },
-
+        {
+            path: '/tips/scrollText',
+            name: 'scrollText',
+            meta: {
+                title: '文字滚动'
+            },
+            component: () => import('../views/tips/scrollText')
+        },
     ]
 }, ]

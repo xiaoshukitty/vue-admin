@@ -151,6 +151,7 @@ const headerList = {
     Unlock: "解锁",
     SwitchWallpaper: "切换壁纸",
     TheScreenLockPasswordCannotBeEmpty: "锁屏密码不能为空",
+    ScrollText:'文字滚动',
 }
 
 
@@ -337,7 +338,12 @@ const routerNavigation = [{
             id: '1-18',
             router: '/tips/dragBlock',
         },
-
+        {
+            name: '文字滚动',
+            path: 'scrollText',
+            id: '1-19',
+            router: '/tips/scrollText',
+        },
     ]
 }, {
     name: '地图',

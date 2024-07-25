@@ -151,6 +151,7 @@ const headerList = {
     Unlock: "Unlock",
     SwitchWallpaper: "Switch Wallpaper",
     TheScreenLockPasswordCannotBeEmpty: "The Screen Lock Password Cannot Be Empty",
+    ScrollText:'Scroll Text',
 }
 
 const avatarList = [{
@@ -337,6 +338,12 @@ const routerNavigation = [{
                 path: 'dragBlock',
                 id: '1-18',
                 router: '/tips/dragBlock',
+            },
+            {
+                name: 'scrollText',
+                path: 'scrollText',
+                id: '1-19',
+                router: '/tips/scrollText',
             },
         ]
     }, {

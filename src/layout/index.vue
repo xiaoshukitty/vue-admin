@@ -276,48 +276,7 @@ export default {
         }
     },
     methods: {
-        //自动滚动
-        scrollToItem(index) {
-            const itemElement = this.$refs.scrollbarRef.$el.querySelector(`.list-item:nth-child(${index + 1})`)
-            if (itemElement) {
-                const scrollContainer = this.$refs.scrollbarRef.$el.querySelector('.el-scrollbar__wrap');
-                const targetScrollLeft = itemElement.offsetLeft;
-                const currentScrollLeft = scrollContainer.scrollLeft;
-                const duration = 500; // 动画持续时间，单位毫秒
-                const startTime = performance.now();
-                const animateScroll = (timestamp) => {
-                    const progress = timestamp - startTime;
-                    const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-                    const percentage = Math.min(progress / duration, 1);
-                    const easedPercentage = easeInOutQuad(percentage);
-                    const newScrollLeft = currentScrollLeft + (targetScrollLeft - currentScrollLeft) * easedPercentage;
 
-                    scrollContainer.scrollLeft = newScrollLeft;
-
-                    if (progress < duration) {
-                        requestAnimationFrame(animateScroll);
-                    }
-                };
-                requestAnimationFrame(animateScroll);
-            }
-        },
-        changeTargetIndex(index) {
-            this.targetIndex = index
-            this.scrollToItem(this.targetIndex)
-        },
-        //路由动画跳转
-        jumpNum(i) {
-            let res = this.recordRouteList;
-            this.targetIndex = i;
-            this.$nextTick(() => {
-                for (let i = 0; i < res.length; i++) {
-                    if (res[i].id == this.activeIndexRoute) {
-                        this.scrollToItem(i)
-                    }
-                }
-            })
-
-        },
         //全局搜索
         globalSearch() {
             this.isSearch = true;
@@ -469,6 +428,44 @@ export default {
                 this.$refs.popover.doClose()
             }, 500);
         },
+        //自动滚动
+        scrollToItem(index) {
+            const itemElement = this.$refs.scrollbarRef.$el.querySelector(`.list-item:nth-child(${index + 1})`)
+            if (itemElement) {
+                const scrollContainer = this.$refs.scrollbarRef.$el.querySelector('.el-scrollbar__wrap');
+                const targetScrollLeft = itemElement.offsetLeft;
+                const currentScrollLeft = scrollContainer.scrollLeft;
+                const duration = 500; // 动画持续时间，单位毫秒
+                const startTime = performance.now();
+                const animateScroll = (timestamp) => {
+                    const progress = timestamp - startTime;
+                    const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                    const percentage = Math.min(progress / duration, 1);
+                    const easedPercentage = easeInOutQuad(percentage);
+                    const newScrollLeft = currentScrollLeft + (targetScrollLeft - currentScrollLeft) * easedPercentage;
+
+                    scrollContainer.scrollLeft = newScrollLeft;
+
+                    if (progress < duration) {
+                        requestAnimationFrame(animateScroll);
+                    }
+                };
+                requestAnimationFrame(animateScroll);
+            }
+        },
+        //路由动画跳转
+        jumpNum(i) {
+            let res = this.recordRouteList;
+            this.targetIndex = i;
+            this.$nextTick(() => {
+                for (let i = 0; i < res.length; i++) {
+                    if (res[i].id == this.activeIndexRoute) {
+                        this.scrollToItem(i)
+                    }
+                }
+            })
+
+        },
         //el-tree 切换点击
         handleNodeClick(node, flag) {
             if (node.children) {
@@ -516,7 +513,7 @@ export default {
         //全部关闭路由导航
         closeRouterBlock(command) {
             console.log('222', this.recordRouteList);
-            if(this.recordRouteList.length == 1 && this.recordRouteList[0].id == '0'){
+            if (this.recordRouteList.length == 1 && this.recordRouteList[0].id == '0') {
                 this.$message.warning('首页不能关闭')
                 return
             }
@@ -934,7 +931,7 @@ export default {
                 top: 0 !important;
             }
 
-            /deep/ .el-scrollbar__wrap--hidden-default{
+            /deep/ .el-scrollbar__wrap--hidden-default {
                 display: flex !important;
                 align-items: center !important;
             }

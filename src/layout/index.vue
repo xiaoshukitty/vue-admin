@@ -135,7 +135,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                        }}</div>
+                                    }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -149,13 +149,18 @@
                 <div class="recordRouteList">
                     <div class="recordRouterBox">
                         <!-- 路由块 -->
-                        <div v-for="(item, index) in recordRouteList" :key="item.id"
-                            :class="['tag', activeIndexRoute == item.id ? 'active' : '']" @click="routerSkip(item)">
-                            <!-- <i v-if="activeIndexRoute == item.id" class="el-icon-star-on"></i> -->
-                             <i style="margin-right: 5px;" :class="item.icon"></i>
-                            <span>{{ item.name }}</span>
-                            <i v-if="item.id != 0" class="el-icon-close close-hover" @click.stop="closeRoute(item)"></i>
-                        </div>
+                        <el-scrollbar class="scrollbar" wrap-style="overflow-y:hidden" ref="scrollbarRef">
+                            <div style="display: flex">
+                                <div v-for="(item, index) in recordRouteList" :key="item.id"
+                                    :class="['tag', 'list-item', activeIndexRoute == item.id ? 'active' : '']"
+                                    @click="routerSkip(item, index)">
+                                    <i style="margin-right: 5px;" :class="item.icon"></i>
+                                    <span>{{ item.name }}</span>
+                                    <i v-if="item.id != 0" class="el-icon-close close-hover"
+                                        @click.stop="closeRoute(item)"></i>
+                                </div>
+                            </div>
+                        </el-scrollbar>
                     </div>
                     <div class="recordBlock">
                         <el-dropdown @command="closeRouterBlock">
@@ -224,13 +229,14 @@ export default {
             informsList,
             emailList,
             isSearch: false,
+            targetIndex: 1, // 目标元素的索引
         }
     },
     created() {
         this.$eventBus.$on('guide', this.guideProcedure); //引导页步骤
         this.$eventBus.$on('langEdit', this.langEditClick); //引导页步骤
         this.recordRouteList = this.$t('routerChunkI18n')
-        console.log('this.recordRouteList----', this.recordRouteList);
+        // console.log('this.recordRouteList----', this.recordRouteList);
         history.pushState(null, null, document.URL);
         window.addEventListener("popstate", function () {
             history.pushState(null, null, document.URL);
@@ -270,6 +276,48 @@ export default {
         }
     },
     methods: {
+        //自动滚动
+        scrollToItem(index) {
+            const itemElement = this.$refs.scrollbarRef.$el.querySelector(`.list-item:nth-child(${index + 1})`)
+            if (itemElement) {
+                const scrollContainer = this.$refs.scrollbarRef.$el.querySelector('.el-scrollbar__wrap');
+                const targetScrollLeft = itemElement.offsetLeft;
+                const currentScrollLeft = scrollContainer.scrollLeft;
+                const duration = 500; // 动画持续时间，单位毫秒
+                const startTime = performance.now();
+                const animateScroll = (timestamp) => {
+                    const progress = timestamp - startTime;
+                    const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                    const percentage = Math.min(progress / duration, 1);
+                    const easedPercentage = easeInOutQuad(percentage);
+                    const newScrollLeft = currentScrollLeft + (targetScrollLeft - currentScrollLeft) * easedPercentage;
+
+                    scrollContainer.scrollLeft = newScrollLeft;
+
+                    if (progress < duration) {
+                        requestAnimationFrame(animateScroll);
+                    }
+                };
+                requestAnimationFrame(animateScroll);
+            }
+        },
+        changeTargetIndex(index) {
+            this.targetIndex = index
+            this.scrollToItem(this.targetIndex)
+        },
+        //路由动画跳转
+        jumpNum(i) {
+            let res = this.recordRouteList;
+            this.targetIndex = i;
+            this.$nextTick(() => {
+                for (let i = 0; i < res.length; i++) {
+                    if (res[i].id == this.activeIndexRoute) {
+                        this.scrollToItem(i)
+                    }
+                }
+            })
+
+        },
         //全局搜索
         globalSearch() {
             this.isSearch = true;
@@ -426,7 +474,7 @@ export default {
             if (node.children) {
                 return
             }
-            console.log('node---', node);
+            // console.log('node---', node);
             this.valueTitle = node.name;
             this.valueId = node.id;
             this.$router.push({ path: node.router })
@@ -439,8 +487,10 @@ export default {
 
         },
         // 横向点击跳转路由
-        routerSkip(val) {
+        routerSkip(val, i) {
             this.routerSkipChunk(val, 'flag');
+            this.targetIndex = i
+            this.scrollToItem(this.targetIndex)
         },
         // 删除指定横向路由块
         closeRoute(val) {
@@ -465,7 +515,7 @@ export default {
         },
         //全部关闭路由导航
         closeRouterBlock(command) {
-            console.log('222', command);
+            // console.log('222', command);
             if (command == 'close') {
                 this.recordRouteList = [{
                     name: '首页',
@@ -501,13 +551,15 @@ export default {
         },
         //记录路由块
         routerPush(newValue, e) {
-            console.log('newValue---', newValue);
+            // console.log('newValue---', newValue);
             let flag = this.deWeight(this.recordRouteList, newValue)
             this.activeItem = newValue;
             this.activeIndexRoute = newValue.id;
             if (flag == 1) {
-                this.recordRouteList.push(newValue)
+                this.recordRouteList.push(newValue);
             }
+            //路由动画跳转
+            this.jumpNum(this.recordRouteList.length);
             this.changeTree(newValue);
         },
         //路由切换
@@ -520,7 +572,7 @@ export default {
         },
         //树形默认展示切换展示
         changeTree(newValue) {
-            console.log('d', this.recordRouteList);
+            // console.log('d', this.recordRouteList);
             this.$nextTick(() => {
                 // console.log('现在的节点',newValue.id);
                 // console.log('上次的节点',this.defaultExpandedKey);
@@ -568,7 +620,7 @@ export default {
         },
         //通知
         inform() {
-            console.log('点击了通知');
+            // console.log('点击了通知');
         },
         //全屏
         toggleFullScreen() {
@@ -868,6 +920,22 @@ export default {
         /* 确保内容不换行 */
         width: calc(100vw - 280px);
 
+        .scrollbar {
+            width: calc(100vw - 280px);
+            height: 100%;
+
+            /deep/ .is-vertical,
+            /deep/ .is-horizontal {
+                width: 0 !important;
+                top: 0 !important;
+            }
+
+            /deep/ .el-scrollbar__wrap--hidden-default{
+                display: flex !important;
+                align-items: center !important;
+            }
+        }
+
         .tag {
             padding: 0 10px;
             cursor: pointer;
@@ -962,7 +1030,6 @@ export default {
     }
 
 }
-
 </style>
 <style>
 .el-select-dropdown__item.selected {

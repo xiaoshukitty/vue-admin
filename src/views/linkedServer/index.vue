@@ -7,7 +7,7 @@
             欢迎体验 VUE-ADMIN
         </div>
         <div class="server-tips" v-if="isShow">
-            <el-alert title="警告提示的文案" type="warning">
+            <el-alert title="地址请求失败，请检查后重试！" type="error">
             </el-alert>
         </div>
         <div class="server-ipt">
@@ -28,7 +28,7 @@ import Cookies from 'js-cookie';
 export default {
     data() {
         return {
-            serverIpt: 'http://127.0.0.1:3000',
+            serverIpt: '',
             isShow: false
         }
     },
@@ -37,7 +37,7 @@ export default {
     methods: {
         async verify() {
             if (!this.serverIpt) {
-                this.$message.error('请输入API地址');
+                this.$message.warning('请输入API地址');
                 return;
             }
             try {

@@ -515,7 +515,11 @@ export default {
         },
         //全部关闭路由导航
         closeRouterBlock(command) {
-            // console.log('222', command);
+            console.log('222', this.recordRouteList);
+            if(this.recordRouteList.length == 1 && this.recordRouteList[0].id == '0'){
+                this.$message.warning('首页不能关闭')
+                return
+            }
             if (command == 'close') {
                 this.recordRouteList = [{
                     name: '首页',

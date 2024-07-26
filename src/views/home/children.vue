@@ -16,10 +16,13 @@ export default {
 <style lang="less" scoped>
 #particles {
   position: absolute;
-  width: calc(100% - 200px);
+  width: calc(100% - 220px);
   height:calc(100vh - 100px);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  /deep/ .particles-js-canvas-el{
+    width: calc(100% - 220px);
+  }
 }
 </style>

@@ -135,7 +135,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                    }}</div>
+                                        }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -153,7 +153,7 @@
                             <div style="display: flex">
                                 <div v-for="(item, index) in recordRouteList" :key="item.id"
                                     :class="['tag', 'list-item', activeIndexRoute == item.id ? 'active' : '']"
-                                    @click="routerSkip(item, index)">
+                                    @click="routerSkip(item, index)" @contextmenu="showContextMenu">
                                     <i style="margin-right: 5px;" :class="item.icon"></i>
                                     <span>{{ item.name }}</span>
                                     <i v-if="item.id != 0" class="el-icon-close close-hover"
@@ -175,11 +175,13 @@
             </div>
 
             <div class="marin">
-
                 <router-view v-if="flag" />
             </div>
         </div>
         <GlobalSearch :isSearch="isSearch" @update:visible="updateVisible" @update:skipTo="updateSkipTo"></GlobalSearch>
+
+        <!-- 右键菜单 -->
+        <ContextMenu ref="contextMenu" @menu-item-close="menuItemClose" />
     </div>
 </template>
 
@@ -191,6 +193,7 @@ import Cookies from "js-cookie";
 import keymaster from 'keymaster';
 import I18nComponents from '@/components/i18nComponents'
 import GlobalSearch from '@/components/GlobalSearch'
+import ContextMenu from '@/components/ContextMenu'
 import { searchTree, searchTreeCertain } from '@/utils'
 import { informsList, emailList } from '@/utils/falseData'
 import { logout } from '@/server/common'
@@ -201,7 +204,8 @@ export default {
     name: 'HomePage',
     components: {
         I18nComponents,
-        GlobalSearch
+        GlobalSearch,
+        ContextMenu
     },
     data() {
         return {
@@ -427,6 +431,18 @@ export default {
             setTimeout(() => {
                 this.$refs.popover.doClose()
             }, 500);
+        },
+        //右键菜单
+        showContextMenu(event) {
+            event.preventDefault(); // 阻止默认右键菜单
+            // 显示右键菜单
+            this.$refs.contextMenu.showMenu(event);
+        },
+        //全部关闭
+        menuItemClose(val) {
+            if (val == 'close') {
+                this.closeRouterBlock(val);
+            }
         },
         //自动滚动
         scrollToItem(index) {

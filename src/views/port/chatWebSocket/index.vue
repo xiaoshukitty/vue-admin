@@ -128,7 +128,7 @@ export default {
         },
         onClose() {
             console.log('WebSocket 连接已关闭,请重新连接...');
-            this.$message.warning('WebSocket 连接已关闭,请重新连接...');
+            // this.$message.warning('WebSocket 连接已关闭,请重新连接...');
             // setTimeout(this.connectWebSocket, 1000);
         },
         onOpen() {

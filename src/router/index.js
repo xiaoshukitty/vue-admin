@@ -62,7 +62,16 @@ const routes = [{
       path: '/404'
     },
     component: () => import('../views/404/index.vue'),
-  
+
+  }, {
+    path: '/linkedServer',
+    name: 'linkedServer',
+    meta: {
+      title: '链接服务',
+      path: '/linkedServer'
+    },
+    component: () => import('../views/linkedServer/index.vue'),
+
   },
   {
     path: '/test',

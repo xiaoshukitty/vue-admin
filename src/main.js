@@ -19,6 +19,7 @@ import VueVideoPlayer from 'vue-video-player' //视频播放
 import scroll from 'vue-seamless-scroll' // 无缝滚动
 import Cookies from 'js-cookie';
 import i18n from './utils/lang';
+import Router  from 'vue-router'
 
 import '@/config/directive.js'
 import '@/icons/index' //导入 svg
@@ -93,11 +94,21 @@ nprogress.configure({
 });
 
 
+/**
+ * 解决导航从“/…”取消到“/…”。准备去下个页面，但是还没有实际去到下个页面就取消去到了另一个页面，说明重定向了两次。
+ */
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
+// 定义白名单
+const whiteListRouter = ['/port/memorandum', '/port/requestText', '/port/updatePic', '/port/chatWebSocket', '/port/xcxFoods'];
 // 路由守卫
 router.beforeEach((to, from, next) => {
   // 刚进来就开启进度条
   nprogress.start()
-
+  console.log('路由', to.path);
   //判断是否是锁屏页面
   if (Cookies.get('locking') == '1' && to.path != '/lockscreen') {
     next({
@@ -108,6 +119,20 @@ router.beforeEach((to, from, next) => {
   }
   if (Cookies.get('locking') == '0' && to.name == 'lockscreen') {
     next();
+  }
+
+  //判断是不是白名单的路由
+  if (whiteListRouter.includes(to.path)) {
+    if (!Cookies.get('serverShow')) {
+      next({
+        replace: true,
+        path: '/linkedServer'
+      })
+      Cookies.set("last_page_linkedServer", to.path); // 本地存储为开启服务器之前打开的页面以便开启后打开
+      nprogress.done()
+    } else {
+      next()
+    }
   }
 
   if (to.matched.length === 0) { //路由不匹配强制跳转4040

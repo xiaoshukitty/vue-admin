@@ -113,7 +113,7 @@ const headerList = {
     LogOut: 'Log Out',
     Reminder: 'Reminder',
     ConfirmToExitTheSystem: 'Confirm to exit the system',
-    TokenExpired:"If the token expires, close and log in again",
+    TokenExpired: "If the token expires, close and log in again",
     Cancel: 'Cancel',
     Ok: 'Ok',
     HasSuccessfullyExited: 'Has successfully exited',
@@ -143,7 +143,7 @@ const headerList = {
     VideoDisplay: 'VideoDisplay',
     Share: 'Share',
     SeamlessRolling: 'Seamless Rolling',
-    GlobalSearch:'GlobalSearch ⌘ + K',
+    GlobalSearch: 'GlobalSearch ⌘ + K',
     LockScreen: 'Lock Screen',
     Inform: "Inform",
     PleaseEnterTheScreenLockPassword: 'Please Enter The Screen Lock Password',
@@ -151,7 +151,7 @@ const headerList = {
     Unlock: "Unlock",
     SwitchWallpaper: "Switch Wallpaper",
     TheScreenLockPasswordCannotBeEmpty: "The Screen Lock Password Cannot Be Empty",
-    ScrollText:'Scroll Text',
+    ScrollText: 'Scroll Text',
 }
 
 const avatarList = [{
@@ -235,115 +235,134 @@ const routerNavigation = [{
                 name: 'Print',
                 path: 'print',
                 id: '1-1',
-                router: '/tips/print'
+                router: '/tips/print',
+                icon: 'el-icon-printer',
             },
             {
                 name: 'Copy',
                 path: 'copy',
                 id: '1-2',
                 router: '/tips/copy',
+                icon: 'el-icon-document-copy',
             },
             {
                 name: 'BarCode',
                 path: 'barCode',
                 id: '1-3',
                 router: '/tips/barCode',
+                icon: 'el-icon-c-scale-to-original'
             },
             {
                 name: 'Drag',
                 path: 'drag',
                 id: '1-4',
                 router: '/tips/drag',
+                icon: 'el-icon-set-up'
             },
             {
                 name: 'Vuedraggable',
                 path: 'vuedraggable',
                 id: '1-5',
                 router: '/tips/vuedraggable',
+                icon: 'el-icon-turn-off'
             },
             {
                 name: 'DragSort',
                 path: 'dragSort',
                 id: '1-6',
                 router: '/tips/dragSort',
+                icon: 'el-icon-open'
             },
             {
                 name: 'Verification Code',
                 path: 'verificationCode',
                 id: '1-7',
                 router: '/tips/verificationCode',
+                icon: 'el-icon-message'
             },
             {
                 name: 'Canvas',
                 path: 'canvas',
                 id: '1-8',
                 router: '/tips/canvas',
+                icon: 'el-icon-crop'
             },
             {
                 name: 'ImgPreview',
                 path: 'imgPreview',
                 id: '1-9',
                 router: '/tips/imgPreview',
+                icon: 'el-icon-reading'
             },
             {
                 name: 'Render',
                 path: 'render',
                 id: '1-10',
                 router: '/tips/render',
+                icon: 'el-icon-paperclip'
             },
             {
                 name: 'Echarts',
                 path: 'echarts',
                 id: '1-11',
                 router: '/tips/echarts',
+                icon: 'el-icon-document'
             },
             {
                 name: 'Waterfall Flow',
                 path: 'waterfallFlow',
                 id: '1-12',
                 router: '/tips/waterfallFlow',
+                icon: 'el-icon-takeaway-box'
             },
             {
                 name: 'Tree',
                 path: 'tree',
                 id: '1-13',
                 router: '/tips/tree',
+                icon: 'el-icon-no-smoking'
             },
             {
                 name: 'richText',
                 path: 'richText',
                 id: '1-14',
                 router: '/tips/richText',
+                icon: 'el-icon-files'
             },
             {
                 name: 'virtual',
                 path: 'virtual',
                 id: '1-15',
                 router: '/tips/virtual',
+                icon: 'el-icon-notebook-1'
             },
             {
                 name: 'virtualList',
                 path: 'virtualList',
                 id: '1-16',
                 router: '/tips/virtualList',
+                icon: 'el-icon-notebook-2'
             },
             {
                 name: 'animations',
                 path: 'animations',
                 id: '1-17',
                 router: '/tips/animations',
+                icon: 'el-icon-toilet-paper'
             },
             {
                 name: 'dragBlock',
                 path: 'dragBlock',
                 id: '1-18',
                 router: '/tips/dragBlock',
+                icon: 'el-icon-office-building'
             },
             {
                 name: 'scrollText',
                 path: 'scrollText',
                 id: '1-19',
                 router: '/tips/scrollText',
+                icon: 'el-icon-school'
             },
         ]
     }, {
@@ -357,12 +376,14 @@ const routerNavigation = [{
                 path: 'elMap',
                 id: '2-1',
                 router: '/map/elMap',
+                icon: 'el-icon-location'
             },
             {
                 name: 'QQ Map',
                 path: 'qqMap',
                 id: '2-2',
                 router: '/map/qqMap',
+                icon: "el-icon-place"
             },
         ]
     }, {
@@ -372,24 +393,19 @@ const routerNavigation = [{
         router: '',
         icon: 'el-icon-picture',
         children: [{
-                name: 'copywriting',
-                path: 'copywriting',
-                id: '3-1',
-                router: '/picture/copywriting',
-            },{
-                name: 'pictureEffect',
-                path: 'pictureEffect',
-                id: '3-2',
-                router: '/picture/pictureEffect',
-            },
-            {
-                name: 'chatWebSocket',
-                path: 'chatWebSocket',
-                id: '4-4',
-                router: '/port/chatWebSocket',
-            },
-        ]
-    },  {
+            name: 'copywriting',
+            path: 'copywriting',
+            id: '3-1',
+            router: '/picture/copywriting',
+            icon: "el-icon-full-screen"
+        }, {
+            name: 'pictureEffect',
+            path: 'pictureEffect',
+            id: '3-2',
+            router: '/picture/pictureEffect',
+            icon: "el-icon-copy-document"
+        }, ]
+    }, {
         name: 'port',
         path: 'port',
         id: '4',
@@ -399,30 +415,35 @@ const routerNavigation = [{
                 path: 'memorandum',
                 id: '4-1',
                 router: '/port/memorandum',
+                icon: "el-icon-mic"
             },
             {
                 name: 'Request Text',
                 path: 'requestText',
                 id: '4-2',
                 router: '/port/requestText',
+                icon: "el-icon-trophy"
             },
             {
                 name: 'updatePic',
                 path: 'updatePic',
                 id: '4-3',
                 router: '/port/updatePic',
+                icon: "el-icon-trophy-1"
             },
             {
                 name: 'chatWebSocket',
                 path: 'chatWebSocket',
                 id: '4-4',
                 router: '/port/chatWebSocket',
+                icon: "el-icon-first-aid-kit"
             },
             {
                 name: 'xcxFoods',
                 path: 'xcxFoods',
                 id: '4-5',
                 router: '/port/xcxFoods',
+                icon: "el-icon-mobile-phone"
             },
         ]
     }, {
@@ -435,36 +456,42 @@ const routerNavigation = [{
                 path: 'customInstruction',
                 id: '5-1',
                 router: '/function/customInstruction',
+                icon: "el-icon-key"
             },
             {
                 name: 'Date Conversion',
                 path: 'dateConversion',
                 id: '5-2',
                 router: '/function/dateConversion',
+                icon: "el-icon-alarm-clock"
             },
             {
                 name: 'Table Search',
                 path: 'tableSearch',
                 id: '5-3',
                 router: '/function/tableSearch',
+                icon: "el-icon-refrigerator"
             },
             {
                 name: 'Methods',
                 path: 'methods',
                 id: '5-4',
                 router: '/function/methods',
+                icon: "el-icon-ice-cream-square"
             },
             {
                 name: 'Vuex',
                 path: 'vuex',
                 id: '5-5',
                 router: '/function/vuex',
+                icon: "el-icon-ice-tea"
             },
             {
                 name: 'test',
                 path: 'test',
                 id: '5-6',
                 router: '/function/test',
+                icon: "el-icon-ice-drink"
             },
         ]
     },
@@ -479,29 +506,34 @@ const routerNavigation = [{
                 path: 'lottery',
                 id: '7-1',
                 router: '/rests/lottery',
+                icon: "el-icon-goblet"
             },
             {
                 name: 'sliderVerification',
                 path: 'sliderVerification',
                 id: '7-2',
                 router: '/rests/sliderVerification',
+                icon: "el-icon-goblet-square"
             },
             {
                 name: 'signature',
                 path: 'signature',
                 id: '7-3',
                 router: '/rests/signature',
+                icon: "el-icon-edit"
             },
             {
                 name: 'videoDisplay',
                 path: 'videoDisplay',
                 id: '7-4',
                 router: '/rests/videoDisplay',
+                icon: "el-icon-video-camera"
             }, {
                 name: 'share',
                 path: 'share',
                 id: '7-5',
                 router: '/rests/share',
+                icon: "el-icon-sell"
             },
             //  {
             //     name: 'seamlessRolling',
@@ -514,11 +546,13 @@ const routerNavigation = [{
                 path: 'notepad',
                 id: '7-7',
                 router: '/rests/notepad',
+                icon: "el-icon-date"
             }, {
                 name: 'introductionPage',
                 path: 'introductionPage',
                 id: '7-8',
                 router: '/rests/introductionPage',
+                icon: 'el-icon-view'
             }
         ]
     }, {
@@ -533,11 +567,13 @@ const routerNavigation = [{
             path: 'editHeadPortrait',
             id: '6-1',
             router: '/setting/editHeadPortrait',
+            icon: 'el-icon-coordinate'
         }, {
             name: 'updataPassword',
             path: 'updataPassword',
             id: '6-2',
             router: '/setting/updataPassword',
+            icon: 'el-icon-lock'
         }]
     }
 ]
@@ -561,27 +597,27 @@ const titleI18n = {
 
 //引导
 const guide = {
-    Guide:'Guide',
+    Guide: 'Guide',
     Welcome: 'Welcome',
     GoToTheBootPage: 'Go to the boot page 👋',
     Menu: 'Menu',
     QuickMenuSwitch: 'Quick menu switch 👋',
-    GlobalSearch:'Global Search 👋',
-    GlobalSearchCommandK:'Global Search Command + K 👋',
+    GlobalSearch: 'Global Search 👋',
+    GlobalSearchCommandK: 'Global Search Command + K 👋',
     LockScreen: 'LockScreen',
     TapTheLockScreenWhenYouLeave: 'Tap the lock screen when you leave 👋',
     Refresh: 'Refresh',
     RefreshIntroduce: 'If you do not perform operations for a long time, you can refresh the page 👋', //If you do not perform operations for a long time, you can refresh the page
     Notification: 'Notification',
     NotificationIntroduce: 'You can view new information 👋', //You can view new information
-    Language:'Language',
-    LanguageIntroduce:'Language switching 👋',//Language switching
-    FullScreen:"FullScreen",
-    FullScreenIntroduce:'The page is displayed in full screen 👋',//The page is displayed in full screen
-    Minification:"Minification",
-    MinificationIntroduce:'Shrink the route menu bar 👋',//Shrink the route menu bar
-    RouteMenu:'RouteMenu',
-    RouteMenuIntroduce:'Route menu switch skip 👋'//Route menu switch skip
+    Language: 'Language',
+    LanguageIntroduce: 'Language switching 👋', //Language switching
+    FullScreen: "FullScreen",
+    FullScreenIntroduce: 'The page is displayed in full screen 👋', //The page is displayed in full screen
+    Minification: "Minification",
+    MinificationIntroduce: 'Shrink the route menu bar 👋', //Shrink the route menu bar
+    RouteMenu: 'RouteMenu',
+    RouteMenuIntroduce: 'Route menu switch skip 👋' //Route menu switch skip
 }
 
 

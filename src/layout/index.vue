@@ -24,6 +24,7 @@
                         </template>
                         <div v-for="child in item.children" :key="child.id">
                             <el-menu-item v-if="item.children" @click="handleSelect(child)" :index="child.router">
+                                <i v-if="child.icon" :class="child.icon"></i>
                                 {{ child.name }}
                             </el-menu-item>
                         </div>
@@ -150,7 +151,8 @@
                         <!-- 路由块 -->
                         <div v-for="(item, index) in recordRouteList" :key="item.id"
                             :class="['tag', activeIndexRoute == item.id ? 'active' : '']" @click="routerSkip(item)">
-                            <i v-if="activeIndexRoute == item.id" class="el-icon-star-on"></i>
+                            <!-- <i v-if="activeIndexRoute == item.id" class="el-icon-star-on"></i> -->
+                             <i style="margin-right: 5px;" :class="item.icon"></i>
                             <span>{{ item.name }}</span>
                             <i v-if="item.id != 0" class="el-icon-close close-hover" @click.stop="closeRoute(item)"></i>
                         </div>
@@ -844,14 +846,14 @@ export default {
 
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
+    width: 220px;
     min-height: 400px;
 }
 
 .recordRouteList {
     position: relative;
     padding: 0 10px;
-    width: calc(100vw - 200px);
+    width: calc(100vw - 240px);
     border-bottom: 1px solid #eee;
 
     .recordRouterBox {
@@ -864,7 +866,7 @@ export default {
         /* 使容器横向滚动 */
         white-space: nowrap;
         /* 确保内容不换行 */
-        width: calc(100vw - 260px);
+        width: calc(100vw - 280px);
 
         .tag {
             padding: 0 10px;
@@ -958,7 +960,9 @@ export default {
     .el-button:hover {
         background-color: #f5fcfa !important;
     }
+
 }
+
 </style>
 <style>
 .el-select-dropdown__item.selected {

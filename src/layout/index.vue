@@ -239,7 +239,8 @@ export default {
     created() {
         this.$eventBus.$on('guide', this.guideProcedure); //引导页步骤
         this.$eventBus.$on('langEdit', this.langEditClick); //引导页步骤
-        this.recordRouteList = this.$t('routerChunkI18n')
+        this.recordRouteList = this.$t('routerChunkI18n');
+        this.$eventBus.$on('linkServer', this.linkRouter);//跳转路由
         // console.log('this.recordRouteList----', this.recordRouteList);
         history.pushState(null, null, document.URL);
         window.addEventListener("popstate", function () {
@@ -280,6 +281,14 @@ export default {
         }
     },
     methods: {
+        //跳转路由
+        linkRouter(item) {
+            console.log('item---', item);
+            this.$router.push({ path: item.router });
+            this.activeIndex = item.router;
+            console.log('activeIndex', this.activeIndex);
+            this.routerPush(item)
+        },
 
         //全局搜索
         globalSearch() {
@@ -568,7 +577,7 @@ export default {
         },
         //记录路由块
         routerPush(newValue, e) {
-            // console.log('newValue---', newValue);
+            console.log('newValue---222', newValue);
             let flag = this.deWeight(this.recordRouteList, newValue)
             this.activeItem = newValue;
             this.activeIndexRoute = newValue.id;

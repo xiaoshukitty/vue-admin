@@ -17,8 +17,28 @@
             </el-input>
         </div>
         <div class="server-text">
-            如何搭建？<span> VUE-ADMIN-API 文档</span>
+            如何搭建？<span @click="dialogVisible = true"> VUE-ADMIN-API 文档</span>
         </div>
+        <el-dialog title="链接服务" :visible.sync="dialogVisible" width="42%" :show-close="false">
+            <div class="link-server-dialog">
+                <div>
+                    <!-- 1：下载项目 <a href="https://github.com/xiaoshukitty/vue-admin"></a> -->
+                    1：下载项目 <span @click="goToGithub">地址跳转链接</span>
+                </div>
+                <div>
+                    2：进入 node_server 目录、执行 npm install 安装依赖、执行 nodemon app.js 启动服务器
+                </div>
+                <div>
+                    3：输入启动地址（参考：http://localhost:3000） 到API地址输入框中、点击确定按钮
+                </div>
+                <div>
+                    4：如果API地址输入框中输入地址后，出现地址请求失败，请检查后重试！
+                </div>
+                <div>
+                    5：如果API地址输入框中输入地址后，出现地址请求成功，则解锁成功！则返回到对应的页面
+                </div>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -29,7 +49,8 @@ export default {
     data() {
         return {
             serverIpt: '',
-            isShow: false
+            isShow: false,
+            dialogVisible: true,
         }
     },
     created() {
@@ -57,13 +78,16 @@ export default {
             }
 
         },
+        //跳转到 github
+        goToGithub(){
+            window.open('https://github.com/xiaoshukitty/vue-admin','_blank')
+        }
     }
 }
 </script>
 
 <style lang="less" scoped>
 .linkdServer {
-
 
     .server-img {
         margin: 100px auto 10px;
@@ -98,5 +122,24 @@ export default {
             cursor: pointer;
         }
     }
+
+    .link-server-dialog {
+        font-size: 14px;
+
+        div {
+            margin: 5px 0;
+            white-space: pre-wrap;
+            text-align: justify;
+            max-width: 100%;
+            span{
+                cursor: pointer;
+                color: #41b584 !important;
+            }
+        }
+    }
+}
+
+/deep/ .el-dialog__body {
+    padding-top: 10px !important;
 }
 </style>

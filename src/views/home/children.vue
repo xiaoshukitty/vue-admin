@@ -12,11 +12,11 @@
         <div class="name">
           <div>
             <div style="color: #00000073; font-size: 14px;">待办</div>
-            <div class="text-2xl ">2/10</div>
+            <div class="text-2xl ">8/10</div>
           </div>
           <div>
             <div style="color: #00000073;font-size: 14px;">项目</div>
-            <div class="text-2xl ">8</div>
+            <div class="text-2xl ">5</div>
           </div>
           <div>
             <div style="color: #00000073;font-size: 14px;">团队</div>
@@ -36,7 +36,7 @@
                 <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
               </div>
               <div class="web-item">
-                <div class="web-block block-hover" v-for="(item, index) in webItems" :key="item.id">
+                <div class="web-block block-hover" v-for="(item, index) in webItems" :key="item.id" @click="link(item)">
                   <div class="web-block-top">
                     <div>
                       <svg-icon :iconClass="item.icon" />
@@ -84,11 +84,12 @@
                 <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
               </div>
               <div class="navigation">
-                <div class="navigation-item block-hover" v-for="(item, index) in navigationList" :key="item.id">
+                <div class="navigation-item block-hover" v-for="(item, index) in navigationList" :key="item.id"
+                  @click="linkRouter(item)">
                   <div class="navigation-img">
-                    <i :class="item.icon" :style="{ color: item.color }"></i>
+                    <i :class="item.iconCopy" :style="{ color: item.color }"></i>
                   </div>
-                  <div class="navigation-text">{{ item.name }}</div>
+                  <div class="navigation-text">{{ item.title }}</div>
                 </div>
               </div>
             </el-card>
@@ -112,6 +113,15 @@ export default {
       webItems,
       navigationList,
       dynamicData
+    }
+  },
+  methods: {
+    link(item) {
+      window.open(item.link, '_blank')
+    },
+    linkRouter(item) {
+      if(item.id == '0') return this.$message.warning('已经在首页了！！！')
+      this.$eventBus.$emit('linkServer', item);
     }
   }
 }
@@ -218,10 +228,11 @@ export default {
 
         .right-magrin {
           margin-top: 1rem !important;
+          height: 12.5rem;
           margin-bottom: 1rem !important;
 
           .right-img {
-            height: 12.5rem;
+            width: 100%;
           }
         }
 

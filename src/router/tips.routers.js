@@ -159,5 +159,13 @@ export default [{
             },
             component: () => import('../views/tips/scrollText')
         },
+        {
+            path: '/tips/particles',
+            name: 'particles',
+            meta: {
+                title: '颗粒页面'
+            },
+            component: () => import('../views/tips/particles')
+        },
     ]
 }, ]

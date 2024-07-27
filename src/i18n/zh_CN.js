@@ -363,6 +363,13 @@ const routerNavigation = [{
             router: '/tips/scrollText',
             icon: 'el-icon-school'
         },
+        {
+            name: '颗粒页面',
+            path: 'particles',
+            id: '1-20',
+            router: '/tips/particles',
+            icon: 'el-icon-more-outline'
+        },
     ]
 }, {
     name: '地图',

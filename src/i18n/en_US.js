@@ -364,6 +364,13 @@ const routerNavigation = [{
                 router: '/tips/scrollText',
                 icon: 'el-icon-school'
             },
+            {
+                name: 'particles',
+                path: 'particles',
+                id: '1-20',
+                router: '/tips/particles',
+                icon: 'el-icon-more-outline'
+            },
         ]
     }, {
         name: 'Map',

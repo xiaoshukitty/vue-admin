@@ -19,7 +19,7 @@ import VueVideoPlayer from 'vue-video-player' //视频播放
 import scroll from 'vue-seamless-scroll' // 无缝滚动
 import Cookies from 'js-cookie';
 import i18n from './utils/lang';
-import Router  from 'vue-router'
+import Router from 'vue-router'
 
 import '@/config/directive.js'
 import '@/icons/index' //导入 svg
@@ -180,5 +180,22 @@ let vue = new Vue({
   store,
   render: h => h(App) //创建一个App的实例 h => 原生JS中createElement()
 }).$mount('#app')
+
+
+// 动态创建 html 结果来展示页面加载 loading （要写在 app 挂在完毕后）
+const appContainer = document.querySelector('#app');
+const loadingMask = document.createElement('div');
+loadingMask.id = 'loading-mask';
+loadingMask.innerHTML = `
+  <div class="loading-wrapper">
+    <span class="loading-dot loading-dot-spin">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </span>
+  </div>
+`
+appContainer.appendChild(loadingMask);
 
 export default vue; //导出 vue 其他位置就能使用 vue

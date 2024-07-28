@@ -1,103 +1,235 @@
 <template>
   <div class="home">
-    <el-card class="box-card card-hoem">
-      <div class="home-top">
-        <div class="avatar">
-          <img src="@/assets/images/avatar1.jpg" alt="">
-          <div class="avatar-box">
-            <h1 class="avatar-txt">早安, Vue-Admin, 开始您一天的工作吧！</h1>
-            <div class="weather">今日晴，20℃ - 32℃！</div>
+    <el-skeleton style="width: 100%" :loading="loading" animated>
+      <!-- 骨架屏 -->
+      <template slot="template">
+        <el-card class="box-card card-hoem">
+          <div class="home-top">
+            <div class="avatar">
+              <el-skeleton-item variant="image"
+                style="width: 70px;height: 70px; border-radius: 50%; overflow: hidden;" />
+              <div class="avatar-box">
+                <el-skeleton-item class="avatar-txt ske-avatar-txt" variant="div"></el-skeleton-item>
+                <div>
+                  <el-skeleton-item class="weather ske-weather" variant="div"></el-skeleton-item>
+                </div>
+              </div>
+            </div>
+            <div class="name">
+              <div>
+                <el-skeleton-item style="color: #00000073; font-size: 14px;" variant="div">待办</el-skeleton-item>
+                <el-skeleton-item class="text-2xl " variant="div">8/10</el-skeleton-item>
+              </div>
+              <div>
+                <el-skeleton-item style="color: #00000073;font-size: 14px;" variant="div">项目</el-skeleton-item>
+                <el-skeleton-item class="text-2xl " variant="div">5</el-skeleton-item>
+              </div>
+              <div>
+                <el-skeleton-item style="color: #00000073;font-size: 14px;" variant="div">团队</el-skeleton-item>
+                <el-skeleton-item class="text-2xl " variant="div">1</el-skeleton-item>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="name">
-          <div>
-            <div style="color: #00000073; font-size: 14px;">待办</div>
-            <div class="text-2xl ">8/10</div>
+        </el-card>
+      </template>
+      <template>
+        <el-card class="box-card card-hoem">
+          <div class="home-top">
+            <div class="avatar">
+              <img src="@/assets/images/avatar1.jpg" alt="">
+              <div class="avatar-box">
+                <h1 class="avatar-txt">早安, Vue-Admin, 开始您一天的工作吧！</h1>
+                <div class="weather">今日晴，20℃ - 32℃！</div>
+              </div>
+            </div>
+            <div class="name">
+              <div>
+                <div style="color: #00000073; font-size: 14px;">待办</div>
+                <div class="text-2xl ">8/10</div>
+              </div>
+              <div>
+                <div style="color: #00000073;font-size: 14px;">项目</div>
+                <div class="text-2xl ">5</div>
+              </div>
+              <div>
+                <div style="color: #00000073;font-size: 14px;">团队</div>
+                <div class="text-2xl ">1</div>
+              </div>
+            </div>
           </div>
-          <div>
-            <div style="color: #00000073;font-size: 14px;">项目</div>
-            <div class="text-2xl ">5</div>
-          </div>
-          <div>
-            <div style="color: #00000073;font-size: 14px;">团队</div>
-            <div class="text-2xl ">1</div>
-          </div>
-        </div>
-      </div>
-    </el-card>
+        </el-card>
+      </template>
+    </el-skeleton>
 
     <div class="conter">
       <div class="conter-block">
         <div class="w-70 mr16 enter-y">
           <div class="template">
-            <el-card class="box-card">
-              <div slot="header" class="clearfix">
-                <span>项目</span>
-                <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
-              </div>
-              <div class="web-item">
-                <div class="web-block block-hover" v-for="(item, index) in webItems" :key="item.id" @click="link(item)">
-                  <div class="web-block-top">
-                    <div>
-                      <svg-icon :iconClass="item.icon" />
+            <el-skeleton style="width: 100%" :loading="loading" animated>
+              <!-- 骨架屏 -->
+              <template slot="template">
+                <el-card class="box-card">
+                  <div slot="header" class="clearfix ske-clearfix">
+                    <el-skeleton-item variant="text" class="ske-clearfix-div1"></el-skeleton-item>
+                    <el-skeleton-item variant="text" class="ske-clearfix-div2" style="float: right; padding: 3px 0"
+                      type="text"></el-skeleton-item>
+                  </div>
+                  <div class="web-item">
+                    <div class="web-block block-hover" v-for="(item, index) in webItems" :key="item.id"
+                      @click="link(item)">
+                      <div class="web-block-top">
+                        <div>
+                          <el-skeleton-item variant="image"
+                            style="width: 40px;height: 40px; border-radius: 50%; overflow: hidden;" />
+                        </div>
+                        <el-skeleton-item variant="text" class="ske-web-block-title">{{ item.title }}</el-skeleton-item>
+                      </div>
+                      <el-skeleton-item variant="text" class="web-block-conter ske-web-block-conter">
+                      </el-skeleton-item>
+                      <div class="web-block-bottom">
+                        <el-skeleton-item variant="text" class="ske-web-block-bottom1">{{ item.type
+                          }}</el-skeleton-item>
+                        <el-skeleton-item variant="text" class="ske-web-block-bottom2">{{ item.webDate
+                          }}</el-skeleton-item>
+                      </div>
                     </div>
-                    <div>{{ item.title }}</div>
                   </div>
-                  <div class="web-block-conter">
-                    {{ item.introduce }}
+                </el-card>
+              </template>
+              <template>
+                <el-card class="box-card">
+                  <div slot="header" class="clearfix">
+                    <span>项目</span>
+                    <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                   </div>
-                  <div class="web-block-bottom">
-                    <span>{{ item.type }}</span>
-                    <span>{{ item.webDate }}</span>
+                  <div class="web-item">
+                    <div class="web-block block-hover" v-for="(item, index) in webItems" :key="item.id"
+                      @click="link(item)">
+                      <div class="web-block-top">
+                        <div>
+                          <svg-icon :iconClass="item.icon" />
+                        </div>
+                        <div>{{ item.title }}</div>
+                      </div>
+                      <div class="web-block-conter">
+                        {{ item.introduce }}
+                      </div>
+                      <div class="web-block-bottom">
+                        <span>{{ item.type }}</span>
+                        <span>{{ item.webDate }}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </el-card>
+                </el-card>
+              </template>
+            </el-skeleton>
           </div>
           <div class="mt-block">
-            <el-card class="box-card">
-              <div slot="header" class="clearfix">
-                <span>最新动态</span>
-                <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
-              </div>
-              <div class="dynamic">
-                <ul class="dynamic-list">
-                  <li v-for="(item, index) in dynamicData" :key="item.id">
-                    <div class="li-img">
-                      <svg-icon :iconClass="item.icon" />
-                    </div>
-                    <div class="li-center">
-                      <div class="li-top">{{ item.name }}{{ item.info }}</div>
-                      <div class="li-bottom">{{ item.date }}</div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </el-card>
+            <el-skeleton style="width: 100%" :loading="loading" animated>
+              <!-- 骨架屏 -->
+              <template slot="template">
+                <el-card class="box-card">
+                  <div slot="header" class="clearfix">
+                    <el-skeleton-item variant="text" class="ske-clearfix-div1"></el-skeleton-item>
+                    <el-skeleton-item variant="text" class="ske-clearfix-div2" style="float: right; padding: 3px 0"
+                      type="text"></el-skeleton-item>
+                  </div>
+                  <div class="dynamic">
+                    <ul class="dynamic-list">
+                      <li v-for="(item, index) in dynamicData" :key="item.id">
+                        <div class="li-img">
+                          <el-skeleton-item variant="image"
+                            style="width: 40px;height: 40px; border-radius: 50%; overflow: hidden;" />
+                        </div>
+                        <div class="li-center">
+                          <el-skeleton-item variant="text" class="ske-li-center1"></el-skeleton-item>
+                          <el-skeleton-item variant="text" class="ske-li-center2"></el-skeleton-item>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </el-card>
+              </template>
+              <template>
+                <el-card class="box-card">
+                  <div slot="header" class="clearfix">
+                    <span>最新动态</span>
+                    <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
+                  </div>
+                  <div class="dynamic">
+                    <ul class="dynamic-list">
+                      <li v-for="(item, index) in dynamicData" :key="item.id">
+                        <div class="li-img">
+                          <svg-icon :iconClass="item.icon" />
+                        </div>
+                        <div class="li-center">
+                          <div class="li-top">{{ item.name }}{{ item.info }}</div>
+                          <div class="li-bottom">{{ item.date }}</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </el-card>
+              </template>
+            </el-skeleton>
           </div>
         </div>
         <div class="w-30 enter-y">
           <div class="w-30-tempelate">
-            <el-card class="box-card">
-              <div slot="header" class="clearfix">
-                <span>快捷导航</span>
-                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
-              </div>
-              <div class="navigation">
-                <div class="navigation-item block-hover" v-for="(item, index) in navigationList" :key="item.id"
-                  @click="linkRouter(item)">
-                  <div class="navigation-img">
-                    <i :class="item.iconCopy" :style="{ color: item.color }"></i>
+            <el-skeleton style="width: 100%" :loading="loading" animated>
+              <!-- 骨架屏 -->
+              <template slot="template">
+                <el-card class="box-card">
+                  <div slot="header" class="clearfix">
+                    <el-skeleton-item variant="text" class="ske-clearfix-div1"></el-skeleton-item>
+                    <el-skeleton-item variant="text" class="ske-clearfix-div2" style="float: right; padding: 3px 0"
+                      type="text"></el-skeleton-item>
                   </div>
-                  <div class="navigation-text">{{ item.title }}</div>
-                </div>
-              </div>
-            </el-card>
+                  <div class="navigation">
+                    <div class="navigation-item block-hover" v-for="(item, index) in navigationList" :key="item.id"
+                      @click="linkRouter(item)">
+                      <div class="navigation-img">
+                        <el-skeleton-item variant="image"
+                          style="width: 20px;height: 20px; border-radius: 50%; overflow: hidden;" />
+                      </div>
+                      <el-skeleton-item variant="text" class="ske-navigation-text"></el-skeleton-item>
+                    </div>
+                  </div>
+                </el-card>
+              </template>
+              <template>
+                <el-card class="box-card">
+                  <div slot="header" class="clearfix">
+                    <span>快捷导航</span>
+                    <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                  </div>
+                  <div class="navigation">
+                    <div class="navigation-item block-hover" v-for="(item, index) in navigationList" :key="item.id"
+                      @click="linkRouter(item)">
+                      <div class="navigation-img">
+                        <i :class="item.iconCopy" :style="{ color: item.color }"></i>
+                      </div>
+                      <div class="navigation-text">{{ item.title }}</div>
+                    </div>
+                  </div>
+                </el-card>
+              </template>
+            </el-skeleton>
           </div>
           <div>
-            <el-card class="box-card right-magrin">
-              <img class="right-img" src="https://vben.vvbin.cn/assets/illustration-jTCqTCdW.svg" alt="">
-            </el-card>
+            <el-skeleton style="width: 100%" :loading="loading" animated>
+              <!-- 骨架屏 -->
+              <template slot="template">
+                <el-card class="box-card right-magrin">
+                  <el-skeleton-item variant="image" style="height: 12.5rem;width: 100%; overflow: hidden;" />
+                </el-card>
+              </template>
+              <template>
+                <el-card class="box-card right-magrin">
+                  <img class="right-img" src="https://vben.vvbin.cn/assets/illustration-jTCqTCdW.svg" alt="">
+                </el-card>
+              </template>
+            </el-skeleton>
           </div>
         </div>
       </div>
@@ -112,18 +244,24 @@ export default {
     return {
       webItems,
       navigationList,
-      dynamicData
+      dynamicData,
+      loading: true
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000)
   },
   methods: {
     link(item) {
       window.open(item.link, '_blank')
     },
     linkRouter(item) {
-      if(item.id == '0') return this.$message.warning('已经在首页了！！！')
+      if (item.id == '0') return this.$message.warning('已经在首页了！！！')
       this.$eventBus.$emit('linkServer', item);
     }
-  }
+  },
 }
 </script>
 
@@ -228,11 +366,16 @@ export default {
 
         .right-magrin {
           margin-top: 1rem !important;
-          height: 12.5rem;
+          // height: 12.5rem;
           margin-bottom: 1rem !important;
+
+          /deep/ .el-card__body {
+            height: 12.5rem !important;
+          }
 
           .right-img {
             width: 100%;
+            height: 100%;
           }
         }
 
@@ -351,7 +494,6 @@ export default {
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
-                background-color: pink;
               }
 
               .li-center {
@@ -384,5 +526,59 @@ export default {
       }
     }
   }
+}
+
+// 骨架频样式
+
+.ske-avatar-txt {
+  width: 320px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+.ske-weather {
+  width: 130px;
+}
+
+.ske-clearfix {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ske-clearfix-div1,
+.ske-clearfix-div2 {
+  width: 4rem;
+  height: 16px;
+  padding: 0 !important;
+}
+
+.ske-web-block-title {
+  width: 50px;
+  height: 16px;
+  margin-top: 5px;
+}
+
+.ske-web-block-conter {
+  height: 16px !important;
+  margin-bottom: 24px;
+}
+
+.ske-web-block-bottom1 {
+  width: 42px;
+}
+
+.ske-web-block-bottom2 {
+  width: 83px;
+}
+
+.ske-li-center1,
+.ske-li-center2 {
+  width: 95%
+}
+
+.ske-navigation-text {
+  width: 32px;
+  margin-top: .5rem;
 }
 </style>

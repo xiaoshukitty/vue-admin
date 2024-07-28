@@ -135,7 +135,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                        }}</div>
+                                    }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -569,7 +569,10 @@ export default {
         },
         deWeight(arr, newArr) {
             for (let i = 0; i <= arr.length; i++) {
-                if (JSON.stringify(arr[i]) == JSON.stringify(newArr)) {
+                // if (JSON.stringify(arr[i]) == JSON.stringify(newArr)) {
+                //     return -1
+                // }
+                if (arr[i] && arr[i].id == newArr.id) {
                     return -1
                 }
             }
@@ -581,6 +584,10 @@ export default {
             let flag = this.deWeight(this.recordRouteList, newValue)
             this.activeItem = newValue;
             this.activeIndexRoute = newValue.id;
+            console.log('this.recordRouteList----', this.recordRouteList);
+            console.log('newValue----', newValue);
+            console.log('flag----', flag);
+
             if (flag == 1) {
                 this.recordRouteList.push(newValue);
             }

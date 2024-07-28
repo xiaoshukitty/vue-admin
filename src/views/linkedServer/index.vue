@@ -50,7 +50,7 @@ export default {
         return {
             serverIpt: '',
             isShow: false,
-            dialogVisible: true,
+            dialogVisible: false,
         }
     },
     created() {

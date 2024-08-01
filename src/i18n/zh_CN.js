@@ -498,6 +498,13 @@ const routerNavigation = [{
             router: '/function/test',
             icon: "el-icon-ice-drink"
         },
+        {
+            name: '右键菜单',
+            path: 'rightMenu',
+            id: '5-7',
+            router: '/function/rightMenu',
+            icon: "el-icon-s-data"
+        },
     ]
 }, {
     name: '其他',

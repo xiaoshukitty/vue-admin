@@ -1,22 +1,33 @@
-<!-- src/components/ContextMenu.vue -->
 <template>
     <div v-if="visible" class="context-menu" :style="{ top: `${position.y}px`, left: `${position.x}px` }">
         <ul>
-            <li @click="handleMenuItemClick('close')">
-                <i class="el-icon-close" style="font-size: 14px; margin-right: 5px; cursor: pointer;"></i>
-                全部关闭
+            <li v-for="item in enumList" :key="item.value" @click="handleMenuItemClick(item.lable)">
+                <i :class="item.icon" style="font-size: 14px; margin-right: 5px; cursor: pointer;"></i>
+                {{ item.name }}
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+import { fieldsListEnum } from '@/components/ContextMenu/menu.js';
 export default {
+    props: {
+        routerType: {
+            type: String,
+        },
+    },
     data() {
         return {
             visible: false,
             position: { x: 0, y: 0 },
+            enumList: []
         };
+    },
+    watch: {
+        routerType(newValue, oldValue) {
+            this.enumList = fieldsListEnum(newValue);
+        }
     },
     methods: {
         showMenu(event) {
@@ -34,7 +45,7 @@ export default {
             }
         },
         handleMenuItemClick(action) {
-            this.$emit('menu-item-close', action);
+            this.$emit('menu-item', action);
             this.hideMenu();
         },
     },
@@ -57,7 +68,7 @@ export default {
 
 .context-menu ul {
     list-style: none;
-    margin: 5px 0;
+    /* margin: 5px 0; */
     padding: 10px 0;
     background-color: #FFF;
     border: 1px solid #EBEEF5;

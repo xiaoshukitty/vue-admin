@@ -500,6 +500,13 @@ const routerNavigation = [{
                 router: '/function/test',
                 icon: "el-icon-ice-drink"
             },
+            {
+                name: 'rightMenu',
+                path: 'rightMenu',
+                id: '5-7',
+                router: '/function/rightMenu',
+                icon: "el-icon-s-data"
+            },
         ]
     },
     {

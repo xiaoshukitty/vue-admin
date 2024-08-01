@@ -135,7 +135,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                    }}</div>
+                                        }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -181,7 +181,7 @@
         <GlobalSearch :isSearch="isSearch" @update:visible="updateVisible" @update:skipTo="updateSkipTo"></GlobalSearch>
 
         <!-- 右键菜单 -->
-        <ContextMenu ref="contextMenu" @menu-item-close="menuItemClose" />
+        <ContextMenu ref="contextMenu" @menu-item="menuItemClose" :routerType="routerType" />
     </div>
 </template>
 
@@ -234,6 +234,7 @@ export default {
             emailList,
             isSearch: false,
             targetIndex: 1, // 目标元素的索引
+            routerType: '',//传递给 contextMenu 组件用来辨别
         }
     },
     created() {
@@ -443,6 +444,7 @@ export default {
         },
         //右键菜单
         showContextMenu(event) {
+            this.routerType = 'layout'
             event.preventDefault(); // 阻止默认右键菜单
             // 显示右键菜单
             this.$refs.contextMenu.showMenu(event);

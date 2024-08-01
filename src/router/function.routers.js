@@ -57,5 +57,14 @@ export default [{
             },
             component: () => import('../views/test')
         },
+        {
+            path: '/function/rightMenu',
+            name: 'rightMenu',
+            meta: {
+                title: '右键菜单',
+                require: true,
+            },
+            component: () => import('../views/function/rightMenu')
+        },
     ]
 }, ]

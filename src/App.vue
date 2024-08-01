@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" onselectstart="return false;">
     <!-- <keep-alive> -->
     <router-view />
     <!-- </keep-alive> -->

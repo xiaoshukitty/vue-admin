@@ -46,10 +46,7 @@ export default {
     }
   },
   mounted() {
-    // 移除 Loading 效果
-    const appContainer = document.querySelector('#app');
-    const loadingContainer = document.querySelector('#loading-mask');
-    loadingContainer && appContainer.removeChild(loadingContainer);
+    
   },
   methods: {
     skip(val) {

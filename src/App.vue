@@ -11,6 +11,7 @@
 
 export default {
   mounted() {
+
     let that = this;
     document.addEventListener('visibilitychange', function () {
       if (document[state] === 'hidden') {
@@ -25,6 +26,12 @@ export default {
         });
       }
     });
+    setTimeout(() => {
+      // 移除 Loading 效果
+      const appContainer = document.querySelector('#app');
+      const loadingContainer = document.querySelector('#loading-mask');
+      loadingContainer && appContainer.removeChild(loadingContainer);
+    }, 1000)
   },
 }
 </script>
@@ -59,5 +66,4 @@ body {
 //     width: 10px;
 //     background-color: yellow;
 //     border-radius: 10px;
-// }
-</style>
+// }</style>

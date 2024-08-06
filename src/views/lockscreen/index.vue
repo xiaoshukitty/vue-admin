@@ -14,7 +14,7 @@ export default {
     data() {
         return {
             showUnlock: false,
-            bgImg: require('@/assets/images/bg.jpg'),
+            bgImg: require('@/assets/images/lockScreenWallpaper/75.jpeg'),
             cartoon: true
         }
     },

@@ -226,7 +226,7 @@
               </template>
               <template>
                 <el-card class="box-card right-magrin">
-                  <img class="right-img" src="https://vben.vvbin.cn/assets/illustration-jTCqTCdW.svg" alt="">
+                  <img class="right-img" src="https://s12.aconvert.com/convert/p3r68-cdx67/asprt-5taze.jpg" alt="">
                 </el-card>
               </template>
             </el-skeleton>

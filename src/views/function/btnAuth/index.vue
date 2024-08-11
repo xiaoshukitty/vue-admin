@@ -4,6 +4,9 @@
             <div slot="header" class="clearfix">
                 <span>{{ $t('headerList.BtnAuth') }}</span>
             </div>
+            <el-button type="primary" v-btn-auth="'btnAuth:btn1'">按钮一</el-button>
+            <el-button type="primary" v-btn-auth="'btnAuth:btn2'">按钮二</el-button>
+            <el-button type="primary" v-btn-auth>按钮三</el-button>
         </el-card>
     </div>
 </template>

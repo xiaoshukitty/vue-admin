@@ -13,6 +13,8 @@ export default {
 
     //获取按钮权限接口
     getAuthList: (context, payload) => {
+        console.log('payload', payload);
+        console.log('context', context);
         
     }
 }

@@ -1,7 +1,9 @@
 import Vue from "vue"
 import {
     checkArray
-} from '@/common/array'
+} from '@/common/array';
+import store from '@/store/index'
+
 // 自定义指令
 
 // 按钮权限
@@ -24,6 +26,16 @@ Vue.directive('display-key', {
 // 按钮权限
 Vue.directive('btn-auth', {
     inserted(el, binding) {
-       
+        let btn = binding.value;
+        const authList = store.state.authList;
+        if (btn) {
+            if (!authList.includes(btn)) {
+                el.parentNode && el.parentNode.removeChild(el) //没有权限删除元素(有父元素删除该元素)
+            }
+        } else {
+            el.parentNode && el.parentNode.removeChild(el) //没有权限删除元素(有父元素删除该元素)
+            throw new Error(`need key! Like v-btn-auth = "'btn'"`)
+        }
+
     }
 })

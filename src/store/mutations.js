@@ -36,7 +36,7 @@ export default {
     },
 
     //token过期重新登陆
-    updateTokenInvalidation(state,payload){
+    updateTokenInvalidation(state, payload) {
         state.isTokenInvalidation = payload.isTokenInvalidation;
     }
 }

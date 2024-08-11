@@ -9,6 +9,10 @@ export default {
         setTimeout(() => {
             context.commit('setMyName', payload)
         }, 3000)
-    }
+    },
 
+    //获取按钮权限接口
+    getAuthList: (context, payload) => {
+        
+    }
 }

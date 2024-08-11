@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="primary" @click="dialogVisible = true">
+    <el-button type="primary" @click="dialogVisible = true;">
       地图</el-button>
     <el-dialog @close="closeDialog" :visible.sync="dialogVisible" width="70%" height="60%" top="10vh">
       <div class="amap-page-container" style="width: 100%; height: 550px; margin: 0px">
@@ -38,21 +38,32 @@ export default {
       dialogVisible: false,
       zoom: 15,// 地图缩放
       address: "",//获取的位置
-      center: [114.351733, 29.900505],// 初始中心
+      center: [114.302444, 30.544673],// 初始中心
       markers: [],// 初始化标点坐标
       searchOption: { // 搜索
         city: "",//搜索范围
         citylimit: false, // 不限制搜索范围搜索，比如想全国搜索
       },
       amapManager,
-      plugin: [ //  自动定位到当前位置 插件
-        {
+      plugin: [
+        { //地图左上角的选择插件
+          pName: "ToolBar",
+          defaultType: 0,
+          events: {
+          },
+        },
+        { //地图右上角选择插件
+          pName: "MapType",
+          defaultType: 0,
+          events: {
+          },
+        },
+        {//  自动定位到当前位置 插件
           pName: "Geolocation",
           events: {
-            init(o) {
-              console.log('触发了----', o);
+            init(geolocation) {
               // o 是高德地图定位插件实例
-              o.getCurrentPosition((status, result) => {
+              geolocation.getCurrentPosition((status, result) => {
                 if (result && result.position) {
                   that.lng = result.position.lng;
                   that.lat = result.position.lat;
@@ -72,20 +83,25 @@ export default {
             },
           },
         },
-      ],
-      plugin: [ // 地图左上角的选择插件
-        "ToolBar",
-        {
-          pName: "MapType",
-          defaultType: 0,
+        { //地图线路绘画
+          pName: "Driving",
           events: {
-            init(o) {
-              // console.log(o);
-            },
-          },
+            init(driving) {
+              driving.search(
+                new AMap.LngLat(114.302444, 30.544673),
+                new AMap.LngLat(114.365281, 30.519037),
+                function (status, result) {
+                  if (status === 'complete') {
+                    console.log('绘制驾车路线完成', result)
+                  } else {
+                    console.log('获取驾车数据失败：' + result)
+                  }
+                }
+              )
+            }
+          }
         },
       ],
-
       // 点击地图获取当前位置并显示标记
       events: {
         init: (o) => {
@@ -118,14 +134,15 @@ export default {
           });
         },
       },
+      //地图新增蒙层
       markers: [{
-        position: [114.351733, 29.900505],
-        label: { content: '骑手', offset: [-20, -30] },
-        icon: 'https://img.fphdcdn.com/member/2023-01-13PPf3JHHHx5.png'
+        position: [114.302444, 30.544673],
+        label: { content: '黄鹤楼', offset: [-75, -30] },
+        icon: 'https://img2.baidu.com/it/u=2052441636,3597345036&fm=253&fmt=auto&app=120&f=PNG?w=304&h=304'
       }, {
-        position: [114.345458, 29.895411],
-        label: { content: '店家', offset: [-20, -30], },
-        icon: 'https://img.fphdcdn.com/member/2023-01-13PPf3JHHHx5.png'
+        position: [114.365281, 30.519037],
+        label: { content: '晴川阁', offset: [-15, -30], },
+        icon: 'https://img2.baidu.com/it/u=2052441636,3597345036&fm=253&fmt=auto&app=120&f=PNG?w=304&h=304'
       }],
       distance: null,
     }
@@ -133,15 +150,15 @@ export default {
   created() {
     this.getLongitudeLatitude()
     this.markers.push(this.center)
-    this.distance = (getDistances(29.900505, 114.351733, 29.895411, 114.345458).distance).toFixed(2);
-    console.log(this.distance);
-    this.markers[0].label.content = `骑手距离店家${this.distance}km`
+    this.distance = (getDistances(30.544673, 114.302444, 30.519037, 114.365281).distance).toFixed(2);
+    this.markers[0].label.content = `黄鹤楼距离晴川阁${this.distance}km`;
   },
   methods: {
     //关闭弹窗
     closeDialog() {
       this.dialogVisible = false;
     },
+    //地图搜索
     onSearchResult(pois) {
       console.log('触发了pois', pois);
       if (pois.length > 0) {
@@ -174,9 +191,11 @@ export default {
     // 点击确定
     comfirmLngLat(lngLat, address) {
       this.dialogVisible = false;
-      console.log('经纬度', lngLat);
-      console.log('选择的地址', address);
+      // console.log('经纬度', lngLat);
+      // console.log('选择的地址', address);
     },
+
+    //是否打开共享位置
     getLongitudeLatitude() {
       //如果该对象存在，那么地理位置服务可用。
       if ('geolocation' in navigator) {
@@ -188,7 +207,7 @@ export default {
         }
 
         function success(position) {
-          // console.log('position', position);
+          console.log('position', position);
           //position.coords (只读) 返回一个定义了当前位置的Coordinates对象。
           //position.timestamp (只读) 返回一个时间戳DOMTimeStamp， 这个时间戳表示获取到的位置的时间。
           var lat = position.coords.latitude //当前位置的纬度
@@ -204,8 +223,7 @@ export default {
         /* 地理位置服务不可用 */
         console.log('无法获取您的位置，请检查定位是否开启或刷新重试')
       }
-    }
-
+    },
   },
 }
 </script>

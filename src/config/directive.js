@@ -20,3 +20,10 @@ Vue.directive('display-key', {
         }
     }
 })
+
+// 按钮权限
+Vue.directive('btn-auth', {
+    inserted(el, binding) {
+       
+    }
+})

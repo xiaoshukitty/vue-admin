@@ -6,4 +6,5 @@ export default {
     refsh: false,
     profilePhoto: require('@/assets/images/avatar1.jpg'),
     isTokenInvalidation: false, //token是否过期
+    authList: [], //权限列表
 }

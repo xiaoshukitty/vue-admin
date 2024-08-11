@@ -52,6 +52,7 @@ module.exports = {
       performance: {},
     }
   },
+  //全局配置 less
   pluginOptions: {
     "style-resources-loader": {
       preProcessor: "less",

@@ -141,6 +141,7 @@ const headerList = {
     Eliminate: "清除",
     Download: '下载',
     VideoDisplay: '视频播放',
+    BtnAuth: "按钮权限",
     Share: '分享',
     SeamlessRolling: '自动滚动',
     LockScreen: '锁屏',
@@ -504,6 +505,13 @@ const routerNavigation = [{
             id: '5-7',
             router: '/function/rightMenu',
             icon: "el-icon-s-data"
+        },
+        {
+            name: '按钮权限',
+            path: 'btnAuth',
+            id: '5-8',
+            router: '/function/btnAuth',
+            icon: "el-icon-help"
         },
     ]
 }, {

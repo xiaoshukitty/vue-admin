@@ -66,14 +66,5 @@ export default [{
             },
             component: () => import('../views/function/rightMenu')
         },
-        {
-            path: '/function/btnAuth',
-            name: 'btnAuth',
-            meta: {
-                title: '按钮权限',
-                require: true,
-            },
-            component: () => import('../views/function/btnAuth')
-        },
     ]
 }, ]

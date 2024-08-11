@@ -141,7 +141,6 @@ const headerList = {
     Eliminate: "liminate",
     Download: 'Download',
     VideoDisplay: 'VideoDisplay',
-    BtnAuth:"BtnAuth",
     Share: 'Share',
     SeamlessRolling: 'Seamless Rolling',
     GlobalSearch: 'GlobalSearch ⌘ + K',
@@ -507,13 +506,6 @@ const routerNavigation = [{
                 id: '5-7',
                 router: '/function/rightMenu',
                 icon: "el-icon-s-data"
-            },
-            {
-                name: 'btnAuth',
-                path: 'btnAuth',
-                id: '5-8',
-                router: '/function/btnAuth',
-                icon: "el-icon-help"
             },
         ]
     },

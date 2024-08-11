@@ -42,7 +42,8 @@
                 <div class="head">
                     <div class="head_left">
                         <div class="take_back header_hover" @click="takeBack" ref="takeBackGuide">
-                            <img src="@/assets/images/take_back.png" alt="">
+                            <!-- <img src="@/assets/images/take_back.png" alt=""> -->
+                            <i :class="[!isCollapse ? 'el-icon-s-fold' : 'el-icon-s-unfold']"></i>
                         </div>
                         <div style="color: #999;">
                             {{ text }}
@@ -864,9 +865,10 @@ export default {
                     height: 50px;
                     margin-right: 10px;
 
-                    img {
-                        width: 30px;
+                    i {
+                        font-size: 30px;
                         margin: 10px;
+                        color: rgb(153, 153, 153);
                     }
                 }
             }

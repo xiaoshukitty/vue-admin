@@ -58,7 +58,7 @@ Vue.prototype.$eventBus = new Vue() // $eventBus 挂在到
 VueAMap.initAMapApiLoader({
   key: '077b6622679f6ecf9978a5067dc35ac0', // 高德地图申请的 key
   plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch',
-    "AMap.CitySearch", 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor', 'AMap.Geocoder', 'AMap.Geolocation', 'AMap.MarkerClusterer','AMap.Driving','AMap.LngLat'
+    "AMap.CitySearch", 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor', 'AMap.Geocoder', 'AMap.Geolocation', 'AMap.MarkerClusterer', 'AMap.Driving', 'AMap.LngLat'
   ],
   // 默认高德 sdk 版本为 1.4.4
   v: '1.4.4'
@@ -103,7 +103,7 @@ Router.prototype.push = function push(location) {
 }
 
 // 定义白名单
-const whiteListRouter = ['/port/memorandum', '/port/requestText', '/port/updatePic', '/port/chatWebSocket', '/port/xcxFoods'];
+const whiteListRouter = ['/port/memorandum', '/port/requestText', '/port/updatePic', '/port/chatWebSocket', '/port/xcxFoods', '/setting/updataPassword'];
 // 路由守卫
 router.beforeEach((to, from, next) => {
   // 刚进来就开启进度条

@@ -26,16 +26,25 @@ Vue.directive('display-key', {
 // 按钮权限
 Vue.directive('btn-auth', {
     inserted(el, binding) {
-        let btn = binding.value;
-        const authList = store.state.authList;
-        if (btn) {
-            if (!authList.includes(btn)) {
-                el.parentNode && el.parentNode.removeChild(el) //没有权限删除元素(有父元素删除该元素)
-            }
-        } else {
-            el.parentNode && el.parentNode.removeChild(el) //没有权限删除元素(有父元素删除该元素)
-            throw new Error(`need key! Like v-btn-auth = "'btn'"`)
-        }
-
-    }
+        updateContent(el, binding)
+    },
+    update(el, binding) {
+        updateContent(el, binding)
+    },
 })
+
+const updateContent = (el, binding) => {
+    let btn = binding.value;
+    const authList = store.state.authList;
+    if (btn) {
+        if (!authList.includes(btn)) {
+            // el.parentNode && el.parentNode.removeChild(el) //没有权限删除元素(有父元素删除该元素)
+            el.style.display = 'none' //没有权限隐藏元素(有父元素隐藏该元素)
+        } else {
+            el.style.display = 'block' //没有权限隐藏元素(有父元素隐藏该元素)
+        }
+    } else {
+        el.style.display = 'none' //没有权限隐藏元素(有父元素隐藏该元素)
+        // throw new Error(`need key! Like v-btn-auth = "'btn'"`)
+    }
+}

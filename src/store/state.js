@@ -6,5 +6,5 @@ export default {
     refsh: false,
     profilePhoto: require('@/assets/images/avatar1.jpg'),
     isTokenInvalidation: false, //token是否过期
-    authList: ["btnAuth:btn1"], //权限列表 模拟数据，后期接口获取
+    authList: ["btnAuth:user"], //权限列表 模拟数据，后期接口获取
 }

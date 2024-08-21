@@ -38,5 +38,10 @@ export default {
     //token过期重新登陆
     updateTokenInvalidation(state, payload) {
         state.isTokenInvalidation = payload.isTokenInvalidation;
+    },
+
+    //修改按钮权限匹配
+    updateAuthBtn(state, payload) {
+        state.authList = payload;
     }
 }

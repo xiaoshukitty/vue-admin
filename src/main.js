@@ -19,13 +19,17 @@ import VueVideoPlayer from 'vue-video-player' //视频播放
 import scroll from 'vue-seamless-scroll' // 无缝滚动
 import Cookies from 'js-cookie';
 import i18n from './utils/lang';
-import Router from 'vue-router'
+import Router from 'vue-router';
+import {
+  checkForUpdates
+} from './version-check';
 
 import '@/config/directive.js'
 import '@/icons/index' //导入 svg
 
 import 'video.js/dist/video-js.css'
-import 'vue-video-player/src/custom-theme.css'
+import 'vue-video-player/src/custom-theme.css';
+
 
 Vue.use(ElementUI);
 Vue.use(VueAMap);
@@ -178,7 +182,11 @@ let vue = new Vue({
   router,
   i18n,
   store,
-  render: h => h(App) //创建一个App的实例 h => 原生JS中createElement()
+  render: h => h(App), //创建一个App的实例 h => 原生JS中createElement()
+  mounted() {
+    // 应用启动时检查更新
+    // checkForUpdates();
+  }
 }).$mount('#app')
 
 

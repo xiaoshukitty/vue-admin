@@ -1,4 +1,3 @@
-
 //头部
 const headerList = {
     name: 'Full Screen',
@@ -410,6 +409,20 @@ const routerNavigation = [{
                 icon: "el-icon-help"
             },
         ]
+    },
+    {
+        name: 'embedded',
+        path: 'embedded',
+        id: '8',
+        router: '/embedded',
+        icon: 'el-icon-cpu',
+        children: [{
+            name: 'vite',
+            path: 'viteEmbedded',
+            id: '8-1',
+            router: '/embedded/viteEmbedded',
+            icon: "el-icon-coffee"
+        }, ]
     },
     {
         name: 'rests',

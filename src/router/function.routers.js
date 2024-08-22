@@ -75,5 +75,14 @@ export default [{
             },
             component: () => import('../views/function/btnAuth')
         },
+        {
+            path: '/function/voice',
+            name: 'voice',
+            meta: {
+                title: '语音合成',
+                require: true,
+            },
+            component: () => import('../views/function/voice')
+        },
     ]
 }, ]

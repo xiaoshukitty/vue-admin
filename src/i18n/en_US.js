@@ -35,6 +35,7 @@ const headerList = {
     Download: 'Download',
     VideoDisplay: 'VideoDisplay',
     BtnAuth: "BtnAuth",
+    SpeechSynthesis:'SpeechSynthesis',
     Share: 'Share',
     SeamlessRolling: 'Seamless Rolling',
     GlobalSearch: 'GlobalSearch ⌘ + K',
@@ -407,6 +408,13 @@ const routerNavigation = [{
                 id: '5-8',
                 router: '/function/btnAuth',
                 icon: "el-icon-help"
+            },
+            {
+                name: 'voice',
+                path: 'voice',
+                id: '5-9',
+                router: '/function/voice',
+                icon: "el-icon-headset"
             },
         ]
     },

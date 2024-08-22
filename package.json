@@ -28,6 +28,7 @@
     "qrcode": "^1.5.1",
     "qrcodejs2": "0.0.2",
     "qs": "^6.11.0",
+    "speak-tts": "^2.0.8",
     "svg-sprite-loader": "^6.0.11",
     "vue": "^2.6.14",
     "vue-amap": "^0.5.10",

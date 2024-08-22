@@ -35,6 +35,7 @@ const headerList = {
     Download: '下载',
     VideoDisplay: '视频播放',
     BtnAuth: "按钮权限",
+    SpeechSynthesis:'语音合成',
     Share: '分享',
     SeamlessRolling: '自动滚动',
     LockScreen: '锁屏',
@@ -405,6 +406,13 @@ const routerNavigation = [{
                 id: '5-8',
                 router: '/function/btnAuth',
                 icon: "el-icon-help"
+            },
+            {
+                name: '语音合成',
+                path: 'voice',
+                id: '5-9',
+                router: '/function/voice',
+                icon: "el-icon-headset"
             },
         ]
     },

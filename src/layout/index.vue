@@ -68,6 +68,13 @@
                                     @click="handleGlobalSearch"></el-button>
                             </el-tooltip>
                         </div>
+                        <!-- 主题配置 -->
+                        <div class="header_hover" ref="TopicConfiguration">
+                            <!-- <el-tooltip class="item" effect="dark" placement="bottom"> -->
+                            <el-button icon="el-icon-thumb" size="small" circle
+                                @click="handleTopicConfiguration"></el-button>
+                            <!-- </el-tooltip> -->
+                        </div>
                         <!-- 锁屏 -->
                         <div class="header_hover" ref="lockScreenGuide">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.LockScreen')"
@@ -183,6 +190,9 @@
 
         <!-- 右键菜单 -->
         <ContextMenu ref="contextMenu" @menu-item="menuItemClose" :routerType="routerType" />
+
+        <!-- 主题配置组件 -->
+        <TopicConfiguration :drawer="drawer" @update:drawer="updateDrawer"></TopicConfiguration>
     </div>
 </template>
 
@@ -192,21 +202,23 @@ import intro from 'intro.js';
 import 'intro.js/minified/introjs.min.css';
 import Cookies from "js-cookie";
 import keymaster from 'keymaster';
-import I18nComponents from '@/components/i18nComponents'
-import GlobalSearch from '@/components/GlobalSearch'
-import ContextMenu from '@/components/ContextMenu'
-import { searchTree, searchTreeCertain } from '@/utils'
-import { informsList, emailList } from '@/utils/falseData'
-import { logout } from '@/server/common'
-import { mapGetters, mapState } from 'vuex'
-import { flattTree } from '@/utils/index'
+import I18nComponents from '@/components/i18nComponents';
+import GlobalSearch from '@/components/GlobalSearch';
+import ContextMenu from '@/components/ContextMenu';
+import TopicConfiguration from '@/components/TopicConfiguration';
+import { searchTree, searchTreeCertain } from '@/utils';
+import { informsList, emailList } from '@/utils/falseData';
+import { logout } from '@/server/common';
+import { mapGetters, mapState } from 'vuex';
+import { flattTree } from '@/utils/index';
 
 export default {
     name: 'HomePage',
     components: {
         I18nComponents,
         GlobalSearch,
-        ContextMenu
+        ContextMenu,
+        TopicConfiguration
     },
     data() {
         return {
@@ -236,6 +248,7 @@ export default {
             isSearch: false,
             targetIndex: 1, // 目标元素的索引
             routerType: '',//传递给 contextMenu 组件用来辨别
+            drawer: false,
         }
     },
     created() {
@@ -303,6 +316,14 @@ export default {
         },
         updateVisible() {
             this.isSearch = false;
+        },
+        //打开主题配置
+        handleTopicConfiguration() {
+            this.drawer = true;
+        },
+        //关闭父组件主题开关
+        updateDrawer(val) {
+            this.drawer = val;
         },
         //跳转
         updateSkipTo(val) {
@@ -389,6 +410,11 @@ export default {
                         title: this.$t('guide.GlobalSearch'),
                         element: this.$refs.GlobalSearch,
                         intro: this.$t('guide.GlobalSearchCommandK'),
+                    },
+                    {
+                        title: this.$t('guide.TopicConfiguration'),
+                        element: this.$refs.TopicConfiguration,
+                        intro: this.$t('guide.ConfigureTheTheme'),
                     },
                     {
                         title: this.$t('guide.LockScreen'),

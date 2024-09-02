@@ -24,6 +24,8 @@ const chatGPT = require('./routers/chatGPT')
 const wxMsg = require('./routers/wxMsg')
 //引入 订单列表(orderList) 路由
 const orderList = require('./routers/orderList')
+//引入 路由权限(routingAuthority) 路由
+const routingAuthority = require('./routers/routingAuthority')
 
 // 创建服务器对象
 let app = express();
@@ -80,6 +82,8 @@ app.use(chatGPT)
 app.use(wxMsg)
 // 使用 订单列表(orderList) 路由
 app.use(orderList)
+// 使用 路由权限(routingAuthority) 路由
+app.use(routingAuthority)
 
 
 // 处理WebSocket连接

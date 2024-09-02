@@ -43,5 +43,10 @@ export default {
     //修改按钮权限匹配
     updateAuthBtn(state, payload) {
         state.authList = payload;
+    },
+
+    //修改header组件的展示
+    updateThemeDataStore(state, payload) {
+        state.themeDataStore = payload;
     }
 }

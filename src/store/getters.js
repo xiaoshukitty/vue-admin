@@ -17,5 +17,10 @@ export default {
     //获取token是否过期
     getTokenInvalidation:(state)=>{
         return state.isTokenInvalidation
+    },
+
+    //获取header主题配置
+    getThemeDataStore:(state)=>{
+        return state.themeDataStore
     }
 }

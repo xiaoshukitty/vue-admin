@@ -7,4 +7,5 @@ export default {
     profilePhoto: require('@/assets/images/avatar1.jpg'),
     isTokenInvalidation: false, //token是否过期
     authList: ["btnAuth:user"], //权限列表 模拟数据，后期接口获取
+    themeDataStore: ['elSelectGuide', 'GlobalSearch', 'lockScreenGuide', 'refreshGuide', 'notificationGuide', 'i18nGuide', 'fullScreenGuide']
 }

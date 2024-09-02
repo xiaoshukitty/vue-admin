@@ -50,7 +50,8 @@
                         </div>
                     </div>
                     <div class="header">
-                        <div class="" ref="elSelectGuide">
+                        <!-- 路由搜索 -->
+                        <div class="" ref="elSelectGuide" v-header-switch="'elSelectGuide'">
                             <el-select ref="elSelect" style="width: 220px;" :value="valueTitle">
                                 <el-option :value="valueTitle" :label="valueTitle" class="options">
                                     <el-tree id="tree-option" ref="selectTree" :data="options" :props="props"
@@ -61,7 +62,7 @@
                             </el-select>
                         </div>
                         <!-- 全局搜索 -->
-                        <div class="header_hover" ref="GlobalSearch">
+                        <div class="header_hover" ref="GlobalSearch" v-header-switch="'GlobalSearch'">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.GlobalSearch')"
                                 placement="bottom">
                                 <el-button icon="el-icon-search" size="small" circle
@@ -76,14 +77,14 @@
                             <!-- </el-tooltip> -->
                         </div>
                         <!-- 锁屏 -->
-                        <div class="header_hover" ref="lockScreenGuide">
+                        <div class="header_hover" ref="lockScreenGuide" v-header-switch="'lockScreenGuide'">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.LockScreen')"
                                 placement="bottom">
                                 <el-button icon="el-icon-lock" size="small" circle @click="lockScreen"></el-button>
                             </el-tooltip>
                         </div>
                         <!-- 刷新 -->
-                        <div class="header_hover" ref="refreshGuide">
+                        <div class="header_hover" ref="refreshGuide" v-header-switch="'refreshGuide'">
                             <el-tooltip class="item" effect="dark" :content="$t('headerList.Refresh')"
                                 placement="bottom">
                                 <el-button icon="el-icon-refresh-right" size="small" circle
@@ -91,7 +92,7 @@
                             </el-tooltip>
                         </div>
                         <!-- 通知 -->
-                        <div class="header_hover location" ref="notificationGuide">
+                        <div class="header_hover location" ref="notificationGuide" v-header-switch="'notificationGuide'">
                             <el-popover placement="bottom" width="300" trigger="hover" ref="popover">
                                 <el-tabs v-model="activeName">
                                     <el-tab-pane label="通知" name="inform">
@@ -126,24 +127,25 @@
                             </el-popover>
                         </div>
                         <!-- 语言切换 -->
-                        <div ref="i18nGuide">
+                        <div ref="i18nGuide" v-header-switch="'i18nGuide'">
                             <I18nComponents :status="'hover'" />
                         </div>
                         <!-- 全屏 -->
                         <div class="full_screen header_hover" ref="fullScreenGuide"
-                            @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()">
+                            @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()" v-header-switch="'fullScreenGuide'">
                             <el-tooltip class="item" effect="dark"
                                 :content="fullScreenShow ? $t('headerList.name') : $t('headerList.ExitFullScreen')"
                                 placement="bottom">
                                 <el-button icon="el-icon-full-screen" size="small" circle></el-button>
                             </el-tooltip>
                         </div>
+                        <!-- 头像 -->
                         <div class="avatar header_hover">
                             <el-popover placement="bottom" width="150" trigger="hover" v-model="visiblePopover">
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                        }}</div>
+                                    }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">

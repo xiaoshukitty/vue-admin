@@ -48,3 +48,29 @@ const updateContent = (el, binding) => {
         // throw new Error(`need key! Like v-btn-auth = "'btn'"`)
     }
 }
+
+//主题配置
+Vue.directive('header-switch', {
+    inserted(el, binding) {
+        updateHeaderSwitch(el, binding)
+    },
+    update(el, binding) {
+        updateHeaderSwitch(el, binding)
+    },
+})
+
+// 修改主题配置
+const updateHeaderSwitch = (el, binding) => {
+    let themeShow = binding.value;
+    const themeDataStore = store.state.themeDataStore;
+    if (themeShow) {
+        let themeValue = themeDataStore.includes(themeShow);
+        if (!themeValue) {
+            el.style.display = 'none' //没有权限隐藏元素(有父元素隐藏该元素)
+        } else {
+            el.style.display = 'block' //没有权限隐藏元素(有父元素隐藏该元素)
+        }
+    } else {
+        el.style.display = 'none' //没有权限隐藏元素(有父元素隐藏该元素)
+    }
+}

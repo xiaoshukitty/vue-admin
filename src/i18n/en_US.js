@@ -43,6 +43,7 @@ const headerList = {
     RequestText:"Request Text",
     CustomInstruction:'CustomInstruction',
     DateConversion:'Date Conversion',
+    SliderVerification:'Slider Verification',
     VueX:'VueX',
     Text:'Text',
     RightMenu:"Right Menu",

@@ -46,6 +46,7 @@ const headerList = {
     VueX:'VueX',
     Text:'测试',
     RightMenu:"右键菜单",
+    SliderVerification:'滑块验证',
     Update: '修改',
     ServerNotLinked: '服务器未链接',
     UpdateProfilePhoto: '修改头像',

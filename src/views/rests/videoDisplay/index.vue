@@ -181,7 +181,7 @@ export default {
 
     .box-card {
         width: 100%;
-        height: calc(100vh - 140px);
+        height: calc(100vh - 210px);
 
         .clearfix:before,
         .clearfix:after {
@@ -195,7 +195,7 @@ export default {
 
         .video_box {
             display: flex;
-            height: calc(100vh - 240px);
+            height: calc(100vh - 310px);
             .video-player {
                 // width: calc(100% / 1.3);
                 width: 70%;

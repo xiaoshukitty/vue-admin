@@ -1,16 +1,22 @@
 <template>
     <div class="sliderVerification">
-        <el-button type="primary" @click="verification">开始验证</el-button>
-        <el-dialog :visible.sync="dialogVisible" width="21%" :before-close="handleClose" :show-close="false">
-            <div class="sliderVerification_img">
-                <slide-verify ref="slideblock" :w="310" :h="200" @again="onAgain" @fulfilled="onFulfilled"
-                    @success="onSuccess" @fail="onFail" :imgs="puzzleImgList" @refresh="onRefresh" :accuracy="accuracy"
-                    :slider-text="text"></slide-verify>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.SliderVerification') }}</span>
             </div>
-        </el-dialog>
+            <el-button type="primary" @click="verification">开始验证</el-button>
+            <el-dialog :visible.sync="dialogVisible" width="21%" :before-close="handleClose" :show-close="false">
+                <div class="sliderVerification_img">
+                    <slide-verify ref="slideblock" :w="310" :h="200" @again="onAgain" @fulfilled="onFulfilled"
+                        @success="onSuccess" @fail="onFail" :imgs="puzzleImgList" @refresh="onRefresh"
+                        :accuracy="accuracy" :slider-text="text"></slide-verify>
+                </div>
+            </el-dialog>
+        </el-card>
+
     </div>
 </template>
-   
+
 <script>
 export default {
     data() {
@@ -69,7 +75,7 @@ export default {
             this.$refs.slideblock.reset();
         },
         handleClose() {
-            this.dialogVisible=false;
+            this.dialogVisible = false;
         },
         lower() {
             console.log("我是home文件的方法");
@@ -81,10 +87,27 @@ export default {
 <style lang="less" scoped>
 .sliderVerification {
     padding: 20px;
-    .sliderVerification_img {
-        display: flex;
-        justify-content: center;
+
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
+
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+        .sliderVerification_img {
+            display: flex;
+            justify-content: center;
+        }
     }
+
 }
 
 /deep/ .slide-verify-slider-mask {

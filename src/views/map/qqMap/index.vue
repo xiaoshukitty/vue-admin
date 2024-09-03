@@ -1,6 +1,12 @@
 <template>
     <div class="qq_map">
-        <el-button @click="tomap" type="primary" size="small">地 图</el-button>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.QQMap') }}</span>
+            </div>
+            <el-button @click="tomap" type="primary" size="small">地 图</el-button>
+        </el-card>
+
     </div>
 </template>
 
@@ -58,5 +64,23 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.qq_map {}
+.qq_map {
+    padding: 20px;
+
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
+
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+    }
+}
 </style>

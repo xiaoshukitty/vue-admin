@@ -1,29 +1,35 @@
 <template>
-  <div>
-    <el-button type="primary" @click="dialogVisible = true;">
-      地图</el-button>
-    <el-dialog @close="closeDialog" :visible.sync="dialogVisible" width="70%" height="60%" top="10vh">
-      <div class="amap-page-container" style="width: 100%; height: 550px; margin: 0px">
-        <!-- 输入框搜索 -->
-        <el-amap-search-box class="search-box" :search-option="searchOption" :on-search-result="onSearchResult">
-        </el-amap-search-box>
-        <!--  地图 -->
-        <el-amap ref="map" vid="amapDemo" :amap-manager="amapManager" :center="center" :zoom="zoom" :plugin="plugin"
-          :events="events" class="amap-demo">
-          <!-- 自定义当前定位 -->
-          <!-- <el-amap-marker v-for="(marker, index) in markers" :key="index" :position="marker"></el-amap-marker> -->
-          <el-amap-marker v-for="(item, index) in markers" :key="index" :position="item.position" :label="item.label"
-            :icon="item.icon" />
-        </el-amap>
-        <div style="display: flex; position: relative">
-          <div class="adress">
-            <p>{{ address }}</p>
-            <p>{{ center }}</p>
-          </div>
-          <div class="confirm" @click="comfirmLngLat(center, address)">确定</div>
-        </div>
+  <div class="el-map">
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span>{{ $t('headerList.ElMap') }}</span>
       </div>
-    </el-dialog>
+      <el-button type="primary" @click="dialogVisible = true;">
+        地图</el-button>
+      <el-dialog @close="closeDialog" :visible.sync="dialogVisible" width="70%" height="60%" top="10vh">
+        <div class="amap-page-container" style="width: 100%; height: 550px; margin: 0px">
+          <!-- 输入框搜索 -->
+          <el-amap-search-box class="search-box" :search-option="searchOption" :on-search-result="onSearchResult">
+          </el-amap-search-box>
+          <!--  地图 -->
+          <el-amap ref="map" vid="amapDemo" :amap-manager="amapManager" :center="center" :zoom="zoom" :plugin="plugin"
+            :events="events" class="amap-demo">
+            <!-- 自定义当前定位 -->
+            <!-- <el-amap-marker v-for="(marker, index) in markers" :key="index" :position="marker"></el-amap-marker> -->
+            <el-amap-marker v-for="(item, index) in markers" :key="index" :position="item.position" :label="item.label"
+              :icon="item.icon" />
+          </el-amap>
+          <div style="display: flex; position: relative">
+            <div class="adress">
+              <p>{{ address }}</p>
+              <p>{{ center }}</p>
+            </div>
+            <div class="confirm" @click="comfirmLngLat(center, address)">确定</div>
+          </div>
+        </div>
+      </el-dialog>
+    </el-card>
+
   </div>
 </template>
 
@@ -229,42 +235,61 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.amap-page-container {
-  position: relative;
+.el-map {
+  padding: 20px;
 
-  .search-box {
-    position: absolute;
-    top: 25px;
-    left: 62px;
+  .box-card {
+    width: 100%;
+    height: calc(100vh - 210px);
+
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: "";
+    }
+
+    .clearfix:after {
+      clear: both
+    }
+
+    .amap-page-container {
+      position: relative;
+
+      .search-box {
+        position: absolute;
+        top: 25px;
+        left: 62px;
+      }
+
+      .confirm {
+        width: 70px;
+        color: #fff;
+        height: 30px;
+        position: absolute;
+        left: 46%;
+        top: 10px;
+        text-align: center;
+        background-color: #5a81ff;
+        line-height: 30px;
+        border-radius: 5px;
+      }
+    }
+
+
+    /deep/ .el-dialog__body {
+      padding: 50px 20px !important;
+    }
+
+    /deep/ .amap-icon img {
+      width: 50px;
+    }
+
+    /deep/ .amap-marker-label {
+      border: none !important;
+      font-size: 14px !important;
+      padding: 5px 20px !important;
+      border-radius: 10px;
+    }
   }
-
-  .confirm {
-    width: 70px;
-    color: #fff;
-    height: 30px;
-    position: absolute;
-    left: 46%;
-    top: 10px;
-    text-align: center;
-    background-color: #5a81ff;
-    line-height: 30px;
-    border-radius: 5px;
-  }
-}
-
-
-/deep/ .el-dialog__body {
-  padding: 50px 20px !important;
-}
-
-/deep/ .amap-icon img {
-  width: 50px;
-}
-
-/deep/ .amap-marker-label {
-  border: none !important;
-  font-size: 14px !important;
-  padding: 5px 20px !important;
-  border-radius: 10px;
 }
 </style>

@@ -1,17 +1,24 @@
 <template>
     <div class="test">
-        <el-upload class="upload-demo" :action="actionUrl" ref="upload" :on-preview="handlePreview" multiple :limit="1"
-            :on-exceed="handleExceed" :http-request="handleFileUpload" list-type="picture-card" :headers="headerConfig">
-            <i class="el-icon-plus"></i>
-        </el-upload>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.UpdatePic') }}</span>
+            </div>
+            <el-upload class="upload-demo" :action="actionUrl" ref="upload" :on-preview="handlePreview" multiple
+                :limit="1" :on-exceed="handleExceed" :http-request="handleFileUpload" list-type="picture-card"
+                :headers="headerConfig">
+                <i class="el-icon-plus"></i>
+            </el-upload>
 
-        <!-- ../../../node_server/public/ -->
-        <!-- <img :src="'http://localhost:8080/' + imgUrl" alt=""> -->
-        <!-- <img :src="require(`/assets/img'  ${imgUrl}`)" alt=""> -->
-        <img src="http://localhost:8080/assets/img/file-1713001229423-WX20240408-201648@2x.e82738d5.png" alt="">
-        <!-- <img src='../../../node_server//public//uploads//file/20240413/file-1713000649603-WX20240412-192109@2x.png'
+            <!-- ../../../node_server/public/ -->
+            <!-- <img :src="'http://localhost:8080/' + imgUrl" alt=""> -->
+            <!-- <img :src="require(`/assets/img'  ${imgUrl}`)" alt=""> -->
+            <img src="http://localhost:8080/assets/img/file-1713001229423-WX20240408-201648@2x.e82738d5.png" alt="">
+            <!-- <img src='../../../node_server//public//uploads//file/20240413/file-1713000649603-WX20240412-192109@2x.png'
             alt="">
             <img src="../../../node_server/public/uploads/file/20240413/file-1713000769575-WX20240408-201648@2x.png" alt=""> -->
+        </el-card>
+
     </div>
 </template>
 
@@ -90,37 +97,54 @@ export default {
 
 <style lang="less" scoped>
 .test {
-    padding: 30px;
+    padding: 20px;
 
-    .avatar-uploader .el-upload {
-        border: 1px dashed #d9d9d9;
-        border-radius: 6px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
+
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+        .avatar-uploader .el-upload {
+            border: 1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-uploader .el-upload:hover {
+            border-color: #409EFF;
+        }
+
+        .avatar-uploader-icon {
+            font-size: 28px;
+            color: #8c939d;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 178px;
+            height: 178px;
+            display: block;
+        }
+
+        img {
+            width: 200px;
+        }
     }
 
-    .avatar-uploader .el-upload:hover {
-        border-color: #409EFF;
-    }
 
-    .avatar-uploader-icon {
-        font-size: 28px;
-        color: #8c939d;
-        width: 178px;
-        height: 178px;
-        line-height: 178px;
-        text-align: center;
-    }
-
-    .avatar {
-        width: 178px;
-        height: 178px;
-        display: block;
-    }
-
-    img {
-        width: 200px;
-    }
 }
 </style>

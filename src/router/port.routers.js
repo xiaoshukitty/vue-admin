@@ -20,7 +20,7 @@ export default [{
         meta: {
             title: '接口测试'
         },
-        component: () => import('../views/port/updatePic')
+        component: () => import('../views/port/requestText')
     }, {
         path: '/port/updatePic',
         name: 'updatePic',

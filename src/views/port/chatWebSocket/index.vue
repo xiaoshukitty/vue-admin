@@ -222,7 +222,7 @@ export default {
 
     .box-card {
         width: 100%;
-        height: calc(100vh - 140px);
+        height: calc(100vh - 210px);
 
         .clearfix:before,
         .clearfix:after {
@@ -244,7 +244,7 @@ export default {
                 position: relative;
                 left: 50%;
                 width: 50%;
-                height: calc(100vh - 250px);
+                height: calc(100vh - 350px);
                 background-color: #fff;
                 transform: translateX(-50%);
                 border: 1px solid var(--light);

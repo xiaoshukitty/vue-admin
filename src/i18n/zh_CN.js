@@ -24,6 +24,7 @@ const headerList = {
     PleaseCheckRememberMe: '请勾选记住我',
     PasswordChangedSuccessfully: '密码修改成功',
     UpdatePassword: '修改密码',
+    UserManagement:'用户管理',
     Update: '修改',
     ServerNotLinked: '服务器未链接',
     UpdateProfilePhoto: '修改头像',
@@ -510,6 +511,12 @@ const routerNavigation = [{
             id: '6-2',
             router: '/setting/updataPassword',
             icon: 'el-icon-lock'
+        }, {
+            name: '用户管理',
+            path: 'userManagement',
+            id: '6-3',
+            router: '/setting/userManagement',
+            icon: 'el-icon-user'
         }]
     },
 ]

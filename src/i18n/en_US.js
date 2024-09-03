@@ -24,6 +24,7 @@ const headerList = {
     PleaseCheckRememberMe: "Please Chec kRemember Me",
     PasswordChangedSuccessfully: 'Password Changed Successfully',
     UpdatePassword: 'Update Password',
+    UserManagement:'User Management',
     Update: 'Update',
     ServerNotLinked: 'Server Not Linked',
     UpdateProfilePhoto: 'Update Profile Photo',
@@ -512,6 +513,12 @@ const routerNavigation = [{
             id: '6-2',
             router: '/setting/updataPassword',
             icon: 'el-icon-lock'
+        }, {
+            name: 'userManagement',
+            path: 'userManagement',
+            id: '6-3',
+            router: '/setting/userManagement',
+            icon: 'el-icon-user'
         }]
     }
 ]

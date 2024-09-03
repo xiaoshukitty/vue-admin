@@ -23,5 +23,13 @@ export default [{
             },
             component: () => import('../views/setting/updataPassword')
         },
+        {
+            path: '/setting/userManagement',
+            name: 'userManagement',
+            meta: {
+                title: '用户管理',
+            },
+            component: () => import('../views/setting/userManagement')
+        },
     ]
 }, ]

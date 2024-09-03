@@ -1,74 +1,81 @@
 <template>
     <div class="table_search">
-        <div class="serach_title">
-            <div class="search_box">
-                <div class="search_flex">
-                    <div class="w100">输入框:</div>
-                    <div>
-                        <el-input v-model="form.input" placeholder="请输入内容"></el-input>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.Tree') }}</span>
+            </div>
+            <div class="serach_title">
+                <div class="search_box">
+                    <div class="search_flex">
+                        <div class="w100">输入框:</div>
+                        <div>
+                            <el-input v-model="form.input" placeholder="请输入内容"></el-input>
+                        </div>
                     </div>
-                </div>
-                <div class="search_flex">
-                    <div class="w100">下拉选择框:</div>
-                    <div>
-                        <el-select v-model="form.choiceBox" placeholder="请选择">
-                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                            </el-option>
-                        </el-select>
+                    <div class="search_flex">
+                        <div class="w100">下拉选择框:</div>
+                        <div>
+                            <el-select v-model="form.choiceBox" placeholder="请选择">
+                                <el-option v-for="item in options" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </div>
                     </div>
-                </div>
-                <div class="search_flex">
-                    <div class="w100">级联选择器:</div>
-                    <div>
-                        <el-cascader v-model="form.cascadeSelector" :options="options1"></el-cascader>
+                    <div class="search_flex">
+                        <div class="w100">级联选择器:</div>
+                        <div>
+                            <el-cascader v-model="form.cascadeSelector" :options="options1"></el-cascader>
+                        </div>
                     </div>
-                </div>
-                <div class="search_flex">
-                    <div class="w100">时间选择器:</div>
-                    <div>
-                        <el-time-select v-model="form.timeSelector" :picker-options="{
-                            start: '08:30',
-                            step: '00:15',
-                            end: '18:30'
-                        }" placeholder="选择时间">
-                        </el-time-select>
+                    <div class="search_flex">
+                        <div class="w100">时间选择器:</div>
+                        <div>
+                            <el-time-select v-model="form.timeSelector" :picker-options="{
+                                start: '08:30',
+                                step: '00:15',
+                                end: '18:30'
+                            }" placeholder="选择时间">
+                            </el-time-select>
+                        </div>
                     </div>
-                </div>
-                <div class="search_flex">
-                    <div class="w100">日期选择器:</div>
-                    <div>
-                        <el-date-picker v-model="form.dateSelector" type="date" placeholder="选择日期">
-                        </el-date-picker>
+                    <div class="search_flex">
+                        <div class="w100">日期选择器:</div>
+                        <div>
+                            <el-date-picker v-model="form.dateSelector" type="date" placeholder="选择日期">
+                            </el-date-picker>
+                        </div>
                     </div>
-                </div>
-                <div class="search_flex">
-                    <div class="w120">日期时间选择器:</div>
-                    <div>
-                        <el-date-picker v-model="form.dateTimeSelector" type="datetime" placeholder="选择日期时间">
-                        </el-date-picker>
+                    <div class="search_flex">
+                        <div class="w120">日期时间选择器:</div>
+                        <div>
+                            <el-date-picker v-model="form.dateTimeSelector" type="datetime" placeholder="选择日期时间">
+                            </el-date-picker>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="table" v-loading="dataLoading">
-            <el-table :data="tableData" stripe style="width: 100%">
-                <el-table-column prop="date" label="日期" align="center">
-                </el-table-column>
-                <el-table-column prop="name" label="姓名" align="center">
-                </el-table-column>
-                <el-table-column prop="address" label="地址" align="center">
-                </el-table-column>
-            </el-table>
-        </div>
-        <div class="pages">
-            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
-                :page-sizes="[10, 20, 30, 40]" :page-size="pageInfo.pageSize"
-                layout="total, sizes, prev, pager, next, jumper" :total="pageInfo.total">
-            </el-pagination>
-        </div>
+            <div class="table" v-loading="dataLoading">
+                <el-table :data="tableData" stripe style="width: 80vw">
+                    <el-table-column prop="date" label="日期" align="center">
+                    </el-table-column>
+                    <el-table-column prop="name" label="姓名" align="center">
+                    </el-table-column>
+                    <el-table-column prop="address" label="地址" align="center">
+                    </el-table-column>
+                </el-table>
+            </div>
+            <div class="pages">
+                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                    :current-page="currentPage" :page-sizes="[10, 20, 30, 40]" :page-size="pageInfo.pageSize"
+                    layout="total, sizes, prev, pager, next, jumper" :total="pageInfo.total">
+                </el-pagination>
+            </div>
+        </el-card>
+
     </div>
 </template>
-  
+
 <script>
 export default {
     data() {
@@ -88,7 +95,7 @@ export default {
                 page: 1,
                 total: null
             },
-            dataLoading:true,
+            dataLoading: true,
             options: [{
                 value: '选项1',
                 label: '黄金糕'
@@ -323,10 +330,10 @@ export default {
     created() {
 
     },
-    mounted(){
-        setTimeout(()=>{
-            this.dataLoading=false;
-        },3000)
+    mounted() {
+        setTimeout(() => {
+            this.dataLoading = false;
+        }, 3000)
     },
     methods: {
         handleSizeChange(newPageSize) {
@@ -338,42 +345,59 @@ export default {
     },
 }
 </script>
-  
+
 <style lang="less" scoped>
 .table_search {
-    padding: 30px;
+    padding: 20px;
 
-    .serach_title {
-        margin-top: 20px;
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
 
-        .search_box {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
 
-            .search_flex {
+        .clearfix:after {
+            clear: both
+        }
+
+        .serach_title {
+            margin-top: 20px;
+
+            .search_box {
                 display: flex;
                 align-items: center;
-                margin: 0 30px 30px 0;
+                flex-wrap: wrap;
 
-                .w100 {
-                    width: 100px;
-                }
+                .search_flex {
+                    display: flex;
+                    align-items: center;
+                    margin: 0 30px 30px 0;
 
-                .w120 {
-                    width: 120px;
+                    .w100 {
+                        width: 100px;
+                    }
+
+                    .w120 {
+                        width: 120px;
+                    }
                 }
             }
         }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        .pages {
+            margin-top: 20px;
+            text-align: center;
+        }
     }
 
-    .table {
-        margin-top: 20px;
-    }
-    .pages{
-        margin-top: 20px;
-        text-align: center;
-    }
+
 }
 </style>
-  

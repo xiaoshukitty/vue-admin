@@ -31,14 +31,14 @@ export default [{
             },
             component: () => import('../views/function/tableSearch')
         },
-        {
-            path: '/function/methods',
-            name: 'methods',
-            meta: {
-                title: '常用的'
-            },
-            component: () => import('../views/function/methods'),
-        },
+        // {
+        //     path: '/function/methods',
+        //     name: 'methods',
+        //     meta: {
+        //         title: '常用的'
+        //     },
+        //     component: () => import('../views/function/methods'),
+        // },
         {
             path: '/function/vuex',
             name: 'vuex',

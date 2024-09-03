@@ -41,6 +41,11 @@ const headerList = {
     Memorandum:'备忘录',
     UpdatePic:'上传图片',
     RequestText:"接口测试",
+    CustomInstruction:'自定义指令',
+    DateConversion:'时间转化',
+    VueX:'VueX',
+    Text:'测试',
+    RightMenu:"右键菜单",
     Update: '修改',
     ServerNotLinked: '服务器未链接',
     UpdateProfilePhoto: '修改头像',
@@ -390,13 +395,13 @@ const routerNavigation = [{
                 router: '/function/tableSearch',
                 icon: "el-icon-refrigerator"
             },
-            {
-                name: '常用的',
-                path: 'methods',
-                id: '5-4',
-                router: '/function/methods',
-                icon: "el-icon-ice-cream-square"
-            },
+            // {
+            //     name: '常用的',
+            //     path: 'methods',
+            //     id: '5-4',
+            //     router: '/function/methods',
+            //     icon: "el-icon-ice-cream-square"
+            // },
             {
                 name: 'vuex',
                 path: 'vuex',

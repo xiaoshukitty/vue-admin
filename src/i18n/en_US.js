@@ -41,6 +41,11 @@ const headerList = {
     Memorandum:'Memorandum',
     UpdatePic:'Update Pic',
     RequestText:"Request Text",
+    CustomInstruction:'CustomInstruction',
+    DateConversion:'Date Conversion',
+    VueX:'VueX',
+    Text:'Text',
+    RightMenu:"Right Menu",
     Update: 'Update',
     ServerNotLinked: 'Server Not Linked',
     UpdateProfilePhoto: 'Update Profile Photo',
@@ -392,13 +397,13 @@ const routerNavigation = [{
                 router: '/function/tableSearch',
                 icon: "el-icon-refrigerator"
             },
-            {
-                name: 'Methods',
-                path: 'methods',
-                id: '5-4',
-                router: '/function/methods',
-                icon: "el-icon-ice-cream-square"
-            },
+            // {
+            //     name: 'Methods',
+            //     path: 'methods',
+            //     id: '5-4',
+            //     router: '/function/methods',
+            //     icon: "el-icon-ice-cream-square"
+            // },
             {
                 name: 'Vuex',
                 path: 'vuex',

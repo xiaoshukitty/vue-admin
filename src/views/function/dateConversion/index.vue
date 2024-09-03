@@ -1,14 +1,20 @@
 <template>
     <div class="dateConversion">
-        <el-date-picker v-model="value" type="datetime" placeholder="选择日期时间">
-        </el-date-picker>
-        <div style="margin-top: 20px;">
-            <span style="margin-right:40px">{{ text }}</span>
-            <el-button type="primary" size="small" @click="checkDate(1)">时间戳</el-button>
-            <el-button type="primary" size="small" @click="checkDate(2)">年月日</el-button>
-            <el-button type="primary" size="small" @click="checkDate(3)">年月日时分秒</el-button>
-            <el-button type="primary" size="small" @click="checkDate(4)">标准时间</el-button>
-        </div>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.DateConversion') }}</span>
+            </div>
+            <el-date-picker v-model="value" type="datetime" placeholder="选择日期时间">
+            </el-date-picker>
+            <div style="margin-top: 20px;">
+                <span style="margin-right:40px">{{ text }}</span>
+                <el-button type="primary" size="small" @click="checkDate(1)">时间戳</el-button>
+                <el-button type="primary" size="small" @click="checkDate(2)">年月日</el-button>
+                <el-button type="primary" size="small" @click="checkDate(3)">年月日时分秒</el-button>
+                <el-button type="primary" size="small" @click="checkDate(4)">标准时间</el-button>
+            </div>
+        </el-card>
+
     </div>
 </template>
 
@@ -77,6 +83,22 @@ export default {
 
 <style lang="less" scoped>
 .dateConversion {
-    padding: 40px;
+    padding: 20px;
+
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
+
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+    }
 }
 </style>

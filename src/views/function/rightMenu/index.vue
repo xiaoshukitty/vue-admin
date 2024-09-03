@@ -2,7 +2,7 @@
     <div class="right-menu">
         <el-card class="box-card">
             <div slot="header" class="clearfix">
-                <span>{{ $t('headerList.VideoDisplay') }}</span>
+                <span>{{ $t('headerList.RightMenu') }}</span>
             </div>
             <div class="right-block" @contextmenu="showContextMenu">
                 右键菜单
@@ -45,7 +45,7 @@ export default {
 
     .box-card {
         width: 100%;
-        height: calc(100vh - 140px);
+        height: calc(100vh - 210px);
 
         .clearfix:before,
         .clearfix:after {

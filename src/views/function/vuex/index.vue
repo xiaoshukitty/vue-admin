@@ -1,14 +1,21 @@
 <template>
     <div class="test">
-        <h1>{{ myName }}</h1>
-        <el-button class="m5" type="primary" size="small" @click="uploadVuex">mutations 修改 vuex 数据</el-button>
-        <el-button class="m5" type="primary" size="small" @click="uploadAysncVuex">actions 异步 vuex 数据(静态)</el-button>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.VueX') }}</span>
+            </div>
+            <h1>{{ myName }}</h1>
+            <el-button class="m5" type="primary" size="small" @click="uploadVuex">mutations 修改 vuex 数据</el-button>
+            <el-button class="m5" type="primary" size="small" @click="uploadAysncVuex">actions 异步 vuex
+                数据(静态)</el-button>
 
-        <h1>{{ num }}</h1>
-        <el-button class="m5" type="primary" size="small" @click="updateAdd">持久话存储</el-button>
+            <h1>{{ num }}</h1>
+            <el-button class="m5" type="primary" size="small" @click="updateAdd">持久话存储</el-button>
+        </el-card>
+
     </div>
 </template>
-  
+
 <script>
 import {
     mapMutations,
@@ -55,8 +62,25 @@ export default {
     },
 }
 </script>
-  
+
 <style lang="less" scoped>
-.test {}
+.test {
+    padding: 20px;
+
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
+
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+    }
+}
 </style>
-  

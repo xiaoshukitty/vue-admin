@@ -1,27 +1,34 @@
 <template>
     <div class="canvas">
-        <h2 @click="qriously">
-            vue-qriously生成二维码
-        </h2>
-        <canvas id="myCanvas" width="500" height="300"></canvas>
-        <div class="poster_box">
-            <div id="poster" class="poster">
-                <!-- <div class="qrcode" id="qrcode"></div>  jq 生成二维码 -->
-                <div class="qrcode" id="qrcode" ref="qrCodeUrl"></div>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.Canvas') }}</span>
             </div>
-            <el-button type="primary" @click="qrcode">截图</el-button>
-            <el-button type="primary" @click="downloadIamge">下载</el-button>
-        </div>
-        <!-- 查看二维码 -->
+            <h2 @click="qriously">
+                vue-qriously生成二维码
+            </h2>
+            <div style="display: flex;">
+                <canvas id="myCanvas" width="500" height="300"></canvas>
+                <div class="poster_box">
+                    <div id="poster" class="poster">
+                        <!-- <div class="qrcode" id="qrcode"></div>  jq 生成二维码 -->
+                        <div class="qrcode" id="qrcode" ref="qrCodeUrl"></div>
+                    </div>
+                    <el-button type="primary" @click="qrcode">截图</el-button>
+                    <el-button type="primary" @click="downloadIamge">下载</el-button>
+                </div>
+            </div>
+            <!-- 查看二维码 -->
 
-        <div class="look_qrcode">
-            <el-dialog title="扫码支付码" :visible.sync="lookQrcodeDialog" width="30%" :show-close="false">
-                <qriously :value="codeUrl" :size="240" />
-                <span slot="footer" class="dialog-footer">
-                    <el-button type="primary" @click="lookQrcodeDialog = false">关 闭</el-button>
-                </span>
-            </el-dialog>
-        </div>
+            <div class="look_qrcode">
+                <el-dialog title="扫码支付码" :visible.sync="lookQrcodeDialog" width="30%" :show-close="false">
+                    <qriously :value="codeUrl" :size="240" />
+                    <span slot="footer" class="dialog-footer">
+                        <el-button type="primary" @click="lookQrcodeDialog = false">关 闭</el-button>
+                    </span>
+                </el-dialog>
+            </div>
+        </el-card>
     </div>
 </template>
 
@@ -147,30 +154,47 @@ export default {
 
 <style lang="less" scoped>
 .canvas {
-    padding: 100px 200px;
+    padding: 20px;
 
-    .poster_box {
-        .poster {
-            width: 400px;
-            height: 400px;
-            background-color: pink;
-            position: relative;
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
 
-            .qrcode {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 200px;
-                height: 200px;
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
 
-                img {
-                    width: 100%;
-                    height: 100%;
+        .clearfix:after {
+            clear: both
+        }
+
+        .poster_box {
+            .poster {
+                width: 400px;
+                height: 400px;
+                background-color: pink;
+                position: relative;
+
+                .qrcode {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 200px;
+                    height: 200px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
                 }
             }
         }
     }
+
+
 
 }
 </style>

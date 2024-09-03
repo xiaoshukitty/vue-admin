@@ -1,6 +1,11 @@
 <template>
     <div class="imgPreview">
-        <img src="@/assets/logo.png" @click="showImagePreview" />
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.ImgPreview') }}</span>
+            </div>
+            <img src="@/assets/logo.png" @click="showImagePreview" />
+        </el-card>
     </div>
 </template>
 
@@ -50,10 +55,26 @@ export default {
 
 <style lang="less" scoped>
 .imgPreview {
-    padding: 100px 200px;
+    padding: 20px;
 
-    .m5 {
-        margin: 5px;
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
+
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+        .m5 {
+            margin: 5px;
+        }
     }
+
 }
 </style>

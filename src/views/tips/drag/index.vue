@@ -1,11 +1,17 @@
 <template>
   <div class="drag">
-    <div class="container">
-      <div v-for="(item, index) in arrList" :key="index" draggable="true" @dragstart="drag($event, index)"
-        @drop="drop($event, index)" @dragover="allowDrop($event)">
-        {{ item.item }}
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span>{{ $t('headerList.Drag') }}</span>
       </div>
-    </div>
+      <div class="container">
+        <div v-for="(item, index) in arrList" :key="index" draggable="true" @dragstart="drag($event, index)"
+          @drop="drop($event, index)" @dragover="allowDrop($event)">
+          {{ item.item }}
+        </div>
+      </div>
+    </el-card>
+
   </div>
 </template>
 
@@ -53,21 +59,40 @@ export default {
 
 <style lang="less" scoped>
 .drag {
-  .container {
-    margin: auto;
-    width: 400px;
+  padding: 20px;
 
-    div {
-      width: 100%;
-      height: 140px;
-      line-height: 140px;
-      background: #d2d2d3;
-      text-align: center;
-      font-size: 18px;
-      color: #ffffff;
-      margin-bottom: 10px;
-      cursor: move;
+
+  .box-card {
+    width: 100%;
+    height: calc(100vh - 210px);
+
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: "";
+    }
+
+    .clearfix:after {
+      clear: both
+    }
+
+    .container {
+      margin: auto;
+      width: 400px;
+
+      div {
+        width: 100%;
+        height: 140px;
+        line-height: 140px;
+        background: #d2d2d3;
+        text-align: center;
+        font-size: 18px;
+        color: #ffffff;
+        margin-bottom: 10px;
+        cursor: move;
+      }
     }
   }
+
 }
 </style>

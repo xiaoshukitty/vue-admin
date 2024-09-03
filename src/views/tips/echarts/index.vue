@@ -6,24 +6,26 @@
             </div>
             <ChinaMap></ChinaMap>
         </el-card>
-        <el-card class="box-card">
-            <div slot="header" class="clearfix">
-                <span>{{ $t('titleI18n.LineChart') }}</span>
-            </div>
-            <EchartsLine></EchartsLine>
-        </el-card>
-        <el-card class="box-card">
-            <div slot="header" class="clearfix">
-                <span>{{ $t('titleI18n.ColumnDiagram') }}</span>
-            </div>
-            <EchartsBar></EchartsBar>
-        </el-card>
-        <el-card class="box-card">
-            <div slot="header" class="clearfix">
-                <span>{{ $t('titleI18n.Pie') }}</span>
-            </div>
-            <EchartsPie></EchartsPie>
-        </el-card>
+        <div style="width: 100%; display: flex; justify-content: space-between;">
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>{{ $t('titleI18n.LineChart') }}</span>
+                </div>
+                <EchartsLine></EchartsLine>
+            </el-card>
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>{{ $t('titleI18n.ColumnDiagram') }}</span>
+                </div>
+                <EchartsBar></EchartsBar>
+            </el-card>
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>{{ $t('titleI18n.Pie') }}</span>
+                </div>
+                <EchartsPie></EchartsPie>
+            </el-card>
+        </div>
         <div style="height: 20px;  width: 100%;"></div>
     </div>
 </template>
@@ -91,7 +93,7 @@ export default {
     padding: 20px 20px 0;
     display: flex;
     flex-wrap: wrap;
-    height: calc(100vh - 140px);
+    // height: calc(100vh - 140px);
 
     .clearfix:before,
     .clearfix:after {
@@ -109,12 +111,8 @@ export default {
         margin-bottom: 20px;
     }
 
-    .box-card:nth-child(3n) {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    .map{
-        width: calc(96% + 40px);
+    .map {
+        width: 100%;
         margin-bottom: 20px;
     }
 }

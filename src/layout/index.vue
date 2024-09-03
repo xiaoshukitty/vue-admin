@@ -92,7 +92,8 @@
                             </el-tooltip>
                         </div>
                         <!-- 通知 -->
-                        <div class="header_hover location" ref="notificationGuide" v-header-switch="'notificationGuide'">
+                        <div class="header_hover location" ref="notificationGuide"
+                            v-header-switch="'notificationGuide'">
                             <el-popover placement="bottom" width="300" trigger="hover" ref="popover">
                                 <el-tabs v-model="activeName">
                                     <el-tab-pane label="通知" name="inform">
@@ -132,7 +133,8 @@
                         </div>
                         <!-- 全屏 -->
                         <div class="full_screen header_hover" ref="fullScreenGuide"
-                            @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()" v-header-switch="'fullScreenGuide'">
+                            @click="fullScreenShow ? toggleFullScreen() : exitFullscreen()"
+                            v-header-switch="'fullScreenGuide'">
                             <el-tooltip class="item" effect="dark"
                                 :content="fullScreenShow ? $t('headerList.name') : $t('headerList.ExitFullScreen')"
                                 placement="bottom">
@@ -145,7 +147,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                    }}</div>
+                                        }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -186,7 +188,14 @@
 
             <div class="marin">
                 <router-view v-if="flag" />
+                <div class="copyright">
+                    <div class="copyright-center">
+                        2024 Vue Admin
+                    </div>
+                </div>
             </div>
+
+
         </div>
         <GlobalSearch :isSearch="isSearch" @update:visible="updateVisible" @update:skipTo="updateSkipTo"></GlobalSearch>
 
@@ -1094,6 +1103,24 @@ export default {
         background-color: #f5fcfa !important;
     }
 
+}
+
+.copyright {
+    padding: 0 20px 20px;
+
+    .copyright-center {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 4px;
+        border: 1px solid #EBEEF5;
+        background-color: #FFF;
+        overflow: hidden;
+        color: #303133;
+        transition: .3s;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    }
 }
 </style>
 <style>

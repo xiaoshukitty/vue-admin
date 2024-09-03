@@ -1,13 +1,19 @@
 <template>
   <div class="vuedraggable">
-    <div class="container">
-      <draggable :list="arrList" :disabled="!enabled" class="list-group" ghost-class="ghost" :move="checkMove"
-        @start="onStart" @end="onEnd">
-        <div class="box" v-for="item in arrList" :key="item.key">
-          {{ item.item }}
-        </div>
-      </draggable>
-    </div>
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span>{{ $t('headerList.VueDraggabble') }}</span>
+      </div>
+      <div class="container">
+        <draggable :list="arrList" :disabled="!enabled" class="list-group" ghost-class="ghost" :move="checkMove"
+          @start="onStart" @end="onEnd">
+          <div class="box" v-for="item in arrList" :key="item.key">
+            {{ item.item }}
+          </div>
+        </draggable>
+      </div>
+    </el-card>
+
   </div>
 </template>
 <script>
@@ -34,7 +40,7 @@ export default {
     checkMove: function (e) {
       window.console.log("Future index: " + e.draggedContext.futureIndex);
     },
-     //拖拽开始
+    //拖拽开始
     onStart() {
     },
     //拖拽结束事件
@@ -47,36 +53,54 @@ export default {
 </script>
 <style lang="less">
 .vuedraggable {
-  .container {
-    margin: auto;
-    width: 400px;
+  padding: 20px;
 
-    .ghost {
-      opacity: 0.5;
-      background: #c8ebfb;
+
+  .box-card {
+    width: 100%;
+    height: calc(100vh - 210px);
+
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: "";
     }
 
-    .list-group {
-      display: flex;
-      flex-direction: column;
-      padding-left: 0;
-      margin-bottom: 0;
-      width: 300px;
+    .clearfix:after {
+      clear: both
+    }
 
-      .box {
-        width: 400px;
-        height: 140px;
-        line-height: 140px;
-        background: #d2d2d3;
-        text-align: center;
-        font-size: 18px;
-        color: #ffffff;
-        margin-bottom: 10px;
-        cursor: move;
+    .container {
+      margin: auto;
+      width: 400px;
+
+      .ghost {
+        opacity: 0.5;
+        background: #c8ebfb;
+      }
+
+      .list-group {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        width: 300px;
+
+        .box {
+          width: 400px;
+          height: 140px;
+          line-height: 140px;
+          background: #d2d2d3;
+          text-align: center;
+          font-size: 18px;
+          color: #ffffff;
+          margin-bottom: 10px;
+          cursor: move;
+        }
       }
     }
   }
 
+
 }
 </style>
-

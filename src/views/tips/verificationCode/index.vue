@@ -1,10 +1,15 @@
 <template>
     <div class="container">
-        验证码
-        <div class="container_box">
-            <div id="v_yzm" @click="change"></div>
-            <el-input class="ipt" v-model="yzmIpt" size='small' @blur="changeBlur"></el-input>
-        </div>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ $t('headerList.VerificationCode') }}</span>
+            </div>
+            验证码
+            <div class="container_box">
+                <div id="v_yzm" @click="change"></div>
+                <el-input class="ipt" v-model="yzmIpt" size='small' @blur="changeBlur"></el-input>
+            </div>
+        </el-card>
     </div>
 </template>
 
@@ -36,7 +41,7 @@ export default {
             if (yzmNumber != this.yzmIpt) {
                 this.$message.warning('请输入正确的验证码');
                 this.yzmIpt = '';
-            }else{
+            } else {
                 this.$message.success('验证码正确')
             }
         }
@@ -46,14 +51,32 @@ export default {
 
 <style lang="less" scoped>
 .container {
-    .container_box {
-        display: flex;
-        align-items: center;
+    padding: 20px;
 
-        .ipt {
-            width: 200px;
-            margin: 20px;
+    .box-card {
+        width: 100%;
+        height: calc(100vh - 210px);
+
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both
+        }
+
+        .container_box {
+            display: flex;
+            align-items: center;
+
+            .ipt {
+                width: 200px;
+                margin: 20px;
+            }
         }
     }
+
 }
 </style>

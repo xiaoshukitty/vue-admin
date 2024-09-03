@@ -335,7 +335,7 @@ export default {
   }
 
   .conter {
-    margin: 16px;
+    margin: 20px;
     background-color: #fff;
 
     .conter-block {
@@ -478,7 +478,7 @@ export default {
 
       .mt-block {
         margin-top: 1rem !important;
-        margin-bottom: 1rem !important;
+        // margin-bottom: 1rem !important;
 
         .dynamic {
           .dynamic-list {

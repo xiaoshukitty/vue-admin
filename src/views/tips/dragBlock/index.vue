@@ -211,7 +211,7 @@ export default {
 
     .box-card {
         width: 100%;
-        height: calc(100vh - 140px);
+        height: calc(100vh - 210px);
 
         .content {
             display: flex;

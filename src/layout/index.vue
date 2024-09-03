@@ -188,11 +188,7 @@
 
             <div class="marin">
                 <router-view v-if="flag" />
-                <div class="copyright">
-                    <div class="copyright-center">
-                        2024 Vue Admin
-                    </div>
-                </div>
+               <Copyright/>
             </div>
 
 
@@ -217,6 +213,7 @@ import I18nComponents from '@/components/i18nComponents';
 import GlobalSearch from '@/components/GlobalSearch';
 import ContextMenu from '@/components/ContextMenu';
 import TopicConfiguration from '@/components/TopicConfiguration';
+import Copyright from '@/components/Copyright';
 import { searchTree, searchTreeCertain } from '@/utils';
 import { informsList, emailList } from '@/utils/falseData';
 import { logout } from '@/server/common';
@@ -229,7 +226,8 @@ export default {
         I18nComponents,
         GlobalSearch,
         ContextMenu,
-        TopicConfiguration
+        TopicConfiguration,
+        Copyright
     },
     data() {
         return {
@@ -1105,23 +1103,6 @@ export default {
 
 }
 
-.copyright {
-    padding: 0 20px 20px;
-
-    .copyright-center {
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
-        font-size: 14px;
-        border-radius: 4px;
-        border: 1px solid #EBEEF5;
-        background-color: #FFF;
-        overflow: hidden;
-        color: #303133;
-        transition: .3s;
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
-    }
-}
 </style>
 <style>
 .el-select-dropdown__item.selected {

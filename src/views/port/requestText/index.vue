@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="table">
-                    <el-table :data="userList" stripe style="width: 65vw" border v-loading="loading">
+                    <el-table :data="userList" stripe border v-loading="loading">
                         <el-table-column prop="name" label="姓名" align="center">
                         </el-table-column>
                         <el-table-column prop="age" label="年龄" align="center">

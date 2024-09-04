@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="table">
-                    <el-table :data="memorandumList" stripe style="width: 50vw" border v-loading="loading">
+                    <el-table :data="memorandumList" stripe  border v-loading="loading">
                         <el-table-column prop="create_date" label="日期" align="center">
                         </el-table-column>
                         <el-table-column prop="weather" label="天气" align="center">
@@ -153,7 +153,6 @@ export default {
         .container {
 
             .screen {
-                width: 50vw;
                 padding: 30px;
                 display: flex;
                 justify-content: space-between;

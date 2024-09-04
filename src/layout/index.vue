@@ -147,7 +147,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                        }}</div>
+                                    }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -188,7 +188,7 @@
 
             <div class="marin">
                 <router-view v-if="flag" />
-               <Copyright/>
+                <Copyright />
             </div>
 
 
@@ -953,6 +953,7 @@ export default {
 
         .marin {
             height: calc(100vh - 100px);
+            width: calc(100vw - var(--left-menu-width));
             overflow: auto;
         }
 
@@ -970,7 +971,7 @@ export default {
 
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 220px;
+    width: var(--left-menu-width);
     min-height: 400px;
 }
 
@@ -1102,7 +1103,6 @@ export default {
     }
 
 }
-
 </style>
 <style>
 .el-select-dropdown__item.selected {

@@ -19,6 +19,14 @@
                     <el-table-column prop="characters" label="角色">
                     </el-table-column>
                     <el-table-column prop="status" label="状态">
+                        <template>
+                            <div class="status">
+                                <div class="online-round"></div>
+                                <!-- <div class="offline-round"></div> -->
+                                <div class="online">在线</div>
+                                 <!-- <div class="offline">离线</div> -->
+                            </div>
+                        </template>
                     </el-table-column>
                     <el-table-column label="操作" width="180">
                         <template>
@@ -73,8 +81,41 @@ export default {
                 box-sizing: border-box;
                 display: flex;
                 justify-content: end;
+
+
             }
         }
     }
+
+    .status {
+        align-items: center;
+        display: flex;
+
+        .online-round {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #67c23a;
+            margin-right: 10px;
+        }
+
+        .offline-round {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: red;
+            margin-right: 10px;
+        }
+
+        .online {
+            color: #67c23a;
+        }
+
+        .offline {
+            color: red;
+        }
+
+    }
+
 }
 </style>

@@ -84,5 +84,14 @@ export default [{
             },
             component: () => import('../views/function/voice')
         },
+        {
+            path: '/function/download',
+            name: 'download',
+            meta: {
+                title: '下载',
+                require: true,
+            },
+            component: () => import('../views/function/download')
+        },
     ]
 }, ]

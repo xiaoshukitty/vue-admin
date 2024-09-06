@@ -71,6 +71,7 @@ const headerList = {
     SwitchWallpaper: "切换壁纸",
     TheScreenLockPasswordCannotBeEmpty: "锁屏密码不能为空",
     ScrollText: '文字滚动',
+    DownLoad:'下载',
 }
 
 
@@ -437,6 +438,13 @@ const routerNavigation = [{
                 id: '5-9',
                 router: '/function/voice',
                 icon: "el-icon-headset"
+            },
+            {
+                name: '下载',
+                path: 'download',
+                id: '5-10',
+                router: '/function/download',
+                icon: "el-icon-download"
             },
         ]
     },

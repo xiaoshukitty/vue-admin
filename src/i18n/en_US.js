@@ -71,6 +71,7 @@ const headerList = {
     SwitchWallpaper: "Switch Wallpaper",
     TheScreenLockPasswordCannotBeEmpty: "The Screen Lock Password Cannot Be Empty",
     ScrollText: 'Scroll Text',
+    DownLoad:'DownLoad',
 }
 
 const avatarList = [{
@@ -434,11 +435,11 @@ const routerNavigation = [{
                 icon: "el-icon-help"
             },
             {
-                name: 'voice',
-                path: 'voice',
-                id: '5-9',
-                router: '/function/voice',
-                icon: "el-icon-headset"
+                name: 'download',
+                path: 'download',
+                id: '5-10',
+                router: '/function/download',
+                icon: "el-icon-download"
             },
         ]
     },

@@ -147,7 +147,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                    }}</div>
+                                        }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -187,7 +187,9 @@
             </div>
 
             <div class="marin">
-                <router-view v-if="flag" />
+                <!-- <keep-alive> -->
+                    <router-view v-if="flag" />
+                <!-- </keep-alive> -->
                 <Copyright />
             </div>
 

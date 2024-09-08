@@ -4,7 +4,7 @@
             <div slot="header" class="clearfix">
                 <span>{{ $t('headerList.ImgPreview') }}</span>
             </div>
-            <img src="@/assets/logo.png" @click="showImagePreview" />
+            <img class="img-preview" :alt="imgURL" :src="imgURL" @click="showImagePreview" />
         </el-card>
     </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     name: "imgPreview",
     data() {
         return {
-
+            imgURL: require('@/assets/images/lockScreenWallpaper/75.jpeg')
         }
     },
     created() {
@@ -22,11 +22,13 @@ export default {
     },
     methods: {
         showImagePreview() {
-            const image = new Image();
-            image.src = this.imageUrl;
+            const image = new Image(); //创建一个图片对象
+            image.src = this.imgURL; // 预加载第一张图片
+
             image.onload = () => {
+                // 图片加载完成后的操作
                 // 创建弹出层
-                const previewContainer = document.createElement('div');
+                const previewContainer = document.createElement('div'); //创建div
                 previewContainer.style.position = 'fixed';
                 previewContainer.style.top = 0;
                 previewContainer.style.bottom = 0;
@@ -36,13 +38,14 @@ export default {
                 previewContainer.style.display = 'flex';
                 previewContainer.style.justifyContent = 'center';
                 previewContainer.style.alignItems = 'center';
-                document.body.appendChild(previewContainer);
+                document.body.appendChild(previewContainer); //添加到body 上面去
                 // 在弹出层中添加图片
-                const previewImage = document.createElement('img');
-                previewImage.src = this.imageUrl;
+                const previewImage = document.createElement('img'); //创建图片
+                previewImage.src = this.imgURL; //图片地址设置 
                 previewImage.style.maxWidth = '80%';
                 previewImage.style.maxHeight = '80%';
-                previewContainer.appendChild(previewImage);
+                previewContainer.appendChild(previewImage); //添加到 previewContainer 上去
+
                 // 点击弹出层，关闭预览
                 previewContainer.addEventListener('click', () => {
                     document.body.removeChild(previewContainer);
@@ -73,6 +76,10 @@ export default {
 
         .m5 {
             margin: 5px;
+        }
+
+        .img-preview {
+            width: 400px;
         }
     }
 

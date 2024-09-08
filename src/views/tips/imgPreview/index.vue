@@ -39,12 +39,97 @@ export default {
                 previewContainer.style.justifyContent = 'center';
                 previewContainer.style.alignItems = 'center';
                 document.body.appendChild(previewContainer); //添加到body 上面去
+
+                // 创建div
+                const imgContainer = document.createElement('div');
+                imgContainer.style.width = '100%';
+                imgContainer.style.display = 'flex';
+                imgContainer.style.flexDirection = 'column';
+                imgContainer.style.alignItems = 'center';
+                previewContainer.appendChild(imgContainer); //添加到 previewContainer 上去
+
                 // 在弹出层中添加图片
                 const previewImage = document.createElement('img'); //创建图片
                 previewImage.src = this.imgURL; //图片地址设置 
-                previewImage.style.maxWidth = '80%';
-                previewImage.style.maxHeight = '80%';
-                previewContainer.appendChild(previewImage); //添加到 previewContainer 上去
+                previewImage.style.maxWidth = '65%';
+                previewImage.style.maxHeight = '65%';
+                imgContainer.appendChild(previewImage); //添加到 previewContainer 上去
+                previewImage.addEventListener('click',(event)=>{
+                    event.stopPropagation(); //阻止事件继续冒泡
+                })
+
+
+                //创建按钮div
+                const btnContainer = document.createElement('div');
+                btnContainer.style.display = 'flex';
+                btnContainer.style.marginTop = '20px';
+                btnContainer.style.zIndex = 9999;
+                imgContainer.appendChild(btnContainer); //添加到 previewContainer 上去
+
+
+                //创建变大数据
+                const grow = document.createElement('div');
+                alikeStyle(grow, 'red', '放大');
+                btnContainer.appendChild(grow);
+                grow.addEventListener('click', (event) => {
+                    event.stopPropagation(); //阻止事件继续冒泡
+                    previewImage.style.maxWidth = '80%';
+                    previewImage.style.maxHeight = '80%';
+                })
+
+
+
+                // 左旋转
+                const leftRotate = document.createElement('div');
+                alikeStyle(leftRotate, 'blue', '左旋转');
+                btnContainer.appendChild(leftRotate);
+                leftRotate.addEventListener('click', (event) => {
+                    event.stopPropagation(); //阻止事件继续冒泡
+                    previewImage.style.transform = 'rotate(-90deg)';
+                })
+
+                // 右旋转
+                const rightRotate = document.createElement('div');
+                alikeStyle(rightRotate, 'yellowgreen', '右旋转');
+                btnContainer.appendChild(rightRotate);
+                rightRotate.addEventListener('click', (event) => {
+                    event.stopPropagation(); //阻止事件继续冒泡
+                    previewImage.style.transform = 'rotate(90deg)';
+                })
+
+
+                // 创建缩小数据
+                const lessen = document.createElement('div');
+                alikeStyle(lessen, 'green', '缩小');
+                btnContainer.appendChild(lessen);
+                lessen.addEventListener('click', (event) => {
+                    event.stopPropagation(); //阻止事件继续冒泡
+                    previewImage.style.maxWidth = '50%';
+                    previewImage.style.maxHeight = '50%';
+                })
+
+                //创建复原
+                const recover = document.createElement('div');
+                alikeStyle(recover, 'purple', '复原');
+                btnContainer.appendChild(recover);
+                recover.addEventListener('click', (event) => {
+                    event.stopPropagation(); //阻止事件继续冒泡
+                    previewImage.style.maxWidth = '65%';
+                    previewImage.style.maxHeight = '65%';
+                    previewImage.style.transform = 'rotate(0deg)';
+                })
+
+                //共同样式
+                function alikeStyle(el, color, text) {
+                    el.style.width = '100px';
+                    el.style.lineHeight = '40px';
+                    el.style.textAlign = 'center';
+                    el.style.height = '40px';
+                    el.style.color = '#fff',
+                        el.style.cursor = 'pointer';
+                    el.style.backgroundColor = color;
+                    el.innerHTML = text;
+                }
 
                 // 点击弹出层，关闭预览
                 previewContainer.addEventListener('click', () => {

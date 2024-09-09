@@ -185,7 +185,7 @@ let vue = new Vue({
   render: h => h(App), //创建一个App的实例 h => 原生JS中createElement()
   mounted() {
     // 应用启动时检查更新
-    // checkForUpdates();
+    checkForUpdates();
   }
 }).$mount('#app')
 

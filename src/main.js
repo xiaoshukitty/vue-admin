@@ -23,7 +23,7 @@ import Router from 'vue-router';
 import {
   checkForUpdates
 } from './version-check';
-import './ban.js'
+// import './ban.js' //打包才放开
 
 import '@/config/directive.js'
 import '@/icons/index' //导入 svg

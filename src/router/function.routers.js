@@ -93,5 +93,14 @@ export default [{
             },
             component: () => import('../views/function/download')
         },
+        {
+            path: '/function/colorTakingPlate',
+            name: 'colorTakingPlate',
+            meta: {
+                title: '取色器',
+                require: true,
+            },
+            component: () => import('../views/function/colorTakingPlate')
+        },
     ]
 }, ]

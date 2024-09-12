@@ -72,6 +72,7 @@ const headerList = {
     TheScreenLockPasswordCannotBeEmpty: "The Screen Lock Password Cannot Be Empty",
     ScrollText: 'Scroll Text',
     DownLoad:'DownLoad',
+    ColorTakingPlate:'ColorTakingPlate',
 }
 
 const avatarList = [{
@@ -440,6 +441,13 @@ const routerNavigation = [{
                 id: '5-10',
                 router: '/function/download',
                 icon: "el-icon-download"
+            },
+            {
+                name: 'colorTakingPlate',
+                path: 'colorTakingPlate',
+                id: '5-11',
+                router: '/function/colorTakingPlate',
+                icon: "el-icon-s-finance"
             },
         ]
     },

@@ -72,6 +72,7 @@ const headerList = {
     TheScreenLockPasswordCannotBeEmpty: "锁屏密码不能为空",
     ScrollText: '文字滚动',
     DownLoad:'下载',
+    ColorTakingPlate:'取色器',
 }
 
 
@@ -446,6 +447,14 @@ const routerNavigation = [{
                 router: '/function/download',
                 icon: "el-icon-download"
             },
+            {
+                name: '取色器',
+                path: 'colorTakingPlate',
+                id: '5-11',
+                router: '/function/colorTakingPlate',
+                icon: "el-icon-s-finance"
+            },
+
         ]
     },
     {

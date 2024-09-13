@@ -147,7 +147,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                        }}</div>
+                                    }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -159,10 +159,13 @@
                     </div>
                 </div>
                 <div class="recordRouteList">
-                    <div class="recordRouterBox">
+                    <div class="icon-arrow-left">
+                        <i v-if="isIconArrow" class="el-icon-arrow-left" @click="iconScroll('left')"></i>
+                    </div>
+                    <div class="recordRouterBox" ref="refTotalWitch">
                         <!-- 路由块 -->
-                        <el-scrollbar class="scrollbar" wrap-style="overflow-y:hidden" ref="scrollbarRef">
-                            <div style="display: flex">
+                        <el-scrollbar class="scrollbar" wrap-style="overflow-y:hidden" ref="refScrollbar">
+                            <div style="display: flex" ref="refScrollRefWitch">
                                 <div v-for="(item, index) in recordRouteList" :key="item.id"
                                     :class="['tag', 'list-item', activeIndexRoute == item.id ? 'active' : '']"
                                     @click="routerSkip(item, index)" @contextmenu="showContextMenu">
@@ -173,6 +176,9 @@
                                 </div>
                             </div>
                         </el-scrollbar>
+                    </div>
+                    <div class="icon-arrow-right">
+                        <i v-if="isIconArrow" class="el-icon-arrow-right" @click="iconScroll('right')"></i>
                     </div>
                     <div class="recordBlock">
                         <el-dropdown @command="closeRouterBlock">
@@ -188,7 +194,7 @@
 
             <div class="marin">
                 <!-- <keep-alive> -->
-                    <router-view v-if="flag" />
+                <router-view v-if="flag" />
                 <!-- </keep-alive> -->
                 <Copyright />
             </div>
@@ -260,6 +266,7 @@ export default {
             targetIndex: 1, // 目标元素的索引
             routerType: '',//传递给 contextMenu 组件用来辨别
             drawer: false,
+            isIconArrow: false, //是否显示箭头
         }
     },
     created() {
@@ -299,12 +306,16 @@ export default {
                 this.tokenExpired();
             }
         },
+        //监听 recordRouteList 变化了就执行来更新箭头
+        recordRouteList(newValue, OldValue) {
+            this.updateArrowWitch();
+        }
     },
     computed: {
         ...mapGetters(['getRefsh', 'getProfilePhoto', 'getTokenInvalidation']),
         text() {
             return searchTree(this.$t('routerNavigation'), this.activeIndex)
-        }
+        },
     },
     methods: {
         //跳转路由
@@ -314,6 +325,28 @@ export default {
             this.activeIndex = item.router;
             console.log('activeIndex', this.activeIndex);
             this.routerPush(item)
+        },
+        // recordRouteList 变化了就执行
+        updateArrowWitch() {
+            this.$nextTick(() => {
+                //获取 recordRouteList dom 的宽度 和总的宽度
+                const scrollRefWitch = this.$refs.refScrollRefWitch.offsetWidth;
+                const totalWitch = this.$refs.refTotalWitch.offsetWidth;
+                if (scrollRefWitch > totalWitch) {
+                    this.isIconArrow = true;
+                } else {
+                    this.isIconArrow = false;
+                }
+            })
+        },
+
+        //点击导航栏
+        iconScroll(val) {
+            if (val == 'left') {
+                this.scrollToItem(0);
+            } else {
+                this.scrollToItem(this.recordRouteList.length - 1);
+            }
         },
 
         //全局搜索
@@ -495,9 +528,9 @@ export default {
         },
         //自动滚动
         scrollToItem(index) {
-            const itemElement = this.$refs.scrollbarRef.$el.querySelector(`.list-item:nth-child(${index + 1})`)
+            const itemElement = this.$refs.refScrollbar.$el.querySelector(`.list-item:nth-child(${index + 1})`)
             if (itemElement) {
-                const scrollContainer = this.$refs.scrollbarRef.$el.querySelector('.el-scrollbar__wrap');
+                const scrollContainer = this.$refs.refScrollbar.$el.querySelector('.el-scrollbar__wrap');
                 const targetScrollLeft = itemElement.offsetLeft;
                 const currentScrollLeft = scrollContainer.scrollLeft;
                 const duration = 500; // 动画持续时间，单位毫秒
@@ -983,20 +1016,44 @@ export default {
     width: calc(100vw - 240px);
     border-bottom: 1px solid #eee;
 
+    .icon-arrow-left,
+    .icon-arrow-right {
+        position: absolute;
+        top: 7px;
+        width: 40px;
+        height: 48px;
+        text-align: center;
+        line-height: 40px;
+
+        i {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .icon-arrow-left {
+        left: 10px;
+    }
+
+    .icon-arrow-right {
+        right: 80px;
+    }
+
     .recordRouterBox {
         box-sizing: border-box;
         height: 50px;
         display: flex;
         align-items: center;
-
+        margin-left: 45px;
         overflow-x: auto;
         /* 使容器横向滚动 */
         white-space: nowrap;
         /* 确保内容不换行 */
-        width: calc(100vw - 280px);
+        width: calc(100vw - 400px);
+
 
         .scrollbar {
-            width: calc(100vw - 280px);
+            width: calc(100vw - 400px);
             height: 100%;
 
             /deep/ .is-vertical,

@@ -147,7 +147,7 @@
                                 <div class="avatar_select">
                                     <div v-for="(item, index) in $t('avatarList')" :key="index" @click="open">{{
                                         item.value
-                                    }}</div>
+                                        }}</div>
                                 </div>
                                 <div style="display: flex;" slot="reference">
                                     <img class="header_img round" :src="profilePhoto" alt="">
@@ -168,7 +168,8 @@
                             <div style="display: flex" ref="refScrollRefWitch">
                                 <div v-for="(item, index) in recordRouteList" :key="item.id"
                                     :class="['tag', 'list-item', activeIndexRoute == item.id ? 'active' : '']"
-                                    @click="routerSkip(item, index)" @contextmenu="showContextMenu">
+                                    @click="routerSkip(item, index)"
+                                    @contextmenu="showContextMenu($event, item, index)">
                                     <i style="margin-right: 5px;" :class="item.icon"></i>
                                     <span>{{ item.name }}</span>
                                     <i v-if="item.id != 0" class="el-icon-close close-hover"
@@ -267,6 +268,7 @@ export default {
             routerType: '',//传递给 contextMenu 组件用来辨别
             drawer: false,
             isIconArrow: false, //是否显示箭头
+            temporarilyRouteList: {},//临时路由列表
         }
     },
     created() {
@@ -514,7 +516,9 @@ export default {
             }, 500);
         },
         //右键菜单
-        showContextMenu(event) {
+        showContextMenu(event, item, index) {
+            this.temporarilyRouteList = item;//临时存储当前路由
+
             this.routerType = 'layout'
             event.preventDefault(); // 阻止默认右键菜单
             // 显示右键菜单
@@ -523,6 +527,8 @@ export default {
         //全部关闭
         menuItemClose(val) {
             if (val == 'close') {
+                this.closeRouterBlock(val);
+            } else if (val == 'closeOther') {
                 this.closeRouterBlock(val);
             }
         },
@@ -610,24 +616,36 @@ export default {
         },
         //全部关闭路由导航
         closeRouterBlock(command) {
-            console.log('222', this.recordRouteList);
             if (this.recordRouteList.length == 1 && this.recordRouteList[0].id == '0') {
                 this.$message.warning('首页不能关闭')
                 return
             }
+
+            let recordRouteListCopy = [{
+                name: '首页',
+                path: 'home',
+                id: '0',
+                router: '/home',
+                icon: 'el-icon-monitor',
+            }];
             if (command == 'close') {
-                this.recordRouteList = [{
-                    name: '首页',
-                    path: 'home',
-                    id: '0',
-                    router: '/home',
-                    icon: 'el-icon-monitor',
-                }];
+                this.recordRouteList = recordRouteListCopy;
                 this.activeIndexRoute = '0';
                 this.activeIndex = '/home';
                 this.$router.push('/home')
+            } else if (command == 'closeOther') {
+                if (this.temporarilyRouteList.router == '/home') {
+                    this.recordRouteList = recordRouteListCopy;
+                    this.activeIndexRoute = '0';
+                    this.activeIndex = '/home';
+                    this.$router.push('/home')
+                } else {
+                    this.recordRouteList = [...recordRouteListCopy, this.temporarilyRouteList];
+                    this.activeIndexRoute = this.temporarilyRouteList.id;
+                    this.activeIndex = this.temporarilyRouteList.router;
+                    this.$router.push(this.temporarilyRouteList.router);
+                }
             }
-
         },
         //路由块跳转方法
         routerSkipChunk(val, flag) {

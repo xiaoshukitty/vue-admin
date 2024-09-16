@@ -19,6 +19,10 @@ const routerEnum = [{
     name: '全部关闭',
     icon: "el-icon-close",
     lable: "close"
+},{
+    name: '关闭其他',
+    icon: "el-icon-close",
+    lable: "closeOther"
 }]
 
 // 菜单栏右键菜单

@@ -184,13 +184,15 @@
 
       <div class="marin">
         <!-- <keep-alive> -->
-        <transition :name="transitionName">
-          <router-view v-if="flag" />
-        </transition>
-        <!-- <transition :name="transitionName"> -->
-          <!-- </keep-alive> -->
+        <div style="flex: 1 1 auto;">
+          <transition :name="transitionName">
+            <router-view v-if="flag" />
+          </transition>
+        </div>
+        <!-- </keep-alive> -->
+        <div style="flex: 0 0 auto">
           <Copyright />
-        <!-- </transition> -->
+        </div>
       </div>
 
     </div>
@@ -260,7 +262,7 @@ export default {
       drawer: false,
       isIconArrow: false, //是否显示箭头
       temporarilyRouteList: {}, //临时路由列表
-      transitionName: 'slide-right'
+      transitionName: 'slide-right', //过渡动画
     };
   },
   created() {
@@ -1014,9 +1016,12 @@ export default {
     }
 
     .marin {
+      display: flex;
+      flex-flow: column nowrap;
       height: calc(100vh - 100px);
       width: calc(100vw - var(--left-menu-width));
       overflow: auto;
+
     }
   }
 }

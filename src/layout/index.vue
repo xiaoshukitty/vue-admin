@@ -152,9 +152,10 @@
           <div class="icon-arrow-left">
             <i v-if="isIconArrow" class="el-icon-arrow-left" @click="iconScroll('left')"></i>
           </div>
-          <div class="recordRouterBox" ref="refTotalWitch">
+          <div :class="['recordRouterBox', isCollapse ? 'routerBoxWdith' : 'routerBoxWdithTwo']" ref="refTotalWitch">
             <!-- 路由块 -->
-            <el-scrollbar class="scrollbar" wrap-style="overflow-y:hidden" ref="refScrollbar">
+            <el-scrollbar :class="['scrollbar', isCollapse ? 'routerBoxWdithCopy' : 'routerBoxWdithCopyTwo']"
+              wrap-style="overflow-y:hidden" ref="refScrollbar">
               <div style="display: flex" ref="refScrollRefWitch">
                 <div v-for="(item, index) in recordRouteList" :key="item.id" :class="[
                   'tag',
@@ -332,6 +333,10 @@ export default {
         //获取 recordRouteList dom 的宽度 和总的宽度
         const scrollRefWitch = this.$refs.refScrollRefWitch.offsetWidth;
         const totalWitch = this.$refs.refTotalWitch.offsetWidth;
+        console.log('scrollRefWitch----', scrollRefWitch);
+        console.log('totalWitch----', totalWitch);
+
+        
         if (scrollRefWitch > totalWitch) {
           this.isIconArrow = true;
         } else {
@@ -1043,7 +1048,7 @@ export default {
 .recordRouteList {
   position: relative;
   padding: 0 10px;
-  width: calc(100vw - 240px);
+  // width: calc(100vw - 240px);
   border-bottom: 1px solid #eee;
 
   .icon-arrow-left,
@@ -1069,6 +1074,23 @@ export default {
     right: 80px;
   }
 
+
+  .routerBoxWdith {
+    width: calc(100vw - 250px) !important;
+  }
+
+  .routerBoxWdithTwo {
+    width: calc(100vw - 400px) !important;
+  }
+
+  .routerBoxWdithCopy {
+    width: calc(100vw - 250px) !important;
+  }
+
+  .routerBoxWdithCopyTwo {
+    width: calc(100vw - 400px) !important;
+  }
+
   .recordRouterBox {
     box-sizing: border-box;
     height: 50px;
@@ -1079,7 +1101,7 @@ export default {
     /* 使容器横向滚动 */
     white-space: nowrap;
     /* 确保内容不换行 */
-    width: calc(100vw - 400px);
+
 
     .scrollbar {
       width: calc(100vw - 400px);

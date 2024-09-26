@@ -1019,7 +1019,7 @@ export default {
       display: flex;
       flex-flow: column nowrap;
       height: calc(100vh - 100px);
-      width: calc(100vw - var(--left-menu-width));
+      // width: calc(100vw - var(--left-menu-width));
       overflow: auto;
 
     }

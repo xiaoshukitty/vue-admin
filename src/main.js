@@ -23,7 +23,11 @@ import Router from 'vue-router';
 import {
   checkForUpdates
 } from './version-check';
-// import './ban.js' //打包才放开
+
+//打包才放开  可以使用 npm run uncomment 去掉注释 ，需要在注释前加上 @uncomment 标记 才可以 
+// import './ban.js'
+
+// @uncomment import './ban.js'
 
 import '@/config/directive.js'
 import '@/icons/index' //导入 svg

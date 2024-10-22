@@ -19,6 +19,18 @@ cd 到 node_server目录，命令 nodemon app.js 启动服务，项目就可以�
 
 在 dist 文件中
 
+```js
+// 打包之前 需要运行
+
+npm run uncomment
+
+// 用来把需要放开的注释用这个命令脚本来放开、在使用
+
+npm run build
+```
+
+
+
 ### 代码文件
 
 在 src 目录下

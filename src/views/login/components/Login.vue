@@ -31,8 +31,8 @@
       </div>
       <div class="login_btn">
         <el-button type="primary" :loading="loginLoading" @click="login('ruleForm')">{{
-        !loginLoading ? $t('loginI18n.LogIn') : $t('loginI18n.BeLoggingIn')
-      }}
+          !loginLoading ? $t('loginI18n.LogIn') : $t('loginI18n.BeLoggingIn')
+          }}
         </el-button>
       </div>
       <div class="other_btn">
@@ -129,17 +129,17 @@ export default {
       let redirect = this.$route.query.redirect;
 
       // 打包的时候放开，设置假的 token
-      // sessionStorage.setItem('TOKEN', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAyNTQ3NjM1LCJleHAiOjE3MDI1NTEyMzV9.9rT1tptioYKHK9HhWHr_duAZ0An_BFaafRd01XBSojA');
-      // setTimeout(() => {
-      //   this.$router.push({ path: redirect || '/' })
-      //   this.$notify({
-      //     title: this.$t('headerList.LoginSuccessful'),
-      //     message: `Hi,${this.getTime()}`,
-      //     type: 'success'
-      //   });
-      //   this.loginLoading = false;
-      // }, 1000)
-      // return
+      // @uncomment sessionStorage.setItem('TOKEN', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzAyNTQ3NjM1LCJleHAiOjE3MDI1NTEyMzV9.9rT1tptioYKHK9HhWHr_duAZ0An_BFaafRd01XBSojA');
+      // @uncomment setTimeout(() => {
+      // @uncomment   this.$router.push({ path: redirect || '/' })
+      // @uncomment   this.$notify({
+      // @uncomment     title: this.$t('headerList.LoginSuccessful'),
+      // @uncomment     message: `Hi,${this.getTime()}`,
+      // @uncomment     type: 'success'
+      // @uncomment   });
+      // @uncomment   this.loginLoading = false;
+      // @uncomment }, 1000)
+      // @uncomment return
 
 
       const result = await userLogin(params)

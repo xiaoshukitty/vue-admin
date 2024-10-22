@@ -336,7 +336,7 @@ export default {
         console.log('scrollRefWitch----', scrollRefWitch);
         console.log('totalWitch----', totalWitch);
 
-        
+
         if (scrollRefWitch > totalWitch) {
           this.isIconArrow = true;
         } else {
@@ -817,15 +817,15 @@ export default {
       };
 
       // 打包的时候放开，删除假的 token
-      // sessionStorage.removeItem("TOKEN")
-      // setTimeout(() => {
-      //     this.$router.push({ path: '/login', query: { redirect: this.$route.path } })
-      //     this.$notify({
-      //         title: this.$t('headerList.HasSuccessfullyExited'),
-      //         type: 'success'
-      //     });
-      // }, 1000)
-      // return
+      // @uncomment sessionStorage.removeItem("TOKEN")
+      // @uncomment setTimeout(() => {
+      // @uncomment     this.$router.push({ path: '/login', query: { redirect: this.$route.path } })
+      // @uncomment     this.$notify({
+      // @uncomment         title: this.$t('headerList.HasSuccessfullyExited'),
+      // @uncomment         type: 'success'
+      // @uncomment     });
+      // @uncomment }, 1000)
+      // @uncomment return
 
       const reslut = await logout(params);
       if (reslut.code == 200) {

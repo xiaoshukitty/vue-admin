@@ -64,7 +64,7 @@ targetDirectories.forEach((dir) => {
 
     // 遍历所有文件
     newAllFiles.forEach((file) => {
-        // 仅处理 .js 或 .vue 文件
+        // 仅处理 .js 或 .vue 文件 endsWith() 检测字符串是否以指定的子字符串结尾的方法
         if (file.endsWith('.js') || file.endsWith('.vue')) {
             // 过滤掉当前目录
             processFile(file);

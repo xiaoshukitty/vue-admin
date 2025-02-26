@@ -137,7 +137,7 @@ export default {
     padding: 20px;
 
     .box-card {
-        width: 100%;
+        width:calc(100vw - 260px);
         height: calc(100vh - 210px);
 
         .clearfix:before,
